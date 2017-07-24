@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // https://stackoverflow.com/questions/39931463/swift-ios-change-the-color-of-a-navigation-bar
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0)   // purple
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        // https://www.youtube.com/watch?v=Ehqnf1kHNGw at 4:23
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
 

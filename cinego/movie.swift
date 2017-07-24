@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Movie {
+    
+    private let id: Int = 0
+    private let title: String = ""
+    private let releaseDate: Date? = nil
+    private let duration: Int = 0
+    private let shows: [Show] = []
+    
+}
