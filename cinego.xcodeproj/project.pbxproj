@@ -10,6 +10,8 @@
 		03B219411F25E285009F7B41 /* show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219401F25E285009F7B41 /* show.swift */; };
 		03B219431F25E3D8009F7B41 /* cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219421F25E3D8009F7B41 /* cinema.swift */; };
 		03B219451F25E4FF009F7B41 /* ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219441F25E4FF009F7B41 /* ticket.swift */; };
+		03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */; };
+		03F073821F26C9BC00BD9713 /* Temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F073811F26C9BC00BD9713 /* Temp.m */; };
 		1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD87C1F2495CC0034D472 /* AppDelegate.swift */; };
 		1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */; };
 		1F2CD8811F2495CC0034D472 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD8801F2495CC0034D472 /* SecondViewController.swift */; };
@@ -42,6 +44,9 @@
 		03B219401F25E285009F7B41 /* show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = show.swift; sourceTree = "<group>"; };
 		03B219421F25E3D8009F7B41 /* cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cinema.swift; sourceTree = "<group>"; };
 		03B219441F25E4FF009F7B41 /* ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticket.swift; sourceTree = "<group>"; };
+		03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		03F073801F26C9BC00BD9713 /* Temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temp.h; sourceTree = "<group>"; };
+		03F073811F26C9BC00BD9713 /* Temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temp.m; sourceTree = "<group>"; };
 		1F2CD8791F2495CC0034D472 /* cinego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cinego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2CD87C1F2495CC0034D472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +92,9 @@
 		03B219461F25E7E5009F7B41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */,
+				1F2CD8801F2495CC0034D472 /* SecondViewController.swift */,
+				03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -133,8 +141,6 @@
 				03B219461F25E7E5009F7B41 /* Controllers */,
 				2EC77F671F256978003BAF20 /* Models */,
 				1F2CD87C1F2495CC0034D472 /* AppDelegate.swift */,
-				1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */,
-				1F2CD8801F2495CC0034D472 /* SecondViewController.swift */,
 				1F2CD8821F2495CC0034D472 /* Main.storyboard */,
 				1F2CD8851F2495CC0034D472 /* Assets.xcassets */,
 				1F2CD8871F2495CC0034D472 /* LaunchScreen.storyboard */,
@@ -168,6 +174,8 @@
 				03B219401F25E285009F7B41 /* show.swift */,
 				03B219421F25E3D8009F7B41 /* cinema.swift */,
 				03B219441F25E4FF009F7B41 /* ticket.swift */,
+				03F073801F26C9BC00BD9713 /* Temp.h */,
+				03F073811F26C9BC00BD9713 /* Temp.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -240,6 +248,7 @@
 				TargetAttributes = {
 					1F2CD8781F2495CC0034D472 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1F2CD88E1F2495CC0034D472 = {
@@ -309,6 +318,8 @@
 				03B219431F25E3D8009F7B41 /* cinema.swift in Sources */,
 				1F2CD8811F2495CC0034D472 /* SecondViewController.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,
+				03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */,
+				03F073821F26C9BC00BD9713 /* Temp.m in Sources */,
 				03B219411F25E285009F7B41 /* show.swift in Sources */,
 				2EC77F691F2569A0003BAF20 /* movie.swift in Sources */,
 				1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */,
@@ -464,10 +475,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = cinego/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isesuperstars.cinego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cinego/cinego-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -476,10 +490,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = cinego/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isesuperstars.cinego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cinego/cinego-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
