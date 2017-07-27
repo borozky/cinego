@@ -9,16 +9,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    @IBOutlet weak var upcomingMoviesLabel: UILabel!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        upcomingMoviesLabel.text = "Hello World"
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
