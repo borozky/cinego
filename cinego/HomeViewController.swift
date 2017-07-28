@@ -8,12 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     @IBOutlet weak var homeBannerSlider: UIScrollView!
     
+    
+    
     var imageBanners = [UIImage]()
+    var upcomingMovies: [UIImage] = [#imageLiteral(resourceName: "indigo-160x240"), #imageLiteral(resourceName: "fuchsia-160x240"), #imageLiteral(resourceName: "lime-160x240"), #imageLiteral(resourceName: "maroon-160x240"), #imageLiteral(resourceName: "scarlet-160x240"), #imageLiteral(resourceName: "olive-160x240"), #imageLiteral(resourceName: "teal-160x240")]
     
 
     override func viewDidLoad() {
@@ -50,6 +53,24 @@ class HomeViewController: UIViewController {
             
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return upcomingMovies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+        
+        cell.bannerIcon.image = upcomingMovies[indexPath.row]
+        cell.movieTitle.text = "Movie title: Something blah"
+        cell.movieReleaseYear.text = String(2017)
+        cell.movieAudienceType.text = "PG"
+        
+        return cell
+        
+    }
+    
+    
     
 
     /*

@@ -12,6 +12,7 @@
 		03B219451F25E4FF009F7B41 /* ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219441F25E4FF009F7B41 /* ticket.swift */; };
 		03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */; };
 		03F073821F26C9BC00BD9713 /* Temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F073811F26C9BC00BD9713 /* Temp.m */; };
+		1F129BD51F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F129BD41F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift */; };
 		1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD87C1F2495CC0034D472 /* AppDelegate.swift */; };
 		1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */; };
 		1F2CD8811F2495CC0034D472 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD8801F2495CC0034D472 /* SecondViewController.swift */; };
@@ -47,6 +48,7 @@
 		03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		03F073801F26C9BC00BD9713 /* Temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temp.h; sourceTree = "<group>"; };
 		03F073811F26C9BC00BD9713 /* Temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temp.m; sourceTree = "<group>"; };
+		1F129BD41F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F2CD8791F2495CC0034D472 /* cinego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cinego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2CD87C1F2495CC0034D472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2CD87E1F2495CC0034D472 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
+		1F129BD31F2AE27600C6FFA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F129BD41F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		1F2CD8701F2495CC0034D472 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 		1F2CD87B1F2495CC0034D472 /* cinego */ = {
 			isa = PBXGroup;
 			children = (
+				1F129BD31F2AE27600C6FFA7 /* Views */,
 				03B219481F25E8B8009F7B41 /* Repositories */,
 				03B219471F25E809009F7B41 /* Helpers */,
 				03B219461F25E7E5009F7B41 /* Controllers */,
@@ -322,6 +333,7 @@
 				03F073821F26C9BC00BD9713 /* Temp.m in Sources */,
 				03B219411F25E285009F7B41 /* show.swift in Sources */,
 				2EC77F691F2569A0003BAF20 /* movie.swift in Sources */,
+				1F129BD51F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift in Sources */,
 				1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */,
 				03B219451F25E4FF009F7B41 /* ticket.swift in Sources */,
 			);
