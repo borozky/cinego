@@ -25,6 +25,7 @@
 		1F5647051F2B24F8004BB024 /* MovieSessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5647041F2B24F8004BB024 /* MovieSessionTableViewCell.swift */; };
 		1F5647091F2B38CA004BB024 /* CinemaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5647081F2B38CA004BB024 /* CinemaDetailsViewController.swift */; };
 		1F56470B1F2B4003004BB024 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F56470A1F2B4003004BB024 /* ImageSlider.swift */; };
+		1FBB522A1F2B547F00C994EB /* CinemaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB52291F2B547F00C994EB /* CinemaListViewController.swift */; };
 		2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC77F681F2569A0003BAF20 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		1F5647041F2B24F8004BB024 /* MovieSessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSessionTableViewCell.swift; sourceTree = "<group>"; };
 		1F5647081F2B38CA004BB024 /* CinemaDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaDetailsViewController.swift; sourceTree = "<group>"; };
 		1F56470A1F2B4003004BB024 /* ImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
+		1FBB52291F2B547F00C994EB /* CinemaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaListViewController.swift; sourceTree = "<group>"; };
 		2EC77F681F2569A0003BAF20 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */,
 				1F5647021F2B1A5D004BB024 /* MovieDetailsViewController.swift */,
 				1F5647081F2B38CA004BB024 /* CinemaDetailsViewController.swift */,
+				1FBB52291F2B547F00C994EB /* CinemaListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FBB522A1F2B547F00C994EB /* CinemaListViewController.swift in Sources */,
 				03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */,
 				1F2CD8811F2495CC0034D472 /* MoviesTabViewController.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,

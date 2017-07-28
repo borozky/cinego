@@ -12,7 +12,6 @@ class CinemaDetailsViewController: UIViewController {
 
     var imageBanners = [UIImage]()
     
-    
     @IBOutlet weak var banner: UIScrollView!
     
     
