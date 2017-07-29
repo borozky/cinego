@@ -10,25 +10,29 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var movieShows: [Show] = [
-        Show(0, "9:30am - 12:30pm", 1),
-        Show(1, "1:30pm - 4:30pm", 1),
-        Show(2, "5:30pm - 8:30pm", 1),
-        Show(3, "9:30am - 12:30am", 1),
-        Show(4, "1:30am - 4:30am", 1)
-    ]
+    var cinema: Cinema = Cinema(name: "Melbourne CBD",
+                                numSeats: 20,
+                                address: "123 Flinders Street VIC 3000",
+                                details: "This is the details")
+    
+    var movieSessions: [MovieSession] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieSessions.append(MovieSession(id: 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        movieSessions.append(MovieSession(id: 2, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        movieSessions.append(MovieSession(id: 3, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        movieSessions.append(MovieSession(id: 4, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        movieSessions.append(MovieSession(id: 5, startTime: "28 July 2017 08:30am", cinema: self.cinema))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieShows.count
+        return movieSessions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = movieShows[indexPath.row].getStartTime()
+        cell.textLabel?.text = movieSessions[indexPath.row].startTime
         return cell
         
     }

@@ -9,7 +9,18 @@
 import Foundation
 
 class Cinema {
-    private let name: String? = nil
-    private let numSeats: Int = 20
-    private let movies: [Movie] = []
+    
+    let name: String?
+    let numSeats: Int?
+    let address: String?
+    let details: String?
+    
+    init(name: String, numSeats: Int = 20, address: String = "", details: String = ""){
+        self.name = name
+        self.numSeats = numSeats
+        self.address = address
+        self.details = details
+    }
+    
+    
 }
