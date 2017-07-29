@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -202,6 +204,7 @@
                                                             <outlet property="cinemaLabel" destination="bCS-CD-tgD" id="Oyb-TW-O1V"/>
                                                             <outlet property="cinemaLabelParent" destination="qdm-GW-5oZ" id="GLY-XG-aRR"/>
                                                             <outlet property="cinemaViewFX" destination="Z7S-N9-WA3" id="2hQ-QM-7Bk"/>
+                                                            <segue destination="fcT-kw-80C" kind="show" identifier="openCinemaUpcomingMovies" id="gXl-ip-iZt"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -264,6 +267,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1798.125" y="-798.59154929577471"/>
+        </scene>
+        <!--Cinema Theater-->
+        <scene sceneID="m6J-co-GZX">
+            <objects>
+                <tableViewController id="fcT-kw-80C" customClass="UpcomingMoviesByCinemaTableVC" customModule="cinego" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="d3Q-Sf-lCY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoviesByCinemaTableViewCell" rowHeight="99" id="vFZ-Kh-a9t" customClass="UpcomingMoviesByCinemaTableViewCell" customModule="cinego" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="99"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFZ-Kh-a9t" id="SMi-DB-wR5">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Devil Wears Prada" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh6-QQ-N8l">
+                                            <rect key="frame" x="64" y="14" width="248" height="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="1SA-zR-t7L"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                            <color key="textColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maroon-160x240" translatesAutoresizingMaskIntoConstraints="NO" id="vVC-Lt-sKT">
+                                            <rect key="frame" x="8" y="14" width="48" height="71"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="A4s-AQ-cFL"/>
+                                                <constraint firstAttribute="height" constant="71" id="abb-JY-h2N"/>
+                                                <constraint firstAttribute="width" secondItem="vVC-Lt-sKT" secondAttribute="height" multiplier="48:71" id="wzu-KC-tFo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-2f-6ob">
+                                            <rect key="frame" x="64" y="32" width="32" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="2hi-Pn-Aix"/>
+                                                <constraint firstAttribute="height" constant="12" id="Ld1-ZO-JRv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alh-mq-wmm">
+                                            <rect key="frame" x="100" y="31.5" width="113" height="13.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="113" id="nfR-D8-hc6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum sit dolor amet. Blah blah blah blah blah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNt-ap-usX">
+                                            <rect key="frame" x="64" y="52" width="248" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Alh-mq-wmm" firstAttribute="leading" secondItem="2FA-2f-6ob" secondAttribute="trailing" constant="4" id="A6p-lN-Ss3"/>
+                                        <constraint firstItem="Lh6-QQ-N8l" firstAttribute="top" secondItem="vVC-Lt-sKT" secondAttribute="top" id="Bhb-Vk-TlS"/>
+                                        <constraint firstItem="FNt-ap-usX" firstAttribute="top" secondItem="2FA-2f-6ob" secondAttribute="bottom" constant="8" id="FLN-Gx-iF6"/>
+                                        <constraint firstItem="vVC-Lt-sKT" firstAttribute="centerY" secondItem="SMi-DB-wR5" secondAttribute="centerY" id="K37-M7-xvr"/>
+                                        <constraint firstItem="Lh6-QQ-N8l" firstAttribute="leading" secondItem="vVC-Lt-sKT" secondAttribute="trailing" constant="8" id="MWt-yn-AW3"/>
+                                        <constraint firstItem="Alh-mq-wmm" firstAttribute="centerY" secondItem="2FA-2f-6ob" secondAttribute="centerY" id="Wgs-lK-6T0"/>
+                                        <constraint firstItem="2FA-2f-6ob" firstAttribute="top" secondItem="Lh6-QQ-N8l" secondAttribute="bottom" constant="4" id="c3J-CP-Xl0"/>
+                                        <constraint firstItem="FNt-ap-usX" firstAttribute="leading" secondItem="vVC-Lt-sKT" secondAttribute="trailing" constant="8" id="f0u-MQ-CAK"/>
+                                        <constraint firstItem="Lh6-QQ-N8l" firstAttribute="trailing" secondItem="SMi-DB-wR5" secondAttribute="trailingMargin" id="noy-ob-Wzl"/>
+                                        <constraint firstItem="FNt-ap-usX" firstAttribute="trailing" secondItem="SMi-DB-wR5" secondAttribute="trailingMargin" id="ocM-fr-91P"/>
+                                        <constraint firstItem="vVC-Lt-sKT" firstAttribute="leading" secondItem="SMi-DB-wR5" secondAttribute="leadingMargin" id="pem-EW-bsh"/>
+                                        <constraint firstItem="2FA-2f-6ob" firstAttribute="leading" secondItem="vVC-Lt-sKT" secondAttribute="trailing" constant="8" id="rOs-Sz-KsQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="audienceTypeLabel" destination="Alh-mq-wmm" id="VRm-TI-x4a"/>
+                                    <outlet property="excerptLabel" destination="FNt-ap-usX" id="qWt-1W-IVq"/>
+                                    <outlet property="imageBanner" destination="vVC-Lt-sKT" id="9LM-ra-c2H"/>
+                                    <outlet property="movieTitle" destination="Lh6-QQ-N8l" id="F3l-qO-u1q"/>
+                                    <outlet property="releaseYearLabel" destination="2FA-2f-6ob" id="wJe-mf-idZ"/>
+                                    <segue destination="rQm-c7-ivM" kind="show" identifier="fromCinemaTheaterOpenMovieDetails" id="lqv-Gf-Neo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fcT-kw-80C" id="wbb-T4-HqU"/>
+                            <outlet property="delegate" destination="fcT-kw-80C" id="5iY-8S-Dxn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cinema Theater" id="aYN-3S-qpy">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="IRO-Ad-IgS"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6g-Em-2l5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3335.625" y="-545.07042253521126"/>
         </scene>
         <!--Movie Details-->
         <scene sceneID="ODC-Ws-q24">
@@ -422,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="da9-Uu-JUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365.625" y="-856.69014084507046"/>
+            <point key="canvasLocation" x="3336" y="-1215"/>
         </scene>
         <!--Cinema-->
         <scene sceneID="Jpu-EW-an9">
@@ -717,7 +817,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgz-K4-x96" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="-856.69014084507046"/>
+            <point key="canvasLocation" x="2640" y="-1214"/>
         </scene>
         <!--Cart-->
         <scene sceneID="CMI-fo-jvl">
@@ -794,6 +894,24 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             </objects>
             <point key="canvasLocation" x="2584" y="776"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8qX-pb-fNe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tyY-Ad-jTg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gNS-6X-pS8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fcT-kw-80C" kind="relationship" relationship="rootViewController" id="FPs-Fd-Cv5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ok-hp-2im" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2640" y="-545"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cinema-image1" width="4080" height="2278"/>
@@ -803,7 +921,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FPs-Fd-Cv5"/>
+        <segue reference="lqv-Gf-Neo"/>
         <segue reference="9os-Q9-qur"/>
-        <segue reference="bqC-At-dmE"/>
     </inferredMetricsTieBreakers>
 </document>

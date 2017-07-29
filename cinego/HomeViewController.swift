@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         loadHomeBannerSlider()
+        
     }
     
     // loads the home page slider banner

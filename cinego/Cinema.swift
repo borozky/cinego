@@ -14,6 +14,7 @@ class Cinema {
     let numSeats: Int?
     let address: String?
     let details: String?
+    var images: [String] = []
     
     init(name: String, numSeats: Int = 20, address: String = "", details: String = ""){
         self.name = name
