@@ -137,11 +137,85 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ryI-1r-hjt">
+                                                <rect key="frame" x="8" y="330" width="304" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="XH7-UE-twz"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bwA-kg-pIc">
+                                                    <size key="itemSize" width="158" height="100"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CinemaCollectionViewCell" id="0B0-Ek-QE6" customClass="CinemaCollectionViewCell" customModule="cinego" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="158" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="158" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cinema-image1" translatesAutoresizingMaskIntoConstraints="NO" id="bO9-ZA-uNQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="100"/>
+                                                                </imageView>
+                                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7S-N9-WA3">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="100"/>
+                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qdm-GW-5oZ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="158" height="100"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Plaza Theater" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-CD-tgD">
+                                                                                <rect key="frame" x="8" y="40" width="142" height="21"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="21" id="MbS-mQ-sJH"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="bCS-CD-tgD" firstAttribute="centerX" secondItem="qdm-GW-5oZ" secondAttribute="centerX" id="Bma-jR-CtL"/>
+                                                                            <constraint firstItem="bCS-CD-tgD" firstAttribute="leading" secondItem="qdm-GW-5oZ" secondAttribute="leading" constant="8" id="QqA-ou-g0R"/>
+                                                                            <constraint firstItem="bCS-CD-tgD" firstAttribute="centerY" secondItem="qdm-GW-5oZ" secondAttribute="centerY" id="bly-UD-gOK"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="bCS-CD-tgD" secondAttribute="trailing" constant="8" id="gxb-Uh-stM"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <blurEffect style="light"/>
+                                                                </visualEffectView>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="bO9-ZA-uNQ" firstAttribute="leading" secondItem="0B0-Ek-QE6" secondAttribute="leading" id="1OO-8x-9nD"/>
+                                                            <constraint firstAttribute="bottom" secondItem="bO9-ZA-uNQ" secondAttribute="bottom" id="4a0-mh-oZN"/>
+                                                            <constraint firstItem="Z7S-N9-WA3" firstAttribute="leading" secondItem="0B0-Ek-QE6" secondAttribute="leading" id="8Vz-c0-tEx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Z7S-N9-WA3" secondAttribute="bottom" id="H3s-sR-tT9"/>
+                                                            <constraint firstItem="bO9-ZA-uNQ" firstAttribute="top" secondItem="0B0-Ek-QE6" secondAttribute="top" id="PnI-52-Fwm"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bO9-ZA-uNQ" secondAttribute="trailing" id="QQU-dN-RPK"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Z7S-N9-WA3" secondAttribute="trailing" id="plN-7P-WWq"/>
+                                                            <constraint firstItem="Z7S-N9-WA3" firstAttribute="top" secondItem="0B0-Ek-QE6" secondAttribute="top" id="wJn-io-ubV"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="cinemaImage" destination="bO9-ZA-uNQ" id="PP7-Xh-gJ8"/>
+                                                            <outlet property="cinemaLabel" destination="bCS-CD-tgD" id="Oyb-TW-O1V"/>
+                                                            <outlet property="cinemaLabelParent" destination="qdm-GW-5oZ" id="GLY-XG-aRR"/>
+                                                            <outlet property="cinemaViewFX" destination="Z7S-N9-WA3" id="2hQ-QM-7Bk"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="moS-JN-1xX"/>
+                                                    <outlet property="delegate" destination="9pv-A4-QxB" id="dt4-12-9Vx"/>
+                                                </connections>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="0Pe-bZ-mMc" secondAttribute="trailing" constant="8" id="0MF-ae-jQU"/>
                                             <constraint firstItem="BSd-nw-AHk" firstAttribute="top" secondItem="0Pe-bZ-mMc" secondAttribute="bottom" constant="8" id="9ag-17-IbK"/>
+                                            <constraint firstAttribute="trailing" secondItem="ryI-1r-hjt" secondAttribute="trailing" constant="8" id="BRP-WA-GBX"/>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="centerX" secondItem="kKt-XO-wb6" secondAttribute="centerX" id="D4e-Xk-syZ"/>
                                             <constraint firstItem="EtL-7Q-8Mc" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" constant="8" id="IiC-T8-2Zg"/>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" id="NhX-fy-Tpr"/>
@@ -150,10 +224,12 @@
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="width" secondItem="kKt-XO-wb6" secondAttribute="width" id="Xjf-Ir-Ozo"/>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="top" secondItem="kKt-XO-wb6" secondAttribute="top" id="b45-GM-uWu"/>
                                             <constraint firstItem="EtL-7Q-8Mc" firstAttribute="top" secondItem="7Oh-Fe-Z2K" secondAttribute="bottom" constant="8" id="e1M-Eo-oNZ"/>
+                                            <constraint firstItem="ryI-1r-hjt" firstAttribute="top" secondItem="BSd-nw-AHk" secondAttribute="bottom" constant="8" id="eYb-tJ-DuS"/>
                                             <constraint firstItem="EtL-7Q-8Mc" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" constant="8" id="ehM-bM-CLO"/>
                                             <constraint firstAttribute="height" constant="600" id="itq-28-wEf"/>
                                             <constraint firstAttribute="trailing" secondItem="7Oh-Fe-Z2K" secondAttribute="trailing" id="pe9-ng-N3e"/>
                                             <constraint firstItem="BSd-nw-AHk" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" constant="8" id="q9T-tn-Bga"/>
+                                            <constraint firstItem="ryI-1r-hjt" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" constant="8" id="xyA-yS-MDk"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -180,7 +256,9 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="XLr-VP-aeo"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cinemaTheatersCollectionView" destination="ryI-1r-hjt" id="1gL-W8-CmL"/>
                         <outlet property="homeBannerSlider" destination="7Oh-Fe-Z2K" id="DZd-Y0-tsz"/>
+                        <outlet property="upcomingMoviesCollectionView" destination="0Pe-bZ-mMc" id="6Cb-a4-2xw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -718,6 +796,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         </scene>
     </scenes>
     <resources>
+        <image name="cinema-image1" width="4080" height="2278"/>
         <image name="first" width="30" height="30"/>
         <image name="fuchsia-160x240" width="160" height="240"/>
         <image name="maroon-160x240" width="160" height="240"/>
