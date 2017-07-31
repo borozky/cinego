@@ -21,8 +21,18 @@ class CinemaListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CinemaTableViewCell", for: indexPath)
+        
+        // https://stackoverflow.com/questions/41601105/how-to-dequeue-subtitle-uitableviewcell-in-code-properly
+        let cell: UITableViewCell = {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CinemaTableViewCell") else {
+                return UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "CinemaTableViewCell")
+            }
+            return cell
+        }()
+        
         cell.textLabel?.text = cinemas[indexPath.row]
+        cell.detailTextLabel?.text = "0 upcoming movies"
+        cell.imageView?.image = #imageLiteral(resourceName: "scarlet-160x240")
         return cell
     }
     
