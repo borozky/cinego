@@ -24,8 +24,6 @@ class CartVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemTableViewCell", for: indexPath)
-        cell.textLabel?.text = "12 July 09:30am"
-        cell.detailTextLabel?.text = "1 ticket"
         return cell
     }
 
