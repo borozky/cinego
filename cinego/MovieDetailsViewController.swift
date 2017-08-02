@@ -31,8 +31,9 @@ class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSessionTableViewCell", for: indexPath)
         cell.textLabel?.text = movieSessions[indexPath.row].startTime
+        cell.detailTextLabel?.text = cinema.name
         return cell
         
     }
