@@ -9,7 +9,10 @@
 import UIKit
 
 class CartVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    @IBOutlet weak var cartTotalPriceLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,5 +29,7 @@ class CartVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemTableViewCell", for: indexPath)
         return cell
     }
+    
+    
 
 }
