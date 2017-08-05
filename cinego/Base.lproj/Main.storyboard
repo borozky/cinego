@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +58,7 @@
                                                                 <rect key="frame" x="0.0" y="4" width="84" height="171.5"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="171"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="171.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuchsia-160x240" translatesAutoresizingMaskIntoConstraints="NO" id="hHh-Lo-Xyw">
@@ -354,18 +354,18 @@
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eR1-8U-Fe2" id="qq6-ob-yhk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wed 12 July - 9:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="br0-lV-oQj">
-                                                                            <rect key="frame" x="15" y="5" width="146" height="21"/>
+                                                                            <rect key="frame" x="15" y="6" width="146" height="20.5"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Melbourne CBD - 12 seats available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vK1-Rr-us1">
-                                                                            <rect key="frame" x="15" y="26" width="169" height="12"/>
+                                                                            <rect key="frame" x="15" y="26.5" width="169" height="12"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -537,25 +537,25 @@
                                                         <rect key="frame" x="0.0" y="28" width="374" height="66"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ffr-Yn-AOX" id="btE-SR-EyA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="307" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="307" height="65.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Thor: Ragnarok" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="REU-2l-usE">
-                                                                    <rect key="frame" x="73" y="8" width="109" height="22"/>
+                                                                    <rect key="frame" x="74" y="9" width="109" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 seat | Sun 8th July 9:30am | Melbourne CBD" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yeQ-Ih-cXf">
-                                                                    <rect key="frame" x="73" y="30" width="219" height="27"/>
+                                                                    <rect key="frame" x="74" y="31" width="219" height="26.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="fuchsia-160x240" id="mlw-Ed-dis">
-                                                                    <rect key="frame" x="15" y="0.0" width="43" height="65"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="44" height="65.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </imageView>
                                                             </subviews>
@@ -715,18 +715,18 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8kK-lJ-55m" id="Fu8-iX-Wgm">
-                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="65.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Seats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecR-Rg-BHd">
-                                                                    <rect key="frame" x="60" y="14" width="41" height="20"/>
+                                                                    <rect key="frame" x="60" y="15" width="41" height="19.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1/1 seats selected" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Mr-Zq-jUr">
-                                                                    <rect key="frame" x="60" y="34" width="97" height="17"/>
+                                                                    <rect key="frame" x="60" y="34.5" width="97" height="16.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1008,25 +1008,25 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epS-RM-Xp9" id="OvF-o7-ISV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="54"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="54.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Account status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6OE-Pp-8S4">
-                                                                    <rect key="frame" x="66" y="9" width="101" height="21"/>
+                                                                    <rect key="frame" x="66" y="10" width="101" height="20.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Checking out as guest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bai-XZ-HvH">
-                                                                    <rect key="frame" x="66" y="30" width="109" height="16"/>
+                                                                    <rect key="frame" x="66" y="30.5" width="109" height="15.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
                                                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="olive-160x240" id="6cv-xa-VLj">
-                                                                    <rect key="frame" x="15" y="0.0" width="36" height="54"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="36" height="54.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </imageView>
                                                             </subviews>
@@ -1036,22 +1036,22 @@
                                                         <rect key="frame" x="0.0" y="83" width="375" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qrp-iN-YeD" id="pvD-rf-OVI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="342" height="54"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="342" height="54.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5af-C9-F92">
-                                                                    <rect key="frame" x="66" y="9" width="117" height="21"/>
+                                                                    <rect key="frame" x="66" y="10" width="116.5" height="20.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="olive-160x240" id="NeN-4V-kUe">
-                                                                    <rect key="frame" x="15" y="0.0" width="36" height="54"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="36" height="54.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </imageView>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Paypal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vqe-Mb-oRc">
-                                                                    <rect key="frame" x="66" y="30" width="33" height="16"/>
+                                                                    <rect key="frame" x="66" y="30.5" width="32.5" height="15.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
                                                                     <nil key="textColor"/>
@@ -1322,25 +1322,25 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7g-yh-kdN" id="MYt-12-udK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="342" height="65.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Thor: Ragnarok" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u8q-a5-O9i">
-                                                                    <rect key="frame" x="73" y="15" width="109" height="22"/>
+                                                                    <rect key="frame" x="74" y="15" width="109" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1 seat | Sun 8th July 9:30am | Melbourne CBD" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kvk-KV-kdh">
-                                                                    <rect key="frame" x="73" y="37" width="242" height="14"/>
+                                                                    <rect key="frame" x="74" y="37" width="242" height="13.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="fuchsia-160x240" id="140-yR-JMo">
-                                                                    <rect key="frame" x="15" y="0.0" width="43" height="65"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="44" height="65.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </imageView>
                                                             </subviews>
@@ -1420,25 +1420,25 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSr-2J-Bpe" id="u8U-7z-3DR">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cinema Theaters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bla-B3-v2e">
-                                            <rect key="frame" x="73" y="12" width="131" height="24"/>
+                                            <rect key="frame" x="74" y="13" width="130.5" height="23.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="10 upcoming movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o88-hu-B9F">
-                                            <rect key="frame" x="73" y="36" width="112" height="17"/>
+                                            <rect key="frame" x="74" y="36.5" width="112" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lime-160x240" id="oYI-uC-BNI">
-                                            <rect key="frame" x="15" y="0.0" width="43" height="65"/>
+                                            <rect key="frame" x="15" y="0.0" width="44" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1476,7 +1476,7 @@
                     <navigationItem key="navigationItem" id="INP-Rk-OAQ">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="f8h-BR-Q7P">
-                            <rect key="frame" x="130" y="7" width="115" height="31"/>
+                            <rect key="frame" x="130" y="6.5" width="115" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Movies"/>
@@ -1512,25 +1512,25 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ypo-Cg-3an" id="9h3-2K-3Hj">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Movie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wdg-1d-BqH">
-                                                    <rect key="frame" x="73" y="13" width="83" height="24"/>
+                                                    <rect key="frame" x="74" y="14" width="82.5" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Released: 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpW-Oo-HT2">
-                                                    <rect key="frame" x="73" y="37" width="76" height="16"/>
+                                                    <rect key="frame" x="74" y="37.5" width="75.5" height="15.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lime-160x240" id="I5c-Kf-PeM">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="65"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="65.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -1791,13 +1791,106 @@
                     <view key="view" contentMode="scaleToFill" id="1cc-Yr-J13">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sara He" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="GSu-OY-apG">
+                                <rect key="frame" x="162" y="72" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="S3526309@student.rmit.edu.au" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-Ah-82i">
+                                <rect key="frame" x="95" y="110" width="230" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBg-sl-H8K">
+                                <rect key="frame" x="106" y="180" width="83" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Uncoming">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myu-kI-2H5">
+                                <rect key="frame" x="186" y="180" width="110" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Passt Orders">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Thor: Ragnarok" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHE-8W-cBP">
+                                <rect key="frame" x="138" y="218" width="139" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="At Melbourne CBD July 2017" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qi0-Pw-0rL">
+                                <rect key="frame" x="115" y="256" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sz-0N-mfb">
+                                <rect key="frame" x="138" y="306" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.77821636719999998" green="1" blue="0.87786073379999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="9:30am">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CR-Hu-hDJ">
+                                <rect key="frame" x="236" y="306" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.77821636719999998" green="1" blue="0.87786073379999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="12:30pm">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2KS-1o-U94">
+                                <rect key="frame" x="16" y="234" width="69" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o55-az-Rwa">
+                                <rect key="frame" x="16" y="390" width="69" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Guardians of The Galaxy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-1p-3iM">
+                                <rect key="frame" x="124" y="390" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtJ-Px-k5k">
+                                <rect key="frame" x="138" y="462" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.77821636719999998" green="1" blue="0.87786073379999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="11:30pm">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="At Fitzroy July 2018" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zw1-vC-RGh">
+                                <rect key="frame" x="124" y="424" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="xHZ-hJ-rwG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg8-MN-eA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185" y="1892"/>
+            <point key="canvasLocation" x="2184.8000000000002" y="1891.304347826087"/>
         </scene>
         <!--Account-->
         <scene sceneID="xlt-Xk-OTl">
