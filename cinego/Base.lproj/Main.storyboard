@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKt-XO-wb6">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-Fe-Z2K">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -219,9 +219,9 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="centerX" secondItem="kKt-XO-wb6" secondAttribute="centerX" id="D4e-Xk-syZ"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="H9G-Sf-YpT" secondAttribute="bottom" id="MTZ-4m-sSW"/>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" id="NhX-fy-Tpr"/>
                                             <constraint firstAttribute="trailing" secondItem="F18-U9-8RJ" secondAttribute="trailing" id="Qkf-LZ-s8G"/>
                                             <constraint firstItem="F18-U9-8RJ" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" id="SU9-8t-udO"/>
@@ -230,7 +230,6 @@
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="width" secondItem="kKt-XO-wb6" secondAttribute="width" id="Xjf-Ir-Ozo"/>
                                             <constraint firstItem="7Oh-Fe-Z2K" firstAttribute="top" secondItem="kKt-XO-wb6" secondAttribute="top" id="b45-GM-uWu"/>
                                             <constraint firstItem="H9G-Sf-YpT" firstAttribute="leading" secondItem="kKt-XO-wb6" secondAttribute="leading" id="h5K-jP-oMm"/>
-                                            <constraint firstAttribute="height" constant="600" id="itq-28-wEf"/>
                                             <constraint firstItem="F18-U9-8RJ" firstAttribute="top" secondItem="7Oh-Fe-Z2K" secondAttribute="bottom" constant="8" id="kNj-Zw-J0P"/>
                                             <constraint firstAttribute="trailing" secondItem="7Oh-Fe-Z2K" secondAttribute="trailing" id="pe9-ng-N3e"/>
                                         </constraints>
@@ -239,19 +238,17 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="kKt-XO-wb6" secondAttribute="trailing" id="28s-4e-2j4"/>
                                     <constraint firstAttribute="bottom" secondItem="kKt-XO-wb6" secondAttribute="bottom" id="2NB-Ou-MDt"/>
-                                    <constraint firstItem="kKt-XO-wb6" firstAttribute="width" secondItem="qIM-1x-qbK" secondAttribute="width" id="3rT-JR-5Ho"/>
                                     <constraint firstItem="kKt-XO-wb6" firstAttribute="top" secondItem="qIM-1x-qbK" secondAttribute="top" id="Ipt-tl-Gum"/>
                                     <constraint firstItem="kKt-XO-wb6" firstAttribute="leading" secondItem="qIM-1x-qbK" secondAttribute="leading" id="a9W-um-p6q"/>
+                                    <constraint firstItem="kKt-XO-wb6" firstAttribute="width" secondItem="qIM-1x-qbK" secondAttribute="width" id="sTJ-T4-nCb"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qIM-1x-qbK" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="GLh-Oj-uRD"/>
                             <constraint firstAttribute="trailing" secondItem="qIM-1x-qbK" secondAttribute="trailing" id="Rx7-9c-BTC"/>
                             <constraint firstItem="qIM-1x-qbK" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="TI4-BL-g3T"/>
                             <constraint firstAttribute="bottom" secondItem="qIM-1x-qbK" secondAttribute="bottom" id="Zzd-TR-IrW"/>
-                            <constraint firstItem="qIM-1x-qbK" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="b3a-Ut-7OJ"/>
                             <constraint firstItem="qIM-1x-qbK" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="hxK-U0-f5E"/>
                         </constraints>
                     </view>
@@ -1765,7 +1762,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMM-n1-leN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="first" id="21l-SE-azy"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2E-xY-Lyd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2E-xY-Lyd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1819,7 +1816,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ki5-H7-8WM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6N-qz-Hyk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O6N-qz-Hyk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
