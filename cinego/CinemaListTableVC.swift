@@ -10,6 +10,8 @@ import UIKit
 
 class CinemaListTableVC: UITableViewController {
     
+    private let tableViewCellID = "CinemaListTableViewCell"
+    
     var cinemas: [Cinema] = [
         Cinema(name: "Melbourne CBD ",
                numSeats: 20,
@@ -29,17 +31,20 @@ class CinemaListTableVC: UITableViewController {
                details: "...")
     ]
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cinemas.count
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "CinemaListTableViewCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CinemaListTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = cinemas[indexPath.row].name
         cell.detailTextLabel?.text = "10 upcoming movies"
         cell.imageView?.image = #imageLiteral(resourceName: "olive-160x240")

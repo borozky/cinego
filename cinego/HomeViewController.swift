@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var homeBannerSlider: UIScrollView!
+    @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
     @IBOutlet weak var cinemaTheatersCollectionView: UICollectionView!
     
@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ("Sunshine", #imageLiteral(resourceName: "640x360"))
     ]
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +31,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    // loads the home page slider banner
+    
     private func loadHomeBannerSlider() {
-        imageBanners = [#imageLiteral(resourceName: "cinema-image1") ,#imageLiteral(resourceName: "cinema-image2"), #imageLiteral(resourceName: "cinema-image3"), #imageLiteral(resourceName: "640x360")]
-        
-        for i in 0..<imageBanners.count {
-            let imageView = UIImageView()
-            imageView.image = imageBanners[i]
-            imageView.contentMode = .scaleAspectFill
-            let xPos = self.view.frame.width * CGFloat(i)
-            imageView.frame = CGRect(x: xPos, y: 0, width: self.homeBannerSlider.frame.width, height: self.homeBannerSlider.frame.height)
-            homeBannerSlider.contentSize.width = homeBannerSlider.frame.width * CGFloat(i + 1)
-            homeBannerSlider.addSubview(imageView)
+        for image in [#imageLiteral(resourceName: "cinema-image1") ,#imageLiteral(resourceName: "cinema-image2"), #imageLiteral(resourceName: "cinema-image3"), #imageLiteral(resourceName: "640x360")] {
+            homeBannerSlider.addImage(image)
         }
     }
     

@@ -10,49 +10,35 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var cinema: Cinema = Cinema(name: "Melbourne CBD",
-                                numSeats: 20,
-                                address: "123 Flinders Street VIC 3000",
-                                details: "This is the details")
+    private let tableViewCellID = "MovieSessionTableViewCell"
     
+    @IBOutlet weak var movieBannerImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieReleaseDateLabel: UILabel!
+    @IBOutlet weak var movieDurationLabel: UILabel!
+    @IBOutlet weak var movieAudienceTypeLabel: UILabel!
+    
+    
+    
+    var cinema: Cinema = Cinema(name: "Melbourne CBD", numSeats: 20, address: "123 Flinders Street VIC 3000", details: "This is the details")
     var movieSessions: [MovieSession] = []
+    var movie: Movie? = nil
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        
-        
+        setupMovieSessions()
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieSessions.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSessionTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = movieSessions[indexPath.row].startTime
         cell.detailTextLabel?.text = cinema.name
         return cell
@@ -60,14 +46,39 @@ class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    
+    private func setupMovieSessions(movieSessions: [MovieSession] = []){
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+    }
+    
+    
     
     
     

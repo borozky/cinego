@@ -12,10 +12,8 @@ class CinemaDetailsVC: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var cinema: Cinema = Cinema(name: "Melbourne CBD",
-                                numSeats: 20,
-                                address: "123 Flinder St. Melbourne VIC",
-                                details: "This is the details of the cinema")
+    var cinema: Cinema = Cinema(name: "Melbourne CBD",numSeats: 20,address: "123 Flinder St. Melbourne VIC",details: "This is the details of the cinema")
+    
     
     
     lazy var cinemaMoviesVC: CinemaMoviesVC = {
