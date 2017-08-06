@@ -10,31 +10,11 @@ import Foundation
 
 class Movie {
     
-    var id: Int? {
-        get { return self.id }
-        set { self.id = newValue }
-    }
-    
-    var title: String {
-        get { return self.title }
-        set { self.title = newValue }
-    }
-    
-    var releaseDate: String {
-        get { return self.releaseDate }
-        set { self.releaseDate = newValue }
-    }
-    
-    var duration: Int {
-        get { return self.duration }
-        set { self.duration = newValue }
-    }
-    
-    var sessions: [MovieSession] {
-        get { return self.sessions }
-        set { self.sessions = newValue }
-    }
-    
+    var id: Int? = nil
+    var title: String = ""
+    var releaseDate: String = ""
+    var duration: Int = 0
+    var sessions: [MovieSession] = []
     var images: [String] = []
     
     init(title: String = "", releaseDate: String = "", duration: Int = 0, sessions: [MovieSession] = [], images: [String] = []){

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +58,7 @@
                                                                 <rect key="frame" x="0.0" y="4" width="84" height="171.5"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="171.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="171"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuchsia-160x240" translatesAutoresizingMaskIntoConstraints="NO" id="hHh-Lo-Xyw">
@@ -70,7 +70,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie: ISE Superstars iPhone Software Engineering" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-sW-BS8">
                                                                             <rect key="frame" x="0.0" y="116" width="84" height="36"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLB-rW-JA4">
@@ -373,6 +373,9 @@
                                                                         </label>
                                                                     </subviews>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <segue destination="kW3-vr-gtA" kind="show" id="rvj-wO-KFR"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -465,7 +468,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGu-Kg-La0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="second" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="deO-xi-yoG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="deO-xi-yoG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -614,7 +617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQx-Qw-oWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185" y="749"/>
+            <point key="canvasLocation" x="2599" y="625"/>
         </scene>
         <!--Booking Details-->
         <scene sceneID="adp-uB-9ZJ">
@@ -629,10 +632,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNr-J4-XgR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-SE-NXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSj-G9-Aa3">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
@@ -708,7 +711,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-Tc-YR0">
-                                                <rect key="frame" x="0.0" y="398" width="375" height="220"/>
+                                                <rect key="frame" x="0.0" y="398" width="375" height="269"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedSeatsTableViewCell" textLabel="ecR-Rg-BHd" detailTextLabel="4Mr-Zq-jUr" imageView="ogv-a2-T5N" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="8kK-lJ-55m">
@@ -863,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUb-jS-TZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3154" y="444"/>
+            <point key="canvasLocation" x="5786" y="-1543"/>
         </scene>
         <!--GLKit View Controller-->
         <scene sceneID="a2f-Ro-Z5p">
@@ -883,7 +886,7 @@
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIh-ei-F4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3841" y="443"/>
+            <point key="canvasLocation" x="6623" y="-1543"/>
         </scene>
         <!--CHECKOUT-->
         <scene sceneID="w2z-un-hWk">
@@ -1159,7 +1162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUH-dT-0iG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3817" y="1184"/>
+            <point key="canvasLocation" x="4193" y="1425"/>
         </scene>
         <!--ORDER SUMMARY-->
         <scene sceneID="1My-oL-o32">
@@ -1405,7 +1408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMi-aH-8Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5624.8000000000002" y="1163.568215892054"/>
+            <point key="canvasLocation" x="5895" y="1427"/>
         </scene>
         <!--Cinemas-->
         <scene sceneID="Qyq-2b-g05">
@@ -1434,7 +1437,7 @@
                                             <rect key="frame" x="74" y="36.5" width="112" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lime-160x240" id="oYI-uC-BNI">
@@ -1624,13 +1627,13 @@
                                                                     <constraint firstAttribute="width" constant="130" id="VjI-Tr-W0b"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-Fe-4Ha">
                                                                 <rect key="frame" x="130" y="0.0" width="130" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1653,6 +1656,7 @@
                                                         <rect key="frame" x="10" y="0.0" width="355" height="391"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -1718,7 +1722,7 @@
         <scene sceneID="AjX-hV-OW9">
             <objects>
                 <navigationController id="ayN-lx-nFI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SUc-hy-M43">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SUc-hy-M43">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1741,14 +1745,14 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aua-pJ-Djd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="-270"/>
+            <point key="canvasLocation" x="1468" y="-270"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pkA-vZ-JOl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vD6-mo-nd1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zme-Db-dyc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zme-Db-dyc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1767,7 +1771,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7n6-nW-5Xf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cart" image="second" id="Nch-YQ-Zkf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="azd-Rg-cOv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="azd-Rg-cOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1778,7 +1782,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9X-bH-htU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="749"/>
+            <point key="canvasLocation" x="1713" y="625"/>
         </scene>
         <!--Account-->
         <scene sceneID="GDJ-fO-HNN">
@@ -1890,7 +1894,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg8-MN-eA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184.8000000000002" y="1891.304347826087"/>
+            <point key="canvasLocation" x="2185" y="1891"/>
         </scene>
         <!--Account-->
         <scene sceneID="xlt-Xk-OTl">
@@ -1898,7 +1902,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMM-n1-leN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="first" id="21l-SE-azy"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2E-xY-Lyd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2E-xY-Lyd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1916,7 +1920,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cv-gT-rR2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZiQ-DV-XrH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZiQ-DV-XrH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1934,7 +1938,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Md-ab-MkE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0JL-Go-03M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0JL-Go-03M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1945,14 +1949,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOp-P5-jRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3153" y="1185"/>
+            <point key="canvasLocation" x="3495" y="1425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fRh-Bi-YEl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ki5-H7-8WM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6N-qz-Hyk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O6N-qz-Hyk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1963,7 +1967,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lso-7C-H0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4967" y="1163"/>
+            <point key="canvasLocation" x="5236" y="1426"/>
         </scene>
     </scenes>
     <resources>
@@ -1976,9 +1980,10 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="56B-uf-RY0"/>
         <segue reference="7R6-Rd-eL2"/>
+        <segue reference="56B-uf-RY0"/>
         <segue reference="gnj-zX-PFT"/>
+        <segue reference="rvj-wO-KFR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
