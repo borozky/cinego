@@ -465,7 +465,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGu-Kg-La0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="second" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="deO-xi-yoG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="deO-xi-yoG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1718,7 +1718,7 @@
         <scene sceneID="AjX-hV-OW9">
             <objects>
                 <navigationController id="ayN-lx-nFI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SUc-hy-M43">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SUc-hy-M43">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1853,6 +1853,27 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vft-Hh-qkh">
+                                <rect key="frame" x="0.0" y="217" width="375" height="442"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jbg-wz-9Yw">
+                                    <size key="itemSize" width="91" height="124"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mbb-7Q-2Pm">
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="91" height="124"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2KS-1o-U94">
                                 <rect key="frame" x="16" y="234" width="69" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1898,7 +1919,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMM-n1-leN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="first" id="21l-SE-azy"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2E-xY-Lyd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2E-xY-Lyd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1952,7 +1973,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ki5-H7-8WM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6N-qz-Hyk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O6N-qz-Hyk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1976,9 +1997,9 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="56B-uf-RY0"/>
+        <segue reference="bqC-At-dmE"/>
+        <segue reference="2bJ-HQ-k0C"/>
         <segue reference="7R6-Rd-eL2"/>
-        <segue reference="gnj-zX-PFT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
