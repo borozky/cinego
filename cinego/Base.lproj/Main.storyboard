@@ -2097,7 +2097,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IwY-yc-VwC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="account-purple" id="5ef-YT-mkg">
-                        <inset key="imageInsets" minX="40" minY="40" maxX="40" maxY="40"/>
+                        <inset key="imageInsets" minX="25" minY="25" maxX="25" maxY="25"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VGp-KN-OjD">
