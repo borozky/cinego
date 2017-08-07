@@ -1972,13 +1972,13 @@
         <scene sceneID="axb-m1-Wy5">
             <objects>
                 <tableViewController id="SMp-Ba-85P" customClass="AccountTableVC" customModule="cinego" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="opn-Ue-Rfo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="126" sectionHeaderHeight="18" sectionFooterHeight="18" id="opn-Ue-Rfo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInformationTableViewCell" rowHeight="128" id="ugs-hG-z4b">
-                                <rect key="frame" x="0.0" y="28" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugs-hG-z4b" id="atN-dg-Uys">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="127.5"/>
@@ -1987,21 +1987,21 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92J-hY-Lrl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="127.5"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indigo-160x240" translatesAutoresizingMaskIntoConstraints="NO" id="Vet-JA-ENW">
-                                                    <rect key="frame" x="8" y="14" width="100" height="100"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indigo-160x240" translatesAutoresizingMaskIntoConstraints="NO" id="Vet-JA-ENW">
+                                                    <rect key="frame" x="18" y="14" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Vet-JA-ENW" secondAttribute="height" multiplier="1:1" id="cwD-FY-oZi"/>
                                                         <constraint firstAttribute="width" constant="100" id="xd5-pR-zBa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sara He" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTL-OH-YlO">
-                                                    <rect key="frame" x="116" y="14" width="59.5" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sara He" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTL-OH-YlO">
+                                                    <rect key="frame" x="136" y="14" width="59.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s3528209@student.rmit.edu.au" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWV-Ry-ixN">
-                                                    <rect key="frame" x="116" y="45.5" width="195" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s3528209@student.rmit.edu.au" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWV-Ry-ixN">
+                                                    <rect key="frame" x="136" y="45.5" width="195" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2011,10 +2011,10 @@
                                             <constraints>
                                                 <constraint firstItem="DWV-Ry-ixN" firstAttribute="top" secondItem="HTL-OH-YlO" secondAttribute="bottom" constant="8" id="69B-be-OeB"/>
                                                 <constraint firstItem="HTL-OH-YlO" firstAttribute="top" secondItem="Vet-JA-ENW" secondAttribute="top" id="DAt-JB-q50"/>
-                                                <constraint firstItem="DWV-Ry-ixN" firstAttribute="leading" secondItem="Vet-JA-ENW" secondAttribute="trailing" constant="8" id="Hjp-DV-IsZ"/>
-                                                <constraint firstItem="HTL-OH-YlO" firstAttribute="leading" secondItem="Vet-JA-ENW" secondAttribute="trailing" constant="8" id="jNR-yT-zBc"/>
+                                                <constraint firstItem="DWV-Ry-ixN" firstAttribute="leading" secondItem="HTL-OH-YlO" secondAttribute="leading" id="Hem-XH-STs"/>
+                                                <constraint firstItem="HTL-OH-YlO" firstAttribute="leading" secondItem="Vet-JA-ENW" secondAttribute="trailing" constant="18" id="jNR-yT-zBc"/>
                                                 <constraint firstItem="Vet-JA-ENW" firstAttribute="centerY" secondItem="92J-hY-Lrl" secondAttribute="centerY" id="qKz-pU-cCu"/>
-                                                <constraint firstItem="Vet-JA-ENW" firstAttribute="leading" secondItem="92J-hY-Lrl" secondAttribute="leading" constant="8" id="rq2-bo-yZx"/>
+                                                <constraint firstItem="Vet-JA-ENW" firstAttribute="leading" secondItem="92J-hY-Lrl" secondAttribute="leading" constant="18" id="rq2-bo-yZx"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -2024,6 +2024,54 @@
                                         <constraint firstItem="92J-hY-Lrl" firstAttribute="leading" secondItem="atN-dg-Uys" secondAttribute="leading" id="dgT-HK-r4H"/>
                                         <constraint firstItem="92J-hY-Lrl" firstAttribute="top" secondItem="atN-dg-Uys" secondAttribute="top" id="ehH-4T-K0Z"/>
                                     </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserPastOrdersTableViewCell" textLabel="Qj5-et-xMd" detailTextLabel="WG2-jh-wus" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="dKo-W0-L72">
+                                <rect key="frame" x="0.0" y="183.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dKo-W0-L72" id="mfo-1U-2IG">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Past Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qj5-et-xMd">
+                                            <rect key="frame" x="15" y="5" width="90.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WG2-jh-wus">
+                                            <rect key="frame" x="15" y="25.5" width="41.5" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserUpcomingMovieSessionsTableViewCell" textLabel="3gs-Fz-BIV" detailTextLabel="OWe-k8-g5k" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="bSn-NT-bOH">
+                                <rect key="frame" x="0.0" y="227.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bSn-NT-bOH" id="pyf-fT-bQr">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Upcoming Movie Sessions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3gs-Fz-BIV">
+                                            <rect key="frame" x="15" y="5" width="201.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2 items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OWe-k8-g5k">
+                                            <rect key="frame" x="15" y="25.5" width="41.5" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -2036,7 +2084,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBL-2m-cbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="684" y="80.50974512743629"/>
+            <point key="canvasLocation" x="468" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MwF-dh-0a6">
