@@ -2096,7 +2096,9 @@
         <scene sceneID="SAE-9j-3se">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IwY-yc-VwC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="first" id="5ef-YT-mkg"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="account-purple" id="5ef-YT-mkg">
+                        <inset key="imageInsets" minX="40" minY="40" maxX="40" maxY="40"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VGp-KN-OjD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2113,6 +2115,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account-purple" width="128" height="128"/>
         <image name="cinema-image1" width="4080" height="2278"/>
         <image name="first" width="30" height="30"/>
         <image name="fuchsia-160x240" width="160" height="240"/>
