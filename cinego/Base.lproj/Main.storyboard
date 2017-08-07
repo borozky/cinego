@@ -482,7 +482,7 @@
         <scene sceneID="TLC-Jw-mVn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGu-Kg-La0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="second" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-purple" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="deO-xi-yoG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1903,7 +1903,7 @@
         <scene sceneID="jmc-qQ-Nye">
             <objects>
                 <splitViewController id="1VV-YB-uar" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cinema" image="second" id="CTo-FL-4T0"/>
+                    <tabBarItem key="tabBarItem" title="Cinema" image="cinema-purple" id="CTo-FL-4T0"/>
                     <connections>
                         <segue destination="ayN-lx-nFI" kind="relationship" relationship="masterViewController" id="UbQ-52-P8a"/>
                     </connections>
@@ -1934,7 +1934,7 @@
         <scene sceneID="CMI-fo-jvl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7n6-nW-5Xf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" image="second" id="Nch-YQ-Zkf"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="shopping-cart-purple" id="Nch-YQ-Zkf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="azd-Rg-cOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2144,9 +2144,7 @@
         <scene sceneID="SAE-9j-3se">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IwY-yc-VwC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="account-purple" id="5ef-YT-mkg">
-                        <inset key="imageInsets" minX="25" minY="25" maxX="25" maxY="25"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Account" image="account-purple" id="5ef-YT-mkg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VGp-KN-OjD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2163,15 +2161,17 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account-purple" width="128" height="128"/>
+        <image name="account-purple" width="30" height="30"/>
         <image name="cinema-image1" width="4080" height="2278"/>
+        <image name="cinema-purple" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
         <image name="fuchsia-160x240" width="160" height="240"/>
+        <image name="home-purple" width="30" height="30"/>
         <image name="indigo-160x240" width="160" height="240"/>
         <image name="lime-160x240" width="160" height="240"/>
         <image name="maroon-160x240" width="160" height="240"/>
         <image name="olive-160x240" width="160" height="240"/>
-        <image name="second" width="30" height="30"/>
+        <image name="shopping-cart-purple" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rvj-wO-KFR"/>
