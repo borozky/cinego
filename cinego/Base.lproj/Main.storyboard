@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -2086,6 +2086,18 @@
             </objects>
             <point key="canvasLocation" x="468" y="81"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="ejK-ke-SVl">
+            <objects>
+                <splitViewController id="gbo-Bf-sTk" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="IwY-yc-VwC" kind="relationship" relationship="detailViewController" id="a91-rW-YxE"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ei-HB-uHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1028" y="81"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="MwF-dh-0a6">
             <objects>
@@ -2177,6 +2189,7 @@
         <segue reference="rvj-wO-KFR"/>
         <segue reference="gnj-zX-PFT"/>
         <segue reference="sLU-3N-RAg"/>
+        <segue reference="a91-rW-YxE"/>
         <segue reference="7R6-Rd-eL2"/>
         <segue reference="het-gn-UUu"/>
     </inferredMetricsTieBreakers>
