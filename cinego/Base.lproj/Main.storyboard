@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -796,10 +796,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNr-J4-XgR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-SE-NXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSj-G9-Aa3">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
@@ -875,7 +875,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-Tc-YR0">
-                                                <rect key="frame" x="0.0" y="398" width="375" height="220"/>
+                                                <rect key="frame" x="0.0" y="398" width="375" height="269"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedSeatsTableViewCell" textLabel="ecR-Rg-BHd" detailTextLabel="4Mr-Zq-jUr" imageView="ogv-a2-T5N" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="8kK-lJ-55m">
@@ -1658,7 +1658,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rmu-eQ-IlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5840.8000000000002" y="-250.52473763118442"/>
+            <point key="canvasLocation" x="6209" y="-356"/>
         </scene>
         <!--Cinema MoviesVC-->
         <scene sceneID="aYw-Cs-lbi">
@@ -1725,7 +1725,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeF-Sk-EYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6456.8000000000002" y="48.125937031484263"/>
+            <point key="canvasLocation" x="6892" y="81"/>
         </scene>
         <!--Cinema InformationVC-->
         <scene sceneID="fJg-8F-gq7">
@@ -1881,7 +1881,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doH-1q-6bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5520.8000000000002" y="-594.15292353823088"/>
+            <point key="canvasLocation" x="5460" y="-615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AjX-hV-OW9">
@@ -1966,7 +1966,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68Q-z0-voe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5132" y="-251.42428785607197"/>
+            <point key="canvasLocation" x="5460" y="69"/>
         </scene>
         <!--Account-->
         <scene sceneID="axb-m1-Wy5">
@@ -2126,11 +2126,11 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="het-gn-UUu"/>
-        <segue reference="bqC-At-dmE"/>
-        <segue reference="sLU-3N-RAg"/>
         <segue reference="rvj-wO-KFR"/>
+        <segue reference="gnj-zX-PFT"/>
+        <segue reference="sLU-3N-RAg"/>
         <segue reference="7R6-Rd-eL2"/>
+        <segue reference="het-gn-UUu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

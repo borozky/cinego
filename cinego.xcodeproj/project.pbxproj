@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037E145C1F385B4D0014B5A2 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */; };
 		03B219411F25E285009F7B41 /* MovieSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219401F25E285009F7B41 /* MovieSession.swift */; };
 		03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219421F25E3D8009F7B41 /* Cinema.swift */; };
 		03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219441F25E4FF009F7B41 /* Ticket.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		03B219401F25E285009F7B41 /* MovieSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSession.swift; sourceTree = "<group>"; };
 		03B219421F25E3D8009F7B41 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		03B219441F25E4FF009F7B41 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				1F3DC9B11F34CFEE008C4313 /* Booking.swift */,
 				1F3DC9B31F34D0F3008C4313 /* User.swift */,
 				1F3DC9B51F34D165008C4313 /* Order.swift */,
+				037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				1F5647051F2B24F8004BB024 /* MovieSessionTableViewCell.swift in Sources */,
 				1F346F901F37199500554AAE /* MovieAdditionalDetailsTableVC.swift in Sources */,
 				1F4F8FE11F2C38000001895A /* CinemaCollectionViewCell.swift in Sources */,
+				037E145C1F385B4D0014B5A2 /* PaymentMethod.swift in Sources */,
 				1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */,
 				03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */,
 			);

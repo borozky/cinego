@@ -10,10 +10,17 @@ import Foundation
 
 class User {
     
-    private var _username: String = "defaultuser"
-    private var _email: String = "defaultuser@cingo.com.au"
-    private var _id: String = ""
+    public let id: String
+    public let username: String
+    public let email: String
     
-    private var _orders: [Order] = []
+    public var orders: [Order]
+    
+    public init(id: String = "", email: String = "", username: String = "", orders: [Order] = []){
+        self.id = ""
+        self.username = username
+        self.email = email
+        self.orders = orders
+    }
     
 }

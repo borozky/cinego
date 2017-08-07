@@ -14,6 +14,7 @@ class MovieSession {
     let id: Int?
     let startTime: String?
     let cinema: Cinema?
+    
     var tickets: [Ticket] = []
     
     init(id: Int, startTime: String = "1 January, 1970 00:00:00am", cinema: Cinema) {
