@@ -10,14 +10,27 @@ import Foundation
 
 class Booking {
     
-    private var _id: String = ""
+    public let number: String
     
-    private var _movie: Movie?
-    private var _movieSession: MovieSession?
-    private var _unitPrice: Double = 15.00
-    private var _numTickets: Int = 0
-    private var _seatNumbers: [Int] = []
-    private var _orderNumber: String = ""
+    private var totalPrice: Double = 0.0
+    private var unitPrice: Double = 20.00
     
+    public var movie: Movie?
+    public var movieSession: MovieSession?
+    public var numTickets: Int = 0
+    public var seatNumbers: [Int] = []
+    
+    
+    public init(movie: Movie, movieSession: MovieSession, numTickets: Int = 0, seatNumbers: [Int] = [], number: String = ""){
+        self.movie = movie
+        self.movieSession = movieSession
+        self.numTickets = numTickets
+        self.seatNumbers = seatNumbers
+        self.number = number
+    }
+    
+    public func calculateTotalPrice() -> Double {
+        return Double(numTickets) * unitPrice
+    }
     
 }
