@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    // currently I have no idea how to use dependency injection with storyboard
+    // currently I have no idea how to use dependency injection with storyboards
     var movieRepository: IMovieRepository? = MovieRepository()
     var cinemaRepository: ICinemaRepository? = CinemaRepository()
     
@@ -37,8 +37,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     private func loadHomeBannerSlider() {
-        for image in [#imageLiteral(resourceName: "cinema-image1") ,#imageLiteral(resourceName: "cinema-image2"), #imageLiteral(resourceName: "cinema-image3"), #imageLiteral(resourceName: "640x360")] {
-            homeBannerSlider.addImage(image)
+        let cinemas = cinemaRepository?.getAllCinemas()
+        if let _cinemas = cinemas {
+            for cinema in _cinemas {
+                if cinema.images.count > 0 {
+                    homeBannerSlider.addImage(UIImage(imageLiteralResourceName: cinema.images[0]))
+                }
+            }
+        } else {
+            homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
     
@@ -49,7 +56,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         if collectionView == self.cinemaTheatersCollectionView {
-            return self.cinemaTheaters.count
+            return (cinemaRepository?.getAllCinemas().count)!
         }
         
         return 0
@@ -68,8 +75,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if collectionView == self.cinemaTheatersCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CinemaCollectionViewCell", for: indexPath) as! CinemaCollectionViewCell
-            cell.cinemaImage.image = cinemaTheaters[indexPath.row].image
-            cell.cinemaLabel?.text = cinemaTheaters[indexPath.row].location
+            
+            let cinema = cinemaRepository?.getAllCinemas()[indexPath.row]
+            cell.cinemaImage.image = UIImage(imageLiteralResourceName: cinema?.images[0] ?? "cinema-image-3")
+            cell.cinemaLabel?.text = cinema?.name
             return cell
         }
         
