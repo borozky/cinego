@@ -10,7 +10,7 @@ import UIKit
 
 class AccountTableVC: UITableViewController {
     
-    private let tableViewCellIDs = ["UserInformationTableViewCell", "UserPastOrdersTableViewCell", "UserUpcomingMovieSessionsTableViewCell"]
+    private let tableViewCellIDs = ["UserInformationTableViewCell", "UserUpcomingMovieSessionTableViewCell", "UserPastOrderTableViewCell"]
 
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class AccountTableVC: UITableViewController {
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
 
@@ -34,8 +34,12 @@ class AccountTableVC: UITableViewController {
             return 1
         }
         
-        if section > 0 {
-            return 2
+        if section == 1 {
+            return 1
+        }
+        
+        if section == 2 {
+            return 1
         }
         
         return 0
@@ -51,14 +55,14 @@ class AccountTableVC: UITableViewController {
             return cell
         }
         
-        if indexPath.section > 0 && indexPath.row == 0 {
+        if indexPath.section == 1 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
             return cell
         }
         
-        if indexPath.section > 0 && indexPath.row == 1 {
+        if indexPath.section == 2 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[2], for: indexPath)
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension

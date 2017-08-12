@@ -14,6 +14,8 @@ class Movie {
     var title: String = ""
     var releaseDate: String = ""
     var duration: Int = 0
+    var details: String? = ""
+    var audienceType: String? = ""
     var sessions: [MovieSession] = []
     var images: [String] = []
     

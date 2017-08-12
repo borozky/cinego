@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    var movieRepository: IMovieRepository?
+    
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
     @IBOutlet weak var cinemaTheatersCollectionView: UICollectionView!
