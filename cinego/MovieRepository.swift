@@ -13,8 +13,6 @@ class MovieRepository : IMovieRepository {
     func getUpcomingMovies() -> [Movie] {
         var movies: [Movie] = []
         
-        
-        
         var movie: Movie = Movie(title: "Thor: Ragnarok", releaseDate: "2017", duration: 140, sessions: [], images: [])
         movie.id = 1
         movie.audienceType = "PG-13"
@@ -97,55 +95,45 @@ class MovieRepository : IMovieRepository {
     }
     
     
-    func getMovies(title: String) -> [Movie] {
-        var movies: [Movie] = []
-        movies.append(Movie(title: "Movie 1", releaseDate: "2017", duration: 140, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 2", releaseDate: "2017", duration: 138, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 3", releaseDate: "2017", duration: 160, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 4", releaseDate: "2017", duration: 170, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 5", releaseDate: "2017", duration: 200, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 7", releaseDate: "2017", duration: 150, sessions: [], images: []))
-        return movies
+    
+    func getMovies(byTitle title: String) -> [Movie] {
+        var results: [Movie] = []
+        for movie in getUpcomingMovies() {
+            if movie.title.lowercased() == title.lowercased() {
+                results.append(movie)
+            }
+        }
+        return results
     }
     
     
-    func getMovie(id: Int) -> Movie {
-        return Movie(title: "Movie 1", releaseDate: "12 July 2017", duration: 140, sessions: [], images: [])
+    
+    func getMovie(byId id: Int) -> Movie? {
+        let movies = getUpcomingMovies()
+        for movie in movies {
+            if movie.id == id {
+                return movie
+            }
+        }
+        return nil
     }
     
     
-    func getMovies(byCinema: Cinema) -> [Movie] {
-        var movies: [Movie] = []
-        movies.append(Movie(title: "Movie 1", releaseDate: "2017", duration: 140, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 2", releaseDate: "2017", duration: 138, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 3", releaseDate: "2017", duration: 160, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 4", releaseDate: "2017", duration: 170, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 5", releaseDate: "2017", duration: 200, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 7", releaseDate: "2017", duration: 150, sessions: [], images: []))
-        return movies
+    
+    func getMovies(byCinema cinema: Cinema) -> [Movie] {
+        return getUpcomingMovies()
     }
+    
     
     
     func getUpcomingMovies(fromCinema cinema: Cinema) -> [Movie] {
-        var movies: [Movie] = []
-        movies.append(Movie(title: "Movie 1", releaseDate: "2017", duration: 140, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 2", releaseDate: "2017", duration: 138, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 3", releaseDate: "2017", duration: 160, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 4", releaseDate: "2017", duration: 170, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 5", releaseDate: "2017", duration: 200, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 7", releaseDate: "2017", duration: 150, sessions: [], images: []))
-        return movies
+        return getUpcomingMovies()
     }
     
+    
+    
     func searchMovie(byKeyword keyword: String) -> [Movie] {
-        var movies: [Movie] = []
-        movies.append(Movie(title: "Movie 1", releaseDate: "2017", duration: 140, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 2", releaseDate: "2017", duration: 138, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 3", releaseDate: "2017", duration: 160, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 4", releaseDate: "2017", duration: 170, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 5", releaseDate: "2017", duration: 200, sessions: [], images: []))
-        movies.append(Movie(title: "Movie 7", releaseDate: "2017", duration: 150, sessions: [], images: []))
-        return movies
+        return getUpcomingMovies()
     }
     
 }

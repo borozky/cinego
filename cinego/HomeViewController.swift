@@ -10,11 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var movieRepository: IMovieRepository?
+    // currently I have no idea how to use dependency injection with storyboard
+    var movieRepository: IMovieRepository? = MovieRepository()
+    var cinemaRepository: ICinemaRepository? = CinemaRepository()
+    
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
     @IBOutlet weak var cinemaTheatersCollectionView: UICollectionView!
+    
     
     var imageBanners = [UIImage]()
     var upcomingMovies: [UIImage] = [#imageLiteral(resourceName: "indigo-160x240"), #imageLiteral(resourceName: "fuchsia-160x240"), #imageLiteral(resourceName: "lime-160x240"), #imageLiteral(resourceName: "maroon-160x240"), #imageLiteral(resourceName: "scarlet-160x240"), #imageLiteral(resourceName: "olive-160x240"), #imageLiteral(resourceName: "teal-160x240")]
@@ -24,8 +28,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ("St. Kilda", #imageLiteral(resourceName: "cinema-image3")),
         ("Sunshine", #imageLiteral(resourceName: "640x360"))
     ]
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,16 +80,5 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

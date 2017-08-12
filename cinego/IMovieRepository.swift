@@ -11,9 +11,9 @@ import Foundation
 protocol IMovieRepository {
     func getUpcomingMovies() -> [Movie]
     func getUpcomingMovies(fromCinema cinema: Cinema) -> [Movie]
-    func getMovie(id: Int) -> Movie
-    func getMovies(title: String) -> [Movie]
-    func getMovies(byCinema: Cinema) -> [Movie]
+    func getMovie(byId id: Int) -> Movie?
+    func getMovies(byTitle title: String) -> [Movie]
+    func getMovies(byCinema cinema: Cinema) -> [Movie]
     
     func searchMovie(byKeyword keyword: String) -> [Movie]
 }

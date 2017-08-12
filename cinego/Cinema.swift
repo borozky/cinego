@@ -10,17 +10,19 @@ import Foundation
 
 class Cinema {
     
+    let id: Int?
     let name: String?
     let numSeats: Int?
     let address: String?
     let details: String?
     var images: [String] = []
     
-    init(name: String, numSeats: Int = 20, address: String = "", details: String = ""){
+    init(id: Int = 0, name: String, numSeats: Int = 20, address: String = "", details: String = ""){
         self.name = name
         self.numSeats = numSeats
         self.address = address
         self.details = details
+        self.id = id
     }
     
     
