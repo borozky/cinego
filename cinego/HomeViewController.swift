@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController {
     
-    // currently I have no idea how to use dependency injection with storyboards
+    // I will deal with "dependency injection with storyboards" on Assignment 2
     var movieRepository: IMovieRepository? = MovieRepository()
     var cinemaRepository: ICinemaRepository? = CinemaRepository()
     
@@ -31,8 +31,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadHomeBannerSlider()
         
+        loadHomeBannerSlider()
     }
     
     
@@ -48,7 +48,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
-    
+
+}
+
+
+
+extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.upcomingMoviesCollectionView {
@@ -85,9 +90,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return UICollectionViewCell()
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }
+
+
+
+
+
+
+
+
+
