@@ -14,25 +14,18 @@ class HomeViewController: UIViewController {
     var movieRepository: IMovieRepository? = MovieRepository()
     var cinemaRepository: ICinemaRepository? = CinemaRepository()
     
+    var upcomingMovies: [Movie] = []
+    
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
     @IBOutlet weak var cinemaTheatersCollectionView: UICollectionView!
     
-    
-    var imageBanners = [UIImage]()
-    var upcomingMovies: [UIImage] = [#imageLiteral(resourceName: "indigo-160x240"), #imageLiteral(resourceName: "fuchsia-160x240"), #imageLiteral(resourceName: "lime-160x240"), #imageLiteral(resourceName: "maroon-160x240"), #imageLiteral(resourceName: "scarlet-160x240"), #imageLiteral(resourceName: "olive-160x240"), #imageLiteral(resourceName: "teal-160x240")]
-    var cinemaTheaters: [(location: String, image: UIImage)] = [
-        ("Melbourne CBD", #imageLiteral(resourceName: "cinema-image1")),
-        ("Fitzroy", #imageLiteral(resourceName: "cinema-image2")),
-        ("St. Kilda", #imageLiteral(resourceName: "cinema-image3")),
-        ("Sunshine", #imageLiteral(resourceName: "640x360"))
-    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadHomeBannerSlider()
+        loadUpcomingMovies()
     }
     
     
@@ -48,6 +41,10 @@ class HomeViewController: UIViewController {
             homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
+    
+    private func loadUpcomingMovies(){
+        upcomingMovies = (movieRepository?.getUpcomingMovies())!
+    }
 
 }
 
@@ -55,9 +52,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : UICollectionViewDataSource {
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.upcomingMoviesCollectionView {
-            return upcomingMovies.count
+            return (movieRepository?.getUpcomingMovies().count)!
         }
         
         if collectionView == self.cinemaTheatersCollectionView {
@@ -69,11 +67,14 @@ extension HomeViewController : UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         if collectionView == self.upcomingMoviesCollectionView {
+            let upcomingMovie = upcomingMovies[indexPath.row]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-            cell.bannerIcon.image = upcomingMovies[indexPath.row]
-            cell.movieTitle.text = "Movie title: Something blah"
-            cell.movieReleaseYear.text = String(2017)
+            cell.bannerIcon.image = UIImage(imageLiteralResourceName: upcomingMovie.images[0])
+            cell.movieTitle.text = upcomingMovie.title
+            cell.movieReleaseYear.text = upcomingMovie.releaseDate
             cell.movieAudienceType.text = "PG"
             return cell
         }

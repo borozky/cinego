@@ -16,6 +16,7 @@ class Movie {
     var duration: Int = 0
     var details: String? = ""
     var audienceType: String? = ""
+    var contentRating: ContentRating = .NOT_RATED
     var sessions: [MovieSession] = []
     var images: [String] = []
     
