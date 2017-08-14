@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BookingDetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BookingDetailsVC: UIViewController {
     
-    private let tableViewCellID = "SelectedSeatsTableViewCell"
+    let tableViewCellID = "SelectedSeatsTableViewCell"
     
-    var movie: Movie = Movie(title: "Atomic Blonde", releaseDate: "2017", duration: 140, sessions: [], images: [])
+    var movie: Movie? = nil
     var movieSession: MovieSession? = nil
     var numTickets = 0
     
@@ -31,8 +31,21 @@ class BookingDetailsVC: UIViewController, UITableViewDataSource, UITableViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMovieInformation()
     }
     
+
+    
+    
+    func setupMovieInformation(){
+        movieTitleLabel.text = movie?.title
+        movieReleaseDateLabel.text = "Released: \(movie?.releaseDate ?? "")"
+        movieBannerImageView.image = UIImage(imageLiteralResourceName: (movie?.images[0])!)
+    }
+
+}
+
+extension BookingDetailsVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -45,21 +58,4 @@ class BookingDetailsVC: UIViewController, UITableViewDataSource, UITableViewDele
         cell.detailTextLabel?.text = "1/1 seats selected"
         return cell
     }
-    
-    
-    func setupMovieInformation(movie: Movie? = nil){
-        if let _movie = movie {
-            self.movie = _movie
-        }
-        movieTitleLabel?.text = self.movie.title
-        movieReleaseDateLabel?.text = "Released: \(self.movie.releaseDate)"
-        movieBannerImageView?.image = #imageLiteral(resourceName: "olive-160x240")
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
-
 }
