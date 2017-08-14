@@ -45,9 +45,6 @@ class HomeViewController: UIViewController {
     private func loadUpcomingMovies(){
         upcomingMovies = (movieRepository?.getUpcomingMovies())!
     }
-    
- 
-
 }
 
 

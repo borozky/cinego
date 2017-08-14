@@ -15,7 +15,6 @@ class CinemaDetailsVC: UIViewController {
     var cinema: Cinema = Cinema(name: "Melbourne CBD",numSeats: 20,address: "123 Flinder St. Melbourne VIC",details: "This is the details of the cinema")
     
     
-    
     lazy var cinemaMoviesVC: CinemaMoviesVC = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CinemaMoviesVC") as! CinemaMoviesVC
