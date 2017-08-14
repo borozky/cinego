@@ -97,15 +97,18 @@ extension HomeViewController : UICollectionViewDataSource {
 
 
 extension HomeViewController {
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "openMovieDetailsFromHomepage" {
-        let destinationVC = segue.destination as! MovieDetailsViewController
-        let cell = sender as! UICollectionViewCell
-        let indexPath = self.upcomingMoviesCollectionView.indexPath(for: cell)
-        let selectedData = upcomingMovies[(indexPath?.row)!]
-        destinationVC.movie = selectedData
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openMovieDetailsFromHomepage" {
+            let destinationVC = segue.destination as! MovieDetailsViewController
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.upcomingMoviesCollectionView.indexPath(for: cell)
+            let selectedData = upcomingMovies[(indexPath?.row)!]
+            destinationVC.movie = selectedData
+            destinationVC.movieSessionRepository = MovieSessionRepository()
         }
     }
+    
 }
 
 
