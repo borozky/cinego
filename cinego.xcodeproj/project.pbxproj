@@ -49,6 +49,7 @@
 		1FCCC4101F31F31E0050AA36 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCC40F1F31F31E0050AA36 /* CartVC.swift */; };
 		2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */; };
 		2E3D2AC81F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D2AC71F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift */; };
+		2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */; };
 		2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC77F681F2569A0003BAF20 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		1FCCC40F1F31F31E0050AA36 /* CartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableVC.swift; sourceTree = "<group>"; };
 		2E3D2AC71F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSessionRepository.swift; sourceTree = "<group>"; };
 		2EC77F681F2569A0003BAF20 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 				1F4F8FDC1F2C32DF0001895A /* ITicketRepository.swift */,
 				1F4F8FE21F2C55BA0001895A /* MovieRepository.swift */,
 				1F57074F1F3EABBA00EDFCF6 /* CinemaRepository.swift */,
+				2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				1F129BD51F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift in Sources */,
 				1F10EC801F3538A700283B8C /* CheckoutVC.swift in Sources */,
 				1F4F8FD91F2C31630001895A /* ICinemaRepository.swift in Sources */,
+				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,
 				1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */,
 				1F5647051F2B24F8004BB024 /* MovieSessionTableViewCell.swift in Sources */,
 				1F346F901F37199500554AAE /* MovieAdditionalDetailsTableVC.swift in Sources */,

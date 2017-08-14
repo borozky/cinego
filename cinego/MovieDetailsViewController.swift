@@ -17,20 +17,19 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieReleaseDateLabel: UILabel!
     @IBOutlet weak var movieDurationLabel: UILabel!
     @IBOutlet weak var movieAudienceTypeLabel: UILabel!
-    
     @IBOutlet weak var movieSessionsTableView: UITableView!
+    
+    var movieSessionRepository: IMovieSessionRepository!
     
     var movie: Movie? = nil
     var movieSessions: [MovieSession] = []
     var cinema: Cinema = Cinema(name: "Melbourne CBD", numSeats: 20, address: "123 Flinders Street VIC 3000", details: "This is the details")
    
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMovie()
-        setupMovieSessions()
+        setupMovieSessions2()
     }
 
     private func setupMovie(){
@@ -42,31 +41,9 @@ class MovieDetailsViewController: UIViewController {
         
     }
     
-    private func setupMovieSessions(movieSessions: [MovieSession] = []){
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
-        self.movieSessions.append(MovieSession(id: movieSessions.count + 1, startTime: "28 July 2017 08:30am", cinema: self.cinema))
+    
+    private func setupMovieSessions2(){
+        movieSessions = movieSessionRepository.getMovieSessions(byMovie: movie!)
     }
 
 
@@ -88,11 +65,11 @@ extension MovieDetailsViewController : UITableViewDataSource {
     }
 }
 
+
 extension MovieDetailsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openBookingDetailsFromMovieDetails" {
             let destinationVC = segue.destination as! BookingDetailsVC
-            let cell = sender as! UITableViewCell
             let indexPath = self.movieSessionsTableView.indexPathForSelectedRow
             let selectedSession = movieSessions[(indexPath?.row)!]
             destinationVC.movieSession = selectedSession

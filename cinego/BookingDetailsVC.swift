@@ -32,9 +32,9 @@ class BookingDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMovieInformation()
+        setupMovieSessionInformation()
+        
     }
-    
-
     
     
     func setupMovieInformation(){
@@ -42,6 +42,14 @@ class BookingDetailsVC: UIViewController {
         movieReleaseDateLabel.text = "Released: \(movie?.releaseDate ?? "")"
         movieBannerImageView.image = UIImage(imageLiteralResourceName: (movie?.images[0])!)
     }
+    
+    
+    func setupMovieSessionInformation(){
+        cinemaLocationLabel.text = movieSession?.cinema?.name
+        cinemaAddressLabel.text = movieSession?.cinema?.address
+        movieSessionStartLabel.text = movieSession?.startTime
+    }
+    
 
 }
 

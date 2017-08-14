@@ -10,5 +10,6 @@ import Foundation
 
 protocol IMovieSessionRepository {
     func getMovieSessions(byMovie movie: Movie) -> [MovieSession]
+    func getMovieSession(byId id: String) -> MovieSession?
     func getMovieSessions(byCinema cinema: Cinema) -> [MovieSession]
 }
