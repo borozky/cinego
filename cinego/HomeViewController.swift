@@ -73,14 +73,13 @@ extension HomeViewController : UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
             cell.bannerIcon.image = UIImage(imageLiteralResourceName: upcomingMovie.images[0])
             cell.movieTitle.text = upcomingMovie.title
-            cell.movieReleaseYear.text = upcomingMovie.releaseDate
+            cell.movieReleaseYear.text = String(getReleaseYear(upcomingMovie.releaseDate))
             cell.movieAudienceType.text = "PG"
             return cell
         }
         
         if collectionView == self.cinemaTheatersCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CinemaCollectionViewCell", for: indexPath) as! CinemaCollectionViewCell
-            
             let cinema = cinemaRepository?.getAllCinemas()[indexPath.row]
             cell.cinemaImage.image = UIImage(imageLiteralResourceName: cinema?.images[0] ?? "cinema-image-3")
             cell.cinemaLabel?.text = cinema?.name
@@ -88,6 +87,15 @@ extension HomeViewController : UICollectionViewDataSource {
         }
         
         return UICollectionViewCell()
+    }
+    
+    // helper method
+    private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "dd MMMM yyyy") -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        let date = formatter.date(from: releaseDateStr)
+        let calendar = Calendar.current
+        return calendar.component(.year, from: date!)
     }
     
 }

@@ -10,33 +10,22 @@ import UIKit
 
 class CinemaListTableVC: UITableViewController {
     
-    private let tableViewCellID = "CinemaListTableViewCell"
+    let tableViewCellID = "CinemaListTableViewCell"
     
-    var cinemas: [Cinema] = [
-        Cinema(name: "Melbourne CBD ",
-               numSeats: 20,
-               address: "123 Flinders Street, Melbourne VIC 3000",
-               details: "This is the details of the movie theater"),
-        Cinema(name: "Fitzroy",
-               numSeats: 30,
-               address: "207 Fitzroy St, Fitzroy VIC 3065",
-               details: "Fitzroy cinema has the most number of seats of all movie theaters"),
-        Cinema(name: "St. Kilda",
-               numSeats: 25,
-               address: "500 Barkly Street, St. Kilda VIC 3182",
-               details: "..."),
-        Cinema(name: "Sunshine",
-               numSeats: 25,
-               address: "80  Harvester Road, Sunshine VIC 3020",
-               details: "...")
-    ]
-
-    
+    var cinemaRepository: ICinemaRepository? = CinemaRepository()
+    var movieRepository: IMovieRepository? = MovieRepository()
+    var cinemas: [Cinema] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cinemas = (cinemaRepository?.getAllCinemas())!
     }
 
+}
+
+
+// tableview cells
+extension CinemaListTableVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cinemas.count
@@ -44,11 +33,21 @@ class CinemaListTableVC: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cinema = cinemas[indexPath.row]
+        let numUpcomingMovies: Int = movieRepository?.getUpcomingMovies(fromCinema: cinema).count ?? 0
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
-        cell.textLabel?.text = cinemas[indexPath.row].name
-        cell.detailTextLabel?.text = "10 upcoming movies"
-        cell.imageView?.image = #imageLiteral(resourceName: "olive-160x240")
-        cell.imageView?.contentMode = .scaleToFill
+        
+        let imageView = self.view.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(imageLiteralResourceName: cinema.images[0] )
+        
+        
+        let titleLabel = self.view.viewWithTag(2) as! UILabel
+        titleLabel.text = cinema.name
+        
+        let detailsLabel = self.view.viewWithTag(3) as! UILabel
+        detailsLabel.text = "\(String(numUpcomingMovies)) upcoming movies"
+        
         return cell
     }
     
@@ -57,9 +56,21 @@ class CinemaListTableVC: UITableViewController {
         self.performSegue(withIdentifier: "openCinema", sender: nil)
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }
+
+// segues
+extension CinemaListTableVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openCinema" {
+            let tableView = self.view as! UITableView
+            let indexPath = tableView.indexPathForSelectedRow
+            let selectedCinema = cinemas[(indexPath?.row)!]
+            
+            let destinationVC = segue.destination as! CinemaDetailsVC
+            destinationVC.cinema = selectedCinema
+            destinationVC.movieRepository = MovieRepository()
+            destinationVC.cinemaRepository = cinemaRepository as! CinemaRepository?
+        }
+    }
+}
+
