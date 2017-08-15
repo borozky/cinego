@@ -8,6 +8,18 @@
 
 import Foundation
 
+
+protocol IMovieRepository {
+    func getUpcomingMovies() -> [Movie]
+    func getUpcomingMovies(fromCinema cinema: Cinema) -> [Movie]
+    func getMovie(byId id: Int) -> Movie?
+    func getMovies(byTitle title: String) -> [Movie]
+    func getMovies(byCinema cinema: Cinema) -> [Movie]
+    func searchMovie(byKeyword keyword: String) -> [Movie]
+}
+
+
+
 class MovieRepository : IMovieRepository {
     
     func getUpcomingMovies() -> [Movie] {
@@ -118,13 +130,13 @@ class MovieRepository : IMovieRepository {
         movies.append(movie)
         
         
-        movie = Movie (title: "Spiderman Homecoming", releaseDate: "15 Janurary 2016" , duration: 98, sessions: [], images: ["spiderman_homecoming"])
+        movie = Movie (title: "Spiderman Homecoming", releaseDate: "15 January 2016" , duration: 98, sessions: [], images: ["spiderman_homecoming"])
         movie.id = 18
         movie.details = "Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges."
         movies.append(movie)
         
         
-        movie = Movie (title: "Taxi Driver", releaseDate: "19 Janurary 2017" , duration: 115, sessions: [], images: ["taxi_driver"])
+        movie = Movie (title: "Taxi Driver", releaseDate: "19 January 2017" , duration: 115, sessions: [], images: ["taxi_driver"])
         movie.id = 19
         movie.details = "A mentally unstable Vietnam War veteran works as a night-time taxi driver in New York City where the perceived decadence and sleaze feeds his urge for violent action, attempting to save a preadolescent prostitute in the process."
         movies.append(movie)

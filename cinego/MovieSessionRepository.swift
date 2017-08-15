@@ -8,6 +8,18 @@
 
 import Foundation
 
+
+protocol IMovieSessionRepository {
+    func getMovieSessions(byMovie movie: Movie) -> [MovieSession]
+    func getMovieSession(byId id: String) -> MovieSession?
+    func getMovieSessions(byCinema cinema: Cinema) -> [MovieSession]
+    
+    func find(byId id: String) -> MovieSession?
+    func findAll(byMovie movie: Movie) -> [MovieSession]
+    func findAll(byCinema cinema: Cinema) -> [MovieSession]
+}
+
+
 class MovieSessionRepository: IMovieSessionRepository {
     
     let movieRepository: IMovieRepository? = MovieRepository()
@@ -22,6 +34,18 @@ class MovieSessionRepository: IMovieSessionRepository {
             let date = getRandomDate()
             movieSessions.append(MovieSession(id: i, startTime: date, cinema: cinema, movieId: movie.id!))
         }
+    }
+    
+    func find(byId id: String) -> MovieSession? {
+        return nil
+    }
+    
+    func findAll(byMovie movie: Movie) -> [MovieSession] {
+        return []
+    }
+    
+    func findAll(byCinema cinema: Cinema) -> [MovieSession] {
+        return []
     }
     
     
@@ -58,21 +82,23 @@ class MovieSessionRepository: IMovieSessionRepository {
     }
     
     
-    func getRandomCinema() -> Cinema {
+    // helper methods
+    
+    private func getRandomCinema() -> Cinema {
         let cinemas = cinemaRepository?.getAllCinemas()
         let numCinemas = Int(cinemas?.count ?? 0)
         let randomNumber = Int(arc4random_uniform(UInt32(numCinemas)))
         return cinemas![randomNumber]
     }
     
-    func getRandomMovie() -> Movie {
+    private func getRandomMovie() -> Movie {
         let movies = movieRepository?.getUpcomingMovies()
         let numMovies = movies?.count ?? 0
         let randomNumber = Int(arc4random_uniform(UInt32(numMovies)))
         return movies![randomNumber]
     }
     
-    func getRandomDate() -> String {
+    private func getRandomDate() -> String {
         let randomDay = Int(arc4random_uniform(UInt32(28))) + 1
         let randomMonth = Int(arc4random_uniform(UInt32(12))) + 1
         let randomYear = Int(arc4random_uniform(UInt32(1))) + 2017
