@@ -41,28 +41,27 @@ class MovieDetailsViewController: UIViewController {
         
     }
     
-    
     private func setupMovieSessions2(){
         movieSessions = movieSessionRepository.getMovieSessions(byMovie: movie!)
     }
-
-
+    
 }
 
 
 extension MovieDetailsViewController : UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieSessions.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let movieSession = movieSessions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
-        cell.textLabel?.text = movieSessions[indexPath.row].startTime
+        cell.textLabel?.text = movieSession.startTime
         cell.detailTextLabel?.text = cinema.name
         return cell
-        
     }
+    
 }
 
 
@@ -74,7 +73,15 @@ extension MovieDetailsViewController {
             let selectedSession = movieSessions[(indexPath?.row)!]
             destinationVC.movieSession = selectedSession
             destinationVC.movie = movie!
-   
+            destinationVC.cartRepository = CartRepository()
+            destinationVC.delegate = self
         }
+    }
+}
+
+
+extension MovieDetailsViewController: BookingDetailsVCDelegate {
+    func didBook(_ cartItem: CartItem) {
+        print("Did book!")
     }
 }

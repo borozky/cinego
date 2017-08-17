@@ -8,39 +8,94 @@
 
 import UIKit
 
-class CartVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CartVC: UIViewController {
     
-    private let tableViewCellID = "CartItemTableViewCell"
+    let tableViewCellID = "CartItemTableViewCell"
+    var cartRepository: ICartRepository! = CartRepository()
+    var cartItems: [CartItem] = []
     
     @IBOutlet weak var cartTotalPriceLabel: UILabel!
-    
-    
+    @IBOutlet weak var cartItemsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupCartTotalPrice()
+        reload()
     }
+    
+    private func reload(){
+        cartItems = cartRepository.getAll()
+        cartItemsTable.reloadData()
+    }
+    
+}
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
+extension CartVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cartItems.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cartItem = cartItems[indexPath.row]
+        let movie = cartItem.movie!
+        let movieSession = cartItem.movieSession!
+        let cinema = movieSession.cinema!
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
+        
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        let movieTitleLabel = cell.viewWithTag(2) as! UILabel
+        let detailsLabel = cell.viewWithTag(3) as! UILabel
+        
+        imageView.image = UIImage(imageLiteralResourceName: cartItem.movie!.images[0])
+        movieTitleLabel.text = movie.title
+        detailsLabel.text = "\(String(cartItem.numTickets)) tickets | [Session Time] | \(cinema.name!)"
         return cell
     }
-    
-    func setupCartTotalPrice(){
-        cartTotalPriceLabel?.text = "$ 0.00"
-    }
-    
-    
+}
 
+extension CartVC {
+    func setupCartTotalPrice(){
+        let totalPrice = cartRepository.getTotalPrice()
+        cartTotalPriceLabel?.text = "$ \(String(totalPrice))"
+    }
+}
+
+extension CartVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openBookingDetailsFromCartPage" {
+            let indexPath = cartItemsTable.indexPathForSelectedRow!
+            
+            let selectedCartItem = cartItems[indexPath.row]
+            let destinationVC = segue.destination as! BookingDetailsVC
+            
+            destinationVC.cartRepository = cartRepository
+            destinationVC.cartItem = selectedCartItem
+            destinationVC.delegate = self
+            
+        }
+    }
+}
+
+extension CartVC: BookingDetailsVCDelegate {
+    func didBook(_ cartItem: CartItem) {
+        let movieId = cartItem.movie!.id!
+        let sessionId = cartItem.movieSession!.id!
+        
+        for i in 0..<cartItems.count {
+            guard cartItems[i].movie!.id! == movieId else {
+                continue
+            }
+            
+            guard cartItems[i].movieSession!.id! == sessionId else {
+                continue
+            }
+            cartItems[i] = cartItem
+        }
+        
+    }
 }
