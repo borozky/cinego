@@ -12,6 +12,30 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private func configureServices(_ container: SimpleIOCContainer) -> SimpleIOCContainer {
+        container.register(IMovieRepository.self, factory: {
+            return MovieRepository()
+        })
+        
+        container.register(IMovieSessionRepository.self, factory: {
+            return MovieSessionRepository()
+        })
+        
+        container.register(ICinemaRepository.self, factory: {
+            return CinemaRepository()
+        })
+        
+        container.register(IUserRepository.self, factory: {
+            return UserRepository()
+        })
+        
+        container.register(ICartRepository.self, factory: {
+            return CartRepository()
+        })
+        
+        return container
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -25,8 +49,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // https://www.youtube.com/watch?v=Ehqnf1kHNGw at 4:23
         UIApplication.shared.statusBarStyle = .lightContent
         
+        // https://stackoverflow.com/questions/26753925/set-initial-viewcontroller-in-appdelegate-swift
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialTabBarController") as! UITabBarController
+        
+        // IOC Container
+        let container = configureServices(SimpleIOCContainer.instance)
+        
+        
+        // home page
+        for childViewController in initialViewController.viewControllers?[0].childViewControllers ?? [] {
+            if let homeViewController = childViewController as? HomeViewController {
+                homeViewController.cinemaRepository = container.resolve(ICinemaRepository.self)
+                homeViewController.movieRepository = container.resolve(IMovieRepository.self)
+                break
+            }
+        }
+       
+        // cinema page
+        for childViewController in initialViewController.viewControllers?[1].childViewControllers ?? [] {
+            let childVC = childViewController.childViewControllers.first   // cinema tab is a UISplitViewController
+            if let cinemaListTableVC = childVC as? CinemaListTableVC {
+                cinemaListTableVC.cinemaRepository = container.resolve(ICinemaRepository.self)
+                cinemaListTableVC.movieRepository = container.resolve(IMovieRepository.self)
+                break
+            }
+        }
+        
+        // cart page
+        for childViewController in initialViewController.viewControllers?[2].childViewControllers ?? [] {
+            if let cartVC = childViewController as? CartVC {
+                cartVC.cartRepository = container.resolve(ICartRepository.self)
+                break
+            }
+        }
+        
+        // account page
+        for childViewController in initialViewController.viewControllers?[3].childViewControllers ?? [] {
+            if let accountTableVC = childViewController as? AccountTableVC {
+                accountTableVC.userRepository = container.resolve(IUserRepository.self)
+                break
+            }
+        }
+        
+        initialViewController.selectedIndex = 0
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
+    
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
