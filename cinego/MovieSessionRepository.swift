@@ -15,6 +15,7 @@ protocol IMovieSessionRepository {
     func getMovieSessions(byCinema cinema: Cinema) -> [MovieSession]
     
     func find(byId id: String) -> MovieSession?
+    func findUpcomingMovieSession(fromMovie movie: Movie) -> MovieSession?
     func findAll(byMovie movie: Movie) -> [MovieSession]
     func findAll(byCinema cinema: Cinema) -> [MovieSession]
 }
@@ -22,53 +23,76 @@ protocol IMovieSessionRepository {
 
 class MovieSessionRepository: IMovieSessionRepository {
     
-    let movieRepository: IMovieRepository? = MovieRepository()
-    let cinemaRepository: ICinemaRepository? = CinemaRepository()
+    var movieRepository: IMovieRepository? = MovieRepository()
+    var cinemaRepository: ICinemaRepository? = CinemaRepository()
+    
     var movieSessions: [MovieSession] = []
     
-    
+    // generate 100 mock sessions
     init(){
         for i in 1...100 {
             let movie = getRandomMovie()
             let cinema = getRandomCinema()
-            let date = getRandomDate()
+            let date = getRandomDate()  // dd-MM-yyyy HH:mm:ss
+            
             movieSessions.append(MovieSession(id: i, startTime: date, cinema: cinema, movieId: movie.id!))
         }
     }
     
+    
     func find(byId id: String) -> MovieSession? {
-        return nil
+        return movieSessions.filter {
+            return String($0.id ?? 0) == id
+        }.first ?? nil
     }
+    
     
     func findAll(byMovie movie: Movie) -> [MovieSession] {
-        return []
+        let filtered = movieSessions.filter {
+            return $0.movieId! == movie.id!
+        }
+        
+        return sort(filtered)
+        
     }
     
+    
     func findAll(byCinema cinema: Cinema) -> [MovieSession] {
-        return []
+        return movieSessions.filter {
+            return cinema.id! == $0.cinema!.id!
+        }
     }
+    
+    
+    func findUpcomingMovieSession(fromMovie movie: Movie) -> MovieSession? {
+        let movieSessionsByMovie: [MovieSession] = getMovieSessions(byMovie: movie)
+        
+        if movieSessionsByMovie.count == 0 {
+            return nil
+        }
+        
+        if movieSessionsByMovie.count == 1 {
+            return movieSessionsByMovie[0]
+        }
+        
+        return sort(movieSessionsByMovie)[0]
+    }
+    
     
     
     func getMovieSessions(byMovie movie: Movie) -> [MovieSession] {
-        var sessions: [MovieSession] = []
-        for movieSession in movieSessions {
-            if movieSession.movieId == movie.id {
-                sessions.append(movieSession)
-            }
+        let sessions = movieSessions.filter {
+            return $0.movieId == movie.id
         }
-        return sessions
+        return sort(sessions)
     }
     
     
-    
     func getMovieSessions(byCinema cinema: Cinema) -> [MovieSession] {
-        var sessions: [MovieSession] = []
-        for movieSession in movieSessions {
-            if movieSession.cinema?.id == cinema.id {
-                sessions.append(movieSession)
-            }
+        let sessions = movieSessions.filter {
+            return $0.cinema?.id == cinema.id
         }
-        return sessions
+        return sort(sessions)
     }
     
     
@@ -82,7 +106,19 @@ class MovieSessionRepository: IMovieSessionRepository {
     }
     
     
-    // helper methods
+    func sort(_ movieSessions: [MovieSession]) -> [MovieSession]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        
+        return movieSessions.sorted(by: { sessionA, sessionB -> Bool in
+            let dateA = formatter.date(from: sessionA.startTime!)!
+            let dateB = formatter.date(from: sessionB.startTime!)!
+            return dateA < dateB
+        })
+    }
+    
+    
+    // helper methods for generating random sessions
     
     private func getRandomCinema() -> Cinema {
         let cinemas = cinemaRepository?.getAllCinemas()
