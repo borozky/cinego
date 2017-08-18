@@ -12,13 +12,17 @@ class CinemaListTableVC: UITableViewController {
     
     let tableViewCellID = "CinemaListTableViewCell"
     
-    var cinemaRepository: ICinemaRepository? = CinemaRepository()
-    var movieRepository: IMovieRepository? = MovieRepository()
+    var cinemaRepository: ICinemaRepository!
+    var movieRepository: IMovieRepository!
     var cinemas: [Cinema] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cinemas = (cinemaRepository?.getAllCinemas())!
+        setupCinemas()
+    }
+    
+    private func setupCinemas(){
+        cinemas = cinemaRepository.getAllCinemas()
     }
 
 }
@@ -34,7 +38,7 @@ extension CinemaListTableVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cinema = cinemas[indexPath.row]
-        let numUpcomingMovies: Int = movieRepository?.getUpcomingMovies(fromCinema: cinema).count ?? 0
+        let numUpcomingMovies: Int = movieRepository.getUpcomingMovies(fromCinema: cinema).count
         
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         
@@ -68,8 +72,8 @@ extension CinemaListTableVC {
             
             let destinationVC = segue.destination as! CinemaDetailsVC
             destinationVC.cinema = selectedCinema
-            destinationVC.movieRepository = MovieRepository()
-            destinationVC.cinemaRepository = cinemaRepository as! CinemaRepository?
+            destinationVC.movieRepository = movieRepository as! MovieRepository!
+            destinationVC.cinemaRepository = cinemaRepository
         }
     }
 }

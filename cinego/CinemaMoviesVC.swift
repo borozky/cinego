@@ -11,8 +11,8 @@ import UIKit
 class CinemaMoviesVC: UIViewController {
 
     let tableViewCellID = "CinemaMovieTableViewCell"
-    var movies: [Movie] = []
-    var cinema: Cinema?
+    var movies: [Movie]!
+    var cinema: Cinema!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -68,7 +68,6 @@ extension CinemaMoviesVC {
             
             let destinationVC = segue.destination as! MovieDetailsViewController
             destinationVC.movie = selectedMovie
-            destinationVC.cinema = self.cinema!
             destinationVC.movieSessionRepository = MovieSessionRepository()
         }
     }

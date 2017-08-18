@@ -18,11 +18,10 @@ class BookingDetailsVC: UIViewController {
     
     weak var delegate: BookingDetailsVCDelegate?
     var cartRepository: ICartRepository!
+    var cartItem: CartItem?
     
-    var cartItem: CartItem? = nil
-    
-    var movie: Movie?
-    var movieSession: MovieSession?
+    var movie: Movie!
+    var movieSession: MovieSession!
     var numTickets = 0
     var maxNumberOfTickets = 40
     
@@ -45,9 +44,11 @@ class BookingDetailsVC: UIViewController {
         changeNumTickets(to: val)
     }
     
+    
     @IBAction func bookToSessionButtonDidTap(_ sender: Any) {
         book(toSession: movieSession!)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,17 +68,20 @@ class BookingDetailsVC: UIViewController {
         }
     }
     
+    
     private func setupMovieInformation(){
         movieTitleLabel.text = movie?.title
-        movieReleaseDateLabel.text = "Released: \(movie?.releaseDate ?? "")"
+        movieReleaseDateLabel.text = "Released: \(movie.releaseDate )"
         movieBannerImageView.image = UIImage(imageLiteralResourceName: (movie?.images[0])!)
     }
     
+    
     private func setupMovieSessionInformation(){
-        cinemaLocationLabel.text = movieSession?.cinema?.name
-        cinemaAddressLabel.text = movieSession?.cinema?.address
-        movieSessionStartLabel.text = movieSession?.startTime
+        cinemaLocationLabel.text = movieSession.cinema?.name ?? ""
+        cinemaAddressLabel.text = movieSession.cinema?.address ?? ""
+        movieSessionStartLabel.text = humaniseTime((movieSession?.startTime)!)
     }
+    
     
     private func setupTickets(){
         ticketQuantityStepper.stepValue = Double(1)
@@ -85,9 +89,8 @@ class BookingDetailsVC: UIViewController {
         ticketQuantityStepper.maximumValue = Double(maxNumberOfTickets)
         ticketQuantityStepper.value = Double(numTickets)
         ticketQuantityLabel.text = String(Int(ticketQuantityStepper.value))
-        
-        
     }
+    
     
     private func setupButton(){
         if cartItem != nil {
@@ -101,6 +104,21 @@ class BookingDetailsVC: UIViewController {
             bookToSessionButton.isEnabled = false
             bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)
         }
+    }
+    
+    
+    private func humaniseTime(_ timeStr: String, _ format: String = "dd-MM-yyyy HH:mm:ss") -> String {
+        var returnStr = ""
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        
+        if let date = formatter.date(from: timeStr) {
+            formatter.dateFormat = "EEE dd MMM hh:mm aa"
+            returnStr = formatter.string(from: date)
+        }
+        
+        return returnStr
     }
     
     

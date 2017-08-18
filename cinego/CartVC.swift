@@ -11,7 +11,7 @@ import UIKit
 class CartVC: UIViewController {
     
     let tableViewCellID = "CartItemTableViewCell"
-    var cartRepository: ICartRepository! = CartRepository()
+    var cartRepository: ICartRepository!
     var cartItems: [CartItem] = []
     
     @IBOutlet weak var cartTotalPriceLabel: UILabel!
@@ -28,7 +28,7 @@ class CartVC: UIViewController {
     }
     
     private func reload(){
-        cartItems = cartRepository.getAll()
+        cartItems = cartRepository!.getAll()
         cartItemsTable.reloadData()
     }
     

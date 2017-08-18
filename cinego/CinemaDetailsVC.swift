@@ -12,17 +12,16 @@ class CinemaDetailsVC: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var cinemaRepository: CinemaRepository?
-    var movieRepository: MovieRepository?
+    var cinemaRepository: ICinemaRepository!
+    var movieRepository: IMovieRepository!
     
-    var cinema: Cinema = Cinema(name: "Melbourne CBD",numSeats: 20,address: "123 Flinder St. Melbourne VIC",details: "This is the details of the cinema")
+    var cinema: Cinema!
     
     
     lazy var cinemaMoviesVC: CinemaMoviesVC = {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CinemaMoviesVC") as! CinemaMoviesVC
-        viewController.movies = self.movieRepository?.getMovies(byCinema: self.cinema) ?? []
+        viewController.movies = self.movieRepository.getMovies(byCinema: self.cinema)
         viewController.cinema = self.cinema
         self.addViewControllerAsChildViewController(childViewController: viewController)
         return viewController

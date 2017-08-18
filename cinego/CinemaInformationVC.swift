@@ -16,7 +16,7 @@ class CinemaInformationVC: UIViewController {
     @IBOutlet weak var cinemaNumberOfSeatsLabel: UILabel!
     @IBOutlet weak var cinemaDetailsTextView: UITextView!
     
-    var cinema: Cinema?
+    var cinema: Cinema!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,25 +26,21 @@ class CinemaInformationVC: UIViewController {
     
     
     private func setupImageSlider(){
-        if let images = cinema?.images {
-            for image in images {
-                imageSlider.addImage(UIImage(imageLiteralResourceName: image))
-            }
-        } else {
-            imageSlider.addImage(#imageLiteral(resourceName: "cinema-image2"))
+        for image in cinema.images {
+            imageSlider.addImage(UIImage(imageLiteralResourceName: image))
         }
     }
     
     
     private func setupCinemaInformation(){
-        cinemaTitleLabel.text = cinema?.name
-        cinemaAddressLabel?.text = cinema?.address
+        cinemaTitleLabel.text = cinema.name
+        cinemaAddressLabel?.text = cinema.address
         
-        if let numseatsStr = cinema?.numSeats {
-            cinemaNumberOfSeatsLabel?.text = "Seats: \(String(numseatsStr))"
+        if let numseatsStr = cinema.numSeats {
+            cinemaNumberOfSeatsLabel.text = "Seats: \(String(numseatsStr))"
         }
         
-        cinemaDetailsTextView.text = cinema?.details
+        cinemaDetailsTextView.text = cinema.details
     }
     
 

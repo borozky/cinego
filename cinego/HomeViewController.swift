@@ -10,12 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // I will deal with "dependency injection with storyboards" on Assignment 2
-    var movieRepository: IMovieRepository? = MovieRepository()
-    var cinemaRepository: ICinemaRepository? = CinemaRepository()
-    
+    // injected by AppDelegate
+    var movieRepository: IMovieRepository!
+    var cinemaRepository: ICinemaRepository!
+
     var upcomingMovies: [Movie] = []
-    
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
@@ -26,6 +25,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         loadHomeBannerSlider()
         loadUpcomingMovies()
+        
     }
     
     
@@ -109,8 +109,10 @@ extension HomeViewController {
             let cell = sender as! UICollectionViewCell
             let indexPath = self.upcomingMoviesCollectionView.indexPath(for: cell)
             let selectedData = upcomingMovies[(indexPath?.row)!]
+            let container = SimpleIOCContainer.instance
+            
             destinationVC.movie = selectedData
-            destinationVC.movieSessionRepository = MovieSessionRepository()
+            destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository)
         }
     }
     

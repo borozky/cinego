@@ -11,6 +11,12 @@ import UIKit
 class AccountTableVC: UITableViewController {
     
     private let tableViewCellIDs = ["UserInformationTableViewCell", "UserUpcomingMovieSessionTableViewCell", "UserPastOrderTableViewCell"]
+    
+    var user: User!
+    var upcomingBookings: [Booking] = []
+    var pastOrders: [Order] = []
+    
+    var userRepository: IUserRepository?
 
     
     override func viewDidLoad() {
