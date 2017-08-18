@@ -177,15 +177,49 @@ class MovieRepository : IMovieRepository {
     }
     
     
-    
+    // I'll fix the coupling in assignment 2
     func getMovies(byCinema cinema: Cinema) -> [Movie] {
-        return getUpcomingMovies()
+        let movieSessionRepository: IMovieSessionRepository = MovieSessionRepository()
+        let movieSessions = movieSessionRepository.findAll(byCinema: cinema)
+        
+        if movieSessions.count > 0 {
+            var movieIds: Set<Int> = []
+            for movieSession in movieSessions {
+                movieIds.insert(movieSession.movieId!)
+            }
+            return getUpcomingMovies().filter {
+                return movieIds.contains($0.id!)
+            }
+        }
+        return []
     }
     
     
-    
+    // I'll fix the coupling in assignment 2
     func getUpcomingMovies(fromCinema cinema: Cinema) -> [Movie] {
-        return getUpcomingMovies()
+        let movieSessionRepository: IMovieSessionRepository = MovieSessionRepository()
+        let movieSessions = movieSessionRepository.findAll(byCinema: cinema)
+        
+        if movieSessions.count > 0 {
+            var movieIds: Set<Int> = []
+            
+            let todaysDate = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            
+            for movieSession in movieSessions {
+                let sessionStartDate = formatter.date(from: movieSession.startTime!)!
+                if sessionStartDate > todaysDate {
+                    movieIds.insert(movieSession.movieId!)
+                }
+            }
+            
+            return getUpcomingMovies().filter {
+                return movieIds.contains($0.id!)
+            }
+            
+        }
+        return []
     }
     
     
