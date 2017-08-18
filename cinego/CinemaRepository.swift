@@ -22,6 +22,8 @@ protocol ICinemaRepository {
 class CinemaRepository : ICinemaRepository {
     
     var cinemas: [Cinema] = []
+    
+    
     init(){
         var cinema = Cinema(id: 1, name: "Melbourne CBD ", numSeats: 20, address: "123 Flinders Street, Melbourne VIC 3000", details: "This is the details of the movie theater")
         cinema.images = ["cinema-melbourne_cbd-1", "cinema-melbourne_cbd-2", "cinema-melbourne_cbd-3", "cinema-melbourne_cbd-4", "cinema-melbourne_cbd-5"]
@@ -40,30 +42,24 @@ class CinemaRepository : ICinemaRepository {
         cinemas.append(cinema)
     }
     
+    
     func find(byId id: Int) -> Cinema? {
-        let cinemas = findAll()
-        for cinema in cinemas {
-            if cinema.id == id {
-                return cinema
-            }
-        }
-        return nil
+        return cinemas.filter {
+            return $0.id == id
+        }.first
     }
     
+    
     func find(byName name: String) -> Cinema? {
-        let cinemas = findAll()
-        for cinema in cinemas {
-            if cinema.name == name {
-                return cinema
-            }
-        }
-        return nil
+        return cinemas.filter {
+            return $0.name == name
+        }.first
     }
+    
     
     func findAll() -> [Cinema] {
         return cinemas
     }
-    
     
     
     func getAllCinemas() -> [Cinema] {
@@ -72,24 +68,16 @@ class CinemaRepository : ICinemaRepository {
     
     
     func getCinema(byId id: Int) -> Cinema? {
-        let cinemas = getAllCinemas()
-        for cinema in cinemas {
-            if cinema.id == id {
-                return cinema
-            }
-        }
-        return nil
+        return cinemas.filter {
+            return $0.id == id
+        }.first
     }
     
     
     func getCinema(byName name: String) -> Cinema? {
-        let cinemas = getAllCinemas()
-        for cinema in cinemas {
-            if cinema.name == name {
-                return cinema
-            }
-        }
-        return nil
+        return cinemas.filter {
+            return $0.name == name
+        }.first
     }
     
 }
