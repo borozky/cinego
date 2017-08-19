@@ -24,6 +24,7 @@ class BookingDetailsVC: UIViewController {
     var movieSession: MovieSession!
     var numTickets = 0
     var maxNumberOfTickets = 40
+    var selectedSeats: [Seat] = []
     
     var fromCart = false
     
@@ -125,7 +126,6 @@ class BookingDetailsVC: UIViewController {
     
 }
 
-
 extension BookingDetailsVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,6 +140,23 @@ extension BookingDetailsVC : UITableViewDataSource {
         return cell
     }
     
+}
+
+extension BookingDetailsVC: SeatCollectionVCDelegate {
+    
+    func didSelectSeats(_ seats: [Seat]) {
+        print("Did select seats")
+        selectedSeats = seats
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openSeatCollectionVCFromBookingDetailsVC" {
+            let destinationVC = segue.destination as! SeatsCollectionVC
+            destinationVC.delegate = self
+            destinationVC.selectedSeats = selectedSeats
+            destinationVC.numTickets = numTickets
+        }
+    }
 }
 
 

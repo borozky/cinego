@@ -112,7 +112,7 @@ extension HomeViewController {
             let container = SimpleIOCContainer.instance
             
             destinationVC.movie = selectedData
-            destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository)
+            destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository.self)
         }
     }
     
