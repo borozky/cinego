@@ -61,7 +61,8 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
 extension CartVC {
     func setupCartTotalPrice(){
         let totalPrice = cartRepository.getTotalPrice()
-        cartTotalPriceLabel?.text = "$ \(String(totalPrice))"
+        let totalPriceStr = NSString(format: "%.2f", totalPrice)
+        cartTotalPriceLabel?.text = "$ \(String(totalPriceStr))"
     }
 }
 
