@@ -83,6 +83,9 @@ extension HomeViewController : UICollectionViewDataSource {
             let cinema = cinemaRepository?.getAllCinemas()[indexPath.row]
             cell.cinemaImage.image = UIImage(imageLiteralResourceName: cinema?.images[0] ?? "cinema-image-3")
             cell.cinemaLabel?.text = cinema?.name
+            
+            cell.cinema = cinema
+            
             return cell
         }
         
@@ -114,8 +117,20 @@ extension HomeViewController {
             destinationVC.movie = selectedData
             destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository.self)
         }
+            
+        else if segue.identifier == "openCinemaFromHome"{
+            
+            let selectedCinemaCollectionViewCell = sender as! CinemaCollectionViewCell
+           
+            let cinemaDetailsVC = segue.destination as! CinemaDetailsVC
+            cinemaDetailsVC.movieRepository = movieRepository
+            cinemaDetailsVC.cinemaRepository = cinemaRepository
+            cinemaDetailsVC.cinema = selectedCinemaCollectionViewCell.cinema
+            
+        }
     }
     
+
 }
 
 
