@@ -25,6 +25,9 @@ class BookingDetailsVC: UIViewController {
     var numTickets = 0
     var maxNumberOfTickets = 40
     var selectedSeats: [Seat] = []
+    var originalSeats: [Seat] = []
+    
+    var removedSeats: [Seat] = []
     
     var fromCart = false
     
@@ -61,6 +64,10 @@ class BookingDetailsVC: UIViewController {
         setupMovieSessionInformation()
         setupTickets()
         setupButton()
+        
+        if cartItem != nil {
+            bookToSessionButton.titleLabel?.text = "Update"
+        }
     }
     
     private func updateSeatsSelectedLabel(to: Int){
@@ -73,6 +80,7 @@ class BookingDetailsVC: UIViewController {
             movie = cartItem.movie
             movieSession = cartItem.movieSession
             numTickets = cartItem.numTickets
+            originalSeats = selectedSeats
         }
     }
     
@@ -154,7 +162,8 @@ extension BookingDetailsVC: SeatCollectionVCDelegate {
     
     func didSelectSeats(_ seats: [Seat]) {
         print("Did select seats")
-        selectedSeats = seats
+        originalSeats = seats
+        selectedSeats = originalSeats
         numSeatsTableView.reloadData()
     }
     
@@ -172,10 +181,22 @@ extension BookingDetailsVC: SeatCollectionVCDelegate {
 extension BookingDetailsVC {
 
     func book(toSession session: MovieSession) {
-        let cartItem = CartItem(movie: movie!, movieSession: movieSession!, numTickets: numTickets, seatNumbers: [1,2,3])
-        cartRepository.addToCart(cartItem: cartItem)
-        delegate?.didBook(cartItem)
-        goBack()
+        if let cartItem = cartItem {
+            cartItem.seats = selectedSeats
+            cartItem.numTickets = numTickets
+            
+            guard cartRepository.updateCart(cartItem) != nil else {
+                fatalError("Failed to add to cart")
+            }
+            
+            delegate?.didBook(cartItem)
+            goBack()
+        } else {
+            let cartItem = CartItem(movie: movie!, movieSession: movieSession!, numTickets: numTickets, seatNumbers: [1,2,3])
+            cartRepository.addToCart(cartItem: cartItem)
+            delegate?.didBook(cartItem)
+            goBack()
+        }
     }
     
     func changeNumTickets(to qty: Int){
@@ -189,6 +210,11 @@ extension BookingDetailsVC {
             bookToSessionButton.isEnabled = false
             bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)
         }
+        
+        if numTickets < selectedSeats.count {
+            self.selectedSeats = Array(originalSeats[0..<numTickets])
+        }
+        
     }
     
     func goBack(){
