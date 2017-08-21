@@ -13,18 +13,29 @@ class CartVC: UIViewController {
     let tableViewCellID = "CartItemTableViewCell"
     var cartRepository: ICartRepository!
     var cartItems: [CartItem] = []
-    
+    var isViewEditing = false
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var cartTotalPriceLabel: UILabel!
     @IBOutlet weak var cartItemsTable: UITableView!
-    
+    @IBOutlet weak var checkoutButton: UIBarButtonItem!
+    @IBAction func editButtonDidTapped(_ sender: Any) {
+       cartItemsTable.isEditing = !cartItemsTable.isEditing
+        editButton.title = cartItemsTable.isEditing ? "Done": "Edit"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        cartItemsTable.isEditing = false
+        editButton.title = "Edit"
         setupCartTotalPrice()
         reload()
+        if cartItems.count == 0{
+            checkoutButton.isEnabled = false
+        }
     }
     
     private func reload(){
@@ -56,7 +67,20 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         detailsLabel.text = "\(String(cartItem.numTickets)) tickets | [Session Time] | \(cinema.name!)"
         return cell
     }
-}
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        self.cartItems.remove(at: indexPath.row)
+        CartRepository.cart.remove(at: indexPath.row)
+        cartItemsTable.deleteRows(at: [indexPath], with: .fade)
+    //    cartTotalPriceLabel.text = NSString(cartRepository.getTotalPrice())
+       
+        cartTotalPriceLabel.text = NSString(format: "$ %.2f", cartRepository.getTotalPrice()) as String
+        }
+    }
+    
+
 
 extension CartVC {
     func setupCartTotalPrice(){
@@ -113,3 +137,5 @@ extension CartVC: BookingDetailsVCDelegate {
         
     }
 }
+
+
