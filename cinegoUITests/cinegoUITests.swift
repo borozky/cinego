@@ -9,28 +9,64 @@
 import XCTest
 
 class cinegoUITests: XCTestCase {
+    
+    let app = XCUIApplication()
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWholeApplicationWorkFlow() {
+    
+        
+//        var elementsQuery = XCUIApplication().scrollViews.otherElements
+//        elementsQuery.collectionViews.cells.otherElements.containing(.image, identifier:"alien_covenant").element.tap()
+//        elementsQuery.tables.staticTexts["Tue 04 Apr 04:12 AM"].tap()
+//        
+//        let incrementButton = elementsQuery.steppers.buttons["Increment"]
+//        incrementButton.tap()
+//        incrementButton.tap()
+//        incrementButton.tap()
+//        incrementButton.tap()
+//        
+//    
+//        var collectionViewsQuery = app.collectionViews
+//        collectionViewsQuery.staticTexts["A4"].tap()
+//        collectionViewsQuery.cells.otherElements.containing(.staticText, identifier:"B4").element.tap()
+//        collectionViewsQuery.staticTexts["B3"].tap()
+//        collectionViewsQuery.staticTexts["C2"].tap()
+//        app.navigationBars["cinego.SeatsCollectionVC"].buttons["Booking Details"].tap()
+//        
+//        let scrollViewsQuery = app.scrollViews
+//        elementsQuery = scrollViewsQuery.otherElements
+//        elementsQuery.buttons["Book"].tap()
+//        app.tabBars.buttons["Cart"].tap()
+//        elementsQuery.tables.staticTexts["Alien Covenant"].tap()
+//        elementsQuery.steppers.buttons["Increment"].tap()
+//        scrollViewsQuery.children(matching: .other).element.tap()
+//        
+//        collectionViewsQuery = app.collectionViews
+//        collectionViewsQuery.staticTexts["D1"].tap()
+//        collectionViewsQuery.staticTexts["D2"].tap()
+//        collectionViewsQuery.staticTexts["C3"].tap()
+//        collectionViewsQuery.staticTexts["C4"].tap()
+//        collectionViewsQuery.staticTexts["D4"].tap()
+//        app.navigationBars["cinego.SeatsCollectionVC"].buttons["Booking Details"].tap()
+//        app.navigationBars["Booking Details"].buttons["Cart"].tap()
+//        app.navigationBars["Cart"].buttons["Checkout"].tap()
+//        app.scrollViews.otherElements.tables.staticTexts["Payment method"].tap()
+//        app.buttons["Place Order"].tap()
+//        app.navigationBars["ORDER SUMMARY"].buttons["Exit"].tap()
+//        
+        
+        
     }
     
 }
