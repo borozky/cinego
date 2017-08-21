@@ -60,7 +60,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
 
 extension CartVC {
     func setupCartTotalPrice(){
-        let totalPrice = cartRepository.getTotalPrice()
+        let totalPrice = cartRepository.getTotalPrice() + Double(cartRepository.getAll().count) * 5.0
         let totalPriceStr = NSString(format: "%.2f", totalPrice)
         cartTotalPriceLabel?.text = "$ \(String(totalPriceStr))"
     }
@@ -77,6 +77,19 @@ extension CartVC {
             destinationVC.cartRepository = cartRepository
             destinationVC.cartItem = selectedCartItem
             destinationVC.delegate = self
+            
+        }
+        
+        else if segue.identifier == "openCheckout" {
+            let checkoutVC = segue.destination as! CheckoutVC
+            checkoutVC.cartItems = cartRepository.getAll()
+            checkoutVC.cartRepository = cartRepository as! CartRepository
+            checkoutVC.orderSubtotal = cartRepository.getTotalPrice() * 0.9
+            checkoutVC.gst = cartRepository.getTotalPrice() * 0.1
+            checkoutVC.shippingCost = 5.0 * Double(cartRepository.getAll().count)
+            checkoutVC.orderTotal = checkoutVC.gst + checkoutVC.orderSubtotal + checkoutVC.shippingCost
+            
+            
             
         }
     }
