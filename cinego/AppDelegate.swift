@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for childViewController in initialViewController.viewControllers?[3].childViewControllers ?? [] {
             if let accountTableVC = childViewController as? AccountTableVC {
                 accountTableVC.userRepository = container.resolve(IUserRepository.self)
+                accountTableVC.user = container.resolve(IUserRepository.self)?.find(byUsername: "s3526309")
                 break
             }
         }
