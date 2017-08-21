@@ -22,10 +22,10 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cartItems: [CartItem]!
     var cartRepository: CartRepository!
     
-    var orderSubtotal = 70.00
-    var shippingCost = 3.75
-    var gst = 7.00
-    var orderTotal = 81.15
+    var orderSubtotal = 0.00
+    var shippingCost = 0.00
+    var gst = 0.00
+    var orderTotal = 0.00
     
     
     
@@ -36,10 +36,10 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     func setupCheckoutCost(){
-        orderSubtotalLabel?.text = String(self.orderSubtotal)
-        shippingCostLabel?.text = String(self.shippingCost)
-        gstCostLabel?.text = String(self.gst)
-        orderTotalLabel?.text = String(orderTotal)
+        orderSubtotalLabel?.text = String(format: "$ %.02f", self.orderSubtotal)
+        shippingCostLabel?.text = String(format: "$ %.02f", self.shippingCost)
+        gstCostLabel?.text = String(format: "$ %.02f", self.gst)
+        orderTotalLabel?.text = String(format: "$ %.02f", orderTotal)
     }
     
     
