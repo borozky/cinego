@@ -23,12 +23,6 @@ class AccountTableVC: UITableViewController {
         super.viewDidLoad()
 
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -58,6 +52,13 @@ class AccountTableVC: UITableViewController {
         // the user account information
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[0], for: indexPath)
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            let fullnameLable = cell.viewWithTag(2) as! UILabel
+            let emialLable = cell.viewWithTag(3) as! UILabel
+            
+            imageView.image = #imageLiteral(resourceName: "guest")
+            fullnameLable.text = user.fullname
+            emialLable.text = user.email
             return cell
         }
         
