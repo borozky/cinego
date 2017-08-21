@@ -40,9 +40,12 @@ class BookingDetailsVC: UIViewController {
     @IBOutlet weak var ticketQuantityLabel: UILabel!
     @IBOutlet weak var ticketQuantityStepper: UIStepper!
     
+    @IBOutlet weak var numSeatsTableView: UITableView!
+    
     @IBAction func ticketQuantityStepperDidValueChanged(_ sender: UIStepper) {
         let val = Int(sender.value)
         changeNumTickets(to: val)
+        updateSeatsSelectedLabel(to: val)
     }
     
     
@@ -58,6 +61,10 @@ class BookingDetailsVC: UIViewController {
         setupMovieSessionInformation()
         setupTickets()
         setupButton()
+    }
+    
+    private func updateSeatsSelectedLabel(to: Int){
+        numSeatsTableView.reloadData()
     }
     
     // MARK: Helper Methods
@@ -136,7 +143,8 @@ extension BookingDetailsVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = "Seats"
-        cell.detailTextLabel?.text = "1/1 seats selected"
+        cell.detailTextLabel?.text = "\(String(selectedSeats.count))/\(String(numTickets)) seats selected"
+        cell.imageView?.image = #imageLiteral(resourceName: "cinema-seat")
         return cell
     }
     
@@ -147,6 +155,7 @@ extension BookingDetailsVC: SeatCollectionVCDelegate {
     func didSelectSeats(_ seats: [Seat]) {
         print("Did select seats")
         selectedSeats = seats
+        numSeatsTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

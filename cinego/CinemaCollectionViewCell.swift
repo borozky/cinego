@@ -15,6 +15,8 @@ class CinemaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cinemaLabelParent: UIView!
     @IBOutlet weak var cinemaLabel: UILabel!
     
+    var cinema: Cinema!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 5
