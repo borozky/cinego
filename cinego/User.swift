@@ -13,13 +13,14 @@ class User {
     public let id: String
     public let username: String
     public let email: String
-    
+    public let fullname: String
     public var orders: [Order]
     
-    public init(id: String = "", email: String = "", username: String = "", orders: [Order] = []){
+    public init(id: String = "", email: String = "", username: String = "", fullname: String = "",  orders: [Order] = []){
         self.id = ""
         self.username = username
         self.email = email
+        self.fullname = fullname
         self.orders = orders
     }
     
