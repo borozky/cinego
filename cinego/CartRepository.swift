@@ -13,7 +13,7 @@ protocol ICartRepository {
     func addToCart(cartItem: CartItem)
     func getTotalPrice() -> Double
     func getAll() -> [CartItem]
-    func updateCart(atIndex index: Int, _ cartItem: CartItem)
+    func updateCart(_ cartItem: CartItem) -> CartItem?
     func destroyCart()
 }
 
@@ -40,8 +40,23 @@ class CartRepository: ICartRepository {
         CartRepository.cart = []
     }
     
-    func updateCart(atIndex index: Int, _ cartItem: CartItem) {
-        CartRepository.cart[index] = cartItem
+    func updateCart(_ cartItem: CartItem) -> CartItem? {
+        for (key, item) in CartRepository.cart.enumerated() {
+            guard item.movie?.id == cartItem.movie?.id else {
+                continue
+            }
+            
+            guard cartItem.movieSession?.id == item.movieSession?.id else {
+                continue
+            }
+            
+            // update cart item
+            CartRepository.cart[key] = cartItem
+            return cartItem
+        }
+        
+        // failed to update
+        return nil
     }
     
 }
