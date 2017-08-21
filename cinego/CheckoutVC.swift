@@ -19,6 +19,9 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var orderTotalLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
     
+    var cartItems: [CartItem]!
+    var cartRepository: CartRepository!
+    
     var orderSubtotal = 70.00
     var shippingCost = 3.75
     var gst = 7.00
@@ -29,7 +32,6 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCheckoutCost()
-        
     }
     
     
@@ -62,26 +64,7 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // IGNORE THIS FOR NOW
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
