@@ -10,7 +10,7 @@ import UIKit
 
 class AccountTableVC: UITableViewController {
     
-    private let tableViewCellIDs = ["UserInformationTableViewCell", "UserUpcomingMovieSessionTableViewCell", "UserPastOrderTableViewCell"]
+    private let tableViewCellIDs = ["UserInformationTableViewCell", "UserOrdersTableViewCell"]
     
     var user: User!
     var upcomingBookings: [Booking] = []
@@ -35,14 +35,26 @@ class AccountTableVC: UITableViewController {
         }
         
         if section == 1 {
-            return 1
+            return upcomingBookings.count
         }
         
         if section == 2 {
-            return 1
+            return pastOrders.count
         }
         
+        
         return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "UPCOMING SESSIONS"
+        }
+        if section == 2 {
+            return "PAST ORDERS"
+        }
+        
+        return nil
     }
     
     
@@ -63,22 +75,48 @@ class AccountTableVC: UITableViewController {
         }
         
         if indexPath.section == 1 {
+            let upcomingBooking = upcomingBookings[indexPath.row]
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            let titleLabel = cell.viewWithTag(2) as! UILabel
+            let detailsLabel = cell.viewWithTag(3) as! UILabel
+            
+            imageView.image = UIImage(imageLiteralResourceName: (upcomingBooking.movie?.images [0])!)
+            titleLabel.text = upcomingBooking.movie?.title
+            
+            let humanizedTimeString = humanizeTime((upcomingBooking.movieSession?.startTime)!)
+            
+            detailsLabel.text = humanizedTimeString
+            
+            
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
             return cell
         }
         
         if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[2], for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
             return cell
         }
         
-        
-        
         return cell
+        
+    }
+    
+    private func humanizeTime(_ timeStr: String, _ format: String = "dd-MM-yyyy HH:mm:ss") -> String {
+        var returnStr = ""
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        
+        if let date = formatter.date(from: timeStr) {
+            formatter.dateFormat = "EEE dd MMM hh:mm aa"
+            returnStr = formatter.string(from: date)
+        }
+        
+        return returnStr
     }
     
     
