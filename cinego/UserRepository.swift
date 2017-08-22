@@ -34,8 +34,8 @@ class UserRepository: IUserRepository {
                                  ]
 
     func find(byId id: Int) -> User? {
-        return nil
-            }
+        return users.filter { $0.id == String(id) }.first
+    }
     
     func find(byUsername username: String) -> User? {
         return users.filter { $0.username == username }.first
@@ -43,18 +43,39 @@ class UserRepository: IUserRepository {
     }
     
     func find(byEmail email: String) -> User? {
-        return nil
+        return users.filter { $0.email == email }.first
     }
     
     func create(user: User) -> User? {
+        let foundUserByUsername = find(byUsername: user.username)
+        
+        if foundUserByUsername == nil {
+            users.append(user)
+            return user
+        }
+        
         return nil
     }
     
     func update(user: User) -> User? {
+        for (key, userItem) in users.enumerated() {
+            if user.username == userItem.username {
+                users[key] = user
+                return user
+            }
+        }
         return nil
+        
+        
     }
     
     func delete(user: User) -> Bool {
+        for (key, userItem) in users.enumerated() {
+            if user.username == userItem.username {
+                users.remove(at: key)
+                return true
+            }
+        }
         return false
     }
     
