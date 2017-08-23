@@ -24,18 +24,19 @@ class CartVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        checkoutButton.isEnabled = false
+        editButton.title = "Edit"
+        editButton.isEnabled = false
+        cartItemsTable.isEditing = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cartItemsTable.isEditing = false
-        editButton.title = "Edit"
         setupCartTotalPrice()
         reload()
-        if cartItems.count == 0{
-            checkoutButton.isEnabled = false
-        }
+        
+        editButton.isEnabled = cartItems.count > 0
+        checkoutButton.isEnabled = cartItems.count > 0
     }
     
     private func reload(){
@@ -71,12 +72,21 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        
         self.cartItems.remove(at: indexPath.row)
         CartRepository.cart.remove(at: indexPath.row)
         cartItemsTable.deleteRows(at: [indexPath], with: .fade)
         cartTotalPriceLabel.text = NSString(format: "$ %.2f", cartRepository.getTotalPrice()) as String
+        
+        if cartItems.count == 0 {
+            cartItemsTable.isEditing = false
+            editButton.isEnabled = false
+            editButton.title = "Edit"
+            checkoutButton.isEnabled = false
         }
+        
     }
+}
     
 
 
