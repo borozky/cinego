@@ -74,8 +74,6 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         self.cartItems.remove(at: indexPath.row)
         CartRepository.cart.remove(at: indexPath.row)
         cartItemsTable.deleteRows(at: [indexPath], with: .fade)
-    //    cartTotalPriceLabel.text = NSString(cartRepository.getTotalPrice())
-       
         cartTotalPriceLabel.text = NSString(format: "$ %.2f", cartRepository.getTotalPrice()) as String
         }
     }
