@@ -135,7 +135,14 @@ class CheckoutVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        if segue.identifier == "openOrderSummary" {
+            let orderSummaryVC = segue.destination as! OrderSummaryVC
+            
+        }
+    }
+    
+    private func processOrder(_ cartItems: [CartItem]){
+        
     }
     
     override func didReceiveMemoryWarning() {

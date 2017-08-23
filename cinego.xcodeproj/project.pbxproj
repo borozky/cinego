@@ -48,6 +48,7 @@
 		1F635FB61F4708C0005A1135 /* SimpleIOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */; };
 		1F8C16A21F43D42200A9353D /* SeatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C16A11F43D42200A9353D /* SeatRepository.swift */; };
 		1F8C16A41F43D76800A9353D /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C16A31F43D76800A9353D /* CartRepository.swift */; };
+		1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA847841F4D49F8000E9B81 /* Entities.swift */; };
 		1FCCC40E1F31CBA50050AA36 /* CinemaMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCC40D1F31CBA50050AA36 /* CinemaMoviesVC.swift */; };
 		1FCCC4101F31F31E0050AA36 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCC40F1F31F31E0050AA36 /* CartVC.swift */; };
 		1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D11F47AFF900D352FB /* Seat.swift */; };
@@ -126,6 +127,7 @@
 		1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleIOCContainer.swift; sourceTree = "<group>"; };
 		1F8C16A11F43D42200A9353D /* SeatRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatRepository.swift; sourceTree = "<group>"; };
 		1F8C16A31F43D76800A9353D /* CartRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
+		1FA847841F4D49F8000E9B81 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entities.swift; path = Entities/Entities.swift; sourceTree = "<group>"; };
 		1FCCC40D1F31CBA50050AA36 /* CinemaMoviesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMoviesVC.swift; sourceTree = "<group>"; };
 		1FCCC40F1F31F31E0050AA36 /* CartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		1FCDD9D11F47AFF900D352FB /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		1F2CD87B1F2495CC0034D472 /* cinego */ = {
 			isa = PBXGroup;
 			children = (
+				1FA847791F4D47C9000E9B81 /* Entities */,
 				1FA847781F4D218F000E9B81 /* ViewModels */,
 				1F635FB41F4708A4005A1135 /* DependencyRegistry */,
 				1F129BD31F2AE27600C6FFA7 /* Views */,
@@ -285,6 +288,14 @@
 			children = (
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		1FA847791F4D47C9000E9B81 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1FA847841F4D49F8000E9B81 /* Entities.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		2EC77F671F256978003BAF20 /* Models */ = {
@@ -450,6 +461,7 @@
 				1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */,
 				1FCCC4101F31F31E0050AA36 /* CartVC.swift in Sources */,
 				1F3510CE1F3174C5003AE4B5 /* CinemaListTableVC.swift in Sources */,
+				1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */,
 				1FCCC40E1F31CBA50050AA36 /* CinemaMoviesVC.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,
 				0364B4D51F42660E001E2ED3 /* TicketRepository.swift in Sources */,

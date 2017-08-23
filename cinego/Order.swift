@@ -16,8 +16,8 @@ class Order {
     public let id: String
     public let bookings: [Booking]
     
-    public let address: String
-    public let telephoneNumber: String
+    public let address: String?
+    public let telephoneNumber: String?
     public let email: String
     
     public let paymentMethod: PaymentMethod
