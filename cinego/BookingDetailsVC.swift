@@ -64,10 +64,11 @@ class BookingDetailsVC: UIViewController {
         setupMovieSessionInformation()
         setupTickets()
         setupButton()
-        
-        if cartItem != nil {
-            bookToSessionButton.titleLabel?.text = "Update"
-        }
+        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
     }
     
     private func updateSeatsSelectedLabel(to: Int){
