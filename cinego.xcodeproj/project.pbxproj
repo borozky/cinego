@@ -238,6 +238,7 @@
 		1F2CD87B1F2495CC0034D472 /* cinego */ = {
 			isa = PBXGroup;
 			children = (
+				1FA847781F4D218F000E9B81 /* ViewModels */,
 				1F635FB41F4708A4005A1135 /* DependencyRegistry */,
 				1F129BD31F2AE27600C6FFA7 /* Views */,
 				03B219481F25E8B8009F7B41 /* Repositories */,
@@ -277,6 +278,13 @@
 				1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */,
 			);
 			name = DependencyRegistry;
+			sourceTree = "<group>";
+		};
+		1FA847781F4D218F000E9B81 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		2EC77F671F256978003BAF20 /* Models */ = {
