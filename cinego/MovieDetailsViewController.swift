@@ -49,6 +49,17 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController : UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "SESSIONS"
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieSessions.count
     }
