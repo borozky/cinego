@@ -10,11 +10,15 @@ import UIKit
 
 class CinemaListTableVC: UITableViewController {
     
-    let tableViewCellID = "CinemaListTableViewCell"
-    
+    // TODO: Refactor into ViewModels
     var cinemaRepository: ICinemaRepository!
     var movieRepository: IMovieRepository!
     var cinemas: [Cinema] = []
+    
+    
+    let tableViewCellID = "CinemaListTableViewCell"
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,43 +28,42 @@ class CinemaListTableVC: UITableViewController {
     private func setupCinemas(){
         cinemas = cinemaRepository.getAllCinemas()
     }
-
 }
 
 
-// tableview cells
+// tableview
 extension CinemaListTableVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cinemas.count
+        return cinemas.count    // 4 cinemas
     }
     
     
+    // custom cell with tags
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cinema = cinemas[indexPath.row]
         let numUpcomingMovies: Int = movieRepository.getUpcomingMovies(fromCinema: cinema).count
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         
         let imageView = self.view.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(imageLiteralResourceName: cinema.images[0] )
-        
-        
         let titleLabel = self.view.viewWithTag(2) as! UILabel
-        titleLabel.text = cinema.name
-        
         let detailsLabel = self.view.viewWithTag(3) as! UILabel
+        
+        imageView.image = UIImage(imageLiteralResourceName: cinema.images[0] )
+        titleLabel.text = cinema.name
         detailsLabel.text = "\(String(numUpcomingMovies)) upcoming movies"
         
         return cell
     }
     
     
+    // to CinemaDetailsVC
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "openCinema", sender: nil)
     }
     
 }
+
 
 // segues
 extension CinemaListTableVC {

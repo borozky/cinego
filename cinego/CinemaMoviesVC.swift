@@ -10,17 +10,18 @@ import UIKit
 
 class CinemaMoviesVC: UIViewController {
 
-    let tableViewCellID = "CinemaMovieTableViewCell"
+    // TODO: Refactor into ViewModels
     var movies: [Movie]!
     var cinema: Cinema!
     
+    
+    let tableViewCellID = "CinemaMovieTableViewCell"
     @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 }
 
 
@@ -32,21 +33,22 @@ extension CinemaMoviesVC: UITableViewDataSource {
     }
     
     
+    // custom cell with 'tags'
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let movie = movies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         
         let imageView = self.view.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(imageLiteralResourceName: movie.images[0])
-        
         let textLabel = self.view.viewWithTag(2) as! UILabel
-        textLabel.text = movie.title
-        
         let detailsLabel = self.view.viewWithTag(3) as! UILabel
+        
+        imageView.image = UIImage(imageLiteralResourceName: movie.images[0])
+        textLabel.text = movie.title
         detailsLabel.text = "Released \(String(getReleaseYear(movie.releaseDate)))"
         
         return cell
     }
+    
     
     // helper method
     private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "dd MMMM yyyy") -> Int {
@@ -62,10 +64,11 @@ extension CinemaMoviesVC: UITableViewDataSource {
 // segues
 extension CinemaMoviesVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // to Movie Details Scene
         if segue.identifier == "openMovieDetailsFromCinemaMoviesVC" {
             let indexPath = tableView.indexPathForSelectedRow
             let selectedMovie = movies[(indexPath?.row)!]
-            
             let destinationVC = segue.destination as! MovieDetailsViewController
             destinationVC.movie = selectedMovie
             destinationVC.movieSessionRepository = MovieSessionRepository()

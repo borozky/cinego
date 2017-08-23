@@ -17,6 +17,8 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var orderTotalLabel: UILabel!
     
+    
+    // TODO: Put these in a view model
     var notification = "Your order has successfully been placed"
     var isSuccessfulOrder = true
     var orderSubTotal = 0.00
@@ -25,6 +27,7 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     var orderTotal = 0.00
     var paymentMethod = "Paypal"
     var bookings: [Booking] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +48,11 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    // 1st section is the order specifics, 2nd is about booked sessions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
@@ -61,6 +66,7 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    // currently there are 4 order details available for 1st section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 4 : bookings.count
     }
@@ -69,6 +75,7 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
+        // for order details
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID_1, for: indexPath)
             switch indexPath.row {
@@ -90,14 +97,14 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
         }
         
-        
+        // for booked sessions
         if indexPath.section == 1 {
             let booking = bookings[indexPath.row]
-            (cell.viewWithTag(1) as! UIImageView).image = UIImage(imageLiteralResourceName: (booking.movie?.images[0])!)
-            (cell.viewWithTag(2) as! UILabel).text = booking.movie?.title
-            let numTicketsStr = String(format: "%d tickets", booking.numTickets)
-            let sessionTimeStr = humaniseTime((booking.movieSession?.startTime)!)
-            let cinemaLocation = booking.movieSession?.cinema?.name
+            (cell.viewWithTag(1) as! UIImageView).image = UIImage(imageLiteralResourceName: booking.movieSession.movie.images[0])
+            (cell.viewWithTag(2) as! UILabel).text = booking.movieSession.movie.title
+            let numTicketsStr = String(format: "%d tickets", booking.tickets.count)
+            let sessionTimeStr = humaniseTime(booking.movieSession.startTime)
+            let cinemaLocation = booking.movieSession.cinema.name
             (cell.viewWithTag(2) as! UILabel).text = "\(numTicketsStr) | \(sessionTimeStr) | \(cinemaLocation)"
             return cell
         }
@@ -106,18 +113,10 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    private func humaniseTime(_ timeStr: String, _ format: String = "dd-MM-yyyy HH:mm:ss") -> String {
-        var returnStr = ""
-        
+    private func humaniseTime(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
-        
-        if let date = formatter.date(from: timeStr) {
-            formatter.dateFormat = "EEE dd MMM hh:mm aa"
-            returnStr = formatter.string(from: date)
-        }
-        
-        return returnStr
+        formatter.dateFormat = "EEE dd MMM hh:mm aa"
+        return formatter.string(from: date)
     }
     
 

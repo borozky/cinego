@@ -35,32 +35,24 @@ class MovieSessionRepository: IMovieSessionRepository {
             let cinema = getRandomCinema()
             let date = getRandomDate()  // dd-MM-yyyy HH:mm:ss
             
-            movieSessions.append(MovieSession(id: i, startTime: date, cinema: cinema, movieId: movie.id!))
+            movieSessions.append(MovieSession(id: String(i), startTime: date, cinema: cinema, movie: movie))
         }
     }
     
     
     func find(byId id: String) -> MovieSession? {
-        return movieSessions.filter {
-            return String($0.id ?? 0) == id
-        }.first ?? nil
+        return movieSessions.filter { $0.id == id }.first ?? nil
     }
     
-    
     func findAll(byMovie movie: Movie) -> [MovieSession] {
-        let filtered = movieSessions.filter {
-            return $0.movieId! == movie.id!
-        }
-        
+        let filtered = movieSessions.filter { $0.id == movie.id }
         return sort(filtered)
         
     }
     
     
     func findAll(byCinema cinema: Cinema) -> [MovieSession] {
-        return movieSessions.filter {
-            return cinema.id! == $0.cinema!.id!
-        }
+        return movieSessions.filter { cinema.id == $0.cinema.id }
     }
     
     
@@ -81,39 +73,25 @@ class MovieSessionRepository: IMovieSessionRepository {
     
     
     func getMovieSessions(byMovie movie: Movie) -> [MovieSession] {
-        let sessions = movieSessions.filter {
-            return $0.movieId == movie.id
-        }
+        let sessions = movieSessions.filter { $0.movie.id == movie.id }
         return sort(sessions)
     }
     
     
     func getMovieSessions(byCinema cinema: Cinema) -> [MovieSession] {
-        let sessions = movieSessions.filter {
-            return $0.cinema?.id == cinema.id
-        }
+        let sessions = movieSessions.filter { $0.cinema.id == cinema.id }
         return sort(sessions)
     }
     
     
     func getMovieSession(byId id: String) -> MovieSession? {
-        for movieSession in movieSessions {
-            if String(movieSession.id!) == id {
-                return movieSession
-            }
-        }
-        return nil
+        return movieSessions.filter { $0.id == id }.first ?? nil
     }
     
     
     func sort(_ movieSessions: [MovieSession]) -> [MovieSession]{
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        
         return movieSessions.sorted(by: { sessionA, sessionB -> Bool in
-            let dateA = formatter.date(from: sessionA.startTime!)!
-            let dateB = formatter.date(from: sessionB.startTime!)!
-            return dateA < dateB
+            return sessionA.startTime < sessionB.startTime
         })
     }
     
@@ -134,16 +112,16 @@ class MovieSessionRepository: IMovieSessionRepository {
         return movies![randomNumber]
     }
     
-    private func getRandomDate() -> String {
+    private func getRandomDate() -> Date {
         let randomDay = Int(arc4random_uniform(UInt32(28))) + 1
         let randomMonth = Int(arc4random_uniform(UInt32(12))) + 1
         let randomYear = Int(arc4random_uniform(UInt32(1))) + 2017
         let randomHour = Int(arc4random_uniform(UInt32(24)))
         let randomMinute = Int(arc4random_uniform(UInt32(60)))
-        
-        let randomDate = "\(NSString(format: "%02d", randomDay))-\(NSString(format: "%02d", randomMonth))-\(String(randomYear)) \(NSString(format: "%02d", randomHour)):\(NSString(format: "%02d", randomMinute)):00"
-        
-        return randomDate
+        let randomDateStr = "\(String(format: "%02d", randomDay))-\(String(format: "%02d", randomMonth))-\(String(randomYear)) \(String(format: "%02d", randomHour)):\(String(format: "%02d", randomMinute)):00"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        return formatter.date(from: randomDateStr)!
     }
     
 }

@@ -35,11 +35,7 @@ class CinemaInformationVC: UIViewController {
     private func setupCinemaInformation(){
         cinemaTitleLabel.text = cinema.name
         cinemaAddressLabel?.text = cinema.address
-        
-        if let numseatsStr = cinema.numSeats {
-            cinemaNumberOfSeatsLabel.text = "Seats: \(String(numseatsStr))"
-        }
-        
+        cinemaNumberOfSeatsLabel.text = "Seats: \(String(cinema.numSeats))"
         cinemaDetailsTextView.text = cinema.details
     }
     

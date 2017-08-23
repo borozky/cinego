@@ -74,26 +74,26 @@ class AccountTableVC: UITableViewController {
             return cell
         }
         
+        // upcoming movie bookings
         if indexPath.section == 1 {
-            let upcomingBooking = upcomingBookings[indexPath.row]
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
             let imageView = cell.viewWithTag(1) as! UIImageView
             let titleLabel = cell.viewWithTag(2) as! UILabel
             let detailsLabel = cell.viewWithTag(3) as! UILabel
             
-            imageView.image = UIImage(imageLiteralResourceName: (upcomingBooking.movie?.images [0])!)
-            titleLabel.text = upcomingBooking.movie?.title
-            
-            let humanizedTimeString = humanizeTime((upcomingBooking.movieSession?.startTime)!)
+            let upcomingBooking = upcomingBookings[indexPath.row]
+            imageView.image = UIImage(imageLiteralResourceName: upcomingBooking.movieSession.movie.images[0])
+            titleLabel.text = upcomingBooking.movieSession.movie.title
+            let humanizedTimeString = humanizeTime(upcomingBooking.movieSession.startTime)
             
             detailsLabel.text = humanizedTimeString
-            
-            
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
+            
             return cell
         }
         
+        // past movie bookings
         if indexPath.section == 2 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
             tableView.estimatedRowHeight = 44
@@ -105,18 +105,10 @@ class AccountTableVC: UITableViewController {
         
     }
     
-    private func humanizeTime(_ timeStr: String, _ format: String = "dd-MM-yyyy HH:mm:ss") -> String {
-        var returnStr = ""
-        
+    private func humanizeTime(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
-        
-        if let date = formatter.date(from: timeStr) {
-            formatter.dateFormat = "EEE dd MMM hh:mm aa"
-            returnStr = formatter.string(from: date)
-        }
-        
-        return returnStr
+        formatter.dateFormat = "EEE dd MMM hh:mm aa"
+        return formatter.string(from: date)
     }
     
     

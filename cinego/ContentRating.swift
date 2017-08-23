@@ -8,6 +8,13 @@
 
 import Foundation
 
-enum ContentRating{
-    case G, PG, MA15_PLUS, M, R18_PLUS, X18_PLUS, RC, NOT_RATED
+enum ContentRating: String {
+    case G = "G"
+    case PG = "PG"
+    case MA15_PLUS = "MA15+"
+    case M = "M"
+    case R18_PLUS = "R18+"
+    case X18_PLUS = "X18+"
+    case RC = "RC"
+    case NOT_RATED = "Not Rated"
 }

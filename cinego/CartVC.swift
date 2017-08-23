@@ -10,18 +10,26 @@ import UIKit
 
 class CartVC: UIViewController {
     
-    let tableViewCellID = "CartItemTableViewCell"
+    // TODO: Refactor into ViewModels
     var cartRepository: ICartRepository!
     var cartItems: [CartItem] = []
     var isViewEditing = false
+    
+    
+    let tableViewCellID = "CartItemTableViewCell"
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var cartTotalPriceLabel: UILabel!
     @IBOutlet weak var cartItemsTable: UITableView!
     @IBOutlet weak var checkoutButton: UIBarButtonItem!
+    
+    
+    // edit button onclick
     @IBAction func editButtonDidTapped(_ sender: Any) {
        cartItemsTable.isEditing = !cartItemsTable.isEditing
         editButton.title = cartItemsTable.isEditing ? "Done": "Edit"
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkoutButton.isEnabled = false
@@ -30,6 +38,7 @@ class CartVC: UIViewController {
         cartItemsTable.isEditing = false
     }
     
+    // ONAPPEAR: refresh the cart
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupCartTotalPrice()
@@ -47,29 +56,31 @@ class CartVC: UIViewController {
 }
 
 extension CartVC: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartItems.count
     }
     
-    
+    // custom cell with 'tags'
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cartItem = cartItems[indexPath.row]
-        let movie = cartItem.movie!
-        let movieSession = cartItem.movieSession!
-        let cinema = movieSession.cinema!
+        let movie = cartItem.movieSession.movie
+        let movieSession = cartItem.movieSession
+        let cinema = movieSession.cinema
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         
         let imageView = cell.viewWithTag(1) as! UIImageView
         let movieTitleLabel = cell.viewWithTag(2) as! UILabel
         let detailsLabel = cell.viewWithTag(3) as! UILabel
         
-        imageView.image = UIImage(imageLiteralResourceName: cartItem.movie!.images[0])
+        imageView.image = UIImage(imageLiteralResourceName: movie.images[0])
         movieTitleLabel.text = movie.title
-        detailsLabel.text = "\(String(cartItem.numTickets)) tickets | [Session Time] | \(cinema.name!)"
+        detailsLabel.text = "\(String(cartItem.numTickets)) tickets | [Session Time] | \(cinema.name)"
         return cell
     }
     
     
+    // ON DELETE cart items
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         print(indexPath.row)
         
@@ -91,18 +102,23 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
 
 
 extension CartVC {
+    
+    // the big amount label in Cart Scene
     func setupCartTotalPrice(){
         let totalPrice = cartRepository.getTotalPrice() + Double(cartRepository.getAll().count) * 5.0
-        let totalPriceStr = NSString(format: "%.2f", totalPrice)
-        cartTotalPriceLabel?.text = "$ \(String(totalPriceStr))"
+        let totalPriceStr = String(format: "%.2f", totalPrice)
+        cartTotalPriceLabel?.text = "$ \(totalPriceStr)"
     }
 }
 
+
+// segues
 extension CartVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // to MOVIE SESSION PAGE to update your cart items
         if segue.identifier == "openBookingDetailsFromCartPage" {
             let indexPath = cartItemsTable.indexPathForSelectedRow!
-            
             let selectedCartItem = cartItems[indexPath.row]
             let destinationVC = segue.destination as! BookingDetailsVC
             
@@ -112,6 +128,7 @@ extension CartVC {
             
         }
         
+        // to CHECKOUT PAGE
         else if segue.identifier == "openCheckout" {
             let checkoutVC = segue.destination as! CheckoutVC
             checkoutVC.cartItems = cartRepository.getAll()
@@ -127,19 +144,21 @@ extension CartVC {
     }
 }
 
+// HANDLE UPDATING cart items
 extension CartVC: BookingDetailsVCDelegate {
     func didBook(_ cartItem: CartItem) {
-        let movieId = cartItem.movie!.id!
-        let sessionId = cartItem.movieSession!.id!
+        let movieId = cartItem.movieSession.movie.id
+        let sessionId = cartItem.movieSession.id
         
         for i in 0..<cartItems.count {
-            guard cartItems[i].movie!.id! == movieId else {
+            guard cartItems[i].movieSession.movie.id == movieId else {
                 continue
             }
             
-            guard cartItems[i].movieSession!.id! == sessionId else {
+            guard cartItems[i].movieSession.id == sessionId else {
                 continue
             }
+            
             cartItems[i] = cartItem
         }
         

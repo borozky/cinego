@@ -10,17 +10,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // injected by AppDelegate
+    // TODO: Refactor with ViewModels
     var movieRepository: IMovieRepository!
     var cinemaRepository: ICinemaRepository!
-
     var upcomingMovies: [Movie] = []
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var upcomingMoviesCollectionView: UICollectionView!
     @IBOutlet weak var cinemaTheatersCollectionView: UICollectionView!
-    
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadHomeBannerSlider()
@@ -31,16 +31,20 @@ class HomeViewController: UIViewController {
     
     private func loadHomeBannerSlider() {
         let cinemas = cinemaRepository?.getAllCinemas()
+        
         if let _cinemas = cinemas {
             for cinema in _cinemas {
                 if cinema.images.count > 0 {
                     homeBannerSlider.addImage(UIImage(imageLiteralResourceName: cinema.images[0]))
                 }
             }
+            
+        // default image
         } else {
             homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
+    
     
     private func loadUpcomingMovies(){
         upcomingMovies = (movieRepository?.getUpcomingMovies())!
@@ -49,14 +53,16 @@ class HomeViewController: UIViewController {
 
 
 
-extension HomeViewController : UICollectionViewDataSource {
-    
+extension HomeViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        // UPCOMING MOVIES section - >5 cinemas
         if collectionView == self.upcomingMoviesCollectionView {
             return (movieRepository?.getUpcomingMovies().count)!
         }
         
+        // CINEMA THEATERS section - 4 cinemas
         if collectionView == self.cinemaTheatersCollectionView {
             return (cinemaRepository?.getAllCinemas().count)!
         }
@@ -67,7 +73,7 @@ extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
+        // cells for UPCOMING MOVIES
         if collectionView == self.upcomingMoviesCollectionView {
             let upcomingMovie = upcomingMovies[indexPath.row]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
@@ -78,6 +84,7 @@ extension HomeViewController : UICollectionViewDataSource {
             return cell
         }
         
+        // cell for CINEMA THEATER
         if collectionView == self.cinemaTheatersCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CinemaCollectionViewCell", for: indexPath) as! CinemaCollectionViewCell
             let cinema = cinemaRepository?.getAllCinemas()[indexPath.row]
@@ -89,8 +96,10 @@ extension HomeViewController : UICollectionViewDataSource {
             return cell
         }
         
+        // some default cell
         return UICollectionViewCell()
     }
+    
     
     // helper method
     private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "dd MMMM yyyy") -> Int {
@@ -107,27 +116,28 @@ extension HomeViewController : UICollectionViewDataSource {
 extension HomeViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // to Movie Details Page
         if segue.identifier == "openMovieDetailsFromHomepage" {
             let destinationVC = segue.destination as! MovieDetailsViewController
             let cell = sender as! UICollectionViewCell
             let indexPath = self.upcomingMoviesCollectionView.indexPath(for: cell)
             let selectedData = upcomingMovies[(indexPath?.row)!]
             let container = SimpleIOCContainer.instance
-            
             destinationVC.movie = selectedData
-            destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository.self)
+            destinationVC.movieSessionRepository = container.resolve(IMovieSessionRepository.self) // DI w/ IOC
         }
             
+        // to Movies By Cinema page
         else if segue.identifier == "openCinemaFromHome"{
-            
             let selectedCinemaCollectionViewCell = sender as! CinemaCollectionViewCell
-           
             let cinemaDetailsVC = segue.destination as! CinemaDetailsVC
             cinemaDetailsVC.movieRepository = movieRepository
             cinemaDetailsVC.cinemaRepository = cinemaRepository
             cinemaDetailsVC.cinema = selectedCinemaCollectionViewCell.cinema
             
         }
+        
     }
     
 

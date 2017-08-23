@@ -18,6 +18,8 @@ protocol ICartRepository {
 }
 
 class CartRepository: ICartRepository {
+    
+    // singleton
     static var cart: [CartItem] = []
     
     func addToCart(cartItem: CartItem) {
@@ -25,11 +27,7 @@ class CartRepository: ICartRepository {
     }
     
     func getTotalPrice() -> Double {
-        var totalPrice = 0.00
-        for cartItem in CartRepository.cart {
-            totalPrice += cartItem.calculateTotal()
-        }
-        return totalPrice
+        return CartRepository.cart.reduce(0.0) { $0 + $1.totalPrice }
     }
     
     func getAll() -> [CartItem] {
@@ -42,19 +40,17 @@ class CartRepository: ICartRepository {
     
     func updateCart(_ cartItem: CartItem) -> CartItem? {
         for (key, item) in CartRepository.cart.enumerated() {
-            guard item.movie?.id == cartItem.movie?.id else {
+            guard item.movieSession.movie.id == cartItem.movieSession.movie.id else {
                 continue
             }
             
-            guard cartItem.movieSession?.id == item.movieSession?.id else {
+            guard cartItem.movieSession.id == item.movieSession.id else {
                 continue
             }
             
-            // update cart item
             CartRepository.cart[key] = cartItem
             return cartItem
         }
-        
         // failed to update
         return nil
     }

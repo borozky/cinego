@@ -9,11 +9,14 @@
 import UIKit
 
 class MovieAdditionalDetailsTableVC: UITableViewController {
+    
+    // TODO: Refactor into ViewModels
+    var movie: Movie!
+    var movieAdditionalDetails: [(String, String)] = []
 
     private let tableViewCellIDs: [String] = ["MovieSummaryTableViewCell", "MovieOverviewTableViewCell", "MovieAdditionalDetailTableViewCell"]
     
-    var movie: Movie!
-    var movieAdditionalDetails: [(String, String)] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,7 @@ class MovieAdditionalDetailsTableVC: UITableViewController {
         return 0
     }
     
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -66,6 +70,7 @@ class MovieAdditionalDetailsTableVC: UITableViewController {
         
         var cell = UITableViewCell()
         
+        // movie details with banner
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[0], for: indexPath)
             tableView.estimatedRowHeight = 170
@@ -86,22 +91,25 @@ class MovieAdditionalDetailsTableVC: UITableViewController {
             releasedYearLabel.text = "Released: \(String(year))"
             
             durationLabel.text = "Duration: \(String(movie.duration)) minutes"
-            ratingLabel.text = "Rating: \(movie.audienceType ?? "PG")"
+            ratingLabel.text = "Rating: \(movie.contentRating.rawValue)"
             
             return cell
         }
         
+        // movie excerpt/summary
         if indexPath.section == 1 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
             
             let detailsLabel = cell.viewWithTag(6) as! UILabel
-            detailsLabel.text = movie.details ?? ""
+            detailsLabel.text = movie.details
             
             return cell
         }
         
+        
+        // additional movie details
         if indexPath.section > 1 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[2], for: indexPath)
             tableView.estimatedRowHeight = 66

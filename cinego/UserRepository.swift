@@ -34,26 +34,25 @@ class UserRepository: IUserRepository {
                                  ]
 
     func find(byId id: Int) -> User? {
-        return users.filter { $0.id == String(id) }.first
+        return users.filter { $0.id == String(id) }.first ?? nil
     }
     
     func find(byUsername username: String) -> User? {
-        return users.filter { $0.username == username }.first
+        return users.filter { $0.username == username }.first ?? nil
 
     }
     
     func find(byEmail email: String) -> User? {
-        return users.filter { $0.email == email }.first
+        return users.filter { $0.email == email }.first ?? nil
     }
     
     func create(user: User) -> User? {
         let foundUserByUsername = find(byUsername: user.username)
-        
         if foundUserByUsername == nil {
             users.append(user)
+            user.id = String(users.count)
             return user
         }
-        
         return nil
     }
     
@@ -65,8 +64,6 @@ class UserRepository: IUserRepository {
             }
         }
         return nil
-        
-        
     }
     
     func delete(user: User) -> Bool {

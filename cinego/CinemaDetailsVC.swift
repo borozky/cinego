@@ -10,14 +10,18 @@ import UIKit
 
 class CinemaDetailsVC: UIViewController {
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
+    // TODO: Refactor into ViewModels
     var cinemaRepository: ICinemaRepository!
     var movieRepository: IMovieRepository!
-    
     var cinema: Cinema!
     
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    
+    // This view controller will ViewController for 
+    // - List of movies of current cinema
+    // - Current cinema information
     lazy var cinemaMoviesVC: CinemaMoviesVC = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CinemaMoviesVC") as! CinemaMoviesVC
@@ -28,6 +32,9 @@ class CinemaDetailsVC: UIViewController {
     }()
     
     
+    // This view controller will ViewController for
+    // - List of movies of current cinema (lazy var cinemaMoviesVC)
+    // - Current cinema information (lazy var cinemaInformationVC)
     lazy var cinemaInformationVC: CinemaInformationVC = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CinemaInformationVC") as! CinemaInformationVC
@@ -43,20 +50,19 @@ class CinemaDetailsVC: UIViewController {
     }
     
     
-    func setupView(){
+    private func setupView(){
         setupSegmentedControl()
         updateView()
     }
     
     
-    func updateView(){
+    private func updateView(){
         cinemaMoviesVC.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
         cinemaInformationVC.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
-        
     }
     
     
-    func setupSegmentedControl(){
+    private func setupSegmentedControl(){
         segmentedControl.removeAllSegments()
         segmentedControl.insertSegment(withTitle: "Movies", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Details", at: 1, animated: false)

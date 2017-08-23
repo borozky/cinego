@@ -16,18 +16,22 @@ class SeatsCollectionVC: UICollectionViewController {
     
     weak var delegate: SeatCollectionVCDelegate?
     
-    let sections = [4,6,6,4]
-    let rowNumbers: [Character] = ["A", "B", "C", "D"]
-    var seatMatrix: [[Seat]] = [[]]
+    // TODO: Put these in a ViewModel
+    let sections = [4,6,6,4]                            // 4 sections, 1st section has 4 columns, 2nd one with 6 columns, ...
+    let rowNumbers: [Character] = ["A", "B", "C", "D"]  // 4 rows, A is nearest on the front screen
+    var seatMatrix: [[Seat]] = [[]]                     // seating arrangement per columns
     var selectedSeats: [Seat] = []
     var numTickets = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSeatMatrix()
     }
     
-    
+    // in section arranged as 4,6,6,4 and rows as A,B,C,D,E
+    // the first section will have 4 columns and 5 rows = 20 seats,
+    // the second section will have 6 columns and 5 rows = 30 seats, ...
     func setupSeatMatrix(){
         var currentID = 1
         var startingColumnNumber = 1
@@ -56,6 +60,7 @@ class SeatsCollectionVC: UICollectionViewController {
         return seatMatrix[section].count
     }
 
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let seat = seatMatrix[indexPath.section][indexPath.row]
@@ -128,6 +133,10 @@ class SeatsCollectionVC: UICollectionViewController {
 
 
 extension SeatsCollectionVC: UICollectionViewDelegateFlowLayout {
+    
+    // cell are rendered downwards per column, scrolls horizontally
+    // seat spacing is normally 4pt left and right
+    // but sections are spaced out to one another by 24pt (4pt left, 20pt right)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         let screenHeight = collectionView.frame.height

@@ -14,37 +14,36 @@ protocol BookingDetailsVCDelegate: class {
 
 class BookingDetailsVC: UIViewController {
     
-    let tableViewCellID = "SelectedSeatsTableViewCell"
     
-    weak var delegate: BookingDetailsVCDelegate?
+    // TODO: These data shoul be in a ViewModel
     var cartRepository: ICartRepository!
     var cartItem: CartItem?
-    
     var movie: Movie!
     var movieSession: MovieSession!
     var numTickets = 0
     var maxNumberOfTickets = 40
     var selectedSeats: [Seat] = []
     var originalSeats: [Seat] = []
-    
     var removedSeats: [Seat] = []
-    
     var fromCart = false
+    
+    
+    let tableViewCellID = "SelectedSeatsTableViewCell"
+    weak var delegate: BookingDetailsVCDelegate?
     
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieReleaseDateLabel: UILabel!
     @IBOutlet weak var movieBannerImageView: UIImageView!
     @IBOutlet weak var bookToSessionButton: UIButton!
-    
     @IBOutlet weak var cinemaLocationLabel: UILabel!
     @IBOutlet weak var cinemaAddressLabel: UILabel!
     @IBOutlet weak var movieSessionStartLabel: UILabel!
-    
     @IBOutlet weak var ticketQuantityLabel: UILabel!
     @IBOutlet weak var ticketQuantityStepper: UIStepper!
-    
     @IBOutlet weak var numSeatsTableView: UITableView!
     
+    
+    // change tickets and num of seats remaining
     @IBAction func ticketQuantityStepperDidValueChanged(_ sender: UIStepper) {
         let val = Int(sender.value)
         changeNumTickets(to: val)
@@ -52,8 +51,13 @@ class BookingDetailsVC: UIViewController {
     }
     
     
+    // book to session OR update your cart
     @IBAction func bookToSessionButtonDidTap(_ sender: Any) {
-        book(toSession: movieSession!)
+        if cartItem != nil {
+            updateBooking()
+        } else {
+            book(toSession: movieSession!)
+        }
     }
     
     
@@ -75,16 +79,14 @@ class BookingDetailsVC: UIViewController {
         numSeatsTableView.reloadData()
     }
     
-    // MARK: Helper Methods
     private func setupData(){
         if let cartItem = cartItem {
-            movie = cartItem.movie
+            movie = cartItem.movieSession.movie
             movieSession = cartItem.movieSession
             numTickets = cartItem.numTickets
             originalSeats = selectedSeats
         }
     }
-    
     
     private func setupMovieInformation(){
         movieTitleLabel.text = movie?.title
@@ -94,9 +96,9 @@ class BookingDetailsVC: UIViewController {
     
     
     private func setupMovieSessionInformation(){
-        cinemaLocationLabel.text = movieSession.cinema?.name ?? ""
-        cinemaAddressLabel.text = movieSession.cinema?.address ?? ""
-        movieSessionStartLabel.text = humaniseTime((movieSession?.startTime)!)
+        cinemaLocationLabel.text = movieSession.cinema.name
+        cinemaAddressLabel.text = movieSession.cinema.address
+        movieSessionStartLabel.text = humaniseTime(movieSession.startTime)
     }
     
     
@@ -116,27 +118,22 @@ class BookingDetailsVC: UIViewController {
         
         if numTickets > 0 {
             bookToSessionButton.isEnabled = true
-            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0)
+            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0)   // strong purple
         } else {
             bookToSessionButton.isEnabled = false
-            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)
+            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)   // light purple
         }
     }
     
     
-    private func humaniseTime(_ timeStr: String, _ format: String = "dd-MM-yyyy HH:mm:ss") -> String {
-        var returnStr = ""
-        
+    // Date() -> "Mon 28 Aug 09:30 am
+    private func humaniseTime(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
-        
-        if let date = formatter.date(from: timeStr) {
-            formatter.dateFormat = "EEE dd MMM hh:mm aa"
-            returnStr = formatter.string(from: date)
-        }
-        
-        return returnStr
+        formatter.dateFormat = "EEE dd MMM hh:mm aa"
+        return formatter.string(from: date)
     }
+    
+    
     
     
     
@@ -152,6 +149,7 @@ extension BookingDetailsVC : UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
+    // cell with type of 'subtitle'
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = "Seats"
@@ -162,6 +160,8 @@ extension BookingDetailsVC : UITableViewDataSource, UITableViewDelegate {
     
 }
 
+
+// runs after you selected your seats
 extension BookingDetailsVC: SeatCollectionVCDelegate {
     
     func didSelectSeats(_ seats: [Seat]) {
@@ -171,6 +171,12 @@ extension BookingDetailsVC: SeatCollectionVCDelegate {
         numSeatsTableView.reloadData()
     }
     
+}
+
+// segues
+extension BookingDetailsVC {
+    
+    // to SELECT SEATS page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openSeatCollectionVCFromBookingDetailsVC" {
             let destinationVC = segue.destination as! SeatsCollectionVC
@@ -182,24 +188,21 @@ extension BookingDetailsVC: SeatCollectionVCDelegate {
 }
 
 
+// book, update or buy more tickets
 extension BookingDetailsVC {
 
     func book(toSession session: MovieSession) {
-        if let cartItem = cartItem {
-            cartItem.seats = selectedSeats
-            cartItem.numTickets = numTickets
-            
-            guard cartRepository.updateCart(cartItem) != nil else {
-                fatalError("Failed to add to cart")
-            }
-            
-            delegate?.didBook(cartItem)
-            goBack()
-        } else {
-            let cartItem = CartItem(movie: movie!, movieSession: movieSession!, numTickets: numTickets, seatNumbers: [1,2,3])
-            cartRepository.addToCart(cartItem: cartItem)
-            delegate?.didBook(cartItem)
-            goBack()
+        let cartItem = CartItem(movieSession: movieSession, numTickets: numTickets, seats: selectedSeats)
+        cartRepository.addToCart(cartItem: cartItem)
+        delegate?.didBook(cartItem)
+        goBack()
+    }
+    
+    func updateBooking(){
+        cartItem!.seats = selectedSeats
+        cartItem!.numTickets = numTickets
+        guard cartRepository.updateCart(cartItem!) != nil else {
+            fatalError("Failed to add to cart")
         }
     }
     

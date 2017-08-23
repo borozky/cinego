@@ -8,16 +8,22 @@
 
 import Foundation
 
-class Ticket {
-    
-    let ticketNumber: Int?
-    let seatNumber: Int?
-    let price: Double?
-    
-    init(ticketNumber: Int, seatNumber: Int, price: Double = 20.00){
-        self.ticketNumber = ticketNumber
-        self.seatNumber = seatNumber
-        self.price = price
-    }
-    
+//class Ticket {
+//    
+//    let ticketNumber: Int?
+//    let seatNumber: Int?
+//    let price: Double?
+//    
+//    init(ticketNumber: Int, seatNumber: Int, price: Double = 20.00){
+//        self.ticketNumber = ticketNumber
+//        self.seatNumber = seatNumber
+//        self.price = price
+//    }
+//    
+//}
+
+struct Ticket {
+    let id: String
+    let price: Double
+    let seats: Seat
 }
