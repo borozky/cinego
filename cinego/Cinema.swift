@@ -41,4 +41,12 @@ struct Cinema {
             return arrangement
         }
     }
+    
+    func numberOfSeatsOfType(_ seatType: SeatStatus) -> Int {
+        var total = 0
+        for col in seatingArrangement {
+            total += col.reduce(0){ $0.1.status == seatType ? 1 : 0 }
+        }
+        return total
+    }
 }
