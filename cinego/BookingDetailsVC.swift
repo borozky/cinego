@@ -20,105 +20,64 @@ class BookingDetailsVC: UIViewController {
     var cartItem: CartItem?
     var movie: Movie!
     var movieSession: MovieSession!
-    var numTickets = 0
-    var maxNumberOfTickets = 40
     var selectedSeats: [Seat] = []
-    var originalSeats: [Seat] = []
-    var removedSeats: [Seat] = []
+    var numTickets: Int {
+        return selectedSeats.count
+    }
+    var cinema: Cinema {
+        return movieSession.cinema
+    }
     var fromCart: Bool {
        return cartItem != nil
     }
     
-    let tableViewCellID = "SelectedSeatsTableViewCell"
     weak var delegate: BookingDetailsVCDelegate?
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var movieReleaseDateLabel: UILabel!
+    @IBOutlet weak var movieReleasedYearLabel: UILabel!
+    @IBOutlet weak var movieDurationLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieBannerImageView: UIImageView!
     @IBOutlet weak var bookToSessionButton: UIButton!
     @IBOutlet weak var cinemaLocationLabel: UILabel!
     @IBOutlet weak var cinemaAddressLabel: UILabel!
     @IBOutlet weak var movieSessionStartLabel: UILabel!
-    @IBOutlet weak var ticketQuantityLabel: UILabel!
-    @IBOutlet weak var ticketQuantityStepper: UIStepper!
-    @IBOutlet weak var numSeatsTableView: UITableView!
     
-    
-    // change tickets and num of seats remaining
-    @IBAction func ticketQuantityStepperDidValueChanged(_ sender: UIStepper) {
-        let val = Int(sender.value)
-        changeNumTickets(to: val)
-        updateSeatsSelectedLabel(to: val)
-    }
-    
-    
-    // book to session OR update your cart
-    @IBAction func bookToSessionButtonDidTap(_ sender: Any) {
-        if cartItem != nil {
-            updateBooking()
-        } else {
-            book(toSession: movieSession!)
-        }
-    }
+    @IBOutlet weak var bookingPricePreviewLabel: UILabel!
+    @IBOutlet weak var bookingPriceCalculationLabel: UILabel!
+    @IBOutlet weak var seatingArrangementCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupData()
-        setupMovieInformation()
-        setupMovieSessionInformation()
-        setupTickets()
-        setupButton()
-        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
-    }
-    
-    private func updateSeatsSelectedLabel(to: Int){
-        numSeatsTableView.reloadData()
-    }
-    
-    private func setupData(){
+        seatingArrangementCollectionView.dataSource = self
+        seatingArrangementCollectionView.delegate = self
+        
+        
+        // setup data
         if let cartItem = cartItem {
             movie = cartItem.movieSession.movie
             movieSession = cartItem.movieSession
-            numTickets = cartItem.numTickets
-            originalSeats = cartItem.seats
-            selectedSeats = originalSeats
-            
+            selectedSeats = cartItem.seats
         }
-    }
-    
-    private func setupMovieInformation(){
+        
+        // setup movie
         movieTitleLabel.text = movie?.title
-        movieReleaseDateLabel.text = "Released: \(movie.releaseDate )"
+        movieReleasedYearLabel.text = "Released: \(movie.releaseDate )"
         movieBannerImageView.image = UIImage(imageLiteralResourceName: (movie?.images[0])!)
-    }
-    
-    
-    private func setupMovieSessionInformation(){
+        
+        
+        // setup movie session details
         cinemaLocationLabel.text = movieSession.cinema.name
         cinemaAddressLabel.text = movieSession.cinema.address
         movieSessionStartLabel.text = humaniseTime(movieSession.startTime)
-    }
-    
-    
-    private func setupTickets(){
-        ticketQuantityStepper.stepValue = Double(1)
-        ticketQuantityStepper.minimumValue = Double(0)
-        ticketQuantityStepper.maximumValue = Double(maxNumberOfTickets)
-        ticketQuantityStepper.value = Double(numTickets)
-        ticketQuantityLabel.text = String(Int(ticketQuantityStepper.value))
-    }
-    
-    
-    private func setupButton(){
+        
+        
+        // setup book button
         if cartItem != nil {
             bookToSessionButton.titleLabel?.text = "Update"
         }
-        
         if numTickets > 0 {
             bookToSessionButton.isEnabled = true
             bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0)   // strong purple
@@ -126,8 +85,13 @@ class BookingDetailsVC: UIViewController {
             bookToSessionButton.isEnabled = false
             bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)   // light purple
         }
+        
+        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        bookToSessionButton.setTitle(cartItem != nil ? "Update" : "Book", for: .normal)
+    }
     
     // Date() -> "Mon 28 Aug 09:30 am
     private func humaniseTime(_ date: Date) -> String {
@@ -136,60 +100,121 @@ class BookingDetailsVC: UIViewController {
         return formatter.string(from: date)
     }
     
-    
-    
-    
-    
 }
 
-extension BookingDetailsVC : UITableViewDataSource, UITableViewDelegate {
+extension BookingDetailsVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return movieSession.cinema.seatingArrangement.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movieSession.cinema.seatingArrangement[section].count
     }
     
-    // cell with type of 'subtitle'
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
-        cell.textLabel?.text = "Seats"
-        cell.detailTextLabel?.text = "\(String(selectedSeats.count))/\(String(numTickets)) seats selected"
-        cell.imageView?.image = #imageLiteral(resourceName: "cinema-seat")
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let seat = cinema.seatingArrangement[indexPath.section][indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeatCollectionViewCell", for: indexPath) as! SeatCollectionViewCell
+        let foundSeat = selectedSeats.filter { $0.id == seat.id }
+        
+        cell.seat = foundSeat.count > 0 ? foundSeat.first : seat
+        
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0).cgColor
+        cell.layer.cornerRadius = cell.frame.size.width / 2
+        cell.clipsToBounds = true
+        
+        switch cell.seat.status {
+        case .AVAILABLE: cell.layer.backgroundColor = UIColor.white.cgColor
+        case .SELECTED: cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
+        default: cell.layer.backgroundColor = UIColor.darkGray.cgColor
+        }
+        
+        let label = cell.viewWithTag(1) as! UILabel
+        label.text = "\(String(cell.seat.rowNumber))\(String(cell.seat.colNumber))"
+        
         return cell
     }
     
-}
-
-
-// runs after you selected your seats
-extension BookingDetailsVC: SeatCollectionVCDelegate {
-    
-    func didSelectSeats(_ seats: [Seat]) {
-        print("Did select seats")
-        originalSeats = seats
-        selectedSeats = originalSeats
-        numSeatsTableView.reloadData()
-    }
-    
-}
-
-// segues
-extension BookingDetailsVC {
-    
-    // to SELECT SEATS page
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openSeatCollectionVCFromBookingDetailsVC" {
-            let destinationVC = segue.destination as! SeatsCollectionVC
-            destinationVC.delegate = self
-            destinationVC.selectedSeats = selectedSeats
-            destinationVC.numTickets = numTickets
-            destinationVC.cinema = movieSession.cinema
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! SeatCollectionViewCell
+        let label = cell.viewWithTag(1) as! UILabel
+        
+        if cell.seat.status == .RESERVED {
+            return
+        }
+        if cell.seat.status == .AVAILABLE {
+            
+            if selectedSeats.count >= numTickets {
+                return
+            }
+            
+            cell.seat.status = .SELECTED
+            selectedSeats.append(cell.seat)
+            cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
+            let label = cell.viewWithTag(1) as! UILabel
+            label.textColor = UIColor.white
+            return
+        }
+        
+        if cell.seat.status == .SELECTED {
+            
+            // remove a seat from selectedSeats[],
+            // that is when seatIDs match, remove that item
+            self.selectedSeats = self.selectedSeats.filter {
+                return $0.id != cell.seat.id
+            }
+            
+            cell.seat.status = .AVAILABLE
+            cell.layer.backgroundColor = UIColor.white.cgColor
+            label.textColor = UIColor.darkGray
+            
+            return
         }
     }
+    
 }
+
+extension BookingDetailsVC: UICollectionViewDelegateFlowLayout {
+    // cell are rendered downwards per column, scrolls horizontally
+    // seat spacing is normally 4pt left and right
+    // but sections are spaced out to one another by 24pt (4pt left, 20pt right)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        let topSpacing = 10.0
+        
+        if collectionView.numberOfItems(inSection: section) > 0 {
+            
+            // for sections [3,4,4,5,4] the firstColumnsAfterLastColumns will be cols 4,8,12,17
+            // columns 1 and 19 are not included because they are first and last of all columns
+            /*
+             [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+             [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+             [-][-][-] 20 [-][-][-][-] 20 [-][-][-][-] 20 [-][-][-][-][-] 20 [-][-][-]
+             [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+             [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+             ^               ^               ^                  ^
+             
+             tableview's section 0 is invisible.
+             */
+            var firstColumnsAfterLastColumns: [Int] = []
+            for i in 0..<cinema.seatMatrix.count {
+                let firstColumnAfterLastColumns = cinema.seatMatrix[0...i].reduce(0){ $0 + $1 }
+                firstColumnsAfterLastColumns.append(firstColumnAfterLastColumns)
+            }
+            
+            if firstColumnsAfterLastColumns.contains(section) {
+                return UIEdgeInsets(top: CGFloat(topSpacing), left: 20, bottom: 0, right: 4)
+            }
+        }
+        
+        return UIEdgeInsets(top: CGFloat(topSpacing), left: 4, bottom: 0, right: 4)
+    }
+}
+
 
 
 // book, update or buy more tickets
@@ -209,24 +234,6 @@ extension BookingDetailsVC {
             fatalError("Failed to add to cart")
         }
         goBack()
-    }
-    
-    func changeNumTickets(to qty: Int){
-        numTickets = qty
-        ticketQuantityLabel.text = String(numTickets)
-        
-        if numTickets > 0 && numTickets <= maxNumberOfTickets {
-            bookToSessionButton.isEnabled = true
-            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0)
-        } else {
-            bookToSessionButton.isEnabled = false
-            bookToSessionButton.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5)
-        }
-        
-        if numTickets < selectedSeats.count {
-            self.selectedSeats = Array(originalSeats[0..<numTickets])
-        }
-        
     }
     
     func goBack(){

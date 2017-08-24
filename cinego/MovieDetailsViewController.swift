@@ -14,22 +14,39 @@ class MovieDetailsViewController: UIViewController {
     var movieSessionRepository: IMovieSessionRepository!
     var movie: Movie!
     var movieSessions: [MovieSession] = []
-    
+    var movieSessionsByCinema: [(Cinema, [MovieSession])] {
+        var _movieSessionsByCinema: [(Cinema, [MovieSession])] = []
+        let cinemas = movieSessions.map {$0.cinema}
+        var _cinemas: [Cinema] = []
+        for cinema in cinemas {
+            let exists = _cinemas.contains(where: { $0.id == cinema.id })
+            if exists {
+                continue
+            }
+            _cinemas.append(cinema)
+        }
+        
+        for cinema in _cinemas {
+            let sessions = movieSessions.filter{ $0.cinema.id == cinema.id }
+            _movieSessionsByCinema.append((cinema, sessions))
+        }
+        
+        return _movieSessionsByCinema
+    }
     
     let tableViewCellID = "MovieSessionTableViewCell"
+    @IBOutlet weak var movieBackgroundImageView: UIImageView!
     @IBOutlet weak var movieBannerImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieReleaseDateLabel: UILabel!
     @IBOutlet weak var movieDurationLabel: UILabel!
     @IBOutlet weak var movieAudienceTypeLabel: UILabel!
     @IBOutlet weak var movieSessionsTableView: UITableView!
-    
-    
+    @IBOutlet weak var movieExcerptLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMovie()
-        setupMovieSessions()
     }
 
     
@@ -39,11 +56,8 @@ class MovieDetailsViewController: UIViewController {
         movieReleaseDateLabel.text = "Released: \(movie.releaseDate)"
         movieDurationLabel.text = "Duration \(String(movie.duration)) minutes"
         movieAudienceTypeLabel.text = movie.contentRating.rawValue
-        
-    }
-    
-    private func setupMovieSessions(){
-        movieSessions = movieSessionRepository!.getMovieSessions(byMovie: movie!)
+        movieExcerptLabel.text = movie.details
+        movieBackgroundImageView.image = UIImage(imageLiteralResourceName: movie.images[0])
     }
     
 }
@@ -52,28 +66,26 @@ class MovieDetailsViewController: UIViewController {
 extension MovieDetailsViewController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return movieSessionsByCinema.count
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "SESSIONS"
-        }
-        return nil
+        return "\(movieSessionsByCinema[section].0.name.uppercased()) MOVIE PLAZA THEATER"
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieSessions.count
+        return movieSessionsByCinema[section].1.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let movieSessions = movieSessionsByCinema[indexPath.section].1
         let movieSession = movieSessions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = humaniseTime(movieSession.startTime)
-        cell.detailTextLabel?.text = movieSession.cinema.name
+        cell.detailTextLabel?.text = String(format: "%d seats available", movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
         return cell
     }
     
@@ -106,12 +118,6 @@ extension MovieDetailsViewController {
             destinationVC.cartRepository = cartRepository
             destinationVC.delegate = self
             destinationVC.cartItem = cartRepository.findCartItem(byMovieSession: selectedSession)
-        }
-        
-        // to Movie Additional Details
-        else if segue.identifier == "openMovieAdditionalDetailsFromMovieDetailsPage" {
-            let movieAdditionalDetailsTableVC = segue.destination as! MovieAdditionalDetailsTableVC
-            movieAdditionalDetailsTableVC.movie = movie!
         }
     }
     

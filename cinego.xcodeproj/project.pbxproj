@@ -31,7 +31,6 @@
 		1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2CD8871F2495CC0034D472 /* LaunchScreen.storyboard */; };
 		1F2CD8941F2495CC0034D472 /* cinegoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD8931F2495CC0034D472 /* cinegoTests.swift */; };
 		1F2CD89F1F2495CC0034D472 /* cinegoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD89E1F2495CC0034D472 /* cinegoUITests.swift */; };
-		1F346F901F37199500554AAE /* MovieAdditionalDetailsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F346F8F1F37199500554AAE /* MovieAdditionalDetailsTableVC.swift */; };
 		1F3510CE1F3174C5003AE4B5 /* CinemaListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3510CD1F3174C5003AE4B5 /* CinemaListTableVC.swift */; };
 		1F3510D01F31791C003AE4B5 /* CinemaInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3510CF1F31791C003AE4B5 /* CinemaInformationVC.swift */; };
 		1F3DC9AE1F34CDC1008C4313 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DC9AD1F34CDC1008C4313 /* CartItem.swift */; };
@@ -56,6 +55,7 @@
 		1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D11F47AFF900D352FB /* Seat.swift */; };
 		1FCDD9D41F47B31C00D352FB /* SeatsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D31F47B31C00D352FB /* SeatsCollectionVC.swift */; };
 		1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */; };
+		1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */; };
 		2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */; };
 		2E3D2AC81F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D2AC71F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift */; };
 		2E985CAD1F4A4776004F2360 /* HomePageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */; };
@@ -112,7 +112,6 @@
 		1F2CD89A1F2495CC0034D472 /* cinegoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cinegoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2CD89E1F2495CC0034D472 /* cinegoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cinegoUITests.swift; sourceTree = "<group>"; };
 		1F2CD8A01F2495CC0034D472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F346F8F1F37199500554AAE /* MovieAdditionalDetailsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieAdditionalDetailsTableVC.swift; sourceTree = "<group>"; };
 		1F3510CD1F3174C5003AE4B5 /* CinemaListTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaListTableVC.swift; sourceTree = "<group>"; };
 		1F3510CF1F31791C003AE4B5 /* CinemaInformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaInformationVC.swift; sourceTree = "<group>"; };
 		1F3DC9AD1F34CDC1008C4313 /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		1FCDD9D11F47AFF900D352FB /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		1FCDD9D31F47B31C00D352FB /* SeatsCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatsCollectionVC.swift; sourceTree = "<group>"; };
 		1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
+		1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageMovieSectionsTableViewCell.swift; sourceTree = "<group>"; };
 		2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableVC.swift; sourceTree = "<group>"; };
 		2E3D2AC71F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITests.swift; sourceTree = "<group>"; };
@@ -184,7 +184,6 @@
 				1F10EC7D1F35381C00283B8C /* BookingDetailsVC.swift */,
 				1F10EC7F1F3538A700283B8C /* CheckoutVC.swift */,
 				1F10EC811F35393500283B8C /* OrderSummaryVC.swift */,
-				1F346F8F1F37199500554AAE /* MovieAdditionalDetailsTableVC.swift */,
 				2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */,
 				1FCDD9D31F47B31C00D352FB /* SeatsCollectionVC.swift */,
 				03D68A001F4E56D100192877 /* LoginVC.swift */,
@@ -219,6 +218,7 @@
 				2E3D2AC71F2E9EA8006CBB5D /* MoviesItemCollectionViewCell.swift */,
 				1F41BA451F34C7AE003CFF7B /* PriceBanner.swift */,
 				1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */,
+				1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -485,6 +485,7 @@
 				2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */,
 				1F5707501F3EABBA00EDFCF6 /* CinemaRepository.swift in Sources */,
 				1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */,
+				1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */,
 				1F3DC9AE1F34CDC1008C4313 /* CartItem.swift in Sources */,
 				1F41BA461F34C7AE003CFF7B /* PriceBanner.swift in Sources */,
 				2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */,
@@ -501,7 +502,6 @@
 				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,
 				1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */,
 				1F5647051F2B24F8004BB024 /* MovieSessionTableViewCell.swift in Sources */,
-				1F346F901F37199500554AAE /* MovieAdditionalDetailsTableVC.swift in Sources */,
 				1F4F8FE11F2C38000001895A /* CinemaCollectionViewCell.swift in Sources */,
 				037E145C1F385B4D0014B5A2 /* PaymentMethod.swift in Sources */,
 				1F2CD87F1F2495CC0034D472 /* FirstViewController.swift in Sources */,

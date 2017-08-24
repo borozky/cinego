@@ -114,15 +114,20 @@ class MovieSessionRepository: IMovieSessionRepository {
     
 
     private func getRandomDate() -> Date {
-        let randomDay = Int(arc4random_uniform(UInt32(28))) + 1
-        let randomMonth = Int(arc4random_uniform(UInt32(12))) + 1
-        let randomYear = Int(arc4random_uniform(UInt32(1))) + 2017
-        let randomHour = Int(arc4random_uniform(UInt32(24)))
-        let randomMinute = Int(arc4random_uniform(UInt32(60)))
-        let randomDateStr = "\(String(format: "%02d", randomDay))-\(String(format: "%02d", randomMonth))-\(String(randomYear)) \(String(format: "%02d", randomHour)):\(String(format: "%02d", randomMinute)):00"
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        return formatter.date(from: randomDateStr)!
+        
+        while true {
+            let randomDay = Int(arc4random_uniform(UInt32(28))) + 1
+            let randomMonth = Int(arc4random_uniform(UInt32(12))) + 1
+            let randomYear = Int(arc4random_uniform(UInt32(1))) + 2017
+            let randomHour = Int(arc4random_uniform(UInt32(24)))
+            let randomMinute = Int(arc4random_uniform(UInt32(60)))
+            let randomDateStr = "\(String(format: "%02d", randomDay))-\(String(format: "%02d", randomMonth))-\(String(randomYear)) \(String(format: "%02d", randomHour)):\(String(format: "%02d", randomMinute)):00"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            if let date = formatter.date(from: randomDateStr) {
+                return date
+            }
+        }
     }
     
 }

@@ -12,7 +12,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bannerIcon: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var movieReleaseYear: UILabel!
-    @IBOutlet weak var movieAudienceType: UILabel!
+    
+    var movie: Movie!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
     
 }
