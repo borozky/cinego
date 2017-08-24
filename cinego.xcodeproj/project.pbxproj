@@ -15,6 +15,8 @@
 		03B219411F25E285009F7B41 /* MovieSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219401F25E285009F7B41 /* MovieSession.swift */; };
 		03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219421F25E3D8009F7B41 /* Cinema.swift */; };
 		03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219441F25E4FF009F7B41 /* Ticket.swift */; };
+		03D68A011F4E56D100192877 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D68A001F4E56D100192877 /* LoginVC.swift */; };
+		03D68A031F4E570500192877 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D68A021F4E570500192877 /* RegisterVC.swift */; };
 		03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */; };
 		03F073821F26C9BC00BD9713 /* Temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F073811F26C9BC00BD9713 /* Temp.m */; };
 		1F10EC7E1F35381C00283B8C /* BookingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10EC7D1F35381C00283B8C /* BookingDetailsVC.swift */; };
@@ -87,6 +89,8 @@
 		03B219401F25E285009F7B41 /* MovieSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSession.swift; sourceTree = "<group>"; };
 		03B219421F25E3D8009F7B41 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		03B219441F25E4FF009F7B41 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		03D68A001F4E56D100192877 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		03D68A021F4E570500192877 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		03F073801F26C9BC00BD9713 /* Temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temp.h; sourceTree = "<group>"; };
 		03F073811F26C9BC00BD9713 /* Temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temp.m; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				1F346F8F1F37199500554AAE /* MovieAdditionalDetailsTableVC.swift */,
 				2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */,
 				1FCDD9D31F47B31C00D352FB /* SeatsCollectionVC.swift */,
+				03D68A001F4E56D100192877 /* LoginVC.swift */,
+				03D68A021F4E570500192877 /* RegisterVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				1FCCC4101F31F31E0050AA36 /* CartVC.swift in Sources */,
 				1F3510CE1F3174C5003AE4B5 /* CinemaListTableVC.swift in Sources */,
 				1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */,
+				03D68A031F4E570500192877 /* RegisterVC.swift in Sources */,
 				1FCCC40E1F31CBA50050AA36 /* CinemaMoviesVC.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,
 				0364B4D51F42660E001E2ED3 /* TicketRepository.swift in Sources */,
@@ -488,6 +495,7 @@
 				0364B4CF1F425D06001E2ED3 /* BookingRepository.swift in Sources */,
 				1F5647091F2B38CA004BB024 /* CinemaDetailsVC.swift in Sources */,
 				1F129BD51F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift in Sources */,
+				03D68A011F4E56D100192877 /* LoginVC.swift in Sources */,
 				0364B4D11F425DB9001E2ED3 /* UserRepository.swift in Sources */,
 				1F10EC801F3538A700283B8C /* CheckoutVC.swift in Sources */,
 				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,

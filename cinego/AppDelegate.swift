@@ -87,10 +87,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // account page
         for childViewController in initialViewController.viewControllers?[3].childViewControllers ?? [] {
-            if let accountTableVC = childViewController as? AccountTableVC {
-                accountTableVC.userRepository = container.resolve(IUserRepository.self)
-                accountTableVC.user = container.resolve(IUserRepository.self)?.find(byUsername: "s3526309")
+            let userRepository = container.resolve(IUserRepository.self)!
+            let parentViewController = initialViewController.viewControllers![3]
+            
+            // account screen
+            if let currentUser = userRepository.getCurrentUser() {
+                if let accountTableVC = childViewController as? AccountTableVC {
+                    accountTableVC.userRepository = userRepository
+                    accountTableVC.user = currentUser
+                    break
+                }
+                
+            // login screen
+            } else {
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                parentViewController.addChildViewController(loginVC)
+                parentViewController.view.addSubview(loginVC.view)
+                loginVC.view.frame = parentViewController.view.bounds
+                loginVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                loginVC.didMove(toParentViewController: parentViewController)
+                
+                loginVC.userRepository = userRepository
                 break
+                
+                
             }
         }
         
