@@ -13,7 +13,7 @@ enum SeatStatus {
 }
 
 struct Seat {
-    static let defaultSize = 32
+    static let defaultSize = 20
     
     let id: Int
     let rowNumber: Character
