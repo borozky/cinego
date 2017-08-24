@@ -25,8 +25,9 @@ class BookingDetailsVC: UIViewController {
     var selectedSeats: [Seat] = []
     var originalSeats: [Seat] = []
     var removedSeats: [Seat] = []
-    var fromCart = false
-    
+    var fromCart: Bool {
+       return cartItem != nil
+    }
     
     let tableViewCellID = "SelectedSeatsTableViewCell"
     weak var delegate: BookingDetailsVCDelegate?
@@ -84,7 +85,9 @@ class BookingDetailsVC: UIViewController {
             movie = cartItem.movieSession.movie
             movieSession = cartItem.movieSession
             numTickets = cartItem.numTickets
-            originalSeats = selectedSeats
+            originalSeats = cartItem.seats
+            selectedSeats = originalSeats
+            
         }
     }
     
@@ -183,6 +186,7 @@ extension BookingDetailsVC {
             destinationVC.delegate = self
             destinationVC.selectedSeats = selectedSeats
             destinationVC.numTickets = numTickets
+            destinationVC.cinema = movieSession.cinema
         }
     }
 }
@@ -204,6 +208,7 @@ extension BookingDetailsVC {
         guard cartRepository.updateCart(cartItem!) != nil else {
             fatalError("Failed to add to cart")
         }
+        goBack()
     }
     
     func changeNumTickets(to qty: Int){

@@ -99,11 +99,13 @@ extension MovieDetailsViewController {
             let destinationVC = segue.destination as! BookingDetailsVC
             let indexPath = self.movieSessionsTableView.indexPathForSelectedRow
             let selectedSession = movieSessions[(indexPath?.row)!]
+            let cartRepository: ICartRepository = container.resolve(ICartRepository.self)!
             
             destinationVC.movieSession = selectedSession
             destinationVC.movie = movie!
-            destinationVC.cartRepository = container.resolve(ICartRepository.self)
+            destinationVC.cartRepository = cartRepository
             destinationVC.delegate = self
+            destinationVC.cartItem = cartRepository.findCartItem(byMovieSession: selectedSession)
         }
         
         // to Movie Additional Details

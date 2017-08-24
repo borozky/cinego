@@ -75,7 +75,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         
         imageView.image = UIImage(imageLiteralResourceName: movie.images[0])
         movieTitleLabel.text = movie.title
-        detailsLabel.text = "\(String(cartItem.numTickets)) tickets | [Session Time] | \(cinema.name)"
+        detailsLabel.text = "\(String(cartItem.numTickets)) tickets | \(humaniseTime(movieSession.startTime)) | \(cinema.name)"
         return cell
     }
     
@@ -97,8 +97,16 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         }
         
     }
-}
     
+    // Helper method: Date to readable time,
+    // eg. Date() -> Mon Aug 28 09:30 am
+    private func humaniseTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE dd MMM hh:mm aa"
+        return formatter.string(from: date)
+    }
+}
+
 
 
 extension CartVC {

@@ -13,16 +13,13 @@ enum PaymentTypes {
     case CREDIT_CARD
 }
 
-enum UserTypes {
-    case GUEST, NORMAL
-}
 struct UserEntity {
     let id: String?
     let username: String?
     let email: String?
     let fullname: String?
     var orders: [OrderEntity]
-    var userType: UserTypes = .NORMAL
+    var userType: UserTypes = .REGISTERED
 }
 
 

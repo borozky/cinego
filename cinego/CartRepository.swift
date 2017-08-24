@@ -10,6 +10,8 @@ import Foundation
 
 protocol ICartRepository {
     
+    func findCartItem(byMovieSession movieSession: MovieSession) -> CartItem?
+    func findAllCartItems(byMovie movie: Movie) -> [CartItem]
     func addToCart(cartItem: CartItem)
     func getTotalPrice() -> Double
     func getAll() -> [CartItem]
@@ -53,6 +55,14 @@ class CartRepository: ICartRepository {
         }
         // failed to update
         return nil
+    }
+    
+    func findCartItem(byMovieSession movieSession: MovieSession) -> CartItem? {
+        return CartRepository.cart.filter { $0.movieSession.id == movieSession.id }.first ?? nil
+    }
+    
+    func findAllCartItems(byMovie movie: Movie) -> [CartItem] {
+        return CartRepository.cart.filter { $0.movieSession.movie.id == movie.id }
     }
     
 }

@@ -112,6 +112,7 @@ class MovieSessionRepository: IMovieSessionRepository {
         return movies![randomNumber]
     }
     
+
     private func getRandomDate() -> Date {
         let randomDay = Int(arc4random_uniform(UInt32(28))) + 1
         let randomMonth = Int(arc4random_uniform(UInt32(12))) + 1
