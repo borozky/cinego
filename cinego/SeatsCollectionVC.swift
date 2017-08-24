@@ -17,53 +17,29 @@ class SeatsCollectionVC: UICollectionViewController {
     weak var delegate: SeatCollectionVCDelegate?
     
     // TODO: Put these in a ViewModel
-    let sections = [4,6,6,4]                            // 4 sections, 1st section has 4 columns, 2nd one with 6 columns, ...
-    let rowNumbers: [Character] = ["A", "B", "C", "D"]  // 4 rows, A is nearest on the front screen
-    var seatMatrix: [[Seat]] = [[]]                     // seating arrangement per columns
-    var selectedSeats: [Seat] = []
-    var numTickets = 0
+    var cinema: Cinema!
+    var selectedSeats: [Seat]!
+    var numTickets: Int!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSeatMatrix()
     }
     
-    // in section arranged as 4,6,6,4 and rows as A,B,C,D,E
-    // the first section will have 4 columns and 5 rows = 20 seats,
-    // the second section will have 6 columns and 5 rows = 30 seats, ...
-    func setupSeatMatrix(){
-        var currentID = 1
-        var startingColumnNumber = 1
-        for numOfColumnsInSection in sections {
-            for colNumber in startingColumnNumber..<(startingColumnNumber + numOfColumnsInSection) {
-                var column: [Seat] = []
-                for rowNumber in rowNumbers {
-                    column.append(Seat(id: currentID, rowNumber: rowNumber, colNumber: colNumber, status: .AVAILABLE))
-                    currentID += 1
-                }
-                seatMatrix.append(column)
-            }
-            startingColumnNumber += numOfColumnsInSection
-        }
-    }
-    
-    
-
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return seatMatrix.count
+        return cinema.seatingArrangement.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return seatMatrix[section].count
+        return cinema.seatingArrangement[section].count
     }
 
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let seat = seatMatrix[indexPath.section][indexPath.row]
+        let seat = cinema.seatingArrangement[indexPath.section][indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeatCollectionViewCell", for: indexPath) as! SeatCollectionViewCell
         let foundSeat = selectedSeats.filter { $0.id == seat.id }
         
@@ -72,12 +48,12 @@ class SeatsCollectionVC: UICollectionViewController {
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0).cgColor
         
-        
-        if cell.seat.status == .SELECTED {
-            cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
-        } else if cell.seat.status == .AVAILABLE {
+        switch cell.seat.status {
+        case .AVAILABLE:
             cell.layer.backgroundColor = UIColor.white.cgColor
-        } else {
+        case .SELECTED:
+            cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
+        default:
             cell.layer.backgroundColor = UIColor.darkGray.cgColor
         }
         
@@ -140,19 +116,32 @@ extension SeatsCollectionVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         let screenHeight = collectionView.frame.height
-        let seatSectionHeight = (Seat.defaultSize + 8) * rowNumbers.count - 8
+        let seatSectionHeight = (Seat.defaultSize + 8) * cinema.rows.count - 8
         let offset = 0.0
         let topSpacing = Double(screenHeight / 2) - Double(seatSectionHeight) + offset
         
         if collectionView.numberOfItems(inSection: section) > 0 {
-            var lastColumns: [Int] = []
-            for i in 0..<sections.count {
-                let lastColumn = sections[0...i].reduce(0){ $0 + $1 }
-                lastColumns.append(lastColumn)
+            
+            // for sections [3,4,4,5,4] the firstColumnsAfterLastColumns will be cols 4,8,12,17
+            // columns 1 and 19 are not included because they are first and last of all columns
+            /*
+                [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+                [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+                [-][-][-] 20 [-][-][-][-] 20 [-][-][-][-] 20 [-][-][-][-][-] 20 [-][-][-]
+                [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+                [-][-][-]    [-][-][-][-]    [-][-][-][-]    [-][-][-][-][-]    [-][-][-]
+                              ^               ^               ^                  ^
+             
+             tableview's section 0 is invisible.
+            */
+            var firstColumnsAfterLastColumns: [Int] = []
+            for i in 0..<cinema.seatMatrix.count {
+                let firstColumnAfterLastColumns = cinema.seatMatrix[0...i].reduce(0){ $0 + $1 }
+                firstColumnsAfterLastColumns.append(firstColumnAfterLastColumns)
             }
             
-            if lastColumns.contains(section) {
-                return UIEdgeInsets(top: CGFloat(topSpacing), left: 4, bottom: 0, right: 20)
+            if firstColumnsAfterLastColumns.contains(section) {
+                return UIEdgeInsets(top: CGFloat(topSpacing), left: 20, bottom: 0, right: 4)
             }
         }
         
