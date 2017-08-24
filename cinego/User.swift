@@ -8,20 +8,19 @@
 
 import Foundation
 
-class User {
-    
-    public var id: String?
-    public let username: String
-    public let email: String
-    public let fullname: String
-    public var orders: [Order]
-    
-    public init(id: String? = "", email: String = "", username: String = "", fullname: String = "",  orders: [Order] = []){
-        self.id = id
-        self.username = username
-        self.email = email
-        self.fullname = fullname
-        self.orders = orders
+
+enum UserTypes {
+    case GUEST, REGISTERED
+}
+
+struct User {
+    let id: String?
+    let username: String
+    let email: String
+    let fullname: String
+    let password: String
+    var orders: [Order] = []
+    var userType: UserTypes {
+        return id == nil ? .GUEST : .REGISTERED
     }
-    
 }
