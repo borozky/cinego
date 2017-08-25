@@ -10,13 +10,14 @@ import UIKit
 
 class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let tableViewCellID_1 = "OrderDetailTableViewCell"
-    let tableViewCellID_2 = "BookingOrderTableViewCell"
+    let tableViewCellID = "OrderDetailTableViewCell"
     
     @IBOutlet weak var notificationContainer: UIView!
     @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var orderTotalLabel: UILabel!
-    
+    @IBOutlet weak var priceBannerView: PriceBannerView!
+    @IBOutlet weak var movieDetailsView: MovieDetailsView!
+    @IBOutlet weak var sessionDetailsView: SessionDetailsView!
+    @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
     // TODO: Put these in a view model
     var notification = "Your order has successfully been placed"
@@ -26,40 +27,33 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     var gstCost = 0.00
     var orderTotal = 0.00
     var paymentMethod = "Paypal"
-    var bookings: [Booking] = []
+    var movieSession: MovieSession!
+    var selectedSeats: [Seat] = []
+    var user: User!
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNotification()
-        setupOrderTotal()
-        
-        // movie session setup are managed by numberOfRowsInSection & cellForRowAt
-    }
-    
-    func setupNotification(){
+        priceBannerView.price = orderTotal
+        movieDetailsView.movie = movieSession.movie
+        sessionDetailsView.movieSession = movieSession
+        seatingArrangementView.selectedSeats = selectedSeats
         notificationContainer?.backgroundColor = isSuccessfulOrder ? UIColor.green : UIColor.red
         notificationLabel?.text = notification
-    }
-    
-    
-    func setupOrderTotal(){
-        orderTotalLabel?.text = String(format: "$ %.02f", orderTotal)
+        
     }
     
     
     // 1st section is the order specifics, 2nd is about booked sessions
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Payment details"
-        }
-        if section == 1 {
-            return "Movie Sessions"
         }
         
         return nil
@@ -68,7 +62,7 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // currently there are 4 order details available for 1st section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 4 : bookings.count
+        return 4
     }
     
     
@@ -77,7 +71,7 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // for order details
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID_1, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Order Subtotal"
@@ -97,18 +91,6 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
         }
         
-        // for booked sessions
-        if indexPath.section == 1 {
-            let booking = bookings[indexPath.row]
-            (cell.viewWithTag(1) as! UIImageView).image = UIImage(imageLiteralResourceName: booking.movieSession.movie.images[0])
-            (cell.viewWithTag(2) as! UILabel).text = booking.movieSession.movie.title
-            let numTicketsStr = String(format: "%d tickets", booking.tickets.count)
-            let sessionTimeStr = humaniseTime(booking.movieSession.startTime)
-            let cinemaLocation = booking.movieSession.cinema.name
-            (cell.viewWithTag(2) as! UILabel).text = "\(numTicketsStr) | \(sessionTimeStr) | \(cinemaLocation)"
-            return cell
-        }
-        
         return cell
     }
     
@@ -121,10 +103,6 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
 }

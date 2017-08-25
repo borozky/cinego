@@ -33,7 +33,9 @@ class CartRepository: ICartRepository {
     }
     
     func getAll() -> [CartItem] {
-        return CartRepository.cart
+        return CartRepository.cart.sorted(by: { itemA, itemB -> Bool in
+            return itemA.added < itemB.added
+        })
     }
     
     func destroyCart() {
@@ -41,16 +43,13 @@ class CartRepository: ICartRepository {
     }
     
     func updateCart(_ cartItem: CartItem) -> CartItem? {
+        
         for (key, item) in CartRepository.cart.enumerated() {
-            guard item.movieSession.movie.id == cartItem.movieSession.movie.id else {
+            guard item.movieSession.id == cartItem.movieSession.id else {
                 continue
             }
             
-            guard cartItem.movieSession.id == item.movieSession.id else {
-                continue
-            }
-            
-            CartRepository.cart[key] = cartItem
+            CartRepository.cart[key].seats = cartItem.seats
             return cartItem
         }
         // failed to update

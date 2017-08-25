@@ -66,29 +66,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
         }
-       
-        // cinema page
-        for childViewController in initialViewController.viewControllers?[1].childViewControllers ?? [] {
-            let childVC = childViewController.childViewControllers.first   // cinema tab is a UISplitViewController
-            if let cinemaListTableVC = childVC as? CinemaListTableVC {
-                cinemaListTableVC.cinemaRepository = container.resolve(ICinemaRepository.self)
-                cinemaListTableVC.movieRepository = container.resolve(IMovieRepository.self)
-                break
-            }
-        }
         
-        // cart page
-        for childViewController in initialViewController.viewControllers?[2].childViewControllers ?? [] {
-            if let cartVC = childViewController as? CartVC {
-                cartVC.cartRepository = container.resolve(ICartRepository.self)
-                break
-            }
-        }
         
+//        // cart page
+//        for childViewController in initialViewController.viewControllers?[1].childViewControllers ?? [] {
+//            if let cartVC = childViewController as? CartVC {
+//                cartVC.cartRepository = container.resolve(ICartRepository.self)
+//                
+//                break
+//            }
+//        }
+//        
         // account page
-        for childViewController in initialViewController.viewControllers?[3].childViewControllers ?? [] {
+        for childViewController in initialViewController.viewControllers?[1].childViewControllers ?? [] {
             let userRepository = container.resolve(IUserRepository.self)!
-            let parentViewController = initialViewController.viewControllers![3]
+            let parentViewController = initialViewController.viewControllers![1]
             
             // account screen
             if let currentUser = userRepository.getCurrentUser() {

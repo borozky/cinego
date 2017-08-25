@@ -174,21 +174,13 @@ extension HomeViewController {
             let container = SimpleIOCContainer.instance
             let movieSessionRepository = container.resolve(IMovieSessionRepository.self)
             let movieSessions = movieSessionRepository?.getMovieSessions(byMovie: cell.movie) ?? []
+            let movie = cell.movie
             
-            destinationVC.movie = cell.movie
+            destinationVC.movie = movie
             destinationVC.movieSessionRepository = movieSessionRepository
+            destinationVC.cartRepository = container.resolve(ICartRepository.self)
             destinationVC.movieSessions = movieSessions
         }
-            
-//        // to Movies By Cinema page
-//        else if segue.identifier == "openCinemaFromHome"{
-//            let selectedCinemaCollectionViewCell = sender as! CinemaCollectionViewCell
-//            let cinemaDetailsVC = segue.destination as! CinemaDetailsVC
-//            cinemaDetailsVC.movieRepository = movieRepository
-//            cinemaDetailsVC.cinemaRepository = cinemaRepository
-//            cinemaDetailsVC.cinema = selectedCinemaCollectionViewCell.cinema
-//            
-//        }
         
     }
     

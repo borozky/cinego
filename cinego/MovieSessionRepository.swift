@@ -125,7 +125,9 @@ class MovieSessionRepository: IMovieSessionRepository {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
             if let date = formatter.date(from: randomDateStr) {
-                return date
+                if date > Date(){
+                    return date
+                }
             }
         }
     }

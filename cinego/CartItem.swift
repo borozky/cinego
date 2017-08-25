@@ -44,6 +44,9 @@ struct CartItem {
     }
     let unitPrice: Double = 20.00
     let movieSession: MovieSession
-    var numTickets: Int = 0
     var seats: [Seat] = []
+    var numTickets: Int {
+        return seats.count
+    }
+    let added: Date = Date()
 }

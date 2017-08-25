@@ -10,8 +10,12 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
     
-    // TODO: Refactor into ViewModels
+    @IBOutlet weak var movieSessionsTableView: UITableView!
+    @IBOutlet weak var movieDetailsView: MovieDetailsView!
+    
+    
     var movieSessionRepository: IMovieSessionRepository!
+    var cartRepository: ICartRepository!
     var movie: Movie!
     var movieSessions: [MovieSession] = []
     var movieSessionsByCinema: [(Cinema, [MovieSession])] {
@@ -34,30 +38,14 @@ class MovieDetailsViewController: UIViewController {
         return _movieSessionsByCinema
     }
     
+    
     let tableViewCellID = "MovieSessionTableViewCell"
-    @IBOutlet weak var movieBackgroundImageView: UIImageView!
-    @IBOutlet weak var movieBannerImageView: UIImageView!
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var movieReleaseDateLabel: UILabel!
-    @IBOutlet weak var movieDurationLabel: UILabel!
-    @IBOutlet weak var movieAudienceTypeLabel: UILabel!
-    @IBOutlet weak var movieSessionsTableView: UITableView!
-    @IBOutlet weak var movieExcerptLabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMovie()
-    }
-
-    
-    private func setupMovie(){
-        movieBannerImageView.image = UIImage(imageLiteralResourceName: movie.images[0])
-        movieTitleLabel.text =  movie.title
-        movieReleaseDateLabel.text = "Released: \(movie.releaseDate)"
-        movieDurationLabel.text = "Duration \(String(movie.duration)) minutes"
-        movieAudienceTypeLabel.text = movie.contentRating.rawValue
-        movieExcerptLabel.text = movie.details
-        movieBackgroundImageView.image = UIImage(imageLiteralResourceName: movie.images[0])
+        movieDetailsView.movie = movie
     }
     
 }
@@ -86,6 +74,14 @@ extension MovieDetailsViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = humaniseTime(movieSession.startTime)
         cell.detailTextLabel?.text = String(format: "%d seats available", movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
+        
+        if cartRepository.findCartItem(byMovieSession: movieSession) != nil {
+            cell.isUserInteractionEnabled = false
+            cell.accessoryType = .checkmark
+            cell.detailTextLabel?.text = String(format: "%d seats available (added to cart)",
+                                                movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
+        }
+        
         return cell
     }
     
@@ -107,25 +103,11 @@ extension MovieDetailsViewController {
         
         // to Movie Session details (BookingDetailsVC)
         if segue.identifier == "openBookingDetailsFromMovieDetails" {
-            let container = SimpleIOCContainer.instance
             let destinationVC = segue.destination as! BookingDetailsVC
-            let indexPath = self.movieSessionsTableView.indexPathForSelectedRow
-            let selectedSession = movieSessions[(indexPath?.row)!]
-            let cartRepository: ICartRepository = container.resolve(ICartRepository.self)!
-            
+            let indexPath = self.movieSessionsTableView.indexPathForSelectedRow!
+            let selectedSession = movieSessionsByCinema[indexPath.section].1[indexPath.row]
             destinationVC.movieSession = selectedSession
-            destinationVC.movie = movie!
-            destinationVC.cartRepository = cartRepository
-            destinationVC.delegate = self
-            destinationVC.cartItem = cartRepository.findCartItem(byMovieSession: selectedSession)
         }
     }
     
-}
-
-
-extension MovieDetailsViewController: BookingDetailsVCDelegate {
-    func didBook(_ cartItem: CartItem) {
-        print("Did book!")
-    }
 }

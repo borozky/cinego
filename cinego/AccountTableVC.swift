@@ -10,37 +10,34 @@ import UIKit
 
 class AccountTableVC: UITableViewController {
     
-    private let tableViewCellIDs = ["UserInformationTableViewCell", "UserOrdersTableViewCell"]
+    private let tableViewCellID = "UserOrdersTableViewCell"
     
     var user: User!
     var upcomingBookings: [Booking] = []
     var pastOrders: [Order] = []
     var userRepository: IUserRepository?
     
+    @IBOutlet weak var userProfileView: UserProfileView!
     
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userProfileView.user = user
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }
         
-        if section == 1 {
+        if section == 0 {
             return upcomingBookings.count
         }
         
-        if section == 2 {
+        if section == 1 {
             return pastOrders.count
         }
         
@@ -49,10 +46,10 @@ class AccountTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 {
+        if section == 0 {
             return "UPCOMING SESSIONS"
         }
-        if section == 2 {
+        if section == 1 {
             return "PAST ORDERS"
         }
         
@@ -63,22 +60,10 @@ class AccountTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        // the user account information
-        if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[0], for: indexPath)
-            let imageView = cell.viewWithTag(1) as! UIImageView
-            let fullnameLable = cell.viewWithTag(2) as! UILabel
-            let emialLable = cell.viewWithTag(3) as! UILabel
-            
-            imageView.image = #imageLiteral(resourceName: "guest")
-            fullnameLable.text = user.fullname
-            emialLable.text = user.email
-            return cell
-        }
         
         // upcoming movie bookings
         if indexPath.section == 1 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
             let imageView = cell.viewWithTag(1) as! UIImageView
             let titleLabel = cell.viewWithTag(2) as! UILabel
             let detailsLabel = cell.viewWithTag(3) as! UILabel
@@ -97,7 +82,7 @@ class AccountTableVC: UITableViewController {
         
         // past movie bookings
         if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIDs[1], for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
             tableView.estimatedRowHeight = 44
             tableView.rowHeight = UITableViewAutomaticDimension
             return cell

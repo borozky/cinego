@@ -124,7 +124,8 @@ class UserRepository: IUserRepository {
     }
     
     func getCurrentUser() -> User? {
-        return UserRepository.currentUser
+        return find(byId: 1)
+        //return UserRepository.currentUser
     }
     
 }
