@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol BookingDetailsVCDelegate: class {
+    func didUpdateSeats(_ movieSession: MovieSession, _ selectedSeats: [Seat])
+}
+
 class BookingDetailsVC: UIViewController {
+    
+    weak var delegate: BookingDetailsVCDelegate?
     
     
     // TODO: These data shoul be in a ViewModel
     var movieSession: MovieSession!
-    var selectedSeats: [Seat] = []
+    var selectedSeats: [Seat]!
     let pricePerTicket = 20.00
     
     @IBOutlet weak var proceedToCheckoutButton: UIButton!
@@ -37,9 +43,26 @@ extension BookingDetailsVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "proceedToCheckout" {
             let destinationVC = segue.destination as! CheckoutVC
+            let userRepository: IUserRepository = SimpleIOCContainer.instance.resolve(IUserRepository.self)!
+            let orderRepository: IOrderRepository = SimpleIOCContainer.instance.resolve(IOrderRepository.self)!
             destinationVC.movieSession = movieSession
             destinationVC.selectedSeats = seatingArrangementView.selectedSeats
             destinationVC.orderTotal = seatingArrangementView.orderTotal
+            destinationVC.userRepository = userRepository
+            destinationVC.orderRepository = orderRepository
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let delegate = self.delegate as? MovieDetailsViewController {
+            delegate.didUpdateSeats(movieSession, self.selectedSeats)
+        }
+    }
+}
+
+extension BookingDetailsVC: SeatingArrangementViewDelegate {
+    func didUpdateSeats(_ selectedSeats: [Seat]) {
+        self.selectedSeats = selectedSeats
+        delegate?.didUpdateSeats(movieSession, self.selectedSeats)
     }
 }

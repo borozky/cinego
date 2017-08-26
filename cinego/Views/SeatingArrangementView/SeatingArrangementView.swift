@@ -8,9 +8,15 @@
 
 import UIKit
 
+
+protocol SeatingArrangementViewDelegate: class {
+    func didUpdateSeats(_ selectedSeats: [Seat])
+}
+
 @IBDesignable
 class SeatingArrangementView: UIView {
 
+    weak var delegate: SeatingArrangementViewDelegate?
     
     @IBOutlet var view: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,7 +26,12 @@ class SeatingArrangementView: UIView {
     @IBOutlet weak var seatingArrangementCollectionView: UICollectionView!
     
     var cinema: Cinema!
-    var selectedSeats: [Seat] = []
+    var selectedSeats: [Seat] = [] {
+        didSet(newValue){
+            priceLabel.text = String(format: "$ %.02f", self.orderTotal)
+            priceCalculationLabel.text = String(format: "$ %.02f per seat x %d", pricePerSeat, self.selectedSeats.count)
+        }
+    }
     var reservedSeats: [Seat] = []
     var pricePerSeat: Double = 20.00
     var orderTotal: Double {
@@ -38,6 +49,8 @@ class SeatingArrangementView: UIView {
         super.init(coder: aDecoder)
         setupView()
         seatingArrangementCollectionView.register(SeatCollectionViewCell.self, forCellWithReuseIdentifier: "SeatCollectionViewCell")
+        seatingArrangementCollectionView.dataSource = self
+        seatingArrangementCollectionView.delegate = self
     }
     
     private func setupView() {
@@ -86,8 +99,7 @@ extension SeatingArrangementView: UICollectionViewDataSource, UICollectionViewDe
         case .SELECTED: cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
         default: cell.layer.backgroundColor = UIColor.darkGray.cgColor
         }
-        let label = cell.viewWithTag(1) as! UILabel
-        label.text = "\(String(cell.seat.rowNumber))\(String(cell.seat.colNumber))"
+
         
         return cell
         
@@ -95,30 +107,27 @@ extension SeatingArrangementView: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SeatCollectionViewCell
-        let label = cell.viewWithTag(1) as! UILabel
         
         if cell.seat.status == .RESERVED {
             return
         }
         
+        // select seats
         if cell.seat.status == .AVAILABLE {
             cell.seat.status = .SELECTED
             selectedSeats.append(cell.seat)
             cell.layer.backgroundColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
-            let label = cell.viewWithTag(1) as! UILabel
-            label.textColor = UIColor.white
+            delegate?.didUpdateSeats(selectedSeats)
             return
         }
         
+        
+        // unselect seats
         if cell.seat.status == .SELECTED {
-            // remove a seat from selectedSeats[],
-            // that is when seatIDs match, remove that item
-            self.selectedSeats = self.selectedSeats.filter {
-                return $0.id != cell.seat.id
-            }
+            self.selectedSeats = self.selectedSeats.filter { $0.id != cell.seat.id }
             cell.seat.status = .AVAILABLE
             cell.layer.backgroundColor = UIColor.white.cgColor
-            label.textColor = UIColor.darkGray
+            delegate?.didUpdateSeats(selectedSeats)
             return
         }
     }

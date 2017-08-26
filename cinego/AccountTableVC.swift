@@ -13,7 +13,7 @@ class AccountTableVC: UITableViewController {
     private let tableViewCellID = "UserOrdersTableViewCell"
     
     var user: User!
-    var upcomingBookings: [Booking] = []
+    var upcomingBookings: [Order] = []
     var pastOrders: [Order] = []
     var userRepository: IUserRepository?
     
@@ -24,6 +24,11 @@ class AccountTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userProfileView.user = user
+        
+        // disable "swipe to go back"
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationItem.backBarButtonItem?.isEnabled = false
+        self.navigationItem.hidesBackButton = true
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

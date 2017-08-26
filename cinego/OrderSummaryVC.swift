@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol OrderSummaryVCDelegate: class {
+    func barButtonRightDidTapped()
+}
+
 class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableViewCellID = "OrderDetailTableViewCell"
     
+    weak var delegate: OrderSummaryVCDelegate?
+    
+    @IBOutlet weak var barButtonRight: UIBarButtonItem!
     @IBOutlet weak var notificationContainer: UIView!
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var priceBannerView: PriceBannerView!
@@ -21,27 +28,30 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // TODO: Put these in a view model
     var notification = "Your order has successfully been placed"
-    var isSuccessfulOrder = true
-    var orderSubTotal = 0.00
-    var shippingCost = 0.00
-    var gstCost = 0.00
-    var orderTotal = 0.00
-    var paymentMethod = "Paypal"
-    var movieSession: MovieSession!
-    var selectedSeats: [Seat] = []
     var user: User!
+    var order: Order!
+    var newOrder = false
+    
+    @IBAction func barButtonRightDidTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        delegate?.barButtonRightDidTapped()
+    }
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceBannerView.price = orderTotal
-        movieDetailsView.movie = movieSession.movie
-        sessionDetailsView.movieSession = movieSession
-        seatingArrangementView.selectedSeats = selectedSeats
-        notificationContainer?.backgroundColor = isSuccessfulOrder ? UIColor.green : UIColor.red
+        priceBannerView.price = order.totalPrice
+        movieDetailsView.movie = order.movieSession.movie
+        sessionDetailsView.movieSession = order.movieSession
+        seatingArrangementView.selectedSeats = order.seats
+        seatingArrangementView.cinema = order.movieSession.cinema
+        notificationContainer?.backgroundColor = UIColor.green
         notificationLabel?.text = notification
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     
@@ -75,16 +85,16 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Order Subtotal"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", orderSubTotal)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", order.subtotal)
             case 1:
                 cell.textLabel?.text = "Shipping Cost"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", shippingCost)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", order.shippingCost)
             case 2:
                 cell.textLabel?.text = "GST"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", gstCost)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", order.gst)
             case 3:
                 cell.textLabel?.text = "Payment Method"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", paymentMethod)
+                cell.detailTextLabel?.text = order.paymentMethod.rawValue
             default:
                 break
             }
