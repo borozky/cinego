@@ -21,6 +21,11 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var validationErrorsLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var cancelLoginButton: UIBarButtonItem!
+    @IBAction func cancelLoginDidTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,7 @@ class LoginVC: UIViewController {
         
         if loggedInUser != nil {
             delegate!.didLoggedIn(loggedInUser!)
+            dismiss(animated: true, completion: nil)
         } else {
             validationErrorsLabel.text = "Invalid username/password"
         }
@@ -53,5 +59,10 @@ class LoginVC: UIViewController {
 
 extension LoginVC : RegisterVCDelegate {
     func userDidRegister(_ user: User) {
+        if let loggedInUser = (userRepository as! UserRepository).login(username: user.username, password: user.password) {
+            delegate.didLoggedIn(loggedInUser)
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
 }

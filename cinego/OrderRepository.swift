@@ -23,32 +23,45 @@ protocol IOrderRepository {
 
 class OrderRepository: IOrderRepository {
     
+    static var orders: [Order] = []
+    
     func find(byId id: String) -> Order? {
-        return nil
+        return OrderRepository.orders.filter { $0.id == id }.first
     }
     
     func findAll(byUser: User) -> [Order] {
-        return []
+        return OrderRepository.orders.filter { $0.userId == byUser.id! }
     }
     
     func findAll(byMovie movie: Movie) -> [Order] {
-        return []
+        return OrderRepository.orders.filter { $0.movieSession.movie.id == movie.id }
     }
     
     func findAll(byMovieSession movieSession: MovieSession) -> [Order] {
-        return []
+        return OrderRepository.orders.filter { $0.movieSession.id == movieSession.id }
     }
     
     func findAll(byCinema cinema: Cinema) -> [Order] {
-        return []
+        return OrderRepository.orders.filter { $0.movieSession.cinema.id == cinema.id }
     }
     
     func findAll(from: Date, to: Date?) -> [Order] {
-        return []
+        return OrderRepository.orders.filter { $0.dateOfPurchase > from && $0.dateOfPurchase < (to ?? Date()) }
     }
     
     func create(order: Order) -> Order? {
-        return nil
+        var id = "1"
+        
+        let lastOrder = OrderRepository.orders.sorted(by: {
+            return Int($0.0.id!)! > Int($0.1.id!)!
+        }).first
+        
+        if lastOrder != nil {
+            id = String(Int(lastOrder!.id!)! + 1)
+        }
+        
+        OrderRepository.orders.append(Order(id: id, userId: order.userId, seats: order.seats, movieSession: order.movieSession))
+        return order
     }
     
     func update(order: Order) -> Order? {

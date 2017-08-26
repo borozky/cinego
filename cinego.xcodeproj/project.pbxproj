@@ -11,7 +11,8 @@
 		0364B4D11F425DB9001E2ED3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364B4D01F425DB9001E2ED3 /* UserRepository.swift */; };
 		0364B4D31F42628C001E2ED3 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364B4D21F42628C001E2ED3 /* OrderRepository.swift */; };
 		0364B4D51F42660E001E2ED3 /* TicketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364B4D41F42660E001E2ED3 /* TicketRepository.swift */; };
-		037E145C1F385B4D0014B5A2 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */; };
+		0375A81A1F51081F00A32C95 /* SeatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0375A8181F51081F00A32C95 /* SeatCell.swift */; };
+		0375A81B1F51081F00A32C95 /* SeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0375A8191F51081F00A32C95 /* SeatCell.xib */; };
 		03B219411F25E285009F7B41 /* MovieSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219401F25E285009F7B41 /* MovieSession.swift */; };
 		03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219421F25E3D8009F7B41 /* Cinema.swift */; };
 		03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B219441F25E4FF009F7B41 /* Ticket.swift */; };
@@ -87,7 +88,8 @@
 		0364B4D01F425DB9001E2ED3 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		0364B4D21F42628C001E2ED3 /* OrderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
 		0364B4D41F42660E001E2ED3 /* TicketRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketRepository.swift; sourceTree = "<group>"; };
-		037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		0375A8181F51081F00A32C95 /* SeatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatCell.swift; path = Views/SeatingArrangementView/SeatCell.swift; sourceTree = "<group>"; };
+		0375A8191F51081F00A32C95 /* SeatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatCell.xib; path = Views/SeatingArrangementView/SeatCell.xib; sourceTree = "<group>"; };
 		03B219401F25E285009F7B41 /* MovieSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSession.swift; sourceTree = "<group>"; };
 		03B219421F25E3D8009F7B41 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		03B219441F25E4FF009F7B41 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -254,6 +256,8 @@
 			children = (
 				1F055F621F503D14004238F5 /* SeatingArrangementView.xib */,
 				1F055F6F1F5041DA004238F5 /* SeatingArrangementView.swift */,
+				0375A8181F51081F00A32C95 /* SeatCell.swift */,
+				0375A8191F51081F00A32C95 /* SeatCell.xib */,
 			);
 			name = SeatingArrangementView;
 			sourceTree = "<group>";
@@ -379,7 +383,6 @@
 				1F3DC9B11F34CFEE008C4313 /* Booking.swift */,
 				1F3DC9B31F34D0F3008C4313 /* User.swift */,
 				1F3DC9B51F34D165008C4313 /* Order.swift */,
-				037E145B1F385B4D0014B5A2 /* PaymentMethod.swift */,
 				1F42609C1F405CB000457BC9 /* ContentRating.swift */,
 				1FCDD9D11F47AFF900D352FB /* Seat.swift */,
 			);
@@ -500,6 +503,7 @@
 				1F055F5A1F503A5F004238F5 /* OrderSummaryView.xib in Resources */,
 				1F055F661F503F00004238F5 /* OrderItemView.xib in Resources */,
 				1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */,
+				0375A81B1F51081F00A32C95 /* SeatCell.xib in Resources */,
 				1F055F571F5037F4004238F5 /* SessionDetailsView.xib in Resources */,
 				1F2CD8861F2495CC0034D472 /* Assets.xcassets in Resources */,
 				1F055F521F5034ED004238F5 /* MovieDetailsView.xib in Resources */,
@@ -542,6 +546,7 @@
 				03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */,
 				1F055F541F503505004238F5 /* MovieDetailsView.swift in Sources */,
 				0364B4D31F42628C001E2ED3 /* OrderRepository.swift in Sources */,
+				0375A81A1F51081F00A32C95 /* SeatCell.swift in Sources */,
 				1F10EC7E1F35381C00283B8C /* BookingDetailsVC.swift in Sources */,
 				1F055F701F5041DA004238F5 /* SeatingArrangementView.swift in Sources */,
 				1F3DC9B21F34CFEE008C4313 /* Booking.swift in Sources */,
@@ -569,7 +574,6 @@
 				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,
 				1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */,
 				1F055F6A1F504001004238F5 /* OrderSummaryView.swift in Sources */,
-				037E145C1F385B4D0014B5A2 /* PaymentMethod.swift in Sources */,
 				03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
