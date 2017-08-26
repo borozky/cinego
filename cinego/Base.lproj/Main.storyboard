@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="kKt-XO-wb6" userLabel="Content View">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-Fe-Z2K" customClass="ImageSlider" customModule="cinego" customModuleProvider="target">
@@ -47,10 +47,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomePageMovieSectionsTableViewCell" rowHeight="190" id="CJX-t2-gvS" customClass="HomePageMovieSectionsTableViewCell" customModule="cinego" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184" width="320" height="190"/>
+                                        <rect key="frame" x="0.0" y="183.5" width="320" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJX-t2-gvS" id="emG-C1-Clp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Db2-6s-Aw8" userLabel="Upcoming Movies Section">
@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eL8-Qo-lkw">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="148"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJI-ve-g2N" userLabel="content">
@@ -211,21 +211,21 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieSessionTableViewCell" textLabel="br0-lV-oQj" detailTextLabel="vK1-Rr-us1" style="IBUITableViewCellStyleSubtitle" id="eR1-8U-Fe2">
-                                        <rect key="frame" x="0.0" y="204" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="203.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eR1-8U-Fe2" id="qq6-ob-yhk">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wednesday, 12 July - 09:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="br0-lV-oQj">
-                                                    <rect key="frame" x="15" y="7" width="212" height="18"/>
+                                                    <rect key="frame" x="15" y="7" width="211.5" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="12 seats available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vK1-Rr-us1">
-                                                    <rect key="frame" x="15" y="25" width="84" height="12"/>
+                                                    <rect key="frame" x="15" y="25" width="83.5" height="12"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -454,25 +454,25 @@
                         <viewControllerLayoutGuide type="bottom" id="ilI-9V-MaL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f9Q-1S-wgr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pGA-C8-vOy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Jyf-ub-4Rb">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="204"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohO-nz-KD7" customClass="PriceBannerView" customModule="cinego" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="56" id="rvt-Al-I3h"/>
+                                                <constraint firstAttribute="height" constant="80" id="rvt-Al-I3h"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MM4-5u-iEA" userLabel="movie details" customClass="MovieDetailsView" customModule="cinego" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="64" width="320" height="140"/>
+                                            <rect key="frame" x="0.0" y="88" width="320" height="140"/>
                                             <color key="backgroundColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="I1u-oj-fdL"/>
@@ -491,7 +491,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="vbe-fR-MhN">
-                                    <rect key="frame" x="0.0" y="430" width="320" height="578"/>
+                                    <rect key="frame" x="0.0" y="390" width="320" height="578"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oj0-qT-FKE" customClass="OrderSummaryView" customModule="cinego" customModuleProvider="target">
@@ -531,7 +531,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountStatusTableViewCell" textLabel="6OE-Pp-8S4" detailTextLabel="bai-XZ-HvH" imageView="6cv-xa-VLj" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="epS-RM-Xp9">
-                                        <rect key="frame" x="0.0" y="260" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epS-RM-Xp9" id="OvF-o7-ISV">
                                             <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
@@ -559,7 +559,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentMethodTableViewCell" textLabel="5af-C9-F92" detailTextLabel="vqe-Mb-oRc" imageView="NeN-4V-kUe" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Qrp-iN-YeD">
-                                        <rect key="frame" x="0.0" y="304" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qrp-iN-YeD" id="pvD-rf-OVI">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -593,7 +593,7 @@
                                 </connections>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgq-ia-Iyd">
-                                <rect key="frame" x="0.0" y="691" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="991" width="320" height="60"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9xY-uf-1Dc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -647,7 +647,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="CHECKOUT" id="WQE-uF-zrH"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="800"/>
+                    <size key="freeformSize" width="320" height="1100"/>
                     <connections>
                         <outlet property="movieDetailsView" destination="MM4-5u-iEA" id="8aY-uh-ZhN"/>
                         <outlet property="orderSummaryView" destination="Oj0-qT-FKE" id="s8h-dm-7eR"/>
@@ -659,7 +659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUH-dT-0iG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4228" y="-1400"/>
+            <point key="canvasLocation" x="4226.25" y="-1400.7042253521126"/>
         </scene>
         <!--ORDER SUMMARY-->
         <scene sceneID="1My-oL-o32">
@@ -717,7 +717,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Llb-D9-4Ps">
-                                    <rect key="frame" x="0.0" y="242" width="320" height="596"/>
+                                    <rect key="frame" x="0.0" y="241.5" width="320" height="596"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nr-p7-d8d" customClass="MovieDetailsView" customModule="cinego" customModuleProvider="target">
@@ -759,10 +759,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderDetailTableViewCell" textLabel="RoB-U8-65Q" detailTextLabel="Fyu-dv-eXe" style="IBUITableViewCellStyleValue1" id="d7g-yh-kdN">
-                                        <rect key="frame" x="0.0" y="180" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="179.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7g-yh-kdN" id="MYt-12-udK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RoB-U8-65Q">
@@ -773,7 +773,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$  0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fyu-dv-eXe">
-                                                    <rect key="frame" x="256" y="13" width="49" height="18"/>
+                                                    <rect key="frame" x="256.5" y="13" width="48.5" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -822,7 +822,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="sYm-fR-UlJ">
-                            <rect key="frame" x="0.0" y="64" width="320" height="208"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbU-nE-jXI" customClass="UserProfileView" customModule="cinego" customModuleProvider="target">
@@ -846,7 +846,7 @@
                                 <rect key="frame" x="0.0" y="236" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Kn-Ta-HA9" id="Civ-GJ-TnK">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPb-Qz-rem" userLabel="Parent">
@@ -1211,11 +1211,11 @@
             </objects>
             <point key="canvasLocation" x="1914" y="137"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="gim-yH-X9j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q2F-2K-uEP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="user-30pt" id="kOD-3j-Ug4"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="user-30pt" id="kOD-3j-Ug4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wdG-gF-ySd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
