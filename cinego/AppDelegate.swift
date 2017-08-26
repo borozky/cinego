@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return CartRepository()
         })
         
+        container.register(IOrderRepository.self, factory: {
+            return OrderRepository()
+        })
+        
         return container
     }
 
