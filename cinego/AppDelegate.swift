@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return CartRepository()
         })
         
+        container.register(IOrderRepository.self, factory: {
+            return OrderRepository()
+        })
+        
         return container
     }
 
@@ -80,29 +84,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // account page
         for childViewController in initialViewController.viewControllers?[1].childViewControllers ?? [] {
             let userRepository = container.resolve(IUserRepository.self)!
+            let orderRepository = container.resolve(IOrderRepository.self)!
             let parentViewController = initialViewController.viewControllers![1]
+            
             
             // account screen
             if let currentUser = userRepository.getCurrentUser() {
-                if let accountTableVC = childViewController as? AccountTableVC {
-                    accountTableVC.userRepository = userRepository
-                    accountTableVC.user = currentUser
-                    break
-                }
+                let accountTableVC = storyboard.instantiateViewController(withIdentifier: "AccountTableVC") as! AccountTableVC
+                parentViewController.addChildViewController(accountTableVC)
+                parentViewController.view.addSubview(accountTableVC.view)
+                accountTableVC.view.frame = parentViewController.view.bounds
+                accountTableVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                accountTableVC.didMove(toParentViewController: parentViewController)
+                accountTableVC.user = currentUser
+                
+                let orders = orderRepository.findAll(byUser: currentUser)
+                let pastOrders = orders.filter { $0.dateOfPurchase <= Date() }
+                let upcomingSessions = orders.filter { $0.dateOfPurchase > Date() }
+                accountTableVC.pastOrders = pastOrders
+                accountTableVC.upcomingBookings = upcomingSessions
+                accountTableVC.user = currentUser
+            }
                 
             // login screen
-            } else {
-                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-                parentViewController.addChildViewController(loginVC)
-                parentViewController.view.addSubview(loginVC.view)
-                loginVC.view.frame = parentViewController.view.bounds
-                loginVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                loginVC.didMove(toParentViewController: parentViewController)
-                
-                loginVC.userRepository = userRepository
-                break
-                
-                
+            else {
+                if let loginVC = childViewController as? LoginVC {
+                    loginVC.userRepository = userRepository
+                    loginVC.orderRepository = orderRepository
+                    break
+                }
             }
         }
         

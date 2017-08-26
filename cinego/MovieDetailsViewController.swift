@@ -13,6 +13,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieSessionsTableView: UITableView!
     @IBOutlet weak var movieDetailsView: MovieDetailsView!
     
+    static var selectedSeatsForSessions: [(MovieSession, [Seat])] = []
+    
     
     var movieSessionRepository: IMovieSessionRepository!
     var cartRepository: ICartRepository!
@@ -107,7 +109,31 @@ extension MovieDetailsViewController {
             let indexPath = self.movieSessionsTableView.indexPathForSelectedRow!
             let selectedSession = movieSessionsByCinema[indexPath.section].1[indexPath.row]
             destinationVC.movieSession = selectedSession
+            destinationVC.delegate = self
+            
+            let foundPair = MovieDetailsViewController.selectedSeatsForSessions.filter{ $0.0.id == selectedSession.id }
+            
+            if foundPair.count == 0  {
+                destinationVC.selectedSeats = []
+            } else {
+                destinationVC.selectedSeats = foundPair.first!.1
+            }
+            
         }
     }
     
+}
+
+extension MovieDetailsViewController: BookingDetailsVCDelegate {
+    func didUpdateSeats(_ movieSession: MovieSession, _ selectedSeats: [Seat]) {
+        let index = MovieDetailsViewController.selectedSeatsForSessions.index(where: {
+            $0.0.id == movieSession.id
+        })
+        
+        if index != nil {
+            MovieDetailsViewController.selectedSeatsForSessions[index!].1 = selectedSeats
+        } else {
+            MovieDetailsViewController.selectedSeatsForSessions.append((movieSession, selectedSeats))
+        }
+    }
 }

@@ -14,7 +14,19 @@ class CheckoutVC: UIViewController {
     // TODO: Put these in a ViewModel
     var orderTotal = 0.00
     var movieSession: MovieSession!
-    var selectedSeats: [Seat] = []
+    var selectedSeats: [Seat]!
+    var userRepository: IUserRepository!
+    var orderRepository: IOrderRepository!
+    var user: User? {
+        didSet {
+            if self.user == nil {
+                placeOrderButton.setTitle("Login to place your order", for: .normal)
+            } else {
+                placeOrderButton.setTitle("Place order", for: .normal)
+            }
+        }
+    }
+    
 
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var priceBannerView: PriceBannerView!
@@ -23,24 +35,39 @@ class CheckoutVC: UIViewController {
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        priceBannerView.price = 0.00
-        movieDetailsView.movie = movieSession.movie
-        orderSummaryView.total = 0.00
-        seatingArrangementView.selectedSeats = selectedSeats
-        seatingArrangementView.cinema = movieSession.cinema
-        sessionDetailsView.movieSession = movieSession
+    @IBAction func placeOrderButtonDidTapped(_ sender: Any) {
+        if user != nil {
+            performSegue(withIdentifier: "placeOrderIfLoggedIn", sender: nil)
+        } else {
+            performSegue(withIdentifier: "showLoginPageIfNotLoggedIn", sender: nil)
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        priceBannerView.price = 0.00
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        priceBannerView.price = orderTotal
         movieDetailsView.movie = movieSession.movie
-        orderSummaryView.total = 0.00
+        orderSummaryView.total = orderTotal
         seatingArrangementView.selectedSeats = selectedSeats
         seatingArrangementView.cinema = movieSession.cinema
         sessionDetailsView.movieSession = movieSession
+        
+        if self.user == nil {
+            placeOrderButton.setTitle("Login to place your order", for: .normal)
+        } else {
+            placeOrderButton.setTitle("Place order", for: .normal)
+        }
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        priceBannerView.price = orderTotal
+//        movieDetailsView.movie = movieSession.movie
+//        orderSummaryView.total = orderTotal
+//        seatingArrangementView.selectedSeats = selectedSeats
+//        seatingArrangementView.cinema = movieSession.cinema
+//        sessionDetailsView.movieSession = movieSession
+//    }
     
     
 
@@ -75,3 +102,42 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
+
+extension CheckoutVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "placeOrderIfLoggedIn" {
+            let loggedInUser = userRepository.getCurrentUser()!
+            let destinationVC = segue.destination.childViewControllers.first as! OrderSummaryVC
+            self.user = loggedInUser
+            
+            // order
+            let newOrder = Order(id: nil, userId: loggedInUser.id! , seats: selectedSeats, movieSession: movieSession)
+            destinationVC.order = orderRepository.create(order: newOrder)!
+            destinationVC.user = loggedInUser
+            destinationVC.newOrder = true
+            destinationVC.delegate = self
+        }
+        
+        else if segue.identifier == "showLoginPageIfNotLoggedIn" {
+            let destinationVC = segue.destination.childViewControllers.first as! LoginVC
+            destinationVC.userRepository = userRepository
+            destinationVC.delegate = self
+            destinationVC.goToAccountPage = false
+        }
+    }
+}
+
+extension CheckoutVC: LoginVCDelegate {
+    func didLoggedIn(_ user: User) {
+        self.user = user
+    }
+}
+
+extension CheckoutVC: OrderSummaryVCDelegate {
+    func barButtonRightDidTapped() {
+        _ = self.navigationController?.popToRootViewController(animated: true)
+    }
+}
+

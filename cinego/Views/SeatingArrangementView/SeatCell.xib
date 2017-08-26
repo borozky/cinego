@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeatCell" customModule="cinego" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="gTV-IL-0wX" id="n6V-YQ-hUA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SeatCell" customModule="cinego" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-xf-jWH">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AH6-S0-KmM">
+                                <rect key="frame" x="18.5" y="19.5" width="13.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AH6-S0-KmM" firstAttribute="centerX" secondItem="ROo-xf-jWH" secondAttribute="centerX" id="grh-gL-Ubi"/>
+                            <constraint firstItem="AH6-S0-KmM" firstAttribute="centerY" secondItem="ROo-xf-jWH" secondAttribute="centerY" id="kGc-qq-1sz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ROo-xf-jWH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VsS-i9-dk3"/>
+                <constraint firstItem="ROo-xf-jWH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nyA-pQ-Py2"/>
+                <constraint firstAttribute="bottom" secondItem="ROo-xf-jWH" secondAttribute="bottom" id="oag-wn-WL4"/>
+                <constraint firstAttribute="trailing" secondItem="ROo-xf-jWH" secondAttribute="trailing" id="pbx-Iq-UIi"/>
+            </constraints>
+            <connections>
+                <outlet property="label" destination="AH6-S0-KmM" id="Wjb-FL-OhH"/>
+                <outlet property="labelParent" destination="ROo-xf-jWH" id="iWf-PI-rO0"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
