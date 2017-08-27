@@ -18,6 +18,7 @@ class AccountTableVC: UITableViewController {
     var userRepository: IUserRepository?
     
     @IBOutlet weak var userProfileView: UserProfileView!
+    @IBOutlet var ordersTableView: UITableView!
     
     
     
@@ -90,6 +91,21 @@ class AccountTableVC: UITableViewController {
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
     }
-    
-    
+}
+
+extension AccountTableVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openOrderItemFromAccount" {
+            let destinationVC = segue.destination as! OrderSummaryVC
+            let indexPath = ordersTableView.indexPathForSelectedRow!
+            switch indexPath.section {
+            case 0:
+                destinationVC.order = upcomingBookings[indexPath.row]
+            case 1:
+                destinationVC.order = pastOrders[indexPath.row]
+            default:
+                break
+            }
+        }
+    }
 }

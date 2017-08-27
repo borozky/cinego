@@ -734,7 +734,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Llb-D9-4Ps">
-                                    <rect key="frame" x="0.0" y="241.5" width="320" height="757"/>
+                                    <rect key="frame" x="0.0" y="242" width="320" height="757"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nr-p7-d8d" customClass="MovieDetailsView" customModule="cinego" customModuleProvider="target">
@@ -889,6 +889,9 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
+                                <connections>
+                                    <segue destination="xrt-rT-LaX" kind="show" identifier="openOrderItemFromAccount" id="Ei3-tc-xZp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -898,6 +901,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Account" id="xRR-4V-GS6"/>
                     <connections>
+                        <outlet property="ordersTableView" destination="opn-Ue-Rfo" id="b15-t2-92B"/>
                         <outlet property="userProfileView" destination="LbU-nE-jXI" id="5XR-6t-fAj"/>
                     </connections>
                 </tableViewController>
@@ -1223,6 +1227,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aKN-W1-6cx"/>
+        <segue reference="Ei3-tc-xZp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -18,9 +18,9 @@ class OrderSummaryView: UIView {
     
     var total: Double = 0.00 {
         didSet {
-            subtotalLabel.text = String(format: "$ %.02f", (self.total - 5.00) * 0.9)
-            shippingLabel.text = String(format: "$ %.02f", 5.00)
-            gstLabel.text = String(format: "$ %.02f", (self.total - 5.00) * 0.1)
+            subtotalLabel.text = String(format: "$ %.02f", self.total * (1.0 - Order.gstRate))
+            shippingLabel.text = String(format: "$ %.02f", self.total * Order.shippingRate)
+            gstLabel.text = String(format: "$ %.02f", self.total * Order.gstRate)
         }
     }
     
