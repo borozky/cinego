@@ -35,10 +35,12 @@ class LoginVC: UIViewController {
         validationErrorsLabel.text = ""
         validationErrorsLabel.isEnabled = false
         
+        
         if delegate == nil {
-
             self.navigationItem.setRightBarButton(nil, animated: false)
         }
+        
+        
         
     }
     

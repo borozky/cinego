@@ -25,29 +25,29 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VQ0-ea-Ndm">
-                    <rect key="frame" x="78" y="251" width="219" height="165"/>
+                    <rect key="frame" x="78" y="252.5" width="219" height="162"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firstname Lastname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1z-9p-MMP">
-                            <rect key="frame" x="32" y="0.0" width="155" height="23.5"/>
-                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                            <rect key="frame" x="30" y="0.0" width="159" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="640x360" translatesAutoresizingMaskIntoConstraints="NO" id="kti-gZ-1hb">
-                            <rect key="frame" x="59.5" y="26.5" width="100" height="100"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_image_bird" translatesAutoresizingMaskIntoConstraints="NO" id="kti-gZ-1hb">
+                            <rect key="frame" x="59.5" y="23.5" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="1et-6W-ixC"/>
                                 <constraint firstAttribute="width" secondItem="kti-gZ-1hb" secondAttribute="height" multiplier="1:1" id="avK-Bt-zeg"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s3485376@student.rmit.edu.au" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-Fi-RIN">
-                            <rect key="frame" x="0.0" y="129.5" width="219" height="18"/>
+                            <rect key="frame" x="0.0" y="126.5" width="219" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="borozky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ca5-GX-m3V">
-                            <rect key="frame" x="87" y="150.5" width="45.5" height="14.5"/>
+                            <rect key="frame" x="87" y="147.5" width="45.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                             <nil key="highlightedColor"/>
@@ -67,6 +67,6 @@
         </view>
     </objects>
     <resources>
-        <image name="640x360" width="640" height="360"/>
+        <image name="sample_image_bird" width="717" height="477"/>
     </resources>
 </document>
