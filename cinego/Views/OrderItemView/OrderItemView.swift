@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class OrderItemView: UIView {
 
     @IBOutlet var view: UIView!
@@ -21,8 +22,7 @@ class OrderItemView: UIView {
     @IBOutlet weak var movieTitleLabel: UILabel!
 
     var order: Order! {
-        get { return self.order }
-        set {
+        didSet {
             movieBanner.image = UIImage(imageLiteralResourceName: order.movieSession.movie.images[0])
             totalPriceLabel.text = String(format: "$ %.02f", order.totalPrice)
             numSeatsLabel.text = String(format: "%d seats >", order.numTickets)
