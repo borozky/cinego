@@ -540,11 +540,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountStatusTableViewCell" textLabel="6OE-Pp-8S4" detailTextLabel="bai-XZ-HvH" imageView="6cv-xa-VLj" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="epS-RM-Xp9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountStatusTableViewCell" textLabel="6OE-Pp-8S4" detailTextLabel="bai-XZ-HvH" imageView="6cv-xa-VLj" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="epS-RM-Xp9">
                                         <rect key="frame" x="0.0" y="304" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epS-RM-Xp9" id="OvF-o7-ISV">
-                                            <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Account status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6OE-Pp-8S4">
@@ -567,12 +567,13 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentMethodTableViewCell" textLabel="5af-C9-F92" detailTextLabel="vqe-Mb-oRc" imageView="NeN-4V-kUe" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Qrp-iN-YeD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentMethodTableViewCell" textLabel="5af-C9-F92" detailTextLabel="vqe-Mb-oRc" imageView="NeN-4V-kUe" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Qrp-iN-YeD">
                                         <rect key="frame" x="0.0" y="348" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qrp-iN-YeD" id="pvD-rf-OVI">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5af-C9-F92">
@@ -662,6 +663,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1300"/>
                     <connections>
+                        <outlet property="checkoutTableView" destination="pGA-C8-vOy" id="F9O-V1-tGD"/>
                         <outlet property="movieDetailsView" destination="MM4-5u-iEA" id="8aY-uh-ZhN"/>
                         <outlet property="orderSummaryView" destination="Oj0-qT-FKE" id="s8h-dm-7eR"/>
                         <outlet property="placeOrderButton" destination="4ec-sW-YxQ" id="sDN-Tl-0mV"/>
