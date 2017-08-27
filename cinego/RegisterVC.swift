@@ -76,7 +76,7 @@ class RegisterVC: UIViewController {
         }
         
         delegate.userDidRegister(registeredUser!)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     

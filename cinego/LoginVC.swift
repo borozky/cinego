@@ -88,6 +88,8 @@ class LoginVC: UIViewController {
             accountTableVC.pastOrders = pastOrders
             accountTableVC.upcomingBookings = upcomingOrders
             accountTableVC.orderRepository = orderRepository
+            accountTableVC.userRepository = userRepository
+            accountTableVC.delegate = self
         }
     }
 
@@ -99,6 +101,13 @@ extension LoginVC : RegisterVCDelegate {
             delegate?.didLoggedIn(loggedInUser)
             dismiss(animated: true, completion: nil)
         }
-        
+    }
+}
+
+extension LoginVC : AccountTableVCDelegate {
+    func didLogout() {
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+        usernameTextField.becomeFirstResponder()
     }
 }

@@ -897,7 +897,13 @@
                             <outlet property="delegate" destination="SMp-Ba-85P" id="a9w-N6-Wex"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Account" id="xRR-4V-GS6"/>
+                    <navigationItem key="navigationItem" title="Account" id="xRR-4V-GS6">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="VS7-ek-rtQ">
+                            <connections>
+                                <action selector="logoutDidTapped:" destination="SMp-Ba-85P" id="ws1-tF-Azl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ordersTableView" destination="opn-Ue-Rfo" id="b15-t2-92B"/>
                         <outlet property="userProfileView" destination="LbU-nE-jXI" id="5XR-6t-fAj"/>
@@ -986,9 +992,12 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNS-SG-Rp4">
-                                        <rect key="frame" x="98" y="234" width="178" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNS-SG-Rp4">
+                                        <rect key="frame" x="86" y="235.5" width="180" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="YbX-Fm-7nw"/>
+                                            <constraint firstAttribute="width" constant="180" id="w95-0X-lNS"/>
+                                        </constraints>
                                         <state key="normal" title="I don't have an account"/>
                                         <connections>
                                             <segue destination="2VU-lc-8zK" kind="show" identifier="openRegisterVCFromLoginVC" id="5m5-vv-nhi"/>
@@ -999,7 +1008,9 @@
                                 <constraints>
                                     <constraint firstItem="73M-fY-pck" firstAttribute="top" secondItem="fMF-li-5ca" secondAttribute="top" constant="18" id="DfA-NO-UXU"/>
                                     <constraint firstItem="73M-fY-pck" firstAttribute="centerX" secondItem="fMF-li-5ca" secondAttribute="centerX" id="EKe-6q-4Xz"/>
+                                    <constraint firstAttribute="trailing" secondItem="FNS-SG-Rp4" secondAttribute="trailing" constant="18" id="SPP-MG-CQT"/>
                                     <constraint firstItem="73M-fY-pck" firstAttribute="centerX" secondItem="fMF-li-5ca" secondAttribute="centerX" id="dVV-49-DST"/>
+                                    <constraint firstItem="FNS-SG-Rp4" firstAttribute="top" secondItem="73M-fY-pck" secondAttribute="bottom" constant="18" id="iIy-qw-rqe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1247,7 +1258,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MBj-35-m0o"/>
-        <segue reference="t5u-1I-Bmu"/>
+        <segue reference="Ei3-tc-xZp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

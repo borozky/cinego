@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol AccountTableVCDelegate: class {
+    func didLogout()
+}
+
 class AccountTableVC: UITableViewController {
     
     private let tableViewCellID = "UserOrdersTableViewCell"
+    
+    weak var delegate: AccountTableVCDelegate?
     
     var user: User!
     var upcomingBookings: [Order] = []
@@ -21,6 +27,12 @@ class AccountTableVC: UITableViewController {
     @IBOutlet weak var userProfileView: UserProfileView!
     @IBOutlet var ordersTableView: UITableView!
     
+    @IBAction func logoutDidTapped(_ sender: Any) {
+        (userRepository as! UserRepository).logout()
+        delegate?.didLogout()
+        _ = self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
     
     override func viewDidLoad() {
