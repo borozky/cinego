@@ -32,6 +32,13 @@ class AccountTableVC: UITableViewController {
         self.navigationItem.backBarButtonItem?.isEnabled = false
         self.navigationItem.hidesBackButton = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let orders = orderRepository.findAll(byUser: user)
+        pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
+        upcomingBookings = orders.filter { $0.movieSession.startTime > Date()  }
+        ordersTableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
