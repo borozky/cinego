@@ -80,7 +80,7 @@ class UserRepository: IUserRepository {
                                fullname: user.fullname,
                                password: user.password,
                                orders: user.orders)
-            users.append(user)
+            users.append(newUser)
             return newUser
         }
         

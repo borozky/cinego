@@ -30,10 +30,8 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         validationErrorsLabel.text = ""
     }
+    
     @IBAction func registerDidTapped(_ sender: Any) {
-        print("Hello World")
-    }
-    func registerButtonDidTapped(_ sender: Any) {
         let fullname = fullnameTextField.text ?? ""
         let username = usernameTextField.text ?? ""
         let email = emailTextField.text ?? ""
@@ -78,7 +76,8 @@ class RegisterVC: UIViewController {
         }
         
         delegate.userDidRegister(registeredUser!)
-        
+        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     private func register(fullname: String, username: String, email: String, password: String, passwordConfirmation: String ) -> User? {

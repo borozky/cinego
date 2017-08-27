@@ -17,7 +17,7 @@ class LoginVC: UIViewController {
     var userRepository: IUserRepository!
     var orderRepository: IOrderRepository!
     
-    weak var delegate: LoginVCDelegate!
+    weak var delegate: LoginVCDelegate?
     var goToAccountPage = true
     var user: User?
     @IBOutlet weak var usernameTextField: UITextField!
@@ -35,13 +35,16 @@ class LoginVC: UIViewController {
         validationErrorsLabel.text = ""
         validationErrorsLabel.isEnabled = false
         
-        
         if delegate == nil {
             self.navigationItem.setRightBarButton(nil, animated: false)
         }
         
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let loggedInUser = userRepository.getCurrentUser() {
+            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
+        }
     }
     
     @IBAction func loginButtonDidTapped(_ sender: Any) {
@@ -81,7 +84,7 @@ class LoginVC: UIViewController {
             let orders = orderRepository.findAll(byUser: currentUser)
             let pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
             let upcomingOrders = orders.filter { $0.movieSession.startTime > Date()  }
-            accountTableVC.user = user
+            accountTableVC.user = currentUser
             accountTableVC.pastOrders = pastOrders
             accountTableVC.upcomingBookings = upcomingOrders
             accountTableVC.orderRepository = orderRepository
@@ -93,7 +96,7 @@ class LoginVC: UIViewController {
 extension LoginVC : RegisterVCDelegate {
     func userDidRegister(_ user: User) {
         if let loggedInUser = (userRepository as! UserRepository).login(username: user.username, password: user.password) {
-            delegate.didLoggedIn(loggedInUser)
+            delegate?.didLoggedIn(loggedInUser)
             dismiss(animated: true, completion: nil)
         }
         
