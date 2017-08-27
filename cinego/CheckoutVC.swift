@@ -12,7 +12,7 @@ class CheckoutVC: UIViewController {
     
     
     // TODO: Put these in a ViewModel
-    var orderTotal = 0.00
+    var orderTotal: Double!
     var movieSession: MovieSession!
     var selectedSeats: [Seat]!
     var userRepository: IUserRepository!
@@ -51,6 +51,7 @@ class CheckoutVC: UIViewController {
         orderSummaryView.total = orderTotal
         seatingArrangementView.selectedSeats = selectedSeats
         seatingArrangementView.cinema = movieSession.cinema
+        seatingArrangementView.isSeatSelectable = false
         sessionDetailsView.movieSession = movieSession
         
         if self.user == nil {
@@ -59,15 +60,6 @@ class CheckoutVC: UIViewController {
             placeOrderButton.setTitle("Place order", for: .normal)
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        priceBannerView.price = orderTotal
-//        movieDetailsView.movie = movieSession.movie
-//        orderSummaryView.total = orderTotal
-//        seatingArrangementView.selectedSeats = selectedSeats
-//        seatingArrangementView.cinema = movieSession.cinema
-//        sessionDetailsView.movieSession = movieSession
-//    }
     
     
 

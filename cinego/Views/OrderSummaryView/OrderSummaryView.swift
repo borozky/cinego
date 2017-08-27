@@ -17,11 +17,10 @@ class OrderSummaryView: UIView {
     @IBOutlet weak var shippingLabel: UILabel!
     
     var total: Double = 0.00 {
-        didSet(newValue) {
-            subtotalLabel.text = String(format: "$ %.02f", (newValue - 5.00) * 0.9)
+        didSet {
+            subtotalLabel.text = String(format: "$ %.02f", (self.total - 5.00) * 0.9)
             shippingLabel.text = String(format: "$ %.02f", 5.00)
-            gstLabel.text = String(format: "$ %.02f", (newValue - 5.00) * 0.1)
-            
+            gstLabel.text = String(format: "$ %.02f", (self.total - 5.00) * 0.1)
         }
     }
     

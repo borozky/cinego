@@ -12,21 +12,23 @@ import UIKit
 class PriceBannerView: UIView {
 
     
+    var title: String = "ORDER TOTAL" {
+        didSet {
+            titleLabel.text = self.title
+        }
+    }
+    var price: Double = 0.00 {
+        didSet{
+            priceLabel.text = String(format: "$ %.02f", self.price)
+        }
+    }
+    var currency: String = "$"
+    
     @IBOutlet var view: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var title: String = "ORDER TOTAL" {
-        didSet(newValue){
-            titleLabel.text = newValue
-        }
-    }
-    var price: Double = 0.00 {
-        didSet(newValue){
-            priceLabel.text = String(format: "$ %.02f", newValue)
-        }
-    }
-    var currency: String = "$"
+
     
     
     // https://stackoverflow.com/documentation/ios/1362/custom-uiviews-from-xib-files#t=201708251212470621308

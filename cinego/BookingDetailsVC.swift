@@ -47,6 +47,7 @@ extension BookingDetailsVC {
             let orderRepository: IOrderRepository = SimpleIOCContainer.instance.resolve(IOrderRepository.self)!
             destinationVC.movieSession = movieSession
             destinationVC.selectedSeats = seatingArrangementView.selectedSeats
+            destinationVC.isEditing = false
             destinationVC.orderTotal = seatingArrangementView.orderTotal
             destinationVC.userRepository = userRepository
             destinationVC.orderRepository = orderRepository
@@ -62,6 +63,13 @@ extension BookingDetailsVC {
 
 extension BookingDetailsVC: SeatingArrangementViewDelegate {
     func didUpdateSeats(_ selectedSeats: [Seat]) {
+        proceedToCheckoutButton.isEnabled = selectedSeats.count > 0
+        
+        if selectedSeats.count > 0 {
+            proceedToCheckoutButton.alpha = 0.5
+        } else {
+            proceedToCheckoutButton.alpha = 1.0
+        }
         self.selectedSeats = selectedSeats
         delegate?.didUpdateSeats(movieSession, self.selectedSeats)
     }

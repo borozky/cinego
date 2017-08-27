@@ -32,6 +32,11 @@ class SeatingArrangementView: UIView {
             priceCalculationLabel.text = String(format: "$ %.02f per seat x %d", pricePerSeat, self.selectedSeats.count)
         }
     }
+    var isSeatSelectable: Bool = true {
+        didSet {
+            titleLabel.text = "SELECTED SEATS"
+        }
+    }
     var reservedSeats: [Seat] = []
     var pricePerSeat: Double = 20.00
     var orderTotal: Double {
@@ -107,6 +112,9 @@ extension SeatingArrangementView: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SeatCollectionViewCell
+        guard isSeatSelectable else {
+            return
+        }
         
         if cell.seat.status == .RESERVED {
             return

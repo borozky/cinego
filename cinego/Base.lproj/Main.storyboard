@@ -319,14 +319,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Fxh-r6-tcv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Co9-sX-6sx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNr-J4-XgR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1051"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-SE-NXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1051"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-m6-8CX">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
@@ -371,19 +371,21 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxJ-Nt-4b9" customClass="SeatingArrangementView" customModule="cinego" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="276" width="320" height="243"/>
+                                                <rect key="frame" x="0.0" y="276" width="320" height="600"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="600" id="fE0-zS-sUH"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="dI0-m6-8CX" firstAttribute="leading" secondItem="lMj-SE-NXg" secondAttribute="leading" id="7xB-Ir-jt1"/>
                                             <constraint firstAttribute="trailing" secondItem="dI0-m6-8CX" secondAttribute="trailing" id="HOn-Nr-51d"/>
-                                            <constraint firstAttribute="trailing" secondItem="lxJ-Nt-4b9" secondAttribute="trailing" id="I5I-tU-LKY"/>
-                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="top" secondItem="dI0-m6-8CX" secondAttribute="bottom" constant="8" id="OxB-ca-Nwt"/>
-                                            <constraint firstAttribute="bottom" secondItem="lxJ-Nt-4b9" secondAttribute="bottom" id="R4Q-kZ-jyf"/>
-                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="leading" secondItem="lMj-SE-NXg" secondAttribute="leading" id="TfI-6U-vOQ"/>
                                             <constraint firstItem="dI0-m6-8CX" firstAttribute="top" secondItem="lMj-SE-NXg" secondAttribute="top" id="UXX-kc-g6Z"/>
+                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="top" secondItem="dI0-m6-8CX" secondAttribute="bottom" constant="8" id="Ujt-Xd-PDH"/>
+                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="leading" secondItem="lMj-SE-NXg" secondAttribute="leading" id="fHg-qh-Qkt"/>
+                                            <constraint firstAttribute="trailing" secondItem="lxJ-Nt-4b9" secondAttribute="trailing" id="zk4-b8-3Je"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -397,7 +399,7 @@
                                 </constraints>
                             </scrollView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbY-VN-p5u">
-                                <rect key="frame" x="0.0" y="464" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="996" width="320" height="56"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UNb-6T-yFx">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,6 +443,8 @@
                             <constraint firstAttribute="trailing" secondItem="FNr-J4-XgR" secondAttribute="trailing" id="ivT-mZ-gFx"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1100"/>
                     <connections>
                         <outlet property="movieDetailsView" destination="AFC-hj-oCw" id="Kbv-rG-9cB"/>
                         <outlet property="proceedToCheckoutButton" destination="pQU-gZ-92V" id="HVM-ek-1nM"/>

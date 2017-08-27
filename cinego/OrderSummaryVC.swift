@@ -45,8 +45,8 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
         movieDetailsView.movie = order.movieSession.movie
         sessionDetailsView.movieSession = order.movieSession
         seatingArrangementView.selectedSeats = order.seats
+        seatingArrangementView.isSeatSelectable = false
         seatingArrangementView.cinema = order.movieSession.cinema
-        notificationContainer?.backgroundColor = UIColor.green
         notificationLabel?.text = notification
     }
     
