@@ -15,7 +15,8 @@ class AccountTableVC: UITableViewController {
     var user: User!
     var upcomingBookings: [Order] = []
     var pastOrders: [Order] = []
-    var userRepository: IUserRepository?
+    var userRepository: IUserRepository!
+    var orderRepository: IOrderRepository!
     
     @IBOutlet weak var userProfileView: UserProfileView!
     @IBOutlet var ordersTableView: UITableView!
@@ -86,7 +87,7 @@ class AccountTableVC: UITableViewController {
         
     }
     
-    private func humanizeTime(_ date: Date) -> String {
+    func humanizeTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
@@ -100,12 +101,18 @@ extension AccountTableVC {
             let indexPath = ordersTableView.indexPathForSelectedRow!
             switch indexPath.section {
             case 0:
-                destinationVC.order = upcomingBookings[indexPath.row]
+                let order = upcomingBookings[indexPath.row]
+                destinationVC.order = order
+                destinationVC.notification = "The session will start on \(humanizeTime(order.movieSession.startTime))"
             case 1:
                 destinationVC.order = pastOrders[indexPath.row]
+                destinationVC.notification = "This session has already passed"
             default:
                 break
             }
         }
     }
 }
+
+
+

@@ -84,6 +84,7 @@ class LoginVC: UIViewController {
             accountTableVC.user = user
             accountTableVC.pastOrders = pastOrders
             accountTableVC.upcomingBookings = upcomingOrders
+            accountTableVC.orderRepository = orderRepository
         }
     }
 

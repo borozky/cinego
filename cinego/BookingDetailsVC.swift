@@ -88,3 +88,5 @@ extension BookingDetailsVC: SeatingArrangementViewDelegate {
         delegate?.didUpdateSeats(movieSession, self.selectedSeats)
     }
 }
+
+
