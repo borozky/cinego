@@ -30,7 +30,10 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         validationErrorsLabel.text = ""
     }
-    @IBAction func registerButtonDidTapped(_ sender: Any) {
+    @IBAction func registerDidTapped(_ sender: Any) {
+        print("Hello World")
+    }
+    func registerButtonDidTapped(_ sender: Any) {
         let fullname = fullnameTextField.text ?? ""
         let username = usernameTextField.text ?? ""
         let email = emailTextField.text ?? ""

@@ -14,22 +14,23 @@ enum PaymentMethod: String {
 }
 
 struct Order {
-    let pricePerTicket = 20.00
-    let gstRate: Double = 0.10
-    let shippingRate: Double = 0.00
+    static let pricePerTicket = 20.00
+    static let gstRate: Double = 0.10
+    static let shippingRate: Double = 0.00
+    
     let dateOfPurchase: Date = Date()
     
     var gst: Double {
-        get { return gstRate * totalPrice }
+        get { return Order.gstRate * totalPrice }
     }
     var shippingCost: Double {
-        get { return shippingRate * totalPrice }
+        get { return Order.shippingRate * totalPrice }
     }
     var totalPrice: Double {
-        return Double(numTickets) * pricePerTicket
+        return Double(numTickets) * Order.pricePerTicket
     }
     var subtotal: Double {
-        return totalPrice * (1.0 - gstRate)
+        return totalPrice * (1.0 - Order.gstRate)
     }
     var numTickets: Int {
         return seats.count

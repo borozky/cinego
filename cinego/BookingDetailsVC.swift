@@ -27,6 +27,13 @@ class BookingDetailsVC: UIViewController {
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
+    @IBAction func proceedToCheckoutButtonDidTapped(_ sender: Any) {
+        guard selectedSeats.count > 0 else {
+            return
+        }
+        performSegue(withIdentifier: "proceedToCheckout", sender: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         movieDetailsView.movie = movieSession.movie
@@ -35,6 +42,13 @@ class BookingDetailsVC: UIViewController {
         seatingArrangementView.selectedSeats = selectedSeats
         seatingArrangementView.reservedSeats = []
         seatingArrangementView.pricePerSeat = pricePerTicket
+        seatingArrangementView.delegate = self
+        
+        if selectedSeats.count > 0 {
+            proceedToCheckoutButton.alpha = 1.0
+        } else {
+            proceedToCheckoutButton.alpha = 0.5
+        }
     }
     
 }
@@ -63,14 +77,16 @@ extension BookingDetailsVC {
 
 extension BookingDetailsVC: SeatingArrangementViewDelegate {
     func didUpdateSeats(_ selectedSeats: [Seat]) {
+        self.selectedSeats = selectedSeats
         proceedToCheckoutButton.isEnabled = selectedSeats.count > 0
         
         if selectedSeats.count > 0 {
-            proceedToCheckoutButton.alpha = 0.5
-        } else {
             proceedToCheckoutButton.alpha = 1.0
+        } else {
+            proceedToCheckoutButton.alpha = 0.5
         }
-        self.selectedSeats = selectedSeats
         delegate?.didUpdateSeats(movieSession, self.selectedSeats)
     }
 }
+
+

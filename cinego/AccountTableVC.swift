@@ -15,9 +15,11 @@ class AccountTableVC: UITableViewController {
     var user: User!
     var upcomingBookings: [Order] = []
     var pastOrders: [Order] = []
-    var userRepository: IUserRepository?
+    var userRepository: IUserRepository!
+    var orderRepository: IOrderRepository!
     
     @IBOutlet weak var userProfileView: UserProfileView!
+    @IBOutlet var ordersTableView: UITableView!
     
     
     
@@ -65,31 +67,19 @@ class AccountTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        
         // upcoming movie bookings
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
-            let imageView = cell.viewWithTag(1) as! UIImageView
-            let titleLabel = cell.viewWithTag(2) as! UILabel
-            let detailsLabel = cell.viewWithTag(3) as! UILabel
-            
-            let upcomingBooking = upcomingBookings[indexPath.row]
-            imageView.image = UIImage(imageLiteralResourceName: upcomingBooking.movieSession.movie.images[0])
-            titleLabel.text = upcomingBooking.movieSession.movie.title
-            let humanizedTimeString = humanizeTime(upcomingBooking.movieSession.startTime)
-            
-            detailsLabel.text = humanizedTimeString
-            tableView.estimatedRowHeight = 44
-            tableView.rowHeight = UITableViewAutomaticDimension
-            
+            let orderItemView = cell.viewWithTag(1) as! OrderItemView
+            orderItemView.order = upcomingBookings[indexPath.row]
             return cell
         }
         
         // past movie bookings
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
-            tableView.estimatedRowHeight = 44
-            tableView.rowHeight = UITableViewAutomaticDimension
+            let orderItemView = cell.viewWithTag(1) as! OrderItemView
+            orderItemView.order = pastOrders[indexPath.row]
             return cell
         }
         
@@ -97,11 +87,32 @@ class AccountTableVC: UITableViewController {
         
     }
     
-    private func humanizeTime(_ date: Date) -> String {
+    func humanizeTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
     }
-    
-    
 }
+
+extension AccountTableVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openOrderItemFromAccount" {
+            let destinationVC = segue.destination as! OrderSummaryVC
+            let indexPath = ordersTableView.indexPathForSelectedRow!
+            switch indexPath.section {
+            case 0:
+                let order = upcomingBookings[indexPath.row]
+                destinationVC.order = order
+                destinationVC.notification = "The session will start on \(humanizeTime(order.movieSession.startTime))"
+            case 1:
+                destinationVC.order = pastOrders[indexPath.row]
+                destinationVC.notification = "This session has already passed"
+            default:
+                break
+            }
+        }
+    }
+}
+
+
+

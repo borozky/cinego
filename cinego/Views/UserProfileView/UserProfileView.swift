@@ -33,6 +33,11 @@ class UserProfileView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+        
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+        profileImage.layer.borderWidth = 1
+        profileImage.layer.borderColor = UIColor.darkGray.cgColor
+        profileImage.clipsToBounds = true
     }
     
     private func setupView() {

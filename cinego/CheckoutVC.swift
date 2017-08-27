@@ -35,6 +35,7 @@ class CheckoutVC: UIViewController {
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
+    @IBOutlet weak var checkoutTableView: UITableView!
     @IBAction func placeOrderButtonDidTapped(_ sender: Any) {
         if user != nil {
             performSegue(withIdentifier: "placeOrderIfLoggedIn", sender: nil)
@@ -54,6 +55,7 @@ class CheckoutVC: UIViewController {
         seatingArrangementView.isSeatSelectable = false
         sessionDetailsView.movieSession = movieSession
         
+        user = userRepository.getCurrentUser()
         if self.user == nil {
             placeOrderButton.setTitle("Login to place your order", for: .normal)
         } else {
@@ -82,6 +84,13 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
         // ACCOUNT table cell
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "AccountStatusTableViewCell", for: indexPath)
+            if user != nil {
+                cell.detailTextLabel?.text = "Logged in as \(user!.fullname)"
+                cell.accessoryType = .checkmark
+            } else {
+                cell.detailTextLabel?.text = "Checking out as a guest"
+                cell.accessoryType = .detailButton
+            }
             return cell
         }
         
@@ -124,6 +133,7 @@ extension CheckoutVC {
 extension CheckoutVC: LoginVCDelegate {
     func didLoggedIn(_ user: User) {
         self.user = user
+        checkoutTableView.reloadData()
     }
 }
 
@@ -132,4 +142,5 @@ extension CheckoutVC: OrderSummaryVCDelegate {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
+
 
