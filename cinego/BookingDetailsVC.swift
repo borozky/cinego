@@ -59,6 +59,7 @@ extension BookingDetailsVC {
             let destinationVC = segue.destination as! CheckoutVC
             let userRepository: IUserRepository = SimpleIOCContainer.instance.resolve(IUserRepository.self)!
             let orderRepository: IOrderRepository = SimpleIOCContainer.instance.resolve(IOrderRepository.self)!
+            
             destinationVC.movieSession = movieSession
             destinationVC.selectedSeats = seatingArrangementView.selectedSeats
             destinationVC.isEditing = false

@@ -53,7 +53,7 @@ class MovieDetailsViewController: UIViewController {
 }
 
 
-extension MovieDetailsViewController : UITableViewDataSource {
+extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return movieSessionsByCinema.count
