@@ -38,6 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return OrderRepository()
         })
         
+        container.register(HomePageViewModel.self, factory: {
+            let movieRepository = container.resolve(IMovieRepository.self)!
+            let cinemaRepository = container.resolve(ICinemaRepository.self)!
+            return HomePageViewModel (movieRepository, cinemaRepository)
+        })
+        
         return container
     }
 
@@ -65,8 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // home page
         for childViewController in initialViewController.viewControllers?[0].childViewControllers ?? [] {
             if let homeViewController = childViewController as? HomeViewController {
-                homeViewController.cinemaRepository = container.resolve(ICinemaRepository.self)
-                homeViewController.movieRepository = container.resolve(IMovieRepository.self)
+                homeViewController.homePageViewModel = container.resolve(HomePageViewModel.self)
                 break
             }
         }

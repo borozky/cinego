@@ -10,11 +10,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // TODO: Refactor with ViewModels
-    var movieRepository: IMovieRepository!
-    var cinemaRepository: ICinemaRepository!
-    var upcomingMovies: [Movie] = []
+    var homePageViewModel: HomePageViewModel!
     var cinemaMovies: [(Cinema, [Movie])] = []
+    var upcomingMovies: [Movie] = []
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var tableView: UITableView!
@@ -23,48 +21,33 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadHomeBannerSlider()
-        loadUpcomingMovies()
-        loadCinemaMovies()
+        upcomingMovies = homePageViewModel.getUpcomingMovies()
+        cinemaMovies = homePageViewModel.getCinemaMovies()
     }
     
-    
+    // loads the home page banner slider
     private func loadHomeBannerSlider() {
-        let cinemas = cinemaRepository?.getAllCinemas()
-        
-        if let _cinemas = cinemas {
-            for cinema in _cinemas {
+        let cinemas = homePageViewModel.getAllCinemas()
+        if cinemas.count > 0 {
+            for cinema in cinemas {
                 if cinema.images.count > 0 {
                     homeBannerSlider.addImage(UIImage(imageLiteralResourceName: cinema.images[0]))
                 }
             }
-            
+        }
+        
         // default image
-        } else {
+        else {
             homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
-    
-    
-    private func loadUpcomingMovies(){
-        upcomingMovies = (movieRepository?.getUpcomingMovies())!
-    }
-    
-    
-    private func loadCinemaMovies(){
-        let cinemas = cinemaRepository.getAllCinemas()
-        for cinema in cinemas {
-            let movies = movieRepository.getMovies(byCinema: cinema)
-            cinemaMovies.append((cinema, movies))
-        }
-    }
-    
     
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 + cinemaMovies.count
+        return 1 + homePageViewModel.getCinemaMovies().count
     }
     
     
@@ -98,69 +81,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return 0
     }
 }
-
-
-
-
-
-//extension HomeViewController : UICollectionViewDataSource, UICollectionViewDelegate {
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        
-//        // UPCOMING MOVIES section - >5 cinemas
-//        if collectionView == self.upcomingMoviesCollectionView {
-//            return (movieRepository?.getUpcomingMovies().count)!
-//        }
-//        
-//        // CINEMA THEATERS section - 4 cinemas
-//        if collectionView == self.cinemaTheatersCollectionView {
-//            return (cinemaRepository?.getAllCinemas().count)!
-//        }
-//        
-//        return 0
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        
-//        // cells for UPCOMING MOVIES
-//        if collectionView == self.upcomingMoviesCollectionView {
-//            let upcomingMovie = upcomingMovies[indexPath.row]
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-//            cell.bannerIcon.image = UIImage(imageLiteralResourceName: upcomingMovie.images[0])
-//            cell.movieTitle.text = upcomingMovie.title
-//            cell.movieReleaseYear.text = String(getReleaseYear(upcomingMovie.releaseDate))
-//            cell.movieAudienceType.text = "PG"
-//            return cell
-//        }
-//        
-//        // cell for CINEMA THEATER
-//        if collectionView == self.cinemaTheatersCollectionView {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CinemaCollectionViewCell", for: indexPath) as! CinemaCollectionViewCell
-//            let cinema = cinemaRepository?.getAllCinemas()[indexPath.row]
-//            cell.cinemaImage.image = UIImage(imageLiteralResourceName: cinema?.images[0] ?? "cinema-image-3")
-//            cell.cinemaLabel?.text = cinema?.name
-//            
-//            cell.cinema = cinema
-//            
-//            return cell
-//        }
-//        
-//        // some default cell
-//        return UICollectionViewCell()
-//    }
-//    
-//    
-//    // helper method
-//    private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "dd MMMM yyyy") -> Int {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = dateFormat
-//        let date = formatter.date(from: releaseDateStr)
-//        let calendar = Calendar.current
-//        return calendar.component(.year, from: date!)
-//    }
-//    
-//}
 
 
 extension HomeViewController {
