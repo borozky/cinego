@@ -61,8 +61,6 @@
 		1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */; };
 		1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */; };
 		2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */; };
-		2E4DFE271F5CD12C0067A760 /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4DFE261F5CD12C0067A760 /* CustomView.xib */; };
-		2E4DFE291F5CD1B40067A760 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE281F5CD1B40067A760 /* CustomView.swift */; };
 		2E4DFE2B1F5D3CB50067A760 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */; };
 		2E4DFE301F5D4B180067A760 /* HomePageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */; };
 		2E985CAD1F4A4776004F2360 /* HomePageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */; };
@@ -149,8 +147,6 @@
 		1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageMovieSectionsTableViewCell.swift; sourceTree = "<group>"; };
 		2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableVC.swift; sourceTree = "<group>"; };
-		2E4DFE261F5CD12C0067A760 /* CustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomView.xib; path = Views/CustomView/CustomView.xib; sourceTree = "<group>"; };
-		2E4DFE281F5CD1B40067A760 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = Views/CustomView/CustomView.swift; sourceTree = "<group>"; };
 		2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomepageViewModel.swift; path = ViewModels/HomepageViewModel.swift; sourceTree = "<group>"; };
 		2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomePageViewModelTests.swift; path = ViewModelsTests/HomePageViewModelTests.swift; sourceTree = "<group>"; };
 		2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITests.swift; sourceTree = "<group>"; };
@@ -282,7 +278,6 @@
 		1F129BD31F2AE27600C6FFA7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2E4DFE251F5CD0D20067A760 /* CustomView */,
 				1F055F641F503ECB004238F5 /* OrderItemView */,
 				1F055F611F503CD7004238F5 /* SeatingArrangementView */,
 				1F055F5E1F503C22004238F5 /* PriceBannerView */,
@@ -379,15 +374,6 @@
 				1FA847841F4D49F8000E9B81 /* Entities.swift */,
 			);
 			name = Entities;
-			sourceTree = "<group>";
-		};
-		2E4DFE251F5CD0D20067A760 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				2E4DFE261F5CD12C0067A760 /* CustomView.xib */,
-				2E4DFE281F5CD1B40067A760 /* CustomView.swift */,
-			);
-			name = CustomView;
 			sourceTree = "<group>";
 		};
 		2E4DFE2C1F5D4A6A0067A760 /* ViewModelsTests */ = {
@@ -530,7 +516,6 @@
 				1F055F5D1F503B22004238F5 /* UserProfileView.xib in Resources */,
 				1F055F5A1F503A5F004238F5 /* OrderSummaryView.xib in Resources */,
 				1F055F661F503F00004238F5 /* OrderItemView.xib in Resources */,
-				2E4DFE271F5CD12C0067A760 /* CustomView.xib in Resources */,
 				1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */,
 				0375A81B1F51081F00A32C95 /* SeatCell.xib in Resources */,
 				1F055F571F5037F4004238F5 /* SessionDetailsView.xib in Resources */,
@@ -578,7 +563,6 @@
 				0375A81A1F51081F00A32C95 /* SeatCell.swift in Sources */,
 				1F10EC7E1F35381C00283B8C /* BookingDetailsVC.swift in Sources */,
 				1F055F701F5041DA004238F5 /* SeatingArrangementView.swift in Sources */,
-				2E4DFE291F5CD1B40067A760 /* CustomView.swift in Sources */,
 				1F3DC9B21F34CFEE008C4313 /* Booking.swift in Sources */,
 				03F073821F26C9BC00BD9713 /* Temp.m in Sources */,
 				1F3DC9B61F34D165008C4313 /* Order.swift in Sources */,
