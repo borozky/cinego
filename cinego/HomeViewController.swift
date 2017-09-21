@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let moviesReference = Database.database().reference().child("movies")
+        let moviesReference = Database.database().reference().child("movieSessions")
         
         moviesReference.observeSingleEvent(of: .value, with: { snapshot in
             print("SNAPSHOT", snapshot.children.allObjects)
