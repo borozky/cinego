@@ -20,6 +20,7 @@
 		03D68A031F4E570500192877 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D68A021F4E570500192877 /* RegisterVC.swift */; };
 		03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */; };
 		03F073821F26C9BC00BD9713 /* Temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F073811F26C9BC00BD9713 /* Temp.m */; };
+		117C4CEC633F0FD28D077803 /* Pods_cinegoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4638585F6700EFE04AF5BA5 /* Pods_cinegoTests.framework */; };
 		1F055F521F5034ED004238F5 /* MovieDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F511F5034ED004238F5 /* MovieDetailsView.xib */; };
 		1F055F541F503505004238F5 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F531F503505004238F5 /* MovieDetailsView.swift */; };
 		1F055F571F5037F4004238F5 /* SessionDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F561F5037F4004238F5 /* SessionDetailsView.xib */; };
@@ -60,12 +61,15 @@
 		1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D11F47AFF900D352FB /* Seat.swift */; };
 		1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */; };
 		1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */; };
+		2E24224C1F73A07D00183835 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E24224B1F73A07D00183835 /* GoogleService-Info.plist */; };
 		2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */; };
 		2E4DFE2B1F5D3CB50067A760 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */; };
 		2E4DFE301F5D4B180067A760 /* HomePageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */; };
 		2E985CAD1F4A4776004F2360 /* HomePageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */; };
 		2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */; };
 		2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC77F681F2569A0003BAF20 /* Movie.swift */; };
+		47C65476E214A4734BB0ABDB /* Pods_cinego.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77CADE09D6FA82142B13D3F /* Pods_cinego.framework */; };
+		AC4BF9596F0F1A207FF3FEF5 /* Pods_cinegoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C07569C3D4052C260B39E8 /* Pods_cinegoUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,8 @@
 		03F0737E1F26C4DC00BD9713 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		03F073801F26C9BC00BD9713 /* Temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temp.h; sourceTree = "<group>"; };
 		03F073811F26C9BC00BD9713 /* Temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temp.m; sourceTree = "<group>"; };
+		18C07569C3D4052C260B39E8 /* Pods_cinegoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinegoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1906583C76CB17AA49BEAF04 /* Pods-cinegoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoUITests/Pods-cinegoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1F055F511F5034ED004238F5 /* MovieDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MovieDetailsView.xib; path = Views/MovieDetailsView/MovieDetailsView.xib; sourceTree = "<group>"; };
 		1F055F531F503505004238F5 /* MovieDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsView.swift; path = Views/MovieDetailsView/MovieDetailsView.swift; sourceTree = "<group>"; };
 		1F055F561F5037F4004238F5 /* SessionDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SessionDetailsView.xib; path = Views/SessionDetailsView/SessionDetailsView.xib; sourceTree = "<group>"; };
@@ -146,12 +152,20 @@
 		1FCDD9D11F47AFF900D352FB /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageMovieSectionsTableViewCell.swift; sourceTree = "<group>"; };
+		2E24224B1F73A07D00183835 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableVC.swift; sourceTree = "<group>"; };
 		2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomepageViewModel.swift; path = ViewModels/HomepageViewModel.swift; sourceTree = "<group>"; };
 		2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomePageViewModelTests.swift; path = ViewModelsTests/HomePageViewModelTests.swift; sourceTree = "<group>"; };
 		2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITests.swift; sourceTree = "<group>"; };
 		2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSessionRepository.swift; sourceTree = "<group>"; };
 		2EC77F681F2569A0003BAF20 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		54B0A8B25CE20D32205111E0 /* Pods-cinego.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinego.release.xcconfig"; path = "Pods/Target Support Files/Pods-cinego/Pods-cinego.release.xcconfig"; sourceTree = "<group>"; };
+		690E78FBE6275A6B8F88D669 /* Pods-cinegoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoTests/Pods-cinegoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76D258026CAF5696918C0EBE /* Pods-cinego.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinego.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cinego/Pods-cinego.debug.xcconfig"; sourceTree = "<group>"; };
+		A913027496429F35CCD02A38 /* Pods-cinegoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoTests/Pods-cinegoTests.release.xcconfig"; sourceTree = "<group>"; };
+		E4F36C2CFA2F1AF78002521A /* Pods-cinegoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoUITests/Pods-cinegoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F4638585F6700EFE04AF5BA5 /* Pods_cinegoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinegoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77CADE09D6FA82142B13D3F /* Pods_cinego.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinego.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C65476E214A4734BB0ABDB /* Pods_cinego.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117C4CEC633F0FD28D077803 /* Pods_cinegoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4BF9596F0F1A207FF3FEF5 /* Pods_cinegoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +317,8 @@
 				1F2CD8921F2495CC0034D472 /* cinegoTests */,
 				1F2CD89D1F2495CC0034D472 /* cinegoUITests */,
 				1F2CD87A1F2495CC0034D472 /* Products */,
+				3149F635A7DAA9FEB51608E4 /* Pods */,
+				47EEC304A9B3B259455C5E05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +346,7 @@
 				1F2CD8821F2495CC0034D472 /* Main.storyboard */,
 				1F2CD8851F2495CC0034D472 /* Assets.xcassets */,
 				1F2CD8871F2495CC0034D472 /* LaunchScreen.storyboard */,
+				2E24224B1F73A07D00183835 /* GoogleService-Info.plist */,
 				1F2CD88A1F2495CC0034D472 /* Info.plist */,
 			);
 			path = cinego;
@@ -403,6 +423,29 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		3149F635A7DAA9FEB51608E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76D258026CAF5696918C0EBE /* Pods-cinego.debug.xcconfig */,
+				54B0A8B25CE20D32205111E0 /* Pods-cinego.release.xcconfig */,
+				690E78FBE6275A6B8F88D669 /* Pods-cinegoTests.debug.xcconfig */,
+				A913027496429F35CCD02A38 /* Pods-cinegoTests.release.xcconfig */,
+				1906583C76CB17AA49BEAF04 /* Pods-cinegoUITests.debug.xcconfig */,
+				E4F36C2CFA2F1AF78002521A /* Pods-cinegoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		47EEC304A9B3B259455C5E05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F77CADE09D6FA82142B13D3F /* Pods_cinego.framework */,
+				F4638585F6700EFE04AF5BA5 /* Pods_cinegoTests.framework */,
+				18C07569C3D4052C260B39E8 /* Pods_cinegoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -410,9 +453,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F2CD8A31F2495CC0034D472 /* Build configuration list for PBXNativeTarget "cinego" */;
 			buildPhases = (
+				B63A1D0E9B2ACF13ECDBB31D /* [CP] Check Pods Manifest.lock */,
 				1F2CD8751F2495CC0034D472 /* Sources */,
 				1F2CD8761F2495CC0034D472 /* Frameworks */,
 				1F2CD8771F2495CC0034D472 /* Resources */,
+				6943043C1D57FBCA75E47BE4 /* [CP] Embed Pods Frameworks */,
+				EBEF04715A4B28E085462249 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -427,9 +473,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F2CD8A61F2495CC0034D472 /* Build configuration list for PBXNativeTarget "cinegoTests" */;
 			buildPhases = (
+				D8252AE823E7FFD1D1294B88 /* [CP] Check Pods Manifest.lock */,
 				1F2CD88B1F2495CC0034D472 /* Sources */,
 				1F2CD88C1F2495CC0034D472 /* Frameworks */,
 				1F2CD88D1F2495CC0034D472 /* Resources */,
+				4F62D33FEFB9C20DC561681D /* [CP] Embed Pods Frameworks */,
+				9033BFFBD105CD1826D8C052 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -445,9 +494,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F2CD8A91F2495CC0034D472 /* Build configuration list for PBXNativeTarget "cinegoUITests" */;
 			buildPhases = (
+				D70BFA597198E0A143730414 /* [CP] Check Pods Manifest.lock */,
 				1F2CD8961F2495CC0034D472 /* Sources */,
 				1F2CD8971F2495CC0034D472 /* Frameworks */,
 				1F2CD8981F2495CC0034D472 /* Resources */,
+				E0BA38527A884CD898A68237 /* [CP] Embed Pods Frameworks */,
+				EC6847266BC2967D54038738 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -516,6 +568,7 @@
 				1F055F5D1F503B22004238F5 /* UserProfileView.xib in Resources */,
 				1F055F5A1F503A5F004238F5 /* OrderSummaryView.xib in Resources */,
 				1F055F661F503F00004238F5 /* OrderItemView.xib in Resources */,
+				2E24224C1F73A07D00183835 /* GoogleService-Info.plist in Resources */,
 				1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */,
 				0375A81B1F51081F00A32C95 /* SeatCell.xib in Resources */,
 				1F055F571F5037F4004238F5 /* SessionDetailsView.xib in Resources */,
@@ -540,6 +593,172 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F62D33FEFB9C20DC561681D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinegoTests/Pods-cinegoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6943043C1D57FBCA75E47BE4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-cinego/Pods-cinego-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinego/Pods-cinego-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9033BFFBD105CD1826D8C052 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinegoTests/Pods-cinegoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B63A1D0E9B2ACF13ECDBB31D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cinego-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70BFA597198E0A143730414 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cinegoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8252AE823E7FFD1D1294B88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cinegoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0BA38527A884CD898A68237 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinegoUITests/Pods-cinegoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBEF04715A4B28E085462249 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinego/Pods-cinego-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC6847266BC2967D54038738 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cinegoUITests/Pods-cinegoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F2CD8751F2495CC0034D472 /* Sources */ = {
@@ -741,6 +960,7 @@
 		};
 		1F2CD8A41F2495CC0034D472 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76D258026CAF5696918C0EBE /* Pods-cinego.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -756,6 +976,7 @@
 		};
 		1F2CD8A51F2495CC0034D472 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54B0A8B25CE20D32205111E0 /* Pods-cinego.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -770,6 +991,7 @@
 		};
 		1F2CD8A71F2495CC0034D472 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 690E78FBE6275A6B8F88D669 /* Pods-cinegoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -784,6 +1006,7 @@
 		};
 		1F2CD8A81F2495CC0034D472 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A913027496429F35CCD02A38 /* Pods-cinegoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -798,6 +1021,7 @@
 		};
 		1F2CD8AA1F2495CC0034D472 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1906583C76CB17AA49BEAF04 /* Pods-cinegoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = cinegoUITests/Info.plist;
@@ -811,6 +1035,7 @@
 		};
 		1F2CD8AB1F2495CC0034D472 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4F36C2CFA2F1AF78002521A /* Pods-cinegoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = cinegoUITests/Info.plist;

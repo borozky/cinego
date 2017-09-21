@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     
@@ -20,6 +21,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let moviesReference = Database.database().reference().child("movies")
+        
+        moviesReference.observeSingleEvent(of: .value, with: { snapshot in
+            print("SNAPSHOT", snapshot.children.allObjects)
+        })
+        
         loadHomeBannerSlider()
         upcomingMovies = homePageViewModel.getUpcomingMovies()
         cinemaMovies = homePageViewModel.getCinemaMovies()
