@@ -11,9 +11,11 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var homePageViewModel: HomePageViewModel!
+    // cache movie information here
     var cinemaMovies: [(Cinema, [Movie])] = []
     var upcomingMovies: [Movie] = []
+    
+    var homePageViewModel: HomePageViewModel!
     
     @IBOutlet weak var homeBannerSlider: ImageSlider!
     @IBOutlet weak var tableView: UITableView!
@@ -21,21 +23,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let moviesReference = Database.database().reference().child("movieSessions")
-        
-        moviesReference.observeSingleEvent(of: .value, with: { snapshot in
-            print("SNAPSHOT", snapshot.children.allObjects)
-        })
+
+        homePageViewModel.fetchCinemaMovies()
+        homePageViewModel.fetchAllCinemas()
+        homePageViewModel.fetchUpcomingMovies()
         
         loadHomeBannerSlider()
-        upcomingMovies = homePageViewModel.getUpcomingMovies()
-        cinemaMovies = homePageViewModel.getCinemaMovies()
     }
     
     // loads the home page banner slider
     private func loadHomeBannerSlider() {
-        let cinemas = homePageViewModel.getAllCinemas()
+        let cinemas = getAllCinemas()
         if cinemas.count > 0 {
             for cinema in cinemas {
                 if cinema.images.count > 0 {
@@ -43,26 +41,27 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
+            
         // default image
         else {
             homeBannerSlider.addImage(#imageLiteral(resourceName: "cinema-image3"))
         }
     }
     
+    public func getAllCinemas() -> [Cinema] {
+        return CinemaRepository().getAllCinemas()
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 + homePageViewModel.getCinemaMovies().count
+        return 1 + cinemaMovies.count
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomePageMovieSectionsTableViewCell", for: indexPath) as! HomePageMovieSectionsTableViewCell
@@ -78,8 +77,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         if indexPath.section > 0 {
-            cell.sectionTitleLabel.text = cinemaMovies[indexPath.section - 1].0.name
-            cell.movies = cinemaMovies[indexPath.section - 1].1
+            let cinema = cinemaMovies[indexPath.section - 1].0
+            let movies = cinemaMovies[indexPath.section - 1].1
+            
+            cell.sectionTitleLabel.text = cinema.name
+            cell.movies = movies
+            return cell
         }
         
         return cell
@@ -94,29 +97,36 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         // to Movie Details Page
         if segue.identifier == "openMovieDetailsFromHomepage" {
             let destinationVC = segue.destination as! MovieDetailsViewController
             let cell = sender as! MovieCollectionViewCell
-            let container = SimpleIOCContainer.instance
-            let movieSessionRepository = container.resolve(IMovieSessionRepository.self)
-            let movieSessions = movieSessionRepository?.getMovieSessions(byMovie: cell.movie) ?? []
             let movie = cell.movie
+            let movieService = MovieService()
+            let cinemaService = CinemaService()
+            let movieSessionService = MovieSessionService(movieService: movieService, cinemaService: cinemaService)
+            let movieDetailsViewModel = MovieDetailsViewModel(destinationVC, movieSessionService: movieSessionService, movieService: movieService)
             
             destinationVC.movie = movie
-            destinationVC.movieSessionRepository = movieSessionRepository
-            destinationVC.cartRepository = container.resolve(ICartRepository.self)
-            destinationVC.movieSessions = movieSessions
+            destinationVC.movieDetailsViewModel = movieDetailsViewModel
         }
-        
     }
-    
-
 }
 
-
-
-
-
+extension HomeViewController: HomePageViewModelDelegate {
+    func cinemasRetrieved(_ cinemas: [Cinema]) {
+        
+    }
+    func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) {
+        self.cinemaMovies = cinemaMovies
+        tableView.reloadData()
+    }
+    func upcomingMoviesRetrieved(_ upcomingMovies: [Movie]) {
+        self.upcomingMovies = upcomingMovies
+        tableView.reloadData()
+    }
+    func errorProduced(_ message: String) {
+        
+    }
+}
 

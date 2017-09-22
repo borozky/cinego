@@ -5,9 +5,8 @@
 //  Created by Joshua Orozco on 7/24/17.
 //  Copyright © 2017 ISE Superstars. All rights reserved.
 //
-
 import Foundation
-
+import SwiftyJSON
 
 struct Cinema {
     let id: String
@@ -50,3 +49,20 @@ struct Cinema {
         return total
     }
 }
+
+extension Cinema {
+    init(json: JSON) throws {
+        let id = String(describing: json["id"])
+        let name = String(describing: json["name"])
+        let address = String(describing: json["address"])
+        let details = ""
+        let images: [String] = []
+        let rows: [Character] = ["a", "b", "c", "d"]
+        let seatMatrix: [Int] = [4, 5, 5, 4]
+        let reservedSeats: [Int] = []
+        
+        self.init(id: id, name: name, address: address, details: details, images: images, rows: rows, seatMatrix: seatMatrix, reservedSeats: reservedSeats)
+        
+    }
+}
+

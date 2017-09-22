@@ -93,8 +93,8 @@ extension SeatingArrangementView: UICollectionViewDataSource, UICollectionViewDe
         // cell data and styling
         cell.seat = foundSeat.count > 0 ? foundSeat.first : seat
         cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:1.0).cgColor
-        cell.layer.cornerRadius = cell.frame.size.width / 2
+        cell.layer.borderColor = UIColor(red:0.57, green:0.38, blue:0.69, alpha:0.5).cgColor
+        //cell.layer.cornerRadius = cell.frame.size.width / 2
         cell.clipsToBounds = true
         
         

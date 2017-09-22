@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Haneke
 
 class HomePageMovieSectionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var sectionTitleLabel: UILabel!
     @IBOutlet weak var movieCollectionView: UICollectionView!
-    var movies: [Movie] = []
+    var movies: [Movie] = [] {
+        didSet {
+            movieCollectionView.reloadData()
+        }
+    }
     var cinema: Cinema?
 
     override func awakeFromNib() {
@@ -38,7 +43,9 @@ extension HomePageMovieSectionsTableViewCell: UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         let movie = movies[indexPath.row]
         cell.movie = movie
-        cell.bannerIcon.image = UIImage(imageLiteralResourceName: movie.images[0])
+        //cell.bannerIcon.image = UIImage(imageLiteralResourceName: movie.images[0])
+        let url = URL(string: movie.images.first!)!
+        cell.bannerIcon.hnk_setImageFromURL(url)
         cell.movieTitle.text = movie.title
         return cell
     }

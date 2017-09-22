@@ -17,6 +17,7 @@ target 'cinego' do
 
 
   target 'cinegoTests' do
+    pod 'Firebase'
     inherit! :search_paths
   end
 

@@ -7,31 +7,7 @@
 //
 
 import Foundation
-
-//class Movie {
-//    
-//    var id: Int? = nil
-//    var title: String = ""
-//    var releaseDate: String = ""
-//    var duration: Int = 0
-//    var details: String? = ""
-//    var audienceType: String? = ""
-//    var contentRating: ContentRating = .NOT_RATED
-//    var sessions: [MovieSession] = []
-//    var images: [String] = []
-//    
-//    init(title: String = "", releaseDate: String = "", duration: Int = 0, sessions: [MovieSession] = [], images: [String] = []){
-//        self.title = title
-//        self.releaseDate = releaseDate
-//        self.duration = duration
-//        self.sessions = sessions
-//        self.images = images
-//    }
-//    
-//    func addSession(_ sessions: MovieSession){
-//        self.sessions.append(sessions)
-//    }
-//}
+import SwiftyJSON
 
 struct Movie {
     let id: String
@@ -41,4 +17,33 @@ struct Movie {
     let details: String
     let contentRating: ContentRating
     let images: [String]
+}
+
+enum MovieError: Error {
+    case InvalidPosterPath(String)
+}
+
+extension Movie {
+    init(json: JSON) throws {
+        let movie_id = json["id"].rawString()!
+        let movie_title = json["title"].rawString()!
+        let movie_release_date = json["release_date"].rawString()!
+        let movie_duration = json["runtime"].intValue
+        let movie_details = json["overview"].rawString()!
+        let movie_poster = json["poster_path"].rawString()
+        guard json["poster_path"].url != nil else {
+            throw MovieError.InvalidPosterPath("Poster path url is invalid")
+        }
+        
+        self.init(
+            id: movie_id,
+            title: movie_title,
+            releaseDate: movie_release_date,
+            duration: movie_duration,
+            details: movie_details,
+            contentRating: ContentRating.NOT_RATED,
+            images: movie_poster != nil ? [movie_poster!] : []
+        )
+        
+    }
 }
