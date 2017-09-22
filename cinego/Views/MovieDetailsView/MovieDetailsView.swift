@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 @IBDesignable
 class MovieDetailsView: UIView {
@@ -33,17 +34,18 @@ class MovieDetailsView: UIView {
         get { return self.movie }
         set {
             let movie = newValue!
-            backgroundImage.image = UIImage(imageLiteralResourceName: movie.images[0])
-            movieBanner.image = UIImage(imageLiteralResourceName: movie.images[0])
+            let imageUrl = URL(string: movie.images.first!)!
+            backgroundImage.hnk_setImageFromURL(imageUrl)
+            movieBanner.hnk_setImageFromURL(imageUrl)
             movieTitleLabel.text = movie.title
             releasedYearLabel.text = String(format: "Released: %d", getReleaseYear(movie.releaseDate))
-            durationLabel.text = String(format: "Duration: %d", movie.duration)
+            durationLabel.text = String(format: "Duration: %d minutes", movie.duration)
             ratingLabel.text = "Rating: \(movie.contentRating.rawValue)"
         }
     }
     
     // helper method
-    private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "dd MMMM yyyy") -> Int {
+    private func getReleaseYear(_ releaseDateStr: String, dateFormat: String = "yyyy-MM-dd") -> Int {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         let date = formatter.date(from: releaseDateStr)
