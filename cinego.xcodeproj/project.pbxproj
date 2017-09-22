@@ -74,6 +74,7 @@
 		FD5CFCB91F73F00F00CA129C /* MovieSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CFCB81F73F00F00CA129C /* MovieSessionService.swift */; };
 		FD829BE81F749FF5005B5BF0 /* MovieSessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */; };
 		FD829BEB1F74A69E005B5BF0 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BEA1F74A69E005B5BF0 /* MovieTests.swift */; };
+		FD829BED1F75196B005B5BF0 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,7 @@
 		FD5CFCB81F73F00F00CA129C /* MovieSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieSessionService.swift; path = Services/MovieSessionService.swift; sourceTree = "<group>"; };
 		FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieSessionServiceTests.swift; path = ServicesTests/MovieSessionServiceTests.swift; sourceTree = "<group>"; };
 		FD829BEA1F74A69E005B5BF0 /* MovieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieTests.swift; path = ModelsTests/MovieTests.swift; sourceTree = "<group>"; };
+		FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsViewModel.swift; path = ViewModels/MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */,
+				FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				1F055F6C1F5040AD004238F5 /* UserProfileView.swift in Sources */,
 				2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */,
 				1F56470B1F2B4003004BB024 /* ImageSlider.swift in Sources */,
+				FD829BED1F75196B005B5BF0 /* MovieDetailsViewModel.swift in Sources */,
 				1F4F8FE31F2C55BA0001895A /* MovieRepository.swift in Sources */,
 				1F10EC821F35393500283B8C /* OrderSummaryVC.swift in Sources */,
 				0364B4CF1F425D06001E2ED3 /* BookingRepository.swift in Sources */,

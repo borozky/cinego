@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="kKt-XO-wb6" userLabel="Content View">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-Fe-Z2K" customClass="ImageSlider" customModule="cinego" customModuleProvider="target">
@@ -47,10 +47,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomePageMovieSectionsTableViewCell" rowHeight="190" id="CJX-t2-gvS" customClass="HomePageMovieSectionsTableViewCell" customModule="cinego" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="183.5" width="320" height="190"/>
+                                        <rect key="frame" x="0.0" y="184" width="320" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJX-t2-gvS" id="emG-C1-Clp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Db2-6s-Aw8" userLabel="Upcoming Movies Section">
@@ -185,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eL8-Qo-lkw">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJI-ve-g2N" userLabel="content">
@@ -216,14 +216,14 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieSessionTableViewCell" textLabel="br0-lV-oQj" detailTextLabel="vK1-Rr-us1" style="IBUITableViewCellStyleSubtitle" id="eR1-8U-Fe2">
-                                        <rect key="frame" x="0.0" y="183.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="184" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eR1-8U-Fe2" id="qq6-ob-yhk">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wednesday, 12 July - 09:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="br0-lV-oQj">
-                                                    <rect key="frame" x="15" y="7" width="211.5" height="18"/>
+                                                    <rect key="frame" x="15" y="7" width="212" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <accessibility key="accessibilityConfiguration" label="session-times"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -231,7 +231,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="12 seats available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vK1-Rr-us1">
-                                                    <rect key="frame" x="15" y="25" width="83.5" height="12"/>
+                                                    <rect key="frame" x="15" y="25" width="84" height="12"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -243,7 +243,7 @@
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <segue destination="kW3-vr-gtA" kind="show" identifier="openBookingDetailsFromMovieDetails" id="XoX-oj-ztc"/>
+                                            <segue destination="kW3-vr-gtA" kind="show" identifier="openBookingDetailsFromMovieDetails" id="CXl-Hc-Uhq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -321,87 +321,54 @@
                         <viewControllerLayoutGuide type="bottom" id="Fxh-r6-tcv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Co9-sX-6sx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNr-J4-XgR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-SE-NXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-m6-8CX">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-Mp-8gO" userLabel="content">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFC-hj-oCw" userLabel="movie details" customClass="MovieDetailsView" customModule="cinego" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
-                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="148" id="0fT-gG-1ep"/>
-                                                                    <constraint firstAttribute="height" constant="148" id="DuY-rZ-EHF"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4B-SI-4Qk" userLabel="session details" customClass="SessionDetailsView" customModule="cinego" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="148" width="320" height="120"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="69p-om-nJ8"/>
-                                                                    <constraint firstAttribute="height" constant="120" id="Fmo-JM-Zp0"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="AFC-hj-oCw" firstAttribute="leading" secondItem="dDS-Mp-8gO" secondAttribute="leading" id="875-ha-z68"/>
-                                                            <constraint firstAttribute="trailing" secondItem="AFC-hj-oCw" secondAttribute="trailing" id="99b-9w-Xih"/>
-                                                            <constraint firstItem="AFC-hj-oCw" firstAttribute="top" secondItem="dDS-Mp-8gO" secondAttribute="top" id="bKi-8E-Sgp"/>
-                                                            <constraint firstItem="t4B-SI-4Qk" firstAttribute="leading" secondItem="dDS-Mp-8gO" secondAttribute="leading" id="f98-4u-whB"/>
-                                                            <constraint firstItem="t4B-SI-4Qk" firstAttribute="top" secondItem="AFC-hj-oCw" secondAttribute="bottom" id="pW3-43-fnf"/>
-                                                            <constraint firstAttribute="trailing" secondItem="t4B-SI-4Qk" secondAttribute="trailing" id="sLc-Gb-b1e"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="dDS-Mp-8gO" firstAttribute="top" secondItem="dI0-m6-8CX" secondAttribute="top" id="8hP-pk-aYj"/>
-                                                    <constraint firstItem="dDS-Mp-8gO" firstAttribute="leading" secondItem="dI0-m6-8CX" secondAttribute="leading" id="hqX-fR-oTk"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dDS-Mp-8gO" secondAttribute="bottom" id="nGd-g0-Ypi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dDS-Mp-8gO" secondAttribute="trailing" id="nHX-FG-6CT"/>
-                                                    <constraint firstAttribute="height" constant="268" id="o4U-hw-YNZ"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxJ-Nt-4b9" customClass="SeatingArrangementView" customModule="cinego" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="276" width="320" height="600"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="600" id="fE0-zS-sUH"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="dI0-m6-8CX" firstAttribute="leading" secondItem="lMj-SE-NXg" secondAttribute="leading" id="7xB-Ir-jt1"/>
-                                            <constraint firstAttribute="trailing" secondItem="dI0-m6-8CX" secondAttribute="trailing" id="HOn-Nr-51d"/>
-                                            <constraint firstItem="dI0-m6-8CX" firstAttribute="top" secondItem="lMj-SE-NXg" secondAttribute="top" id="UXX-kc-g6Z"/>
-                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="top" secondItem="dI0-m6-8CX" secondAttribute="bottom" constant="8" id="Ujt-Xd-PDH"/>
-                                            <constraint firstItem="lxJ-Nt-4b9" firstAttribute="leading" secondItem="lMj-SE-NXg" secondAttribute="leading" id="fHg-qh-Qkt"/>
-                                            <constraint firstAttribute="trailing" secondItem="lxJ-Nt-4b9" secondAttribute="trailing" id="zk4-b8-3Je"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="lMj-SE-NXg" firstAttribute="leading" secondItem="FNr-J4-XgR" secondAttribute="leading" id="EO7-Jb-tbt"/>
-                                    <constraint firstItem="lMj-SE-NXg" firstAttribute="top" secondItem="FNr-J4-XgR" secondAttribute="top" id="bSW-kO-DWd"/>
-                                    <constraint firstAttribute="trailing" secondItem="lMj-SE-NXg" secondAttribute="trailing" id="c9w-3X-oQd"/>
-                                    <constraint firstItem="lMj-SE-NXg" firstAttribute="centerY" secondItem="FNr-J4-XgR" secondAttribute="centerY" id="gIz-hZ-amP"/>
-                                    <constraint firstAttribute="bottom" secondItem="lMj-SE-NXg" secondAttribute="bottom" id="i7n-f6-8pP"/>
-                                    <constraint firstItem="lMj-SE-NXg" firstAttribute="centerX" secondItem="FNr-J4-XgR" secondAttribute="centerX" id="iXb-IM-7ft"/>
-                                </constraints>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FAW-lm-L5R">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="996"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="dI0-m6-8CX">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="904"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFC-hj-oCw" userLabel="movie details" customClass="MovieDetailsView" customModule="cinego" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="148" id="0fT-gG-1ep"/>
+                                                <constraint firstAttribute="height" constant="148" id="DuY-rZ-EHF"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4B-SI-4Qk" userLabel="session details" customClass="SessionDetailsView" customModule="cinego" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="156" width="320" height="120"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="69p-om-nJ8"/>
+                                                <constraint firstAttribute="height" constant="120" id="Fmo-JM-Zp0"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxJ-Nt-4b9" customClass="SeatingArrangementView" customModule="cinego" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="284" width="320" height="620"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="AFC-hj-oCw" secondAttribute="trailing" id="BX2-q9-xvT"/>
+                                        <constraint firstItem="lxJ-Nt-4b9" firstAttribute="leading" secondItem="dI0-m6-8CX" secondAttribute="leading" id="E1d-XO-MqV"/>
+                                        <constraint firstItem="AFC-hj-oCw" firstAttribute="leading" secondItem="dI0-m6-8CX" secondAttribute="leading" id="EuV-AB-yRS"/>
+                                        <constraint firstItem="t4B-SI-4Qk" firstAttribute="top" secondItem="AFC-hj-oCw" secondAttribute="bottom" constant="8" id="Qj9-jj-1Vh"/>
+                                        <constraint firstAttribute="trailing" secondItem="lxJ-Nt-4b9" secondAttribute="trailing" id="a8H-Ym-UrK"/>
+                                        <constraint firstAttribute="trailing" secondItem="t4B-SI-4Qk" secondAttribute="trailing" id="g1F-v6-OQN"/>
+                                        <constraint firstItem="lxJ-Nt-4b9" firstAttribute="top" secondItem="t4B-SI-4Qk" secondAttribute="bottom" constant="8" id="hSu-hz-pxx"/>
+                                        <constraint firstItem="t4B-SI-4Qk" firstAttribute="leading" secondItem="dI0-m6-8CX" secondAttribute="leading" id="rQe-VE-KgG"/>
+                                        <constraint firstItem="AFC-hj-oCw" firstAttribute="top" secondItem="dI0-m6-8CX" secondAttribute="top" id="tvl-Tg-7Qy"/>
+                                        <constraint firstAttribute="bottom" secondItem="lxJ-Nt-4b9" secondAttribute="bottom" id="wwO-LM-tNu"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbY-VN-p5u">
-                                <rect key="frame" x="0.0" y="464" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="996" width="320" height="56"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UNb-6T-yFx">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,17 +404,19 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZbY-VN-p5u" secondAttribute="bottom" constant="48" id="2QC-vB-CON"/>
-                            <constraint firstItem="Fxh-r6-tcv" firstAttribute="top" secondItem="FNr-J4-XgR" secondAttribute="bottom" id="Bu4-vi-lDy"/>
+                            <constraint firstAttribute="trailing" secondItem="FAW-lm-L5R" secondAttribute="trailing" id="6hG-mD-zUL"/>
                             <constraint firstAttribute="trailing" secondItem="ZbY-VN-p5u" secondAttribute="trailing" id="N7o-ba-rue"/>
-                            <constraint firstItem="FNr-J4-XgR" firstAttribute="top" secondItem="Co9-sX-6sx" secondAttribute="top" id="OFG-8P-niv"/>
-                            <constraint firstItem="FNr-J4-XgR" firstAttribute="leading" secondItem="Co9-sX-6sx" secondAttribute="leading" id="UXf-1U-Uaz"/>
+                            <constraint firstItem="ZbY-VN-p5u" firstAttribute="top" secondItem="FAW-lm-L5R" secondAttribute="bottom" id="OmZ-Lw-OYu"/>
+                            <constraint firstItem="FAW-lm-L5R" firstAttribute="top" secondItem="Co9-sX-6sx" secondAttribute="top" id="W4i-Kt-0Ee"/>
                             <constraint firstItem="ZbY-VN-p5u" firstAttribute="leading" secondItem="Co9-sX-6sx" secondAttribute="leading" id="dtb-u1-LfD"/>
-                            <constraint firstAttribute="trailing" secondItem="FNr-J4-XgR" secondAttribute="trailing" id="ivT-mZ-gFx"/>
+                            <constraint firstItem="FAW-lm-L5R" firstAttribute="leading" secondItem="Co9-sX-6sx" secondAttribute="leading" id="jWf-K3-gb7"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1100"/>
                     <connections>
                         <outlet property="movieDetailsView" destination="AFC-hj-oCw" id="Kbv-rG-9cB"/>
-                        <outlet property="proceedToCheckoutButton" destination="pQU-gZ-92V" id="HVM-ek-1nM"/>
+                        <outlet property="proceedToCheckoutButton" destination="pQU-gZ-92V" id="c5k-aX-zkG"/>
                         <outlet property="seatingArrangementView" destination="lxJ-Nt-4b9" id="za6-VO-gtv"/>
                         <outlet property="sessionDetailsView" destination="t4B-SI-4Qk" id="Vln-LZ-670"/>
                         <segue destination="3VD-Kl-VVD" kind="show" identifier="proceedToCheckout" id="V0Q-I4-fcu"/>
@@ -473,7 +442,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1300"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Jyf-ub-4Rb">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="248"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="248"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohO-nz-KD7" customClass="PriceBannerView" customModule="cinego" customModuleProvider="target">
@@ -503,7 +472,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="vbe-fR-MhN">
-                                    <rect key="frame" x="0.0" y="409.5" width="320" height="670"/>
+                                    <rect key="frame" x="0.0" y="474" width="320" height="670"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oj0-qT-FKE" customClass="OrderSummaryView" customModule="cinego" customModuleProvider="target">
@@ -541,10 +510,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountStatusTableViewCell" textLabel="6OE-Pp-8S4" detailTextLabel="bai-XZ-HvH" imageView="6cv-xa-VLj" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="epS-RM-Xp9">
-                                        <rect key="frame" x="0.0" y="303.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="304" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epS-RM-Xp9" id="OvF-o7-ISV">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Account status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6OE-Pp-8S4">
@@ -555,7 +524,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Checking out as guest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bai-XZ-HvH">
-                                                    <rect key="frame" x="60" y="24" width="116" height="13.5"/>
+                                                    <rect key="frame" x="60" y="24" width="116" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -570,14 +539,14 @@
                                         <color key="tintColor" red="0.62352941179999999" green="0.47450980390000003" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentMethodTableViewCell" textLabel="5af-C9-F92" detailTextLabel="vqe-Mb-oRc" imageView="NeN-4V-kUe" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Qrp-iN-YeD">
-                                        <rect key="frame" x="0.0" y="347.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="348" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qrp-iN-YeD" id="pvD-rf-OVI">
-                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5af-C9-F92">
-                                                    <rect key="frame" x="60" y="6" width="116.5" height="18"/>
+                                                    <rect key="frame" x="60" y="6" width="117" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -588,7 +557,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Paypal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vqe-Mb-oRc">
-                                                    <rect key="frame" x="60" y="24" width="34" height="13.5"/>
+                                                    <rect key="frame" x="60" y="24" width="34" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -776,10 +745,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderDetailTableViewCell" textLabel="RoB-U8-65Q" detailTextLabel="Fyu-dv-eXe" style="IBUITableViewCellStyleValue1" id="d7g-yh-kdN">
-                                        <rect key="frame" x="0.0" y="179.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="180" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7g-yh-kdN" id="MYt-12-udK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RoB-U8-65Q">
@@ -790,7 +759,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$  0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fyu-dv-eXe">
-                                                    <rect key="frame" x="256.5" y="13" width="48.5" height="18"/>
+                                                    <rect key="frame" x="256" y="13" width="49" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -871,7 +840,7 @@
                                 <rect key="frame" x="0.0" y="236" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Kn-Ta-HA9" id="Civ-GJ-TnK">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPb-Qz-rem" userLabel="Parent" customClass="OrderItemView" customModule="cinego" customModuleProvider="target">
