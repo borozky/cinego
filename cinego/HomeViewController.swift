@@ -59,11 +59,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return 1 + cinemaMovies.count
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomePageMovieSectionsTableViewCell", for: indexPath) as! HomePageMovieSectionsTableViewCell
@@ -99,25 +97,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         // to Movie Details Page
         if segue.identifier == "openMovieDetailsFromHomepage" {
             let destinationVC = segue.destination as! MovieDetailsViewController
             let cell = sender as! MovieCollectionViewCell
-            let container = SimpleIOCContainer.instance
-            let movieSessionRepository = container.resolve(IMovieSessionRepository.self)
-            let movieSessions = movieSessionRepository?.getMovieSessions(byMovie: cell.movie) ?? []
             let movie = cell.movie
+            let movieService = MovieService()
+            let cinemaService = CinemaService()
+            let movieSessionService = MovieSessionService(movieService: movieService, cinemaService: cinemaService)
+            let movieDetailsViewModel = MovieDetailsViewModel(destinationVC, movieSessionService: movieSessionService, movieService: movieService)
             
             destinationVC.movie = movie
-            destinationVC.movieSessionRepository = movieSessionRepository
-            destinationVC.cartRepository = container.resolve(ICartRepository.self)
-            destinationVC.movieSessions = movieSessions
+            destinationVC.movieDetailsViewModel = movieDetailsViewModel
         }
-        
     }
-    
-    
 }
 
 extension HomeViewController: HomePageViewModelDelegate {
@@ -125,15 +118,10 @@ extension HomeViewController: HomePageViewModelDelegate {
         
     }
     func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) {
-        print("SUNSHINE MOVIES", cinemaMovies[3].1.count)
-        for movie in cinemaMovies[3].1 {
-            print("\(movie.title) - \(movie.images[0])")
-        }
         self.cinemaMovies = cinemaMovies
         tableView.reloadData()
     }
     func upcomingMoviesRetrieved(_ upcomingMovies: [Movie]) {
-        print("UPCOMING MOVIES", upcomingMovies.count)
         self.upcomingMovies = upcomingMovies
         tableView.reloadData()
     }
@@ -141,55 +129,4 @@ extension HomeViewController: HomePageViewModelDelegate {
         
     }
 }
-
-//        MovieService().getAllMovies().then { movies -> Void in
-//            print("MOVIES")
-//            print("NUMBER OF MOVIES", movies.count)
-//            movies.forEach {
-//                print("MOVIE POSTER", $0.images[0])
-//            }
-//            print("END MOVIES")
-//            }.catch { error in
-//                print(error)
-//        }
-//
-//        CinemaService().getAllCinemas().then { cinemas -> Void in
-//            print("CINEMAS", cinemas)
-//            }.catch { error in
-//                print(error)
-//        }
-
-//        MovieSessionService(movieService: MovieService(), cinemaService: CinemaService())
-//        .getAllMovieSessionFromFirebase().then { movieSessions -> Void in
-//            print("MOVIESESSIONS", Array(movieSessions))
-//        }.catch { error in
-//            print(error)
-//        }
-//        MovieSessionService(movieService: MovieService(), cinemaService: CinemaService()).getAllMovieSessions().then { movieSessions -> Void in
-//            for movieSession in movieSessions {
-//                print("MOVIE SESSION: \(movieSession.id), \(movieSession.startTime)")
-//            }
-//        }.catch { error in
-//            print(error)
-//        }
-
-
-//        MovieService().getAllMovies(byIds: [271110,27110]).then { movies -> Void in
-//            print("MOVIES", movies)
-//        }.catch { error in
-//            print(error)
-//        }
-
-//        MovieSessionService(movieService: MovieService(), cinemaService: CinemaService())
-//            .getMovieSessions(byMovieId: 271110).then { movieSessions -> Void in
-//            print(movieSessions)
-//        }.asVoid()
-
-
-
-
-
-
-
-
 
