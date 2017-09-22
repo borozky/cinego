@@ -15,9 +15,8 @@ class MovieDetailsViewController: UIViewController {
     
     static var selectedSeatsForSessions: [(MovieSession, [Seat])] = []
     
+    var movieDetailsViewModel: MovieDetailsViewModel!
     
-    var movieSessionRepository: IMovieSessionRepository!
-    var cartRepository: ICartRepository!
     var movie: Movie!
     var movieSessions: [MovieSession] = []
     var movieSessionsByCinema: [(Cinema, [MovieSession])] {
@@ -43,11 +42,11 @@ class MovieDetailsViewController: UIViewController {
     
     let tableViewCellID = "MovieSessionTableViewCell"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         movieDetailsView.movie = movie
+        let movieId = Int(movie.id)!
+        movieDetailsViewModel.fetchMovieSessions(byMovieId: movieId)
     }
     
 }
@@ -77,13 +76,6 @@ extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegat
         cell.textLabel?.text = humaniseTime(movieSession.startTime)
         cell.detailTextLabel?.text = String(format: "%d seats available", movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
         
-        if cartRepository.findCartItem(byMovieSession: movieSession) != nil {
-            cell.isUserInteractionEnabled = false
-            cell.accessoryType = .checkmark
-            cell.detailTextLabel?.text = String(format: "%d seats available (added to cart)",
-                                                movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
-        }
-        
         return cell
     }
     
@@ -108,6 +100,7 @@ extension MovieDetailsViewController {
             let destinationVC = segue.destination as! BookingDetailsVC
             let indexPath = self.movieSessionsTableView.indexPathForSelectedRow!
             let selectedSession = movieSessionsByCinema[indexPath.section].1[indexPath.row]
+            print("SELECTED SESSION", selectedSession)
             destinationVC.movieSession = selectedSession
             destinationVC.delegate = self
             
@@ -135,5 +128,21 @@ extension MovieDetailsViewController: BookingDetailsVCDelegate {
         } else {
             MovieDetailsViewController.selectedSeatsForSessions.append((movieSession, selectedSeats))
         }
+    }
+}
+
+extension MovieDetailsViewController: MovieDetailsViewModelDelegate {
+    func movieSessionsRetrieved(_ movieSessions: [MovieSession]) {
+        self.movieSessions = movieSessions
+        self.movieSessionsTableView.reloadData()
+    }
+    
+    func movieDetailsRetrieved(_ movie: Movie) {
+        self.movie = movie
+        movieDetailsView.movie = self.movie
+    }
+    
+    func errorProduced() {
+        
     }
 }
