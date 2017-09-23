@@ -13,11 +13,12 @@ protocol LoginVCDelegate: class {
 }
 
 class LoginVC: UIViewController {
-    
     var userRepository: IUserRepository!
     var orderRepository: IOrderRepository!
+    var authViewModel: AuthViewModel!
     
     weak var delegate: LoginVCDelegate?
+    
     var goToAccountPage = true
     var user: User?
     @IBOutlet weak var usernameTextField: UITextField!
@@ -38,40 +39,23 @@ class LoginVC: UIViewController {
         if delegate == nil {
             self.navigationItem.setRightBarButton(nil, animated: false)
         }
-        
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
-        if let loggedInUser = userRepository.getCurrentUser() {
+        if let loggedInUser = self.authViewModel.currentUser {
             performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
         }
     }
     
     @IBAction func loginButtonDidTapped(_ sender: Any) {
-        let username = usernameTextField.text!
+        let email = usernameTextField.text!
         let password = passwordTextField.text!
-        let userRepo = userRepository as! UserRepository
-        let loggedInUser = userRepo.login(username: username, password: password)
         
-        if loggedInUser != nil {
-            
-            if goToAccountPage {
-                user = loggedInUser
-                performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
-            } else {
-                delegate?.didLoggedIn(loggedInUser!)
-                dismiss(animated: true, completion: nil)
-            }
-            
-        } else {
-            validationErrorsLabel.text = "Invalid username/password"
-        }
-        
+        authViewModel.login(email, password)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         if segue.identifier == "openRegisterVCFromLoginVC" {
             let registerVC = segue.destination as! RegisterVC
             registerVC.delegate = self
@@ -81,7 +65,7 @@ class LoginVC: UIViewController {
         else if segue.identifier == "openAccountPageAfterLoggingIn" {
             let currentUser = sender as! User
             let accountTableVC = segue.destination as! AccountTableVC
-            let orders = orderRepository.findAll(byUser: currentUser)
+            let orders = [Order]()
             let pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
             let upcomingOrders = orders.filter { $0.movieSession.startTime > Date()  }
             accountTableVC.user = currentUser
@@ -92,12 +76,11 @@ class LoginVC: UIViewController {
             accountTableVC.delegate = self
         }
     }
-
 }
 
 extension LoginVC : RegisterVCDelegate {
     func userDidRegister(_ user: User) {
-        if let loggedInUser = (userRepository as! UserRepository).login(username: user.username, password: user.password) {
+        if let loggedInUser = self.authViewModel.currentUser {
             delegate?.didLoggedIn(loggedInUser)
             dismiss(animated: true, completion: nil)
         }
@@ -109,5 +92,32 @@ extension LoginVC : AccountTableVCDelegate {
         usernameTextField.text = ""
         passwordTextField.text = ""
         usernameTextField.becomeFirstResponder()
+    }
+}
+
+extension LoginVC: AuthViewModelDelegate {
+    func userLoggedIn(_ user: User) -> Void {
+        if goToAccountPage {
+            self.user = user
+            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: user)
+        } else {
+            delegate?.didLoggedIn(user)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    func loginError(_ message: String) -> Void {
+        validationErrorsLabel.text = message
+    }
+    func userRegistered(_ user: User) -> Void {
+        // nothing here
+    }
+    func userLoggedOut() -> Void {
+        // nothing here
+    }
+    func registrationError(_ message: String) -> Void {
+        // nothing here
+    }
+    func logoutError(_ message: String) -> Void {
+        // nothing here
     }
 }
