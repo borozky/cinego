@@ -16,7 +16,7 @@ class RegisterVC: UIViewController {
     
     var userRepository: IUserRepository!
     weak var delegate: RegisterVCDelegate!
-    
+    var authViewModel: AuthViewModel!
     
     @IBOutlet weak var fullnameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -38,55 +38,37 @@ class RegisterVC: UIViewController {
         let password = passwordTextField.text ?? ""
         let passwordConfimation = passwordConfirmationTextField.text ?? ""
         
-        if fullname == "" {
-            validationErrorsLabel.text = "Full name is required"
-            return
-        }
-        
-        if username == "" {
-            validationErrorsLabel.text = "Username is required"
-            return
-        }
-        
-        if email == "" {
-            validationErrorsLabel.text = "Email is required"
-            return
-        }
-        
-        if password == "" {
-            validationErrorsLabel.text = "Password is required"
-            return
-        }
-        
-        if passwordConfimation == "" {
-            validationErrorsLabel.text = "Password confirmation is required"
-            return
-        }
-        
-        guard passwordConfimation == password else {
-            validationErrorsLabel.text = "Passwords do not match"
-            return
-        }
-        
-        let registeredUser = register(fullname: fullname, username: username, email: email, password: password, passwordConfirmation: passwordConfimation)
-        
-        guard registeredUser != nil else {
-            validationErrorsLabel.text = "Sorry, something went wrong"
-            return
-        }
-        
-        delegate.userDidRegister(registeredUser!)
+        authViewModel.register(
+            email: email,
+            password: password,
+            passwordConfirmation: passwordConfimation,
+            username: username,
+            fullname: fullname
+        )
+    }
+}
+
+extension RegisterVC: AuthViewModelDelegate {
+    func userRegistered(_ user: User) -> Void {
+        delegate.userDidRegister(user)
         _ = self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
-    private func register(fullname: String, username: String, email: String, password: String, passwordConfirmation: String ) -> User? {
-        
-        let user = User(id: nil, username: username, email: email, fullname: fullname, password: password, orders: [])
-        
-        return userRepository.create(user: user)
+    func registrationError(_ message: String) -> Void {
+        validationErrorsLabel.text = message
     }
     
-    
-
+    func userLoggedIn(_ user: User) -> Void {
+        // nothing here
+    }
+    func loginError(_ message: String) -> Void {
+        // nothing here
+    }
+    func userLoggedOut() -> Void {
+        // nothing here
+    }
+    func logoutError(_ message: String) -> Void {
+        // nothing here
+    }
 }
