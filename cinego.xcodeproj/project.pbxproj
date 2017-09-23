@@ -75,6 +75,17 @@
 		FD829BE81F749FF5005B5BF0 /* MovieSessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */; };
 		FD829BEB1F74A69E005B5BF0 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BEA1F74A69E005B5BF0 /* MovieTests.swift */; };
 		FD829BED1F75196B005B5BF0 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */; };
+		FD86AAC31F75B5ED00ADDB7E /* BookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAC21F75B5ED00ADDB7E /* BookingService.swift */; };
+		FD86AAC51F75B66C00ADDB7E /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAC41F75B66C00ADDB7E /* CheckoutViewModel.swift */; };
+		FD86AACB1F75B7F000ADDB7E /* TicketCalculationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AACA1F75B7F000ADDB7E /* TicketCalculationService.swift */; };
+		FD86AACD1F75BC4500ADDB7E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AACC1F75BC4500ADDB7E /* UserService.swift */; };
+		FD86AACF1F75C56000ADDB7E /* TicketCalculationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */; };
+		FD86AAD11F75D15E00ADDB7E /* MovieServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */; };
+		FD86AAD31F75D17400ADDB7E /* CinemaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */; };
+		FD86AAD51F75DC7200ADDB7E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD41F75DC7200ADDB7E /* FirebaseService.swift */; };
+		FD86AAD71F75DC8600ADDB7E /* TMDBMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD61F75DC8600ADDB7E /* TMDBMovieService.swift */; };
+		FDC8C5171F760A46007D08E2 /* SwinjectStoryboard+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */; };
+		FDC8C5191F767ED0007D08E2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +186,17 @@
 		FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieSessionServiceTests.swift; path = ServicesTests/MovieSessionServiceTests.swift; sourceTree = "<group>"; };
 		FD829BEA1F74A69E005B5BF0 /* MovieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieTests.swift; path = ModelsTests/MovieTests.swift; sourceTree = "<group>"; };
 		FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsViewModel.swift; path = ViewModels/MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		FD86AAC21F75B5ED00ADDB7E /* BookingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingService.swift; path = Services/BookingService.swift; sourceTree = "<group>"; };
+		FD86AAC41F75B66C00ADDB7E /* CheckoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutViewModel.swift; path = ViewModels/CheckoutViewModel.swift; sourceTree = "<group>"; };
+		FD86AACA1F75B7F000ADDB7E /* TicketCalculationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketCalculationService.swift; path = Services/TicketCalculationService.swift; sourceTree = "<group>"; };
+		FD86AACC1F75BC4500ADDB7E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
+		FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketCalculationServiceTests.swift; path = ServicesTests/TicketCalculationServiceTests.swift; sourceTree = "<group>"; };
+		FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieServiceTests.swift; path = ServicesTests/MovieServiceTests.swift; sourceTree = "<group>"; };
+		FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CinemaServiceTests.swift; path = ServicesTests/CinemaServiceTests.swift; sourceTree = "<group>"; };
+		FD86AAD41F75DC7200ADDB7E /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = Services/FirebaseService.swift; sourceTree = "<group>"; };
+		FD86AAD61F75DC8600ADDB7E /* TMDBMovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDBMovieService.swift; path = Services/TMDBMovieService.swift; sourceTree = "<group>"; };
+		FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Setup.swift"; sourceTree = "<group>"; };
+		FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +380,7 @@
 				1F2CD8871F2495CC0034D472 /* LaunchScreen.storyboard */,
 				2E24224B1F73A07D00183835 /* GoogleService-Info.plist */,
 				1F2CD88A1F2495CC0034D472 /* Info.plist */,
+				FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */,
 			);
 			path = cinego;
 			sourceTree = "<group>";
@@ -397,6 +420,8 @@
 			children = (
 				2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */,
 				FD829BEC1F75196B005B5BF0 /* MovieDetailsViewModel.swift */,
+				FD86AAC41F75B66C00ADDB7E /* CheckoutViewModel.swift */,
+				FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -463,6 +488,11 @@
 				FD5CFCB41F73E6D700CA129C /* MovieService.swift */,
 				FD5CFCB61F73E70800CA129C /* CinemaService.swift */,
 				FD5CFCB81F73F00F00CA129C /* MovieSessionService.swift */,
+				FD86AAC21F75B5ED00ADDB7E /* BookingService.swift */,
+				FD86AACA1F75B7F000ADDB7E /* TicketCalculationService.swift */,
+				FD86AACC1F75BC4500ADDB7E /* UserService.swift */,
+				FD86AAD41F75DC7200ADDB7E /* FirebaseService.swift */,
+				FD86AAD61F75DC8600ADDB7E /* TMDBMovieService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -471,6 +501,9 @@
 			isa = PBXGroup;
 			children = (
 				FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */,
+				FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */,
+				FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */,
+				FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */,
 			);
 			name = ServicesTests;
 			sourceTree = "<group>";
@@ -666,6 +699,7 @@
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -678,6 +712,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -810,12 +845,17 @@
 				FD5CFCB71F73E70800CA129C /* CinemaService.swift in Sources */,
 				1F8C16A41F43D76800A9353D /* CartRepository.swift in Sources */,
 				1F8C16A21F43D42200A9353D /* SeatRepository.swift in Sources */,
+				FD86AAD51F75DC7200ADDB7E /* FirebaseService.swift in Sources */,
 				03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */,
 				1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */,
 				1F055F721F50428C004238F5 /* OrderItemView.swift in Sources */,
+				FDC8C5171F760A46007D08E2 /* SwinjectStoryboard+Setup.swift in Sources */,
 				1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */,
+				FD86AAC51F75B66C00ADDB7E /* CheckoutViewModel.swift in Sources */,
 				03D68A031F4E570500192877 /* RegisterVC.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,
+				FD86AAC31F75B5ED00ADDB7E /* BookingService.swift in Sources */,
+				FDC8C5191F767ED0007D08E2 /* AuthViewModel.swift in Sources */,
 				1F055F681F503F7F004238F5 /* SessionDetailsView.swift in Sources */,
 				0364B4D51F42660E001E2ED3 /* TicketRepository.swift in Sources */,
 				1F3DC9B41F34D0F3008C4313 /* User.swift in Sources */,
@@ -828,6 +868,7 @@
 				1F055F701F5041DA004238F5 /* SeatingArrangementView.swift in Sources */,
 				1F3DC9B21F34CFEE008C4313 /* Booking.swift in Sources */,
 				1F3DC9B61F34D165008C4313 /* Order.swift in Sources */,
+				FD86AACD1F75BC4500ADDB7E /* UserService.swift in Sources */,
 				1F5647031F2B1A5D004BB024 /* MovieDetailsViewController.swift in Sources */,
 				03B219411F25E285009F7B41 /* MovieSession.swift in Sources */,
 				1F635FB61F4708C0005A1135 /* SimpleIOCContainer.swift in Sources */,
@@ -838,6 +879,7 @@
 				1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */,
 				1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */,
 				1F3DC9AE1F34CDC1008C4313 /* CartItem.swift in Sources */,
+				FD86AACB1F75B7F000ADDB7E /* TicketCalculationService.swift in Sources */,
 				1F055F6C1F5040AD004238F5 /* UserProfileView.swift in Sources */,
 				2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */,
 				1F56470B1F2B4003004BB024 /* ImageSlider.swift in Sources */,
@@ -853,6 +895,7 @@
 				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,
 				1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */,
 				1F055F6A1F504001004238F5 /* OrderSummaryView.swift in Sources */,
+				FD86AAD71F75DC8600ADDB7E /* TMDBMovieService.swift in Sources */,
 				03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,6 +906,9 @@
 			files = (
 				2E4DFE301F5D4B180067A760 /* HomePageViewModelTests.swift in Sources */,
 				1F2CD8941F2495CC0034D472 /* cinegoTests.swift in Sources */,
+				FD86AAD31F75D17400ADDB7E /* CinemaServiceTests.swift in Sources */,
+				FD86AAD11F75D15E00ADDB7E /* MovieServiceTests.swift in Sources */,
+				FD86AACF1F75C56000ADDB7E /* TicketCalculationServiceTests.swift in Sources */,
 				FD829BEB1F74A69E005B5BF0 /* MovieTests.swift in Sources */,
 				FD829BE81F749FF5005B5BF0 /* MovieSessionServiceTests.swift in Sources */,
 			);
