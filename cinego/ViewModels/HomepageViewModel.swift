@@ -18,14 +18,13 @@ protocol HomePageViewModelDelegate: class {
 
 class HomePageViewModel {
     
-    var delegate: HomePageViewModelDelegate
+    weak var delegate: HomePageViewModelDelegate?
     var movieService: IMovieService
     var cinemaService: ICinemaService
     var movieSessionService: IMovieSessionService
     
-    init(_ delegate: HomePageViewModelDelegate, movieService: IMovieService,
+    init(movieService: IMovieService,
          cinemaService: ICinemaService, movieSessionService: IMovieSessionService) {
-        self.delegate = delegate
         self.movieService = movieService
         self.cinemaService = cinemaService
         self.movieSessionService = movieSessionService
@@ -35,18 +34,18 @@ class HomePageViewModel {
     // HomePageViewModelDelegate.cinemasRetrieved is called after fetching
     public func fetchAllCinemas() {
         self.cinemaService.getAllCinemas().then { cinemas -> Void in
-            self.delegate.cinemasRetrieved(cinemas)
+            self.delegate?.cinemasRetrieved(cinemas)
         }.catch { error in
-            self.delegate.errorProduced("")
+            self.delegate?.errorProduced("")
         }
     }
     
     public func fetchUpcomingMovies() {
         self.movieService.getAllMovies().then { movies -> Void in
             let limitedMovies = movies
-            self.delegate.upcomingMoviesRetrieved(limitedMovies)
+            self.delegate?.upcomingMoviesRetrieved(limitedMovies)
         }.catch { error in
-            self.delegate.errorProduced("")
+            self.delegate?.errorProduced("")
         }
     }
     
@@ -59,7 +58,7 @@ class HomePageViewModel {
             self.cinemaService.getAllCinemas()
         }.then { results -> Void in
             let cinemaMovies = self.getCinemaMovies(results, movieSessions)
-            self.delegate.cinemaMoviesRetrieved(cinemaMovies)
+            self.delegate?.cinemaMoviesRetrieved(cinemaMovies)
         }.catch { error in
             print(error)
         }
