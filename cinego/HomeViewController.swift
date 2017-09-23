@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     // cache movie information here
     var cinemaMovies: [(Cinema, [Movie])] = []
     var upcomingMovies: [Movie] = []
+    var cinemas = [Cinema]()
     
     var homePageViewModel: HomePageViewModel!
     
@@ -23,16 +24,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         homePageViewModel.fetchCinemaMovies()
         homePageViewModel.fetchAllCinemas()
         homePageViewModel.fetchUpcomingMovies()
-        
-        loadHomeBannerSlider()
     }
     
     // loads the home page banner slider
-    private func loadHomeBannerSlider() {
+    func loadHomeBannerSlider() {
         let cinemas = getAllCinemas()
         if cinemas.count > 0 {
             for cinema in cinemas {
@@ -102,20 +100,23 @@ extension HomeViewController {
             let destinationVC = segue.destination as! MovieDetailsViewController
             let cell = sender as! MovieCollectionViewCell
             let movie = cell.movie
-            let movieService = MovieService()
-            let cinemaService = CinemaService()
-            let movieSessionService = MovieSessionService(movieService: movieService, cinemaService: cinemaService)
-            let movieDetailsViewModel = MovieDetailsViewModel(destinationVC, movieSessionService: movieSessionService, movieService: movieService)
+//            let firebaseService = FirebaseService()
+//            let tmdbService = TMDBMovieService()
+//            let movieService = MovieService(tmdbMovieService: tmdbService, firebaseMovieService: firebaseService)
+//            let cinemaService = CinemaService()
+            //let movieSessionService = MovieSessionService(movieService: movieService, cinemaService: cinemaService)
+            //let movieDetailsViewModel = MovieDetailsViewModel(destinationVC, movieSessionService: movieSessionService, movieService: movieService)
             
             destinationVC.movie = movie
-            destinationVC.movieDetailsViewModel = movieDetailsViewModel
+            //destinationVC.movieDetailsViewModel = movieDetailsViewModel
         }
     }
 }
 
 extension HomeViewController: HomePageViewModelDelegate {
     func cinemasRetrieved(_ cinemas: [Cinema]) {
-        
+        self.cinemas = cinemas
+        loadHomeBannerSlider()
     }
     func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) {
         self.cinemaMovies = cinemaMovies
