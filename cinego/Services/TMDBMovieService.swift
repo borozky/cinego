@@ -50,6 +50,7 @@ class TMDBMovieService: ITMDBMovieService {
                 fulfill(json)
                 
             }.onFailure { error in
+                print("failed url: \(url.absoluteString)")
                 reject(error!)
             }
         }
