@@ -34,6 +34,10 @@ struct FirebaseBooking {
     let created_at: Date
     let price: Double
 }
+struct FirebaseUser {
+    let uid: String
+    let email: String?
+}
 
 struct FirebaseUserDetails {
     let fullname: String
@@ -58,20 +62,21 @@ protocol IFirebaseMovieService: IFirebaseService {
 }
 
 protocol IFirebaseCinemaService: IFirebaseService {
-    func getAllFirebaseCinemas() -> Promise<[FirebaseCinema]>
+    //func getAllFirebaseCinemas() -> Promise<[FirebaseCinema]>
 }
 
 protocol IFirebaseUserService: IFirebaseService {
-    func login(email: String, password: String) -> Promise<FirebaseAuth.User>
+    func login(email: String, password: String) -> Promise<FirebaseUser>
     func logout() -> Promise<Void>
-    func register(email: String, password: String) -> Promise<FirebaseAuth.User>
+    func register(email: String, password: String) -> Promise<FirebaseUser>
     func addUserDetail(key: String, value: Any) -> Promise<(String, Any)>
     func getProfileDetails() -> Promise<[String: Any?]>
+    func getCurrentUser() -> Promise<FirebaseUser>
 }
 
 protocol IFirebaseBookingService: IFirebaseService {
     func book(sessionID: String, numTickets: Int, seats: [String], price: Double) -> Promise<FirebaseBooking>
-    func getBookings(byUserEmail email: String) -> Promise<[FirebaseBooking]>
+    func getBookings(byUserID userID: String) -> Promise<[FirebaseBooking]>
 }
 
 protocol IFirebaseMovieSessionService: IFirebaseService {
@@ -99,7 +104,7 @@ class FirebaseService {
         return firebaseDatabaseReference.child("users")
     }
     var bookingReference: DatabaseReference {
-        return firebaseDatabaseReference.child("booking")
+        return firebaseDatabaseReference.child("bookings")
     }
     func getDatabaseReference() -> DatabaseReference {
         return firebaseDatabaseReference
@@ -145,14 +150,13 @@ extension FirebaseService: IFirebaseBookingService {
         }
     }
     
-    func getBookings(byUserEmail email: String) -> Promise<[FirebaseBooking]> {
+    func getBookings(byUserID userID: String) -> Promise<[FirebaseBooking]> {
         return Promise { fulfill, reject in
-            guard let currentUser = Auth.auth().currentUser else {
+            guard Auth.auth().currentUser?.uid == userID else {
                 reject(FirebaseServiceError.Unauthorized("Unauthorized user"))
                 return
             }
             
-            let userID = currentUser.uid
             let queryBookingsByUser = bookingReference.queryOrdered(byChild: "user_id").queryEqual(toValue: userID)
             queryBookingsByUser.observeSingleEvent(of: .value, with: { snapshot in
                 var firebaseBookings: [FirebaseBooking] = []
@@ -161,7 +165,7 @@ extension FirebaseService: IFirebaseBookingService {
                     let value = item.value as? [String: Any] ?? [:]
                     
                     let bookingID = item.key
-                    let session_id = String(describing: value["moviesession_id"])
+                    let session_id = String(describing: value["moviesession_id"]!)
                     let price = value["price"] as! Double
                     let date = Date(timeIntervalSince1970: value["created_at"] as! Double)
                     let userID = String(describing: value["user_id"])
@@ -176,9 +180,10 @@ extension FirebaseService: IFirebaseBookingService {
                         price: price
                     )
                     firebaseBookings.append(firebaseBooking)
-                    
                 }
+                fulfill(firebaseBookings)
             })
+            
             
             
         }
@@ -187,7 +192,7 @@ extension FirebaseService: IFirebaseBookingService {
 
 extension FirebaseService: IFirebaseUserService {
     
-    func login(email: String, password: String) -> Promise<FirebaseAuth.User> {
+    func login(email: String, password: String) -> Promise<FirebaseUser> {
         
         return Promise { fulfill, reject in
             Auth.auth().signIn(withEmail: email, password: password) { user, error in
@@ -195,7 +200,8 @@ extension FirebaseService: IFirebaseUserService {
                     reject(error!)
                     return
                 }
-                fulfill(user!)
+                let firebaseUser = FirebaseUser(uid: user!.uid, email: user!.email)
+                fulfill(firebaseUser)
             }
         }
     }
@@ -238,6 +244,7 @@ extension FirebaseService: IFirebaseUserService {
         }
     }
     
+    
     func getProfileDetails() -> Promise<[String: Any?]> {
         return Promise { fulfill, reject in
             guard let currentUser = Auth.auth().currentUser else {
@@ -252,6 +259,18 @@ extension FirebaseService: IFirebaseUserService {
             })
             
             
+        }
+    }
+    
+    func getCurrentUser() -> Promise<FirebaseUser> {
+        return Promise { fulfill, reject in
+            guard let currentUser = Auth.auth().currentUser else {
+                reject(FirebaseServiceError.Unauthorized("User not logged in"))
+                return
+            }
+            
+            let firebaseUser = FirebaseUser(uid: currentUser.uid, email: currentUser.email)
+            fulfill(firebaseUser)
         }
     }
     
@@ -275,7 +294,7 @@ extension FirebaseService: IFirebaseUserService {
     }
     
     
-    func register(email: String, password: String) -> Promise<FirebaseAuth.User> {
+    func register(email: String, password: String) -> Promise<FirebaseUser> {
         return Promise { fulfill, reject in
             
             // TODO: Validation rules
@@ -285,8 +304,8 @@ extension FirebaseService: IFirebaseUserService {
                     reject(error!)
                     return
                 }
-                
-                fulfill(user!)
+                let firebaseUser = FirebaseUser(uid: user!.uid, email: user!.email)
+                fulfill(firebaseUser)
             }
         }
     }
@@ -406,7 +425,22 @@ extension FirebaseService: IFirebaseMovieSessionService {
     func convertSnapshot(toFirebaseMovieSessions snapshot: DataSnapshot) -> [FirebaseMovieSession] {
         var firebaseMovieSessions: [FirebaseMovieSession] = []
         for item in snapshot.children.allObjects as! [DataSnapshot] {
+            
             let val = item.value as? [String: Any] ?? [:]
+            
+            guard val["session_id"] != nil else {
+                continue
+            }
+            guard val["starttime"] != nil else {
+                continue
+            }
+            guard val["themoviedborg_id"] != nil else {
+                continue
+            }
+            guard val["cinema_id"] != nil else {
+                continue
+            }
+            
             let session_id = String(describing: val["session_id"]!)
             let dateStr = String(describing: val["starttime"]!)
             let movieId = String(describing: val["themoviedborg_id"]!)
@@ -414,6 +448,7 @@ extension FirebaseService: IFirebaseMovieSessionService {
             
             let firebaseMovieSession = FirebaseMovieSession(id: session_id, dateStr: dateStr, movieId: movieId, cinemaId: cinemaId)
             firebaseMovieSessions.append(firebaseMovieSession)
+            
         }
         return firebaseMovieSessions
     }
