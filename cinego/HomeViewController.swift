@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class HomeViewController: UIViewController {
     
@@ -26,7 +27,12 @@ class HomeViewController: UIViewController {
         
         moviesReference.observeSingleEvent(of: .value, with: { snapshot in
             print("SNAPSHOT", snapshot.children.allObjects)
+            
+            
         })
+        
+        
+        
         
         loadHomeBannerSlider()
         upcomingMovies = homePageViewModel.getUpcomingMovies()
