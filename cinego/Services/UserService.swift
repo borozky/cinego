@@ -60,8 +60,13 @@ protocol IUserService {
     func login(email: String, password: String) -> Promise<User>
     func register(email: String, password: String, fullname: String, username: String) -> Promise<User>
     func logout() -> Promise<Void>
+    func getCurrentUser() -> Promise<User>
 //    func addDetails(key: String, value: Any) -> Promise<(String, Any)>
 //    func updateDetails(key: String, value: Any) -> Promise<Any>
+}
+
+enum UserServiceError: Error {
+    case ValidationError(String)
 }
 
 class UserService: IUserService {
@@ -69,6 +74,20 @@ class UserService: IUserService {
     var firebaseUserService: IFirebaseUserService
     init(firebaseUserService: IFirebaseUserService){
         self.firebaseUserService = firebaseUserService
+    }
+    
+    func getCurrentUser() -> Promise<User> {
+        return when(fulfilled:
+            firebaseUserService.getCurrentUser(),
+            firebaseUserService.getProfileDetails()
+        ).then { firebaseUser, details in
+            let email = firebaseUser.email!
+            let id = firebaseUser.uid
+            let fullname = String(describing: details["fullname"])
+            let username = String(describing: details["username"])
+            let user = User(id: id, username: username, email: email, fullname: fullname, password: "", bookings: [])
+            return Promise(value: user)
+        }
     }
     
     func login(email: String, password: String) -> Promise<User> {
@@ -81,19 +100,39 @@ class UserService: IUserService {
             let fullname = String(describing: details["fullname"])
             let username = String(describing: details["username"])
             let password = ""
-            let orders: [Order] = []
+            let bookings = [Booking]()
             
             let user = User(id: userID,
                             username: username,
                             email: email,
                             fullname: fullname,
                             password: password,
-                            orders: orders)
+                            bookings: bookings)
             return Promise(value: user)
         }
     }
     
     func register(email: String, password: String, fullname: String, username: String) -> Promise<User> {
+        guard email.characters.count > 0 else {
+            return Promise(error: UserServiceError.ValidationError("Email is required"))
+        }
+        guard password.characters.count >= 6 else {
+            return Promise(error: UserServiceError.ValidationError("Password should be at least 6 characters"))
+        }
+        guard fullname.characters.count > 1 else {
+            return Promise(error: UserServiceError.ValidationError("Fullname should be at least 1 character"))
+        }
+        guard username.characters.count >= 6 else {
+            return Promise(error: UserServiceError.ValidationError("Username must be at least 6 characters"))
+        }
+        guard username.characters.count >= 6 else {
+            return Promise(error: UserServiceError.ValidationError("Username must be at least 6 characters"))
+        }
+        guard validateEmail(candidate: email) else {
+            return Promise(error: UserServiceError.ValidationError("\(email) is not a valid email"))
+        }
+        
+        
         return firebaseUserService.register(email: email, password: password).then { firebaseUser in
             when(fulfilled: Promise(value: firebaseUser), self.firebaseUserService.addUserDetail(key: "fullname", value: fullname))
         }.then { firebaseUser, details in
@@ -101,13 +140,19 @@ class UserService: IUserService {
         }.then { firebaseUser, details in
             let userID = firebaseUser.uid
             let email = firebaseUser.email!
-            let user = User(id: userID, username: username, email: email, fullname: fullname, password: "", orders: [])
+            let user = User(id: userID, username: username, email: email, fullname: fullname, password: "", bookings: [])
             return Promise(value: user)
         }
     }
     
     func logout() -> Promise<Void> {
         return firebaseUserService.logout()
+    }
+    
+    // FROM http://emailregex.com/
+    func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
     }
 }
 
