@@ -13,12 +13,22 @@ protocol HomePageViewModelDelegate: class {
     func cinemasRetrieved(_ cinemas: [Cinema]) -> Void
     func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) -> Void
     func upcomingMoviesRetrieved(_ upcomingMovies: [Movie]) ->  Void
-    func errorProduced(_ message: String) -> Void
+    func errorProduced(_ error: Error) -> Void
 }
 
 class HomePageViewModel {
-    
     weak var delegate: HomePageViewModelDelegate?
+    
+    var cinemaMovies: [(Cinema, [Movie])] = [] {
+        didSet { self.delegate?.cinemaMoviesRetrieved(self.cinemaMovies) }
+    }
+    var upcomingMovies: [Movie] = [] {
+        didSet { self.delegate?.upcomingMoviesRetrieved(self.upcomingMovies) }
+    }
+    var cinemas: [Cinema] = [] {
+        didSet { self.delegate?.cinemasRetrieved(self.cinemas) }
+    }
+    
     var movieService: IMovieService
     var cinemaService: ICinemaService
     var movieSessionService: IMovieSessionService
@@ -29,43 +39,44 @@ class HomePageViewModel {
         self.cinemaService = cinemaService
         self.movieSessionService = movieSessionService
     }
+}
+
+extension HomePageViewModel {
     
     // Fetch all cinema info. 
     // HomePageViewModelDelegate.cinemasRetrieved is called after fetching
     public func fetchAllCinemas() {
         self.cinemaService.getAllCinemas().then { cinemas -> Void in
-            self.delegate?.cinemasRetrieved(cinemas)
+            self.cinemas = cinemas
         }.catch { error in
-            self.delegate?.errorProduced("")
+            self.delegate?.errorProduced(error)
         }
     }
     
     public func fetchUpcomingMovies() {
         self.movieService.getAllMovies().then { movies -> Void in
-            let limitedMovies = movies
-            self.delegate?.upcomingMoviesRetrieved(limitedMovies)
+            self.upcomingMovies = movies
         }.catch { error in
-            self.delegate?.errorProduced("")
+            self.delegate?.errorProduced(error)
         }
     }
     
     public func fetchCinemaMovies() {
         var movieSessions: [MovieSession] = []
-        
         movieSessionService.getMovieSessions().then { results -> Void in
             movieSessions = results
         }.then {
             self.cinemaService.getAllCinemas()
         }.then { results -> Void in
             let cinemaMovies = self.getCinemaMovies(results, movieSessions)
-            self.delegate?.cinemaMoviesRetrieved(cinemaMovies)
+            self.cinemaMovies = cinemaMovies
         }.catch { error in
-            print(error)
+            self.delegate?.errorProduced(error)
         }
     }
     
+    // groups movieSessions by movies and cinemas
     func getCinemaMovies(_ cinemas: [Cinema], _ movieSessions: [MovieSession]) -> [(Cinema, [Movie])]{
-        
         var cinemaMovieIds: [String: Set<Int>] = [:]
         for cinema in cinemas {
             cinemaMovieIds[cinema.id] = []

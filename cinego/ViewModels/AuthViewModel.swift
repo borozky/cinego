@@ -21,13 +21,23 @@ class AuthViewModel {
     weak var delegate: AuthViewModelDelegate?
     var currentUser: User? {
         didSet {
-            self.delegate?.userLoggedIn(self.currentUser!)
+            if let user = self.currentUser {
+                self.delegate?.userLoggedIn(user)
+            } else {
+                self.delegate?.userLoggedOut()
+            }
         }
     }
     
     var userService: IUserService
     init(userService: IUserService){
         self.userService = userService
+    }
+    
+    func checkAuth() {
+        userService.getCurrentUser().then {
+            self.currentUser = $0
+        }.always {}
     }
     
     func login(_ email: String, _ password: String){
@@ -73,7 +83,8 @@ class AuthViewModel {
     }
     
     func logout(){
-        userService.logout().then {
+        userService.logout().then { _ -> Void in
+            self.currentUser = nil
             self.delegate?.userLoggedOut()
         }.catch { error in
             self.delegate?.logoutError(error.localizedDescription)
