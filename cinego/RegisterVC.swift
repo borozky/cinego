@@ -14,7 +14,6 @@ protocol RegisterVCDelegate: class {
 
 class RegisterVC: UIViewController {
     
-    var userRepository: IUserRepository!
     weak var delegate: RegisterVCDelegate!
     var authViewModel: AuthViewModel!
     

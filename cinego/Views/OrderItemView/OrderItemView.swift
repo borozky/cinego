@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 @IBDesignable
 class OrderItemView: UIView {
@@ -20,19 +21,20 @@ class OrderItemView: UIView {
     @IBOutlet weak var cinemaAddressLabel: UILabel!
     @IBOutlet weak var sessionStartLabel: UILabel!
     @IBOutlet weak var movieTitleLabel: UILabel!
-
-    var order: Order! {
+    
+    var booking: Booking! {
         didSet {
-            movieBanner.image = UIImage(imageLiteralResourceName: order.movieSession.movie.images[0])
-            totalPriceLabel.text = String(format: "$ %.02f", order.totalPrice)
-            numSeatsLabel.text = String(format: "%d seats >", order.numTickets)
-            cinemaLocationLabel.text = order.movieSession.cinema.name
-            cinemaAddressLabel.text = order.movieSession.cinema.address
+            let url = URL(string: booking.movieSession.movie.images.first!)!
+            movieBanner.hnk_setImageFromURL(url)
+            totalPriceLabel.text = String(format: "$ %.02f", self.booking.price)
+            numSeatsLabel.text = String(format: "%d seats >", self.booking.seats)
+            cinemaLocationLabel.text = self.booking.movieSession.cinema.name
+            cinemaAddressLabel.text = self.booking.movieSession.cinema.address
             
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE dd-MMM hh:mm aa"
-            sessionStartLabel.text = formatter.string(from: order.movieSession.startTime)
-            movieTitleLabel.text = order.movieSession.movie.title
+            sessionStartLabel.text = formatter.string(from: self.booking.movieSession.startTime)
+            movieTitleLabel.text = self.booking.movieSession.movie.title
         }
     }
     

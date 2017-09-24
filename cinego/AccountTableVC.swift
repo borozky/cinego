@@ -14,42 +14,34 @@ protocol AccountTableVCDelegate: class {
 
 class AccountTableVC: UITableViewController {
     
+    var viewModel: AccountViewModel! {
+        didSet { self.viewModel.delegate = self }
+    }
+    
     private let tableViewCellID = "UserOrdersTableViewCell"
-    
     weak var delegate: AccountTableVCDelegate?
-    
-    var user: User!
-    var upcomingBookings: [Order] = []
-    var pastOrders: [Order] = []
-    var userRepository: IUserRepository!
-    var orderRepository: IOrderRepository!
-    
     @IBOutlet weak var userProfileView: UserProfileView!
     @IBOutlet var ordersTableView: UITableView!
-    
     @IBAction func logoutDidTapped(_ sender: Any) {
-        (userRepository as! UserRepository).logout()
-        delegate?.didLogout()
-        _ = self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        viewModel.logout()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userProfileView.user = user
+        userProfileView.user = viewModel.user!
         
         // disable "swipe to go back"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationItem.backBarButtonItem?.isEnabled = false
         self.navigationItem.hidesBackButton = true
+        
+        viewModel.loadUserBookings(byUserID: viewModel.user!.id!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let orders = orderRepository.findAll(byUser: user)
-        pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
-        upcomingBookings = orders.filter { $0.movieSession.startTime > Date()  }
-        ordersTableView.reloadData()
+        let user = viewModel.user!
+        viewModel.loadUserBookings(byUserID: user.id!)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,16 +50,12 @@ class AccountTableVC: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if section == 0 {
-            return upcomingBookings.count
+            return viewModel.upcomingBookings.count
         }
-        
         if section == 1 {
-            return pastOrders.count
+            return viewModel.pastBookings.count
         }
-        
-        
         return 0
     }
     
@@ -90,7 +78,7 @@ class AccountTableVC: UITableViewController {
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
             let orderItemView = cell.viewWithTag(1) as! OrderItemView
-            orderItemView.order = upcomingBookings[indexPath.row]
+            orderItemView.booking = viewModel.upcomingBookings[indexPath.row]
             return cell
         }
         
@@ -98,7 +86,7 @@ class AccountTableVC: UITableViewController {
         if indexPath.section == 1 {
             cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
             let orderItemView = cell.viewWithTag(1) as! OrderItemView
-            orderItemView.order = pastOrders[indexPath.row]
+            orderItemView.booking = viewModel.pastBookings[indexPath.row]
             return cell
         }
         
@@ -116,20 +104,45 @@ class AccountTableVC: UITableViewController {
 extension AccountTableVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openOrderItemFromAccount" {
-            let destinationVC = segue.destination as! OrderSummaryVC
+            let destinationVC = segue.destination as! BookingSummaryVC
             let indexPath = ordersTableView.indexPathForSelectedRow!
             switch indexPath.section {
             case 0:
-                let order = upcomingBookings[indexPath.row]
-                destinationVC.order = order
-                destinationVC.notification = "The session will start on \(humanizeTime(order.movieSession.startTime))"
+                let booking = viewModel.upcomingBookings[indexPath.row]
+                destinationVC.booking = booking
+                destinationVC.notification = "The session will start on \(humanizeTime(booking.movieSession.startTime))"
             case 1:
-                destinationVC.order = pastOrders[indexPath.row]
+                destinationVC.booking = self.viewModel.pastBookings[indexPath.row]
                 destinationVC.notification = "This session has already passed"
             default:
                 break
             }
         }
+    }
+}
+
+extension AccountTableVC: AccountViewModelDelegate {
+    func userInformationLoaded(_ user: User) {
+    }
+    func upcomingBookingsLoaded(_ bookings: [Booking]) {
+        ordersTableView.reloadData()
+    }
+    func pastBookingsLoaded(_ bookings: [Booking]) {
+        ordersTableView.reloadData()
+    }
+    func loggedOut() {
+        self.delegate?.didLogout()
+        _ = self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    func errorProduced(_ error: Error) {
+    
+    }
+    func userInformationNotLoaded(_ error: Error) {
+    
+    }
+    func bookingsNotLoaded(_ error: Error) {
+    
     }
 }
 

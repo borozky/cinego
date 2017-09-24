@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class OrderSummaryView: UIView {
+class BookingSummaryView: UIView {
     
     @IBOutlet var view: UIView!
     @IBOutlet weak var subtotalLabel: UILabel!
@@ -18,9 +18,9 @@ class OrderSummaryView: UIView {
     
     var total: Double = 0.00 {
         didSet {
-            subtotalLabel.text = String(format: "$ %.02f", self.total * (1.0 - Order.gstRate))
-            shippingLabel.text = String(format: "$ %.02f", self.total * Order.shippingRate)
-            gstLabel.text = String(format: "$ %.02f", self.total * Order.gstRate)
+            subtotalLabel.text = String(format: "$ %.02f", self.total * (1.0 - Booking.gstRate))
+            shippingLabel.text = String(format: "$ %.02f", self.total * Booking.shippingRate)
+            gstLabel.text = String(format: "$ %.02f", self.total * Booking.gstRate)
         }
     }
     

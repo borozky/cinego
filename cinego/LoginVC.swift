@@ -13,14 +13,14 @@ protocol LoginVCDelegate: class {
 }
 
 class LoginVC: UIViewController {
-    var userRepository: IUserRepository!
-    var orderRepository: IOrderRepository!
-    var authViewModel: AuthViewModel!
+    
+    var authViewModel: AuthViewModel! {
+        didSet { self.authViewModel.delegate = self }
+    }
     
     weak var delegate: LoginVCDelegate?
     
     var goToAccountPage = true
-    var user: User?
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var validationErrorsLabel: UILabel!
@@ -39,13 +39,13 @@ class LoginVC: UIViewController {
         if delegate == nil {
             self.navigationItem.setRightBarButton(nil, animated: false)
         }
+        
+        authViewModel.checkAuth()
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if let loggedInUser = self.authViewModel.currentUser {
-            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
-        }
+        authViewModel.checkAuth()
     }
     
     @IBAction func loginButtonDidTapped(_ sender: Any) {
@@ -59,20 +59,12 @@ class LoginVC: UIViewController {
         if segue.identifier == "openRegisterVCFromLoginVC" {
             let registerVC = segue.destination as! RegisterVC
             registerVC.delegate = self
-            registerVC.userRepository = userRepository
         }
         
         else if segue.identifier == "openAccountPageAfterLoggingIn" {
-            let currentUser = sender as! User
             let accountTableVC = segue.destination as! AccountTableVC
-            let orders = [Order]()
-            let pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
-            let upcomingOrders = orders.filter { $0.movieSession.startTime > Date()  }
-            accountTableVC.user = currentUser
-            accountTableVC.pastOrders = pastOrders
-            accountTableVC.upcomingBookings = upcomingOrders
-            accountTableVC.orderRepository = orderRepository
-            accountTableVC.userRepository = userRepository
+            let user = sender as! User
+            accountTableVC.viewModel.user = user
             accountTableVC.delegate = self
         }
     }
@@ -98,8 +90,7 @@ extension LoginVC : AccountTableVCDelegate {
 extension LoginVC: AuthViewModelDelegate {
     func userLoggedIn(_ user: User) -> Void {
         if goToAccountPage {
-            self.user = user
-            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: user)
+            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: authViewModel.currentUser)
         } else {
             delegate?.didLoggedIn(user)
             dismiss(animated: true, completion: nil)

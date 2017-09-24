@@ -19,7 +19,7 @@ struct User {
     let email: String
     let fullname: String
     let password: String
-    var orders: [Order] = []
+    var bookings: [Booking] = []
     var userType: UserTypes {
         return id == nil ? .GUEST : .REGISTERED
     }

@@ -312,10 +312,10 @@
             </objects>
             <point key="canvasLocation" x="1056" y="-1399"/>
         </scene>
-        <!--Booking Details-->
+        <!--Session Details-->
         <scene sceneID="adp-uB-9ZJ">
             <objects>
-                <viewController storyboardIdentifier="BookingDetailsVC" title="Booking Details" id="kW3-vr-gtA" customClass="BookingDetailsVC" customModule="cinego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingDetailsVC" title="Session Details" id="kW3-vr-gtA" customClass="MovieSessionDetailsVC" customModule="cinego" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="STs-rn-fN7"/>
                         <viewControllerLayoutGuide type="bottom" id="Fxh-r6-tcv"/>
@@ -472,10 +472,10 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="vbe-fR-MhN">
-                                    <rect key="frame" x="0.0" y="474" width="320" height="670"/>
+                                    <rect key="frame" x="0.0" y="473.5" width="320" height="670"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oj0-qT-FKE" customClass="OrderSummaryView" customModule="cinego" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oj0-qT-FKE" customClass="BookingSummaryView" customModule="cinego" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="8" width="320" height="128"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>

@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol OrderSummaryVCDelegate: class {
+protocol BookingSummaryVCDelegate: class {
     func barButtonRightDidTapped()
 }
 
-class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableViewCellID = "OrderDetailTableViewCell"
     
-    weak var delegate: OrderSummaryVCDelegate?
+    weak var delegate: BookingSummaryVCDelegate?
     
     @IBOutlet weak var barButtonRight: UIBarButtonItem!
     @IBOutlet weak var notificationContainer: UIView!
@@ -29,8 +29,8 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
     // TODO: Put these in a view model
     var notification = "Your order has successfully been placed"
     var user: User!
-    var order: Order!
-    var newOrder = false
+    var booking: Booking!
+    var newBooking = false
     
     @IBAction func barButtonRightDidTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -41,12 +41,12 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceBannerView.price = order.totalPrice
-        movieDetailsView.movie = order.movieSession.movie
-        sessionDetailsView.movieSession = order.movieSession
-        seatingArrangementView.selectedSeats = order.seats
+        priceBannerView.price = booking.price
+        movieDetailsView.movie = booking.movieSession.movie
+        sessionDetailsView.movieSession = booking.movieSession
+        seatingArrangementView.selectedSeats = []
         seatingArrangementView.isSeatSelectable = false
-        seatingArrangementView.cinema = order.movieSession.cinema
+        seatingArrangementView.cinema = booking.movieSession.cinema
         notificationLabel?.text = notification
     }
     
@@ -85,16 +85,16 @@ class OrderSummaryVC: UIViewController, UITableViewDataSource, UITableViewDelega
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Order Subtotal"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", order.subtotal)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", booking.subtotal)
             case 1:
                 cell.textLabel?.text = "Shipping Cost"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", order.shippingCost)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", booking.shippingCost)
             case 2:
                 cell.textLabel?.text = "GST"
-                cell.detailTextLabel?.text = String(format: "$ %.02f", order.gst)
+                cell.detailTextLabel?.text = String(format: "$ %.02f", booking.gst)
             case 3:
                 cell.textLabel?.text = "Payment Method"
-                cell.detailTextLabel?.text = order.paymentMethod.rawValue
+                cell.detailTextLabel?.text = booking.paymentMethod.rawValue
             default:
                 break
             }

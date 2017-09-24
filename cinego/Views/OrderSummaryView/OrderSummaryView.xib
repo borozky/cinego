@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderSummaryView" customModule="cinego" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookingSummaryView" customModule="cinego" customModuleProvider="target">
             <connections>
                 <outlet property="gstLabel" destination="rYn-3B-fi2" id="OA5-sN-2B6"/>
                 <outlet property="shippingLabel" destination="PZL-5c-jg9" id="LV0-dT-1WB"/>

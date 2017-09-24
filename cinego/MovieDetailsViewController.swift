@@ -10,75 +10,49 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
     
+    let tableViewCellID = "MovieSessionTableViewCell"
+    
     @IBOutlet weak var movieSessionsTableView: UITableView!
     @IBOutlet weak var movieDetailsView: MovieDetailsView!
     
-    static var selectedSeatsForSessions: [(MovieSession, [Seat])] = []
-    
-    var movieDetailsViewModel: MovieDetailsViewModel!
-    
-    var movie: Movie!
-    var movieSessions: [MovieSession] = []
-    var movieSessionsByCinema: [(Cinema, [MovieSession])] {
-        var _movieSessionsByCinema: [(Cinema, [MovieSession])] = []
-        let cinemas = movieSessions.map {$0.cinema}
-        var _cinemas: [Cinema] = []
-        for cinema in cinemas {
-            let exists = _cinemas.contains(where: { $0.id == cinema.id })
-            if exists {
-                continue
-            }
-            _cinemas.append(cinema)
+    var viewModel: MovieDetailsViewModel! {
+        didSet {
+            self.viewModel.delegate = self
         }
-        
-        for cinema in _cinemas {
-            let sessions = movieSessions.filter{ $0.cinema.id == cinema.id }
-            _movieSessionsByCinema.append((cinema, sessions))
-        }
-        
-        return _movieSessionsByCinema
     }
-    
-    
-    let tableViewCellID = "MovieSessionTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieDetailsView.movie = movie
-        let movieId = Int(movie.id)!
-        movieDetailsViewModel.fetchMovieSessions(byMovieId: movieId)
+        movieDetailsView.movie = viewModel.movie
+        let movieId = Int(viewModel.movie.id)!
+        viewModel.fetchMovieSessions(byMovieId: movieId)
     }
-    
 }
 
 
+// MARK: Table View
 extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return movieSessionsByCinema.count
+        return viewModel.movieSessionsByCinema.count
     }
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "\(movieSessionsByCinema[section].0.name.uppercased()) MOVIE PLAZA THEATER"
+        return "\(viewModel.movieSessionsByCinema[section].0.name.uppercased()) MOVIE PLAZA THEATER"
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieSessionsByCinema[section].1.count
+        return viewModel.movieSessionsByCinema[section].1.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movieSessions = movieSessionsByCinema[indexPath.section].1
+        let movieSessions = viewModel.movieSessionsByCinema[indexPath.section].1
         let movieSession = movieSessions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = humaniseTime(movieSession.startTime)
         cell.detailTextLabel?.text = String(format: "%d seats available", movieSession.cinema.numberOfSeatsOfType(.AVAILABLE))
-        
         return cell
     }
-    
     
     // Helper method: Date to readable time, 
     // eg. Date() -> Mon Aug 28 09:30 am
@@ -87,62 +61,54 @@ extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegat
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
     }
-    
 }
 
-
+// MARK: Segues
 extension MovieDetailsViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // to Movie Session details (BookingDetailsVC)
         if segue.identifier == "openBookingDetailsFromMovieDetails" {
-            let destinationVC = segue.destination as! BookingDetailsVC
+            let destinationVC = segue.destination as! MovieSessionDetailsVC
             let indexPath = self.movieSessionsTableView.indexPathForSelectedRow!
-            let selectedSession = movieSessionsByCinema[indexPath.section].1[indexPath.row]
-            print("SELECTED SESSION", selectedSession)
-            destinationVC.movieSession = selectedSession
+            let selectedSession = viewModel.movieSessionsByCinema[indexPath.section].1[indexPath.row]
+            
+            destinationVC.viewModel.movieSession = selectedSession
             destinationVC.delegate = self
             
-            let foundPair = MovieDetailsViewController.selectedSeatsForSessions.filter{ $0.0.id == selectedSession.id }
+            let foundPair = MovieDetailsViewModel.selectedSeatsForSessions.filter{ $0.0.id == selectedSession.id }
             
             if foundPair.count == 0  {
-                destinationVC.selectedSeats = []
+                destinationVC.viewModel.selectedSeats = []
             } else {
-                destinationVC.selectedSeats = foundPair.first!.1
+                destinationVC.viewModel.selectedSeats = foundPair.first!.1
             }
-            
         }
     }
     
 }
 
-extension MovieDetailsViewController: BookingDetailsVCDelegate {
+extension MovieDetailsViewController: MovieSessionDetailsVCDelegate {
     func didUpdateSeats(_ movieSession: MovieSession, _ selectedSeats: [Seat]) {
-        let index = MovieDetailsViewController.selectedSeatsForSessions.index(where: {
+        let index = MovieDetailsViewModel.selectedSeatsForSessions.index(where: {
             $0.0.id == movieSession.id
         })
         
         if index != nil {
-            MovieDetailsViewController.selectedSeatsForSessions[index!].1 = selectedSeats
+            MovieDetailsViewModel.selectedSeatsForSessions[index!].1 = selectedSeats
         } else {
-            MovieDetailsViewController.selectedSeatsForSessions.append((movieSession, selectedSeats))
+            MovieDetailsViewModel.selectedSeatsForSessions.append((movieSession, selectedSeats))
         }
     }
 }
 
 extension MovieDetailsViewController: MovieDetailsViewModelDelegate {
     func movieSessionsRetrieved(_ movieSessions: [MovieSession]) {
-        self.movieSessions = movieSessions
         self.movieSessionsTableView.reloadData()
     }
     
     func movieDetailsRetrieved(_ movie: Movie) {
-        self.movie = movie
-        movieDetailsView.movie = self.movie
+        movieDetailsView?.movie = movie
     }
     
     func errorProduced() {
-        
     }
 }
