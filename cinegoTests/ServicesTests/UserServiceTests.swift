@@ -131,6 +131,10 @@ class MockFirebaseUserService: IFirebaseUserService {
         ],
     ]
     
+    func getCurrentUser() -> Promise<FirebaseUser> {
+        return Promise(value: self.currentUser!)
+    }
+    
     func login(email: String, password: String) -> Promise<FirebaseUser> {
         return Promise { fulfill, reject in
             guard let foundUser = arrayOfFirebaseUsers.first(where: { $0.email! == email }) else {

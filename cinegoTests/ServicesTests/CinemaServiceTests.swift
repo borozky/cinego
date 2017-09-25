@@ -7,15 +7,22 @@
 //
 
 import XCTest
+@testable import cinego
 
 class CinemaServiceTests: XCTestCase {
     
+    var cinemaService: ICinemaService!
+    
     override func setUp() {
         super.setUp()
+        self.cinemaService = CinemaService()
     }
     
     override func tearDown() {
         super.tearDown()
     }
+    
+    
+    
     
 }
