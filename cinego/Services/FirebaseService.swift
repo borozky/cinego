@@ -12,12 +12,19 @@ import FirebaseAuth
 import PromiseKit
 import SwiftyJSON
 
+
+// SERVICE WRAPPER FOR FIREBASE
+// this code is created by me because Firebase can be difficult to mock
+// (... or I have not yet figured out how to mock Firebase)
+// The code uses PROMISES and is VERY COMPLEX
+
+
+// Models that represents structure of Firebase results
 struct FirebaseMovie {
     let id: String
     let tmdb_title: String
     let tmdb_id: String
 }
-
 struct FirebaseCinema {
     let id: String
     let address: String
@@ -25,7 +32,6 @@ struct FirebaseCinema {
     let name: String
     let seatingArrangement: String
 }
-
 struct FirebaseBooking {
     let bookingID: String
     let moviesession_id: String
@@ -38,32 +44,26 @@ struct FirebaseUser {
     let uid: String
     let email: String?
 }
-
 struct FirebaseUserDetails {
     let fullname: String
 }
 
+
+// Errors
 enum FirebaseServiceError: Error {
     case Unauthorized(String)
     case NotFound(String)
 }
 
-//enum CinemaServiceError : Error {
-//    case NotFound(String)
-//    case NoCinemasAvailable(String)
-//}
 
+// PROTOCOLS to allow mocking
 protocol IFirebaseService: class {
     func getDatabaseReference() -> DatabaseReference
 }
-
 protocol IFirebaseMovieService: IFirebaseService {
     func getAllFirebaseMovies() -> Promise<[FirebaseMovie]>
 }
-
-protocol IFirebaseCinemaService: IFirebaseService {
-    //func getAllFirebaseCinemas() -> Promise<[FirebaseCinema]>
-}
+protocol IFirebaseCinemaService: IFirebaseService {}
 
 protocol IFirebaseUserService: IFirebaseService {
     func login(email: String, password: String) -> Promise<FirebaseUser>
@@ -73,12 +73,10 @@ protocol IFirebaseUserService: IFirebaseService {
     func getProfileDetails() -> Promise<[String: Any?]>
     func getCurrentUser() -> Promise<FirebaseUser>
 }
-
 protocol IFirebaseBookingService: IFirebaseService {
     func book(sessionID: String, numTickets: Int, seats: [String], price: Double) -> Promise<FirebaseBooking>
     func getBookings(byUserID userID: String) -> Promise<[FirebaseBooking]>
 }
-
 protocol IFirebaseMovieSessionService: IFirebaseService {
     func getMovieSessions() -> Promise<[FirebaseMovieSession]>
     func getMovieSessions(byMovieId movieId: Int) -> Promise<[FirebaseMovieSession]>
@@ -87,6 +85,9 @@ protocol IFirebaseMovieSessionService: IFirebaseService {
     func createMovieSessionPromise() -> Promise<[FirebaseMovieSession]>
     func createMovieSessionPromise(_ firebaseDatabaseQuery: DatabaseQuery) -> Promise<[FirebaseMovieSession]>
 }
+
+
+// IMPLEMENTATION
 
 class FirebaseService {
     let firebaseDatabaseReference = Database.database().reference()
@@ -165,11 +166,11 @@ extension FirebaseService: IFirebaseBookingService {
                     let value = item.value as? [String: Any] ?? [:]
                     
                     let bookingID = item.key
-                    let session_id = String(describing: value["moviesession_id"]!)
+                    let session_id = String(describing: value["session_id"]!)
                     let price = value["price"] as! Double
                     let date = Date(timeIntervalSince1970: value["created_at"] as! Double)
-                    let userID = String(describing: value["user_id"])
-                    let seats = (String(describing: value["seats"])).characters.split{ $0 == ","}.map(String.init)
+                    let userID = String(describing: value["user_id"]!)
+                    let seats = (String(describing: value["seats"]!)).characters.split{ $0 == ","}.map(String.init)
                     
                     let firebaseBooking = FirebaseBooking(
                         bookingID: bookingID,
@@ -183,9 +184,6 @@ extension FirebaseService: IFirebaseBookingService {
                 }
                 fulfill(firebaseBookings)
             })
-            
-            
-            
         }
     }
 }
@@ -227,8 +225,6 @@ extension FirebaseService: IFirebaseUserService {
                 return
             }
             
-            // TODO: Some sanitation goes here
-            
             let userID = currentUser.uid
             let userDetailsReference = self.userReference.child(userID)
             let values = [key: value]
@@ -240,7 +236,6 @@ extension FirebaseService: IFirebaseUserService {
                 
                 fulfill(key, value)
             }
-            
         }
     }
     

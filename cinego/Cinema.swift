@@ -17,6 +17,13 @@ struct Cinema {
     let rows: [Character]
     let seatMatrix: [Int]
     var reservedSeats: [Int] = []
+    
+    
+    // Flinders Street
+    var latitude: Double = -37.81719612327876
+    var longitude: Double =  144.96831983327866
+    
+    
     var numSeats: Int {
         get { return seatMatrix.reduce(0) { $0 + ($1 * (rows.count)) } }
     }
@@ -55,14 +62,50 @@ extension Cinema {
         let id = String(describing: json["id"])
         let name = String(describing: json["name"])
         let address = String(describing: json["address"])
-        let details = ""
+        let details = json["details"].stringValue
         let images: [String] = []
         let rows: [Character] = ["a", "b", "c", "d"]
         let seatMatrix: [Int] = [4, 5, 5, 4]
         let reservedSeats: [Int] = []
+        let latitude = json["latitude"].doubleValue
+        let longitude = json["longitude"].doubleValue
         
-        self.init(id: id, name: name, address: address, details: details, images: images, rows: rows, seatMatrix: seatMatrix, reservedSeats: reservedSeats)
         
+        self.init(id: id,
+                  name: name,
+                  address: address,
+                  details: details,
+                  images: images,
+                  rows: rows,
+                  seatMatrix: seatMatrix,
+                  reservedSeats: reservedSeats,
+                  latitude: latitude,
+                  longitude: longitude)
+        
+    }
+    
+    init(cinemaEntity: CinemaEntity) throws {
+        let id = cinemaEntity.firebaseId!
+        let name = cinemaEntity.name!
+        let address = cinemaEntity.location!
+        let details = cinemaEntity.details!
+        let images: [String] = []
+        let rows: [Character] = ["a", "b", "c", "d"]
+        let seatMatrix: [Int] = [4, 5, 5, 4]
+        let reservedSeats: [Int] = []
+        let latitude = cinemaEntity.latitude
+        let longitude = cinemaEntity.longitude
+        
+        self.init(id: id,
+                  name: name,
+                  address: address,
+                  details: details,
+                  images: images,
+                  rows: rows,
+                  seatMatrix: seatMatrix,
+                  reservedSeats: reservedSeats,
+                  latitude: latitude,
+                  longitude: longitude)
     }
 }
 

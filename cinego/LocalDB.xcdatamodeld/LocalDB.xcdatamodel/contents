@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CinemaEntity" representedClassName=".CinemaEntity" syncable="YES">
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firebaseId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="images" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seatMatrix" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movieSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieSessionEntity" inverseName="cinema" inverseEntity="MovieSessionEntity" syncable="YES"/>
+    </entity>
+    <entity name="MovieEntity" representedClassName=".MovieEntity" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firebase_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="releasedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tmdb_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tmdb_json" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="movieSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieSessionEntity" inverseName="movie" inverseEntity="MovieSessionEntity" syncable="YES"/>
+    </entity>
+    <entity name="MovieSessionEntity" representedClassName=".MovieSessionEntity" syncable="YES">
+        <attribute name="firebaseId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="cinema" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CinemaEntity" inverseName="movieSessions" inverseEntity="CinemaEntity" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieEntity" inverseName="movieSessions" inverseEntity="MovieEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CinemaEntity" positionX="144" positionY="119" width="128" height="178"/>
+        <element name="MovieEntity" positionX="502" positionY="-27" width="128" height="178"/>
+        <element name="MovieSessionEntity" positionX="324" positionY="122" width="128" height="103"/>
+    </elements>
+</model>

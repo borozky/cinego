@@ -31,7 +31,7 @@ class AccountTableVC: UITableViewController {
         super.viewDidLoad()
         userProfileView.user = viewModel.user!
         
-        // disable "swipe to go back"
+        // DISABLE "swipe to go back" on ACCOUNT PAGE
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationItem.backBarButtonItem?.isEnabled = false
         self.navigationItem.hidesBackButton = true
@@ -39,22 +39,24 @@ class AccountTableVC: UITableViewController {
         viewModel.loadUserBookings(byUserID: viewModel.user!.id!)
     }
     
+    // ALWAYS check user booking
     override func viewDidAppear(_ animated: Bool) {
         let user = viewModel.user!
         viewModel.loadUserBookings(byUserID: user.id!)
     }
 
+    // 2 - Upcoming movie sessions & past movie sessions bookings
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-
+    // 0 - Upcoming Sessions, 1 - Past Bookings
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return viewModel.upcomingBookings.count
+            return viewModel.upcomingBookings.count > 0 ? viewModel.upcomingBookings.count : 1
         }
         if section == 1 {
-            return viewModel.pastBookings.count
+            return viewModel.pastBookings.count > 0 ? viewModel.pastBookings.count : 1
         }
         return 0
     }
@@ -66,38 +68,63 @@ class AccountTableVC: UITableViewController {
         if section == 1 {
             return "PAST ORDERS"
         }
-        
         return nil
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        // By default show the cell that displays "No bookings found"
+        var cell = tableView.dequeueReusableCell(withIdentifier: "NoBookingFoundTableViewCell")!
         
-        // upcoming movie bookings
+        // upcoming movie bookings, replace the default cell (Cell will "No bookings found") with the normal one
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
-            let orderItemView = cell.viewWithTag(1) as! OrderItemView
-            orderItemView.booking = viewModel.upcomingBookings[indexPath.row]
-            return cell
+            if viewModel.upcomingBookings.count > 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
+                let orderItemView = cell.viewWithTag(1) as! OrderItemView
+                orderItemView.booking = viewModel.upcomingBookings[indexPath.row]
+                return cell
+            } else {
+                return cell
+            }
         }
         
         // past movie bookings
         if indexPath.section == 1 {
-            cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
-            let orderItemView = cell.viewWithTag(1) as! OrderItemView
-            orderItemView.booking = viewModel.pastBookings[indexPath.row]
-            return cell
+            if viewModel.pastBookings.count > 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
+                let orderItemView = cell.viewWithTag(1) as! OrderItemView
+                orderItemView.booking = viewModel.pastBookings[indexPath.row]
+                return cell
+            } else {
+                return cell
+            }
         }
         
         return cell
-        
     }
     
     func humanizeTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let noBookingsFoundHeight = CGFloat(66.0)
+        
+        if indexPath.section == 0 {
+            if viewModel.upcomingBookings.count == 0 {
+                return noBookingsFoundHeight
+            }
+        }
+        
+        if indexPath.section == 1 {
+            if viewModel.pastBookings.count == 0 {
+                return noBookingsFoundHeight
+            }
+        }
+        
+        return tableView.rowHeight
     }
 }
 
@@ -121,28 +148,36 @@ extension AccountTableVC {
     }
 }
 
+
 extension AccountTableVC: AccountViewModelDelegate {
-    func userInformationLoaded(_ user: User) {
-    }
-    func upcomingBookingsLoaded(_ bookings: [Booking]) {
-        ordersTableView.reloadData()
-    }
-    func pastBookingsLoaded(_ bookings: [Booking]) {
-        ordersTableView.reloadData()
-    }
+    
+    // Go back to LOGIN PAGE on logout
     func loggedOut() {
         self.delegate?.didLogout()
         _ = self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    func errorProduced(_ error: Error) {
     
+    func upcomingBookingsLoaded(_ bookings: [Booking]) {
+        ordersTableView.reloadData()
+    }
+    
+    func pastBookingsLoaded(_ bookings: [Booking]) {
+        ordersTableView.reloadData()
+    }
+    
+    
+    func userInformationLoaded(_ user: User) {
+        // nothing here
+    }
+    func errorProduced(_ error: Error) {
+        // nothing here
     }
     func userInformationNotLoaded(_ error: Error) {
-    
+        // nothing here
     }
     func bookingsNotLoaded(_ error: Error) {
-    
+        // nothing here
     }
 }
 

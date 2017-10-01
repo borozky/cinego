@@ -18,6 +18,8 @@ protocol ITicketCalculationService: class {
     func calculate(totalGSTOfTickets numTickets: Int) -> Promise<Double>
 }
 
+// CALCULATES TICKET PRICES
+// THIS USES PROMISES TO DO IT'S WORK, THAT'S WHY IT IS VERY LONG
 class TicketCalculationService: ITicketCalculationService {
     
     let PRICE_PER_TICKET: Double

@@ -8,9 +8,11 @@
 
 import UIKit
 
+// Tell previous VC that you selected seats
 protocol MovieSessionDetailsVCDelegate: class {
     func didUpdateSeats(_ movieSession: MovieSession, _ selectedSeats: [Seat])
 }
+
 
 class MovieSessionDetailsVC: UIViewController {
     
@@ -25,17 +27,24 @@ class MovieSessionDetailsVC: UIViewController {
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
+    // Open CINEMA MAP onClick
+    @IBAction func barButtonDidClicked(_ sender: Any) {
+        let cinema = self.viewModel.movieSession.cinema
+        performSegue(withIdentifier: "showCinemaLocation", sender: cinema)
+    }
+    
+    // Go to CHECKOUT PAGE
     @IBAction func proceedToCheckoutButtonDidTapped(_ sender: Any) {
         guard viewModel.selectedSeats.count > 0 else {
             return
         }
-        
         performSegue(withIdentifier: "proceedToCheckout", sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // pass model information to custom views
         movieDetailsView.movie = viewModel.movieSession.movie
         sessionDetailsView.movieSession = viewModel.movieSession
         seatingArrangementView.cinema = viewModel.movieSession.cinema
@@ -44,6 +53,7 @@ class MovieSessionDetailsVC: UIViewController {
         seatingArrangementView.pricePerSeat = 20.00
         seatingArrangementView.delegate = self
         
+        // DON'T ALLOW CHECKOUT when there are NO SEATS SELECTED
         if viewModel.selectedSeats.count > 0 {
             proceedToCheckoutButton.isEnabled = true
             proceedToCheckoutButton.alpha = 1.0
@@ -52,13 +62,15 @@ class MovieSessionDetailsVC: UIViewController {
             proceedToCheckoutButton.isEnabled = false
         }
     }
-    
 }
+
 
 extension MovieSessionDetailsVC : MovieSessionDetailsViewModelDelegate {
     func seatsUpdated(_ selectedSeats: [Seat]){
         delegate?.didUpdateSeats(viewModel.movieSession, viewModel.selectedSeats)
         guard proceedToCheckoutButton != nil else { return }
+        
+        // DON'T ALLOW CHECKOUT when there are NO SEATS SELECTED
         if viewModel.selectedSeats.count > 0 {
             proceedToCheckoutButton.isEnabled = true
             proceedToCheckoutButton.alpha = 1.0
@@ -79,14 +91,20 @@ extension MovieSessionDetailsVC : MovieSessionDetailsViewModelDelegate {
 
 extension MovieSessionDetailsVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // PROCEED TO CHECKOUT, disable seat selection
         if segue.identifier == "proceedToCheckout" {
             let destinationVC = segue.destination as! CheckoutVC
-            
             destinationVC.viewModel.movieSession = viewModel.movieSession
             destinationVC.viewModel.selectedSeats = viewModel.selectedSeats
             destinationVC.viewModel.orderTotal = seatingArrangementView.orderTotal
-            
             destinationVC.isEditing = false
+        }
+            
+        // SHOW CINEMA DETAILS and LOCATION
+        else if segue.identifier == "showCinemaLocation" {
+            let destinationVC = segue.destination as! CinemaDetailsTableViewController
+            destinationVC.cinema = (sender as! Cinema)
         }
     }
     
@@ -96,6 +114,7 @@ extension MovieSessionDetailsVC {
         }
     }
 }
+
 
 extension MovieSessionDetailsVC: SeatingArrangementViewDelegate {
     func didUpdateSeats(_ selectedSeats: [Seat]) {

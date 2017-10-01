@@ -19,6 +19,8 @@ class MovieSessionDetailsViewModel {
     
     weak var delegate: MovieSessionDetailsViewModelDelegate?
     
+    // ViewModel data
+    // Properties are watched an upon data changes delegates are automatically called
     var movieSession: MovieSession!
     var selectedSeats: [Seat] = [] {
         didSet { delegate?.seatsUpdated(self.selectedSeats) }

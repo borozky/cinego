@@ -11,18 +11,21 @@ import PromiseKit
 import Haneke
 import SwiftyJSON
 
-// TMDB Movie Service
-// This service is meant for mocking only
+let TMDBJSONCache = Shared.JSONCache
+
+// Service to retrieve movie information from TMDB API
+// Can only get 1 movie at a time
+
 protocol ITMDBMovieService: class {
     func findTMDBMovie(_ id: Int) -> Promise<SwiftyJSON.JSON>
 }
+
 
 class TMDBMovieService: ITMDBMovieService {
     
     let tmdb_apikey = "8e91ab723e730b59175061f4aa1ed37c"
     let tdmb_movieUrl = "https://api.themoviedb.org/3/movie/"
     let tmdb_imageUrl = "https://image.tmdb.org/t/p/w500"
-    let JSONCache = Shared.JSONCache
     
     private func movieUrl(_ id: Int) -> String {
         return "\(tdmb_movieUrl)\(String(id))?api_key=\(tmdb_apikey)"
@@ -38,7 +41,7 @@ class TMDBMovieService: ITMDBMovieService {
         let url = URL(string: "\(tdmb_movieUrl)\(String(id))?api_key=\(tmdb_apikey)")!
         
         return Promise { fulfill, reject in
-            JSONCache.fetch(URL: url).onSuccess { result in
+            TMDBJSONCache.fetch(URL: url).onSuccess { result in
                 
                 var json = SwiftyJSON.JSON(result.asData()) // result uses Haneke.JSON
                 

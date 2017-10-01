@@ -33,7 +33,7 @@ class BookingSummaryView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UINib(nibName: "OrderSummaryView", bundle: nil).instantiate(withOwner: self, options: nil)
+        UINib(nibName: "BookingSummaryView", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
         view.frame = self.bounds
         

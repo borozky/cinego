@@ -23,6 +23,9 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Pass movie info to custom view 
+        // see Views/MovieDetailsView/MovieDetailsView.swift
         movieDetailsView.movie = viewModel.movie
         let movieId = Int(viewModel.movie.id)!
         viewModel.fetchMovieSessions(byMovieId: movieId)
@@ -46,7 +49,7 @@ extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movieSessions = viewModel.movieSessionsByCinema[indexPath.section].1
+        let movieSessions = viewModel.movieSessionsByCinema[indexPath.section].1 // 0=Cinema, 1=[MovieSession]
         let movieSession = movieSessions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCellID, for: indexPath)
         cell.textLabel?.text = humaniseTime(movieSession.startTime)
@@ -61,6 +64,11 @@ extension MovieDetailsViewController : UITableViewDataSource, UITableViewDelegat
         formatter.dateFormat = "EEE dd MMM hh:mm aa"
         return formatter.string(from: date)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "openBookingDetailsFromMovieDetails", sender: nil)
+    }
+    
 }
 
 // MARK: Segues
@@ -74,8 +82,9 @@ extension MovieDetailsViewController {
             destinationVC.viewModel.movieSession = selectedSession
             destinationVC.delegate = self
             
+            // SAVE selected seats so that users 
+            // won't have to reselect seats all over again when they come back
             let foundPair = MovieDetailsViewModel.selectedSeatsForSessions.filter{ $0.0.id == selectedSession.id }
-            
             if foundPair.count == 0  {
                 destinationVC.viewModel.selectedSeats = []
             } else {
@@ -92,6 +101,7 @@ extension MovieDetailsViewController: MovieSessionDetailsVCDelegate {
             $0.0.id == movieSession.id
         })
         
+        // RESTORE previously selected seats
         if index != nil {
             MovieDetailsViewModel.selectedSeatsForSessions[index!].1 = selectedSeats
         } else {
@@ -104,11 +114,10 @@ extension MovieDetailsViewController: MovieDetailsViewModelDelegate {
     func movieSessionsRetrieved(_ movieSessions: [MovieSession]) {
         self.movieSessionsTableView.reloadData()
     }
-    
     func movieDetailsRetrieved(_ movie: Movie) {
         movieDetailsView?.movie = movie
     }
-    
     func errorProduced() {
+        // nothing here
     }
 }

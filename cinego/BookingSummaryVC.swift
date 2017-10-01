@@ -26,7 +26,6 @@ class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
-    // TODO: Put these in a view model
     var notification = "Your order has successfully been placed"
     var user: User!
     var booking: Booking!
@@ -36,15 +35,15 @@ class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDele
         dismiss(animated: true, completion: nil)
         delegate?.barButtonRightDidTapped()
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let selectedSeats = booking.selectedSeats
+        
         priceBannerView.price = booking.price
         movieDetailsView.movie = booking.movieSession.movie
         sessionDetailsView.movieSession = booking.movieSession
-        seatingArrangementView.selectedSeats = []
+        seatingArrangementView.selectedSeats = selectedSeats
         seatingArrangementView.isSeatSelectable = false
         seatingArrangementView.cinema = booking.movieSession.cinema
         notificationLabel?.text = notification
@@ -54,12 +53,9 @@ class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDele
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    
-    // 1st section is the order specifics, 2nd is about booked sessions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
@@ -70,7 +66,7 @@ class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
-    // currently there are 4 order details available for 1st section
+    // 4 - Subtotal, Shipping, GST, Payment Method
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -112,7 +108,6 @@ class BookingSummaryVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
 
 }

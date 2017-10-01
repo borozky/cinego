@@ -23,7 +23,9 @@ class MovieServiceTests: XCTestCase {
         
         self.tmdbService = MockTMDBService()
         self.firebaseService = MockFirebaseMovieService()
-        self.movieService = MovieService(tmdbMovieService: tmdbService, firebaseMovieService: firebaseService)
+        
+        let movieRepo = MovieCoreDataRepository(context: DatabaseController.getContext())
+        self.movieService = MovieService(tmdbMovieService: tmdbService, firebaseMovieService: firebaseService, movieRepository: movieRepo)
     }
     
     override func tearDown() {
@@ -61,59 +63,5 @@ class MovieServiceTests: XCTestCase {
     }
     
 }
-/*
- let movie_id = json["id"].rawString()!
- let movie_title = json["title"].rawString()!
- let movie_release_date = json["release_date"].rawString()!
- let movie_duration = json["runtime"].intValue
- let movie_details = json["overview"].rawString()!
- let movie_poster = json["poster_path"].rawString()
- guard json["poster_path"].url != nil else {
- throw MovieError.InvalidPosterPath("Poster path url is invalid")
- }
- */
 
-class MockFirebaseMovieService: IFirebaseMovieService {
-    var items = [
-        FirebaseMovie(id: "1", tmdb_title: "Sample Movie", tmdb_id: "12345")
-    ]
-    
-    func getAllFirebaseMovies() -> Promise<[FirebaseMovie]> {
-        return Promise(value: items)
-    }
-    func getDatabaseReference() -> DatabaseReference {
-        return DatabaseReference()
-    }
-}
-enum MockTMDBError: Error {
-    case NotFound(String)
-}
 
-class MockTMDBService: ITMDBMovieService {
-    var items: [[String: Any]] = [
-        [
-            "id" : "12345",
-            "title": "Sample Movie",
-            "release_date": "2016-04-25",
-            "runtime": "124",
-            "overview": "Lorem ipsum",
-            "poster_path": "http://example.com"
-        ]
-    ]
-    
-    
-    func findTMDBMovie(_ id: Int) -> Promise<SwiftyJSON.JSON> {
-        return Promise { fulfill, reject in
-            let results = items.filter { item in
-                let itemID = item["id"] as! String
-                return itemID == String(id)
-            }
-            guard results.count > 0 else {
-                reject(MockTMDBError.NotFound("Movie not found"))
-                return
-            }
-            
-            fulfill(JSON(results.first!))
-        }
-    }
-}

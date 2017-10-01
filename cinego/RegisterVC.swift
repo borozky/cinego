@@ -22,12 +22,10 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
-    @IBOutlet weak var validationErrorsLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        validationErrorsLabel.text = ""
     }
     
     @IBAction func registerDidTapped(_ sender: Any) {
@@ -50,12 +48,13 @@ class RegisterVC: UIViewController {
 extension RegisterVC: AuthViewModelDelegate {
     func userRegistered(_ user: User) -> Void {
         delegate.userDidRegister(user)
-        _ = self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
     
     func registrationError(_ message: String) -> Void {
-        validationErrorsLabel.text = message
+        let alertController = UIAlertController(title: "Registration Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func userLoggedIn(_ user: User) -> Void {

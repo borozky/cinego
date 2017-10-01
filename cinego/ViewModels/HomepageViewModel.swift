@@ -19,6 +19,7 @@ protocol HomePageViewModelDelegate: class {
 class HomePageViewModel {
     weak var delegate: HomePageViewModelDelegate?
     
+    // ViewModel data
     var cinemaMovies: [(Cinema, [Movie])] = [] {
         didSet { self.delegate?.cinemaMoviesRetrieved(self.cinemaMovies) }
     }
@@ -29,10 +30,11 @@ class HomePageViewModel {
         didSet { self.delegate?.cinemasRetrieved(self.cinemas) }
     }
     
+    
+    // dependencies
     var movieService: IMovieService
     var cinemaService: ICinemaService
     var movieSessionService: IMovieSessionService
-    
     init(movieService: IMovieService,
          cinemaService: ICinemaService, movieSessionService: IMovieSessionService) {
         self.movieService = movieService
@@ -54,17 +56,41 @@ extension HomePageViewModel {
     }
     
     public func fetchUpcomingMovies() {
-        self.movieService.getAllMovies().then { movies -> Void in
-            self.upcomingMovies = movies
+        movieSessionService.getMovieSessions().then { results -> Void in
+            let movieSessions = results.filter { $0.startTime > Date() }.sorted { a,b in
+                return a.startTime < b.startTime
+            }
+            
+            // get all movies, remove duplicates
+            var movies = [Movie]()
+            movieSessions.forEach { movieSession in
+                if !movies.contains(where: { $0.id == movieSession.movie.id }) {
+                    movies.append(movieSession.movie)
+                }
+            }
+            
+            // get all upcoming movies
+            if movies.count > 0 {
+                self.upcomingMovies = movies.map { movie in
+                    return movieSessions.filter { $0.movie.id == movie.id }.sorted { $0.startTime < $1.startTime }.first!.movie
+                }
+            }
+            
         }.catch { error in
             self.delegate?.errorProduced(error)
         }
     }
     
+    
     public func fetchCinemaMovies() {
+        
+        // Get all future movie sessions
+        // Get all cinemas
+        // Get all movies from these sessions. Group them by cinemas
+        
         var movieSessions: [MovieSession] = []
         movieSessionService.getMovieSessions().then { results -> Void in
-            movieSessions = results
+            movieSessions = results.filter { $0.startTime > Date() }
         }.then {
             self.cinemaService.getAllCinemas()
         }.then { results -> Void in

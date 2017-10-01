@@ -27,7 +27,7 @@ class OrderItemView: UIView {
             let url = URL(string: booking.movieSession.movie.images.first!)!
             movieBanner.hnk_setImageFromURL(url)
             totalPriceLabel.text = String(format: "$ %.02f", self.booking.price)
-            numSeatsLabel.text = String(format: "%d seats >", self.booking.seats)
+            numSeatsLabel.text = String(format: "%d seats >", self.booking.seats.count)
             cinemaLocationLabel.text = self.booking.movieSession.cinema.name
             cinemaAddressLabel.text = self.booking.movieSession.cinema.address
             

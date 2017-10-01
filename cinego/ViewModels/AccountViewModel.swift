@@ -20,6 +20,8 @@ protocol AccountViewModelDelegate: class {
 
 class AccountViewModel {
     
+    // ViewModel Data
+    // when data changes, delegates are called
     var user: User! {
         didSet {
             if let user = self.user {
@@ -37,6 +39,9 @@ class AccountViewModel {
     }
     
     weak var delegate: AccountViewModelDelegate?
+    
+    
+    // Dependencies
     var userService: IUserService
     var bookingService: IBookingService
     init(bookingService: IBookingService, userService: IUserService){
@@ -44,6 +49,7 @@ class AccountViewModel {
         self.userService = userService
     }
     
+    // Load user information
     func loadUserInformation() {
         userService.getCurrentUser().then { user -> Void in
             self.user = user
@@ -52,15 +58,23 @@ class AccountViewModel {
         }
     }
     
+    
+    // Load user bookings, 
+    // bookings are grouped and filtered based on current date and the session start time
+    // Upcoming Booking - depends on future movie sessions
+    // Past Bookings - depends on past movie sessions
     func loadUserBookings(byUserID userID: String) {
-        self.bookingService.getBookings(byUserId: userID).then { bookings -> Void in
-            self.pastBookings = bookings.filter { $0.createdAt <= Date() }
-            self.upcomingBookings = bookings.filter { $0.createdAt > Date() }
+        self.bookingService.getBookings(byUserId: userID).then { results -> Void in
+            let bookings = results
+            self.upcomingBookings = bookings.filter { $0.movieSession.startTime > Date() }
+            self.pastBookings = bookings.filter { $0.movieSession.startTime <= Date() }
         }.catch { error in
             self.delegate?.bookingsNotLoaded(error)
         }
     }
     
+    // Logout by setting the user to nil. 
+    // By 'nil-ling' the user property automatically calls the delegate
     func logout() {
         userService.logout().then {
             self.user = nil

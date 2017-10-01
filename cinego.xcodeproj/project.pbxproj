@@ -19,13 +19,13 @@
 		1F055F521F5034ED004238F5 /* MovieDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F511F5034ED004238F5 /* MovieDetailsView.xib */; };
 		1F055F541F503505004238F5 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F531F503505004238F5 /* MovieDetailsView.swift */; };
 		1F055F571F5037F4004238F5 /* SessionDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F561F5037F4004238F5 /* SessionDetailsView.xib */; };
-		1F055F5A1F503A5F004238F5 /* OrderSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F591F503A5F004238F5 /* OrderSummaryView.xib */; };
+		1F055F5A1F503A5F004238F5 /* BookingSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F591F503A5F004238F5 /* BookingSummaryView.xib */; };
 		1F055F5D1F503B22004238F5 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F5C1F503B22004238F5 /* UserProfileView.xib */; };
 		1F055F601F503C4F004238F5 /* PriceBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F5F1F503C4F004238F5 /* PriceBannerView.xib */; };
 		1F055F631F503D14004238F5 /* SeatingArrangementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F621F503D14004238F5 /* SeatingArrangementView.xib */; };
 		1F055F661F503F00004238F5 /* OrderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F055F651F503F00004238F5 /* OrderItemView.xib */; };
 		1F055F681F503F7F004238F5 /* SessionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F671F503F7F004238F5 /* SessionDetailsView.swift */; };
-		1F055F6A1F504001004238F5 /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F691F504001004238F5 /* OrderSummaryView.swift */; };
+		1F055F6A1F504001004238F5 /* BookingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F691F504001004238F5 /* BookingSummaryView.swift */; };
 		1F055F6C1F5040AD004238F5 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F6B1F5040AD004238F5 /* UserProfileView.swift */; };
 		1F055F6E1F50410E004238F5 /* PriceBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F6D1F50410E004238F5 /* PriceBannerView.swift */; };
 		1F055F701F5041DA004238F5 /* SeatingArrangementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F055F6F1F5041DA004238F5 /* SeatingArrangementView.swift */; };
@@ -40,16 +40,11 @@
 		1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2CD8871F2495CC0034D472 /* LaunchScreen.storyboard */; };
 		1F2CD8941F2495CC0034D472 /* cinegoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD8931F2495CC0034D472 /* cinegoTests.swift */; };
 		1F2CD89F1F2495CC0034D472 /* cinegoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CD89E1F2495CC0034D472 /* cinegoUITests.swift */; };
-		1F3DC9AE1F34CDC1008C4313 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DC9AD1F34CDC1008C4313 /* CartItem.swift */; };
 		1F3DC9B21F34CFEE008C4313 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DC9B11F34CFEE008C4313 /* Booking.swift */; };
 		1F3DC9B41F34D0F3008C4313 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DC9B31F34D0F3008C4313 /* User.swift */; };
 		1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F42609C1F405CB000457BC9 /* ContentRating.swift */; };
-		1F4F8FE31F2C55BA0001895A /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8FE21F2C55BA0001895A /* MovieRepository.swift */; };
 		1F5647031F2B1A5D004BB024 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5647021F2B1A5D004BB024 /* MovieDetailsViewController.swift */; };
 		1F56470B1F2B4003004BB024 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F56470A1F2B4003004BB024 /* ImageSlider.swift */; };
-		1F5707501F3EABBA00EDFCF6 /* CinemaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F57074F1F3EABBA00EDFCF6 /* CinemaRepository.swift */; };
-		1F635FB61F4708C0005A1135 /* SimpleIOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */; };
-		1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA847841F4D49F8000E9B81 /* Entities.swift */; };
 		1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D11F47AFF900D352FB /* Seat.swift */; };
 		1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */; };
 		1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */; };
@@ -58,10 +53,20 @@
 		2E4DFE2B1F5D3CB50067A760 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */; };
 		2E4DFE301F5D4B180067A760 /* HomePageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */; };
 		2E985CAD1F4A4776004F2360 /* HomePageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */; };
-		2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */; };
 		2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC77F681F2569A0003BAF20 /* Movie.swift */; };
 		47C65476E214A4734BB0ABDB /* Pods_cinego.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77CADE09D6FA82142B13D3F /* Pods_cinego.framework */; };
 		AC4BF9596F0F1A207FF3FEF5 /* Pods_cinegoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C07569C3D4052C260B39E8 /* Pods_cinegoUITests.framework */; };
+		FD00CF481F7F01CD00EFAB3D /* BookingSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CF471F7F01CD00EFAB3D /* BookingSummaryViewModel.swift */; };
+		FD00CF4C1F7F744B00EFAB3D /* CinemaDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CF4B1F7F744B00EFAB3D /* CinemaDetailsTableViewController.swift */; };
+		FD00CF4F1F7FA05100EFAB3D /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CF4E1F7FA05100EFAB3D /* DatabaseController.swift */; };
+		FD00CF521F7FAAE600EFAB3D /* LocalDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD00CF501F7FAAE600EFAB3D /* LocalDB.xcdatamodeld */; };
+		FD00CFB01F7FBFDC00EFAB3D /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFAA1F7FBFDC00EFAB3D /* MovieEntity+CoreDataClass.swift */; };
+		FD00CFB21F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFAC1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataClass.swift */; };
+		FD00CFB31F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFAD1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataProperties.swift */; };
+		FD00CFB41F7FBFDC00EFAB3D /* CinemaEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFAE1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataClass.swift */; };
+		FD00CFB51F7FBFDC00EFAB3D /* CinemaEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFAF1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataProperties.swift */; };
+		FD00CFB71F7FC33100EFAB3D /* IRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFB61F7FC33100EFAB3D /* IRepository.swift */; };
+		FD00CFB91F7FC55D00EFAB3D /* CinemaCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00CFB81F7FC55D00EFAB3D /* CinemaCoreDataRepository.swift */; };
 		FD0E8C3F1F77479F00F996E3 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0E8C3E1F77479F00F996E3 /* AccountViewModel.swift */; };
 		FD0E8C461F778FC500F996E3 /* MovieSessionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0E8C451F778FC500F996E3 /* MovieSessionDetailsViewModel.swift */; };
 		FD5CFCB51F73E6D700CA129C /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CFCB41F73E6D700CA129C /* MovieService.swift */; };
@@ -76,12 +81,25 @@
 		FD86AACD1F75BC4500ADDB7E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AACC1F75BC4500ADDB7E /* UserService.swift */; };
 		FD86AACF1F75C56000ADDB7E /* TicketCalculationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */; };
 		FD86AAD11F75D15E00ADDB7E /* MovieServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */; };
-		FD86AAD31F75D17400ADDB7E /* CinemaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */; };
 		FD86AAD51F75DC7200ADDB7E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD41F75DC7200ADDB7E /* FirebaseService.swift */; };
 		FD86AAD71F75DC8600ADDB7E /* TMDBMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD86AAD61F75DC8600ADDB7E /* TMDBMovieService.swift */; };
+		FDA71B691F7926BC00887FA4 /* BookingServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B681F7926BC00887FA4 /* BookingServiceTest.swift */; };
+		FDA71B6C1F7927B000887FA4 /* MockCinemaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B6B1F7927B000887FA4 /* MockCinemaService.swift */; };
+		FDA71B6E1F7927EA00887FA4 /* MockMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B6D1F7927EA00887FA4 /* MockMovieService.swift */; };
+		FDA71B701F79281400887FA4 /* MockTMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B6F1F79281400887FA4 /* MockTMDBService.swift */; };
+		FDA71B721F79284800887FA4 /* MockFirebaseMovieSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B711F79284800887FA4 /* MockFirebaseMovieSessionService.swift */; };
+		FDA71B741F7928D600887FA4 /* MockFirebaseMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B731F7928D600887FA4 /* MockFirebaseMovieService.swift */; };
+		FDA71B761F79293900887FA4 /* MockFirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B751F79293900887FA4 /* MockFirebaseUserService.swift */; };
+		FDA71B781F7929A900887FA4 /* MockFirebaseBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B771F7929A900887FA4 /* MockFirebaseBookingService.swift */; };
+		FDA71B7A1F792C3D00887FA4 /* MockMovieSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA71B791F792C3D00887FA4 /* MockMovieSessionService.swift */; };
 		FDC8C5171F760A46007D08E2 /* SwinjectStoryboard+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */; };
 		FDC8C5191F767ED0007D08E2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */; };
 		FDC8C51B1F76A521007D08E2 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8C51A1F76A521007D08E2 /* UserServiceTests.swift */; };
+		FDC97FAE1F8077010046AA6C /* MovieCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC97FAD1F8077010046AA6C /* MovieCoreDataRepository.swift */; };
+		FDC97FB01F807AF20046AA6C /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC97FAF1F807AF20046AA6C /* CoreDataRepository.swift */; };
+		FDC97FB21F807FE40046AA6C /* MovieSessionCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC97FB11F807FE40046AA6C /* MovieSessionCoreDataRepository.swift */; };
+		FDC97FB41F80AFB50046AA6C /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC97FB31F80AFB50046AA6C /* MovieEntity+CoreDataProperties.swift */; };
+		FDC97FB61F80D27C0046AA6C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC97FB51F80D27C0046AA6C /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,13 +133,13 @@
 		1F055F511F5034ED004238F5 /* MovieDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MovieDetailsView.xib; path = Views/MovieDetailsView/MovieDetailsView.xib; sourceTree = "<group>"; };
 		1F055F531F503505004238F5 /* MovieDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsView.swift; path = Views/MovieDetailsView/MovieDetailsView.swift; sourceTree = "<group>"; };
 		1F055F561F5037F4004238F5 /* SessionDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SessionDetailsView.xib; path = Views/SessionDetailsView/SessionDetailsView.xib; sourceTree = "<group>"; };
-		1F055F591F503A5F004238F5 /* OrderSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderSummaryView.xib; path = Views/OrderSummaryView/OrderSummaryView.xib; sourceTree = "<group>"; };
+		1F055F591F503A5F004238F5 /* BookingSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookingSummaryView.xib; path = Views/OrderSummaryView/BookingSummaryView.xib; sourceTree = "<group>"; };
 		1F055F5C1F503B22004238F5 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileView.xib; path = Views/UserProfileView/UserProfileView.xib; sourceTree = "<group>"; };
 		1F055F5F1F503C4F004238F5 /* PriceBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PriceBannerView.xib; path = Views/PriceBannerView/PriceBannerView.xib; sourceTree = "<group>"; };
 		1F055F621F503D14004238F5 /* SeatingArrangementView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatingArrangementView.xib; path = Views/SeatingArrangementView/SeatingArrangementView.xib; sourceTree = "<group>"; };
 		1F055F651F503F00004238F5 /* OrderItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderItemView.xib; path = Views/OrderItemView/OrderItemView.xib; sourceTree = "<group>"; };
 		1F055F671F503F7F004238F5 /* SessionDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailsView.swift; path = Views/SessionDetailsView/SessionDetailsView.swift; sourceTree = "<group>"; };
-		1F055F691F504001004238F5 /* OrderSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderSummaryView.swift; path = Views/OrderSummaryView/OrderSummaryView.swift; sourceTree = "<group>"; };
+		1F055F691F504001004238F5 /* BookingSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingSummaryView.swift; path = Views/OrderSummaryView/BookingSummaryView.swift; sourceTree = "<group>"; };
 		1F055F6B1F5040AD004238F5 /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileView.swift; path = Views/UserProfileView/UserProfileView.swift; sourceTree = "<group>"; };
 		1F055F6D1F50410E004238F5 /* PriceBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PriceBannerView.swift; path = Views/PriceBannerView/PriceBannerView.swift; sourceTree = "<group>"; };
 		1F055F6F1F5041DA004238F5 /* SeatingArrangementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatingArrangementView.swift; path = Views/SeatingArrangementView/SeatingArrangementView.swift; sourceTree = "<group>"; };
@@ -142,16 +160,11 @@
 		1F2CD89A1F2495CC0034D472 /* cinegoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cinegoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2CD89E1F2495CC0034D472 /* cinegoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cinegoUITests.swift; sourceTree = "<group>"; };
 		1F2CD8A01F2495CC0034D472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F3DC9AD1F34CDC1008C4313 /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		1F3DC9B11F34CFEE008C4313 /* Booking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
 		1F3DC9B31F34D0F3008C4313 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F42609C1F405CB000457BC9 /* ContentRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRating.swift; sourceTree = "<group>"; };
-		1F4F8FE21F2C55BA0001895A /* MovieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		1F5647021F2B1A5D004BB024 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		1F56470A1F2B4003004BB024 /* ImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
-		1F57074F1F3EABBA00EDFCF6 /* CinemaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaRepository.swift; sourceTree = "<group>"; };
-		1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleIOCContainer.swift; sourceTree = "<group>"; };
-		1FA847841F4D49F8000E9B81 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entities.swift; path = Entities/Entities.swift; sourceTree = "<group>"; };
 		1FCDD9D11F47AFF900D352FB /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		1FCDD9D51F47B36600D352FB /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FF8E2BC1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageMovieSectionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,7 +173,6 @@
 		2E4DFE2A1F5D3CB50067A760 /* HomepageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomepageViewModel.swift; path = ViewModels/HomepageViewModel.swift; sourceTree = "<group>"; };
 		2E4DFE2F1F5D4B180067A760 /* HomePageViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomePageViewModelTests.swift; path = ViewModelsTests/HomePageViewModelTests.swift; sourceTree = "<group>"; };
 		2E985CAC1F4A4776004F2360 /* HomePageUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITests.swift; sourceTree = "<group>"; };
-		2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSessionRepository.swift; sourceTree = "<group>"; };
 		2EC77F681F2569A0003BAF20 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		54B0A8B25CE20D32205111E0 /* Pods-cinego.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinego.release.xcconfig"; path = "Pods/Target Support Files/Pods-cinego/Pods-cinego.release.xcconfig"; sourceTree = "<group>"; };
 		690E78FBE6275A6B8F88D669 /* Pods-cinegoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoTests/Pods-cinegoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +181,17 @@
 		E4F36C2CFA2F1AF78002521A /* Pods-cinegoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cinegoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cinegoUITests/Pods-cinegoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F4638585F6700EFE04AF5BA5 /* Pods_cinegoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinegoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77CADE09D6FA82142B13D3F /* Pods_cinego.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cinego.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD00CF471F7F01CD00EFAB3D /* BookingSummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingSummaryViewModel.swift; path = ViewModels/BookingSummaryViewModel.swift; sourceTree = "<group>"; };
+		FD00CF4B1F7F744B00EFAB3D /* CinemaDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaDetailsTableViewController.swift; sourceTree = "<group>"; };
+		FD00CF4E1F7FA05100EFAB3D /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseController.swift; path = Data/DatabaseController.swift; sourceTree = "<group>"; };
+		FD00CF511F7FAAE600EFAB3D /* LocalDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDB.xcdatamodel; sourceTree = "<group>"; };
+		FD00CFAA1F7FBFDC00EFAB3D /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MovieEntity+CoreDataClass.swift"; path = "Entities/MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FD00CFAC1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MovieSessionEntity+CoreDataClass.swift"; path = "Entities/MovieSessionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FD00CFAD1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MovieSessionEntity+CoreDataProperties.swift"; path = "Entities/MovieSessionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FD00CFAE1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CinemaEntity+CoreDataClass.swift"; path = "Entities/CinemaEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FD00CFAF1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CinemaEntity+CoreDataProperties.swift"; path = "Entities/CinemaEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FD00CFB61F7FC33100EFAB3D /* IRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IRepository.swift; path = Repositories/IRepository.swift; sourceTree = "<group>"; };
+		FD00CFB81F7FC55D00EFAB3D /* CinemaCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CinemaCoreDataRepository.swift; path = Repositories/CinemaCoreDataRepository.swift; sourceTree = "<group>"; };
 		FD0E8C3E1F77479F00F996E3 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewModel.swift; path = ViewModels/AccountViewModel.swift; sourceTree = "<group>"; };
 		FD0E8C451F778FC500F996E3 /* MovieSessionDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieSessionDetailsViewModel.swift; path = ViewModels/MovieSessionDetailsViewModel.swift; sourceTree = "<group>"; };
 		FD5CFCB41F73E6D700CA129C /* MovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieService.swift; path = Services/MovieService.swift; sourceTree = "<group>"; };
@@ -183,12 +206,25 @@
 		FD86AACC1F75BC4500ADDB7E /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
 		FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketCalculationServiceTests.swift; path = ServicesTests/TicketCalculationServiceTests.swift; sourceTree = "<group>"; };
 		FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieServiceTests.swift; path = ServicesTests/MovieServiceTests.swift; sourceTree = "<group>"; };
-		FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CinemaServiceTests.swift; path = ServicesTests/CinemaServiceTests.swift; sourceTree = "<group>"; };
 		FD86AAD41F75DC7200ADDB7E /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = Services/FirebaseService.swift; sourceTree = "<group>"; };
 		FD86AAD61F75DC8600ADDB7E /* TMDBMovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDBMovieService.swift; path = Services/TMDBMovieService.swift; sourceTree = "<group>"; };
+		FDA71B681F7926BC00887FA4 /* BookingServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingServiceTest.swift; path = ServicesTests/BookingServiceTest.swift; sourceTree = "<group>"; };
+		FDA71B6B1F7927B000887FA4 /* MockCinemaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockCinemaService.swift; path = ServicesTests/ServiceMocks/MockCinemaService.swift; sourceTree = "<group>"; };
+		FDA71B6D1F7927EA00887FA4 /* MockMovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockMovieService.swift; path = ServicesTests/ServiceMocks/MockMovieService.swift; sourceTree = "<group>"; };
+		FDA71B6F1F79281400887FA4 /* MockTMDBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockTMDBService.swift; path = ServicesTests/ServiceMocks/MockTMDBService.swift; sourceTree = "<group>"; };
+		FDA71B711F79284800887FA4 /* MockFirebaseMovieSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFirebaseMovieSessionService.swift; path = ServicesTests/ServiceMocks/MockFirebaseMovieSessionService.swift; sourceTree = "<group>"; };
+		FDA71B731F7928D600887FA4 /* MockFirebaseMovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFirebaseMovieService.swift; path = ServicesTests/ServiceMocks/MockFirebaseMovieService.swift; sourceTree = "<group>"; };
+		FDA71B751F79293900887FA4 /* MockFirebaseUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFirebaseUserService.swift; path = ServicesTests/ServiceMocks/MockFirebaseUserService.swift; sourceTree = "<group>"; };
+		FDA71B771F7929A900887FA4 /* MockFirebaseBookingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFirebaseBookingService.swift; path = ServicesTests/ServiceMocks/MockFirebaseBookingService.swift; sourceTree = "<group>"; };
+		FDA71B791F792C3D00887FA4 /* MockMovieSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockMovieSessionService.swift; path = ServicesTests/ServiceMocks/MockMovieSessionService.swift; sourceTree = "<group>"; };
 		FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Setup.swift"; sourceTree = "<group>"; };
 		FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
 		FDC8C51A1F76A521007D08E2 /* UserServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserServiceTests.swift; path = ServicesTests/UserServiceTests.swift; sourceTree = "<group>"; };
+		FDC97FAD1F8077010046AA6C /* MovieCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCoreDataRepository.swift; path = Repositories/MovieCoreDataRepository.swift; sourceTree = "<group>"; };
+		FDC97FAF1F807AF20046AA6C /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataRepository.swift; path = Repositories/CoreDataRepository.swift; sourceTree = "<group>"; };
+		FDC97FB11F807FE40046AA6C /* MovieSessionCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieSessionCoreDataRepository.swift; path = Repositories/MovieSessionCoreDataRepository.swift; sourceTree = "<group>"; };
+		FDC97FB31F80AFB50046AA6C /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MovieEntity+CoreDataProperties.swift"; path = "Entities/MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FDC97FB51F80D27C0046AA6C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +266,8 @@
 				2E356E5A1F37D7CD00188A18 /* AccountTableVC.swift */,
 				03D68A001F4E56D100192877 /* LoginVC.swift */,
 				03D68A021F4E570500192877 /* RegisterVC.swift */,
+				FD00CF4B1F7F744B00EFAB3D /* CinemaDetailsTableViewController.swift */,
+				FDC97FB51F80D27C0046AA6C /* TabBarController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -237,9 +275,11 @@
 		03B219481F25E8B8009F7B41 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				1F4F8FE21F2C55BA0001895A /* MovieRepository.swift */,
-				1F57074F1F3EABBA00EDFCF6 /* CinemaRepository.swift */,
-				2EB1685B1F412A4F001CBFC0 /* MovieSessionRepository.swift */,
+				FD00CFB61F7FC33100EFAB3D /* IRepository.swift */,
+				FD00CFB81F7FC55D00EFAB3D /* CinemaCoreDataRepository.swift */,
+				FDC97FAD1F8077010046AA6C /* MovieCoreDataRepository.swift */,
+				FDC97FAF1F807AF20046AA6C /* CoreDataRepository.swift */,
+				FDC97FB11F807FE40046AA6C /* MovieSessionCoreDataRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -262,13 +302,13 @@
 			name = SessionDetailsView;
 			sourceTree = "<group>";
 		};
-		1F055F581F503A36004238F5 /* OrderSummaryView */ = {
+		1F055F581F503A36004238F5 /* BookingSummaryView */ = {
 			isa = PBXGroup;
 			children = (
-				1F055F591F503A5F004238F5 /* OrderSummaryView.xib */,
-				1F055F691F504001004238F5 /* OrderSummaryView.swift */,
+				1F055F591F503A5F004238F5 /* BookingSummaryView.xib */,
+				1F055F691F504001004238F5 /* BookingSummaryView.swift */,
 			);
-			name = OrderSummaryView;
+			name = BookingSummaryView;
 			sourceTree = "<group>";
 		};
 		1F055F5B1F503AF7004238F5 /* UserProfileView */ = {
@@ -316,7 +356,7 @@
 				1F055F611F503CD7004238F5 /* SeatingArrangementView */,
 				1F055F5E1F503C22004238F5 /* PriceBannerView */,
 				1F055F5B1F503AF7004238F5 /* UserProfileView */,
-				1F055F581F503A36004238F5 /* OrderSummaryView */,
+				1F055F581F503A36004238F5 /* BookingSummaryView */,
 				1F055F551F5037CE004238F5 /* SessionDetailsView */,
 				1F055F501F5034AF004238F5 /* MovieDetailsView */,
 				1F129BD41F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift */,
@@ -352,10 +392,10 @@
 		1F2CD87B1F2495CC0034D472 /* cinego */ = {
 			isa = PBXGroup;
 			children = (
-				FD5CFCB31F73E6A700CA129C /* Services */,
-				1FA847791F4D47C9000E9B81 /* Entities */,
+				FD00CFA91F7FBC4E00EFAB3D /* Entities */,
+				FD00CF4D1F7F97BE00EFAB3D /* Data */,
 				1FA847781F4D218F000E9B81 /* ViewModels */,
-				1F635FB41F4708A4005A1135 /* DependencyRegistry */,
+				FD5CFCB31F73E6A700CA129C /* Services */,
 				1F129BD31F2AE27600C6FFA7 /* Views */,
 				03B219481F25E8B8009F7B41 /* Repositories */,
 				03B219461F25E7E5009F7B41 /* Controllers */,
@@ -367,6 +407,7 @@
 				2E24224B1F73A07D00183835 /* GoogleService-Info.plist */,
 				1F2CD88A1F2495CC0034D472 /* Info.plist */,
 				FDC8C5161F760A46007D08E2 /* SwinjectStoryboard+Setup.swift */,
+				FD00CF501F7FAAE600EFAB3D /* LocalDB.xcdatamodeld */,
 			);
 			path = cinego;
 			sourceTree = "<group>";
@@ -393,14 +434,6 @@
 			path = cinegoUITests;
 			sourceTree = "<group>";
 		};
-		1F635FB41F4708A4005A1135 /* DependencyRegistry */ = {
-			isa = PBXGroup;
-			children = (
-				1F635FB51F4708C0005A1135 /* SimpleIOCContainer.swift */,
-			);
-			name = DependencyRegistry;
-			sourceTree = "<group>";
-		};
 		1FA847781F4D218F000E9B81 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,16 +443,9 @@
 				FDC8C5181F767ED0007D08E2 /* AuthViewModel.swift */,
 				FD0E8C3E1F77479F00F996E3 /* AccountViewModel.swift */,
 				FD0E8C451F778FC500F996E3 /* MovieSessionDetailsViewModel.swift */,
+				FD00CF471F7F01CD00EFAB3D /* BookingSummaryViewModel.swift */,
 			);
 			name = ViewModels;
-			sourceTree = "<group>";
-		};
-		1FA847791F4D47C9000E9B81 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				1FA847841F4D49F8000E9B81 /* Entities.swift */,
-			);
-			name = Entities;
 			sourceTree = "<group>";
 		};
 		2E4DFE2C1F5D4A6A0067A760 /* ViewModelsTests */ = {
@@ -437,7 +463,6 @@
 				03B219401F25E285009F7B41 /* MovieSession.swift */,
 				03B219421F25E3D8009F7B41 /* Cinema.swift */,
 				03B219441F25E4FF009F7B41 /* Ticket.swift */,
-				1F3DC9AD1F34CDC1008C4313 /* CartItem.swift */,
 				1F3DC9B11F34CFEE008C4313 /* Booking.swift */,
 				1F3DC9B31F34D0F3008C4313 /* User.swift */,
 				1F42609C1F405CB000457BC9 /* ContentRating.swift */,
@@ -469,6 +494,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD00CF4D1F7F97BE00EFAB3D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FD00CF4E1F7FA05100EFAB3D /* DatabaseController.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		FD00CFA91F7FBC4E00EFAB3D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FDC97FB31F80AFB50046AA6C /* MovieEntity+CoreDataProperties.swift */,
+				FD00CFAA1F7FBFDC00EFAB3D /* MovieEntity+CoreDataClass.swift */,
+				FD00CFAC1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataClass.swift */,
+				FD00CFAD1F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataProperties.swift */,
+				FD00CFAE1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataClass.swift */,
+				FD00CFAF1F7FBFDC00EFAB3D /* CinemaEntity+CoreDataProperties.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		FD5CFCB31F73E6A700CA129C /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,11 +533,12 @@
 		FD829BE61F749FBD005B5BF0 /* ServicesTests */ = {
 			isa = PBXGroup;
 			children = (
+				FDA71B6A1F79278F00887FA4 /* ServiceMocks */,
 				FD829BE71F749FF5005B5BF0 /* MovieSessionServiceTests.swift */,
 				FD86AACE1F75C56000ADDB7E /* TicketCalculationServiceTests.swift */,
 				FD86AAD01F75D15E00ADDB7E /* MovieServiceTests.swift */,
-				FD86AAD21F75D17400ADDB7E /* CinemaServiceTests.swift */,
 				FDC8C51A1F76A521007D08E2 /* UserServiceTests.swift */,
+				FDA71B681F7926BC00887FA4 /* BookingServiceTest.swift */,
 			);
 			name = ServicesTests;
 			sourceTree = "<group>";
@@ -502,6 +549,21 @@
 				FD829BEA1F74A69E005B5BF0 /* MovieTests.swift */,
 			);
 			name = ModelsTests;
+			sourceTree = "<group>";
+		};
+		FDA71B6A1F79278F00887FA4 /* ServiceMocks */ = {
+			isa = PBXGroup;
+			children = (
+				FDA71B6B1F7927B000887FA4 /* MockCinemaService.swift */,
+				FDA71B6D1F7927EA00887FA4 /* MockMovieService.swift */,
+				FDA71B6F1F79281400887FA4 /* MockTMDBService.swift */,
+				FDA71B711F79284800887FA4 /* MockFirebaseMovieSessionService.swift */,
+				FDA71B731F7928D600887FA4 /* MockFirebaseMovieService.swift */,
+				FDA71B751F79293900887FA4 /* MockFirebaseUserService.swift */,
+				FDA71B771F7929A900887FA4 /* MockFirebaseBookingService.swift */,
+				FDA71B791F792C3D00887FA4 /* MockMovieSessionService.swift */,
+			);
+			name = ServiceMocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,7 +686,7 @@
 				1F055F601F503C4F004238F5 /* PriceBannerView.xib in Resources */,
 				1F055F631F503D14004238F5 /* SeatingArrangementView.xib in Resources */,
 				1F055F5D1F503B22004238F5 /* UserProfileView.xib in Resources */,
-				1F055F5A1F503A5F004238F5 /* OrderSummaryView.xib in Resources */,
+				1F055F5A1F503A5F004238F5 /* BookingSummaryView.xib in Resources */,
 				1F055F661F503F00004238F5 /* OrderItemView.xib in Resources */,
 				2E24224C1F73A07D00183835 /* GoogleService-Info.plist in Resources */,
 				1F2CD8891F2495CC0034D472 /* LaunchScreen.storyboard in Resources */,
@@ -834,14 +896,20 @@
 				FD86AAD51F75DC7200ADDB7E /* FirebaseService.swift in Sources */,
 				03B219431F25E3D8009F7B41 /* Cinema.swift in Sources */,
 				1FCDD9D61F47B36600D352FB /* SeatCollectionViewCell.swift in Sources */,
+				FD00CFB91F7FC55D00EFAB3D /* CinemaCoreDataRepository.swift in Sources */,
 				1F055F721F50428C004238F5 /* OrderItemView.swift in Sources */,
 				FDC8C5171F760A46007D08E2 /* SwinjectStoryboard+Setup.swift in Sources */,
-				1FA847851F4D49F8000E9B81 /* Entities.swift in Sources */,
 				FD86AAC51F75B66C00ADDB7E /* CheckoutViewModel.swift in Sources */,
+				FD00CF4C1F7F744B00EFAB3D /* CinemaDetailsTableViewController.swift in Sources */,
+				FDC97FB01F807AF20046AA6C /* CoreDataRepository.swift in Sources */,
+				FD00CFB71F7FC33100EFAB3D /* IRepository.swift in Sources */,
 				03D68A031F4E570500192877 /* RegisterVC.swift in Sources */,
 				1F2CD87D1F2495CC0034D472 /* AppDelegate.swift in Sources */,
 				FD86AAC31F75B5ED00ADDB7E /* BookingService.swift in Sources */,
+				FD00CFB41F7FBFDC00EFAB3D /* CinemaEntity+CoreDataClass.swift in Sources */,
+				FDC97FB61F80D27C0046AA6C /* TabBarController.swift in Sources */,
 				FDC8C5191F767ED0007D08E2 /* AuthViewModel.swift in Sources */,
+				FD00CF4F1F7FA05100EFAB3D /* DatabaseController.swift in Sources */,
 				1F055F681F503F7F004238F5 /* SessionDetailsView.swift in Sources */,
 				1F3DC9B41F34D0F3008C4313 /* User.swift in Sources */,
 				03F0737F1F26C4DC00BD9713 /* HomeViewController.swift in Sources */,
@@ -853,33 +921,37 @@
 				1F3DC9B21F34CFEE008C4313 /* Booking.swift in Sources */,
 				FD86AACD1F75BC4500ADDB7E /* UserService.swift in Sources */,
 				1F5647031F2B1A5D004BB024 /* MovieDetailsViewController.swift in Sources */,
+				FD00CFB51F7FBFDC00EFAB3D /* CinemaEntity+CoreDataProperties.swift in Sources */,
 				03B219411F25E285009F7B41 /* MovieSession.swift in Sources */,
-				1F635FB61F4708C0005A1135 /* SimpleIOCContainer.swift in Sources */,
+				FD00CFB01F7FBFDC00EFAB3D /* MovieEntity+CoreDataClass.swift in Sources */,
 				2EC77F691F2569A0003BAF20 /* Movie.swift in Sources */,
 				FD5CFCB51F73E6D700CA129C /* MovieService.swift in Sources */,
-				1F5707501F3EABBA00EDFCF6 /* CinemaRepository.swift in Sources */,
 				1F055F6E1F50410E004238F5 /* PriceBannerView.swift in Sources */,
 				1FCDD9D21F47AFF900D352FB /* Seat.swift in Sources */,
 				1FF8E2BD1F4EDC8D00C6AA5C /* HomePageMovieSectionsTableViewCell.swift in Sources */,
-				1F3DC9AE1F34CDC1008C4313 /* CartItem.swift in Sources */,
+				FD00CF481F7F01CD00EFAB3D /* BookingSummaryViewModel.swift in Sources */,
 				FD86AACB1F75B7F000ADDB7E /* TicketCalculationService.swift in Sources */,
 				1F055F6C1F5040AD004238F5 /* UserProfileView.swift in Sources */,
 				2E356E5B1F37D7CD00188A18 /* AccountTableVC.swift in Sources */,
 				FD0E8C461F778FC500F996E3 /* MovieSessionDetailsViewModel.swift in Sources */,
+				FDC97FB41F80AFB50046AA6C /* MovieEntity+CoreDataProperties.swift in Sources */,
 				1F56470B1F2B4003004BB024 /* ImageSlider.swift in Sources */,
 				FD829BED1F75196B005B5BF0 /* MovieDetailsViewModel.swift in Sources */,
-				1F4F8FE31F2C55BA0001895A /* MovieRepository.swift in Sources */,
 				1F10EC821F35393500283B8C /* BookingSummaryVC.swift in Sources */,
 				1F129BD51F2AE2BF00C6FFA7 /* MovieCollectionViewCell.swift in Sources */,
 				03D68A011F4E56D100192877 /* LoginVC.swift in Sources */,
 				1F10EC801F3538A700283B8C /* CheckoutVC.swift in Sources */,
 				2E4DFE2B1F5D3CB50067A760 /* HomepageViewModel.swift in Sources */,
 				FD0E8C3F1F77479F00F996E3 /* AccountViewModel.swift in Sources */,
-				2EB1685C1F412A4F001CBFC0 /* MovieSessionRepository.swift in Sources */,
 				1F42609D1F405CB000457BC9 /* ContentRating.swift in Sources */,
-				1F055F6A1F504001004238F5 /* OrderSummaryView.swift in Sources */,
+				1F055F6A1F504001004238F5 /* BookingSummaryView.swift in Sources */,
 				FD86AAD71F75DC8600ADDB7E /* TMDBMovieService.swift in Sources */,
+				FD00CFB31F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataProperties.swift in Sources */,
+				FDC97FAE1F8077010046AA6C /* MovieCoreDataRepository.swift in Sources */,
 				03B219451F25E4FF009F7B41 /* Ticket.swift in Sources */,
+				FDC97FB21F807FE40046AA6C /* MovieSessionCoreDataRepository.swift in Sources */,
+				FD00CFB21F7FBFDC00EFAB3D /* MovieSessionEntity+CoreDataClass.swift in Sources */,
+				FD00CF521F7FAAE600EFAB3D /* LocalDB.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,14 +959,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA71B781F7929A900887FA4 /* MockFirebaseBookingService.swift in Sources */,
 				2E4DFE301F5D4B180067A760 /* HomePageViewModelTests.swift in Sources */,
 				1F2CD8941F2495CC0034D472 /* cinegoTests.swift in Sources */,
-				FD86AAD31F75D17400ADDB7E /* CinemaServiceTests.swift in Sources */,
+				FDA71B691F7926BC00887FA4 /* BookingServiceTest.swift in Sources */,
+				FDA71B6C1F7927B000887FA4 /* MockCinemaService.swift in Sources */,
 				FD86AAD11F75D15E00ADDB7E /* MovieServiceTests.swift in Sources */,
 				FDC8C51B1F76A521007D08E2 /* UserServiceTests.swift in Sources */,
 				FD86AACF1F75C56000ADDB7E /* TicketCalculationServiceTests.swift in Sources */,
+				FDA71B721F79284800887FA4 /* MockFirebaseMovieSessionService.swift in Sources */,
 				FD829BEB1F74A69E005B5BF0 /* MovieTests.swift in Sources */,
+				FDA71B6E1F7927EA00887FA4 /* MockMovieService.swift in Sources */,
+				FDA71B741F7928D600887FA4 /* MockFirebaseMovieService.swift in Sources */,
+				FDA71B761F79293900887FA4 /* MockFirebaseUserService.swift in Sources */,
+				FDA71B701F79281400887FA4 /* MockTMDBService.swift in Sources */,
 				FD829BE81F749FF5005B5BF0 /* MovieSessionServiceTests.swift in Sources */,
+				FDA71B7A1F792C3D00887FA4 /* MockMovieSessionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1244,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FD00CF501F7FAAE600EFAB3D /* LocalDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FD00CF511F7FAAE600EFAB3D /* LocalDB.xcdatamodel */,
+			);
+			currentVersion = FD00CF511F7FAAE600EFAB3D /* LocalDB.xcdatamodel */;
+			path = LocalDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F2CD8711F2495CC0034D472 /* Project object */;
 }

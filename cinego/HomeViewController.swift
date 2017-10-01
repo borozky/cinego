@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class HomeViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         homePageViewModel.fetchAllCinemas()
         homePageViewModel.fetchCinemaMovies()
         homePageViewModel.fetchUpcomingMovies()
@@ -39,21 +41,23 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomePageMovieSectionsTableViewCell", for: indexPath) as! HomePageMovieSectionsTableViewCell
         
-        // this cell contains a collection view
+        // this cell has collection view.
         cell.movieCollectionView.dataSource = cell
         cell.movieCollectionView.delegate = cell
         
+        
+        // UPCOMING MOVIES
         if indexPath.section == 0 {
-            cell.sectionTitleLabel.text = "Upcoming Movies"
+            cell.sectionTitleLabel.text = "UPCOMING MOVIES"
             cell.movies = homePageViewModel.upcomingMovies
             return cell
         }
         
+        // MOVIES GROUPED BY CINEMA
         if indexPath.section > 0 {
-            let cinema = homePageViewModel.cinemaMovies[indexPath.section - 1].0
-            let movies = homePageViewModel.cinemaMovies[indexPath.section - 1].1
-            
-            cell.sectionTitleLabel.text = cinema.name
+            let cinema = homePageViewModel.cinemaMovies[indexPath.section - 1].0 // 0 -> Cinema
+            let movies = homePageViewModel.cinemaMovies[indexPath.section - 1].1 // 1 -> Movie
+            cell.sectionTitleLabel.text = cinema.name.uppercased()
             cell.movies = movies
             return cell
         }
@@ -61,17 +65,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 10
     }
 }
 
 
 extension HomeViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // to Movie Details Page
+        // to MOVIE DETAILS PAGE
         if segue.identifier == "openMovieDetailsFromHomepage" {
             let destinationVC = segue.destination as! MovieDetailsViewController
             let cell = sender as! MovieCollectionViewCell
@@ -80,9 +84,10 @@ extension HomeViewController {
     }
 }
 
+
 extension HomeViewController: HomePageViewModelDelegate {
     func cinemasRetrieved(_ cinemas: [Cinema]) {
-        
+        // nothing here
     }
     func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) {
         tableView.reloadData()

@@ -10,7 +10,9 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 import Firebase
+import Haneke
 
+var MOVIESESSIONCACHE = [String: MovieSession]()
 
 // Getting movie sessions is more complex
 
@@ -58,6 +60,9 @@ class MovieSessionService: IMovieSessionService {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx"
     }
     
+    // TO REDUCE REPEATING CODE, I ARRANGED THE CODE THIS WAY
+    // It is a bit coupled to firebase...
+    
     func getMovieSessions() -> Promise<[MovieSession]> {
         let promise = firebaseMovieSessionService.getMovieSessions()
         return convertFirebaseMovieSessionPromise(promise)
@@ -74,13 +79,17 @@ class MovieSessionService: IMovieSessionService {
     }
     
     func getMovieSession(byId id: Int) -> Promise<MovieSession> {
+        if let movieSessionFromCache = MOVIESESSIONCACHE[String(id)] {
+            return Promise(value: movieSessionFromCache)
+        }
+        
         return firebaseMovieSessionService.getMovieSession(byId: id).then { result in
             return self.convertFirebaseMovieSessionPromise( Promise(value: [result]) )
         }.then { movieSessions in
             return Promise { fulfill, reject in
                 let movieSession = movieSessions.first
                 guard movieSession != nil else {
-                    reject(MovieSessionServiceError.MovieSessionNotFound("Movie session cannot be found"))
+                    reject(MovieSessionServiceError.MovieSessionNotFound("Movie session with ID:\(String(id)) cannot be found"))
                     return
                 }
                 fulfill(movieSession!)
@@ -94,6 +103,11 @@ class MovieSessionService: IMovieSessionService {
         var firebaseMovieSessions: [FirebaseMovieSession] = []
         var cinemas: [Cinema] = []
         var movieIds: Set<Int> = []
+        
+        // 1. loads sessions from Firebase
+        // 2. Get all cinemas and movies
+        // 3. Create movie sessions by using the results from 
+        //    cinemas and movies retrieved to populate movie and cinema information
         
         return firebaseMovieSessionPromise.then { (results) -> Void in
             firebaseMovieSessions = results
@@ -114,6 +128,12 @@ class MovieSessionService: IMovieSessionService {
                         let date = self.formatter.date(from: firebaseMovieSession.dateStr)
                         return MovieSession(id: firebaseMovieSession.id, startTime: date!, cinema: cinema, movie: movie)
                     }
+                    
+                    // cache into MOVIESESSIONCACHE
+                    for m in movieSessions {
+                        MOVIESESSIONCACHE[m.id] = m
+                    }
+                    
                     fulfill(movieSessions)
                 }
         }
@@ -121,139 +141,3 @@ class MovieSessionService: IMovieSessionService {
     
 }
 
-
-//class MovieSessionService: IMovieSessionService {
-//    
-//    var movieService: IMovieService
-//    var cinemaService: ICinemaService
-//    let movieSessionFirebaseReference = Database.database().reference().child("movieSessions")
-//    
-//    private let formatter = DateFormatter()
-//    
-//    init(movieService: IMovieService, cinemaService: ICinemaService){
-//        self.movieService = movieService
-//        self.cinemaService = cinemaService
-//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx"
-//    }
-//    
-//    func getMovieSessions() -> Promise<[MovieSession]> {
-//        return createMovieSessionPromise()
-//    }
-//    
-//    func getMovieSessions(byMovieId movieId: Int) -> Promise<[MovieSession]> {
-//        let queryByMovieID = self.movieSessionFirebaseReference.queryOrdered(byChild: "themoviedborg_id").queryEqual(toValue: movieId)
-//        return createMovieSessionPromise(queryByMovieID)
-//    }
-//    
-//    func getMovieSessions(byCinemaId cinemaId: String)  -> Promise<[MovieSession]> {
-//        let queryCinemaID = self.movieSessionFirebaseReference.queryOrdered(byChild: "cinema_id").queryEqual(toValue: cinemaId)
-//        return createMovieSessionPromise(queryCinemaID)
-//    }
-//    
-//    
-//    func getMovieSession(byId id: Int) -> Promise<MovieSession> {
-//        let queryMovieSession = self.movieSessionFirebaseReference.queryOrdered(byChild: "session_id").queryEqual(toValue: id)
-//        return createMovieSessionPromise(queryMovieSession).then { movieSessions in
-//            return Promise { fulfill, reject in
-//                let movieSession = movieSessions.first
-//                guard movieSession != nil else {
-//                    reject(MovieSessionServiceError.MovieSessionNotFound("Movie session cannot be found"))
-//                    return
-//                }
-//                fulfill(movieSession!)
-//            }
-//        }
-//    }
-//    
-//    
-//    // MARK: Helper Methods
-//    
-//    func createMovieSessionPromise() -> Promise<[MovieSession]> {
-//        let promise = createFirebaseMovieSessionPromise()
-//        return convertFirebaseMovieSessionPromise(promise)
-//    }
-//    func createMovieSessionPromise(_ firebaseDatabaseQuery: DatabaseQuery) -> Promise<[MovieSession]> {
-//        let promise = self.createFirebaseMovieSessionPromise(firebaseDatabaseQuery)
-//        return convertFirebaseMovieSessionPromise(promise)
-//    }
-//    
-//    
-//    
-//    func createFirebaseMovieSessionPromise() -> Promise<[FirebaseMovieSession]> {
-//        return Promise { fulfill, reject in
-//            self.movieSessionFirebaseReference.observeSingleEvent(of: .value, with: { snapshot in
-//                guard snapshot.hasChildren() else {
-//                    reject(MovieSessionServiceError.NoMovieSessionsAvailable("No sessions available"))
-//                    return
-//                }
-//                
-//                let firebaseMovieSessions = self.convertSnapshot(toFirebaseMovieSessions: snapshot)
-//                fulfill(firebaseMovieSessions)
-//            })
-//        }
-//    }
-//    func createFirebaseMovieSessionPromise(_ firebaseDatabaseQuery: DatabaseQuery) -> Promise<[FirebaseMovieSession]> {
-//        return Promise { fulfill, reject in
-//            firebaseDatabaseQuery.observeSingleEvent(of: .value, with: { snapshot in
-//                print("NUMRESULTS", snapshot.childrenCount)
-//                guard snapshot.hasChildren() else {
-//                    reject(MovieSessionServiceError.NoMovieSessionsAvailable("No sessions available"))
-//                    return
-//                }
-//                
-//                let firebaseMovieSessions = self.convertSnapshot(toFirebaseMovieSessions: snapshot)
-//                fulfill(firebaseMovieSessions)
-//            })
-//        }
-//    }
-//    
-//
-//    
-//    // retrieve all cinemas and movies associated with the movie session
-//    func convertFirebaseMovieSessionPromise(_ firebaseMovieSessionPromise: Promise<[FirebaseMovieSession]>) -> Promise<[MovieSession]> {
-//        var firebaseMovieSessions: [FirebaseMovieSession] = []
-//        var cinemas: [Cinema] = []
-//        var movieIds: Set<Int> = []
-//        
-//        return firebaseMovieSessionPromise.then { (results) -> Void in
-//                firebaseMovieSessions = results
-//                for item in firebaseMovieSessions {
-//                    movieIds.insert(Int(item.movieId)!)
-//                }
-//            }.then {
-//                self.cinemaService.getAllCinemas()
-//            }.then { (results) -> Void in
-//                cinemas = Array(results)
-//            }.then {
-//                self.movieService.getAllMovies(byIds: Array(movieIds))
-//            }.then { movies -> Promise<[MovieSession]> in
-//                return Promise { fulfill, reject in
-//                    let movieSessions = firebaseMovieSessions.map { firebaseMovieSession -> MovieSession in
-//                        let movie = movies.first(where: { $0.id == firebaseMovieSession.movieId })!
-//                        let cinema = cinemas.first(where: { $0.id == firebaseMovieSession.cinemaId })!
-//                        let date = self.formatter.date(from: firebaseMovieSession.dateStr)
-//                        return MovieSession(id: firebaseMovieSession.id, startTime: date!, cinema: cinema, movie: movie)
-//                    }
-//                    fulfill(movieSessions)
-//                }
-//            }
-//    }
-//    
-//    // helper method
-//    // Converts Firebase movie session snapshot into array of FirebaseMovieSession objects
-//    func convertSnapshot(toFirebaseMovieSessions snapshot: DataSnapshot) -> [FirebaseMovieSession] {
-//        var firebaseMovieSessions: [FirebaseMovieSession] = []
-//        for item in snapshot.children.allObjects as! [DataSnapshot] {
-//            let val = item.value as? [String: Any] ?? [:]
-//            let session_id = String(describing: val["session_id"]!)
-//            let dateStr = String(describing: val["starttime"]!)
-//            let movieId = String(describing: val["themoviedborg_id"]!)
-//            let cinemaId = String(describing: val["cinema_id"]!)
-//            
-//            let firebaseMovieSession = FirebaseMovieSession(id: session_id, dateStr: dateStr, movieId: movieId, cinemaId: cinemaId)
-//            firebaseMovieSessions.append(firebaseMovieSession)
-//        }
-//        return firebaseMovieSessions
-//    }
-//    
-//}
