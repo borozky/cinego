@@ -43,6 +43,7 @@ class RegisterVC: UIViewController {
             fullname: fullname
         )
     }
+    
 }
 
 extension RegisterVC: AuthViewModelDelegate {

@@ -10,9 +10,7 @@ import Foundation
 import Alamofire
 
 protocol HomePageViewModelDelegate: class {
-    func cinemasRetrieved(_ cinemas: [Cinema]) -> Void
-    func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) -> Void
-    func upcomingMoviesRetrieved(_ upcomingMovies: [Movie]) ->  Void
+    func homepageMoviesLoaded() -> Void
     func errorProduced(_ error: Error) -> Void
 }
 
@@ -20,15 +18,9 @@ class HomePageViewModel {
     weak var delegate: HomePageViewModelDelegate?
     
     // ViewModel data
-    var cinemaMovies: [(Cinema, [Movie])] = [] {
-        didSet { self.delegate?.cinemaMoviesRetrieved(self.cinemaMovies) }
-    }
-    var upcomingMovies: [Movie] = [] {
-        didSet { self.delegate?.upcomingMoviesRetrieved(self.upcomingMovies) }
-    }
-    var cinemas: [Cinema] = [] {
-        didSet { self.delegate?.cinemasRetrieved(self.cinemas) }
-    }
+    var cinemaMovies: [(Cinema, [Movie])] = []
+    var upcomingMovies: [Movie] = []
+    var cinemas: [Cinema] = []
     
     
     // dependencies
@@ -45,59 +37,43 @@ class HomePageViewModel {
 
 extension HomePageViewModel {
     
-    // Fetch all cinema info. 
-    // HomePageViewModelDelegate.cinemasRetrieved is called after fetching
-    public func fetchAllCinemas() {
-        self.cinemaService.getAllCinemas().then { cinemas -> Void in
-            self.cinemas = cinemas
-        }.catch { error in
-            self.delegate?.errorProduced(error)
-        }
-    }
-    
-    public func fetchUpcomingMovies() {
-        movieSessionService.getMovieSessions().then { results -> Void in
-            let movieSessions = results.filter { $0.startTime > Date() }.sorted { a,b in
-                return a.startTime < b.startTime
-            }
-            
-            // get all movies, remove duplicates
-            var movies = [Movie]()
-            movieSessions.forEach { movieSession in
-                if !movies.contains(where: { $0.id == movieSession.movie.id }) {
-                    movies.append(movieSession.movie)
-                }
-            }
-            
-            // get all upcoming movies
-            if movies.count > 0 {
-                self.upcomingMovies = movies.map { movie in
-                    return movieSessions.filter { $0.movie.id == movie.id }.sorted { $0.startTime < $1.startTime }.first!.movie
-                }
-            }
-            
-        }.catch { error in
-            self.delegate?.errorProduced(error)
-        }
-    }
-    
-    
-    public func fetchCinemaMovies() {
-        
-        // Get all future movie sessions
-        // Get all cinemas
-        // Get all movies from these sessions. Group them by cinemas
-        
+    public func loadHomePageMovies() {
         var movieSessions: [MovieSession] = []
+        
+        // 1. Load movies grouped by cinema
+        // 2. Display upcoming movies
         movieSessionService.getMovieSessions().then { results -> Void in
             movieSessions = results.filter { $0.startTime > Date() }
-        }.then {
-            self.cinemaService.getAllCinemas()
-        }.then { results -> Void in
-            let cinemaMovies = self.getCinemaMovies(results, movieSessions)
-            self.cinemaMovies = cinemaMovies
-        }.catch { error in
-            self.delegate?.errorProduced(error)
+            }.then {
+                self.cinemaService.getAllCinemas()
+            }.then { results -> Void in
+                let cinemaMovies = self.getCinemaMovies(results, movieSessions)
+                self.cinemaMovies = cinemaMovies
+            }
+            .then { () -> Void in
+                let upcomingSessions = movieSessions.filter { $0.startTime > Date() }.sorted { a,b in
+                    return a.startTime < b.startTime
+                }
+                
+                // get all movies, remove duplicates
+                var movies = [Movie]()
+                upcomingSessions.forEach { movieSession in
+                    if !movies.contains(where: { $0.id == movieSession.movie.id }) {
+                        movies.append(movieSession.movie)
+                    }
+                }
+                
+                // get all upcoming movies
+                if movies.count > 0 {
+                    self.upcomingMovies = movies.map { movie in
+                        return upcomingSessions.filter { $0.movie.id == movie.id }.sorted { $0.startTime < $1.startTime }.first!.movie
+                    }
+                }
+            }.then { () -> Void in
+                self.delegate?.homepageMoviesLoaded()
+            }
+            .catch { error in
+                self.delegate?.errorProduced(error)
         }
     }
     

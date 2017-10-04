@@ -23,8 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
         // WARNING: DO NOT SETUP FIREBASE HERE
         // Firebase is already set up inside SwinjectStoryboard+Setup.swift
+        
+        
+        // load movies and cinemas from CoreDATA
+        let movies = loadMovies()
+        let cinemas = loadCinemas()
+        for movie in movies { MOVIECACHE[movie.id] = movie }
+        for cinema in cinemas { CINEMACACHE[cinema.id] = cinema }
         
         
         // edit navigation bar and status bar colors
@@ -63,6 +71,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveMovies(movies)
         saveMovieSessions(movieSessions)
         print("FINISHED SAVING CINEMA, MOVIES AND MOVIESESSIONS")
+    }
+    
+    func loadCinemas() -> [Cinema] {
+        let cinemaRepository = CinemaCoreDataRepository(context: DatabaseController.getContext())
+        let cinemaEntities = cinemaRepository.findAll()
+        var cinemas: [Cinema] = []
+        for cinemaEntity in cinemaEntities {
+            guard let id = cinemaEntity.firebaseId else {
+                continue
+            }
+            guard let name = cinemaEntity.name else {
+                continue
+            }
+            guard let address = cinemaEntity.location else {
+                continue
+            }
+            guard let details = cinemaEntity.details else {
+                continue
+            }
+            guard let seatMatrixStr = cinemaEntity.seatMatrix else {
+                continue
+            }
+            
+            let matrixStr = seatMatrixStr.characters.split{$0 == "_"}.map(String.init)
+            var matrixIntArray = [Int]()
+            for i in matrixStr {
+                let num = Int(i)!
+                matrixIntArray.append(num)
+            }
+            let latitude = cinemaEntity.latitude
+            let longitude = cinemaEntity.longitude
+            let cinema = Cinema(id: id,
+                                name: name,
+                                address: address,
+                                details: details,
+                                images: [],
+                                rows: ["a", "b", "c", "d"],
+                                seatMatrix: matrixIntArray,
+                                reservedSeats: [],
+                                latitude: latitude, longitude: longitude)
+            cinemas.append(cinema)
+        }
+        return cinemas
+    }
+    
+    func loadMovies() -> [Movie] {
+        let movieRepository = MovieCoreDataRepository(context: DatabaseController.getContext())
+        let movieEntities = movieRepository.findAll()
+        var movies: [Movie] = []
+        
+        for movieEntity in movieEntities {
+            guard let jsonData = movieEntity.tmdb_json else {
+                continue
+            }
+            
+            let json = SwiftyJSON.JSON(data: jsonData as Data)
+            do {
+                let movie = try Movie(json: json)
+                movies.append(movie)
+            } catch {
+                continue
+            }
+        }
+        
+        return movies
     }
     
     

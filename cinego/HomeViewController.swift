@@ -21,10 +21,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        homePageViewModel.loadHomePageMovies()
         
-        homePageViewModel.fetchAllCinemas()
-        homePageViewModel.fetchCinemaMovies()
-        homePageViewModel.fetchUpcomingMovies()
     }
 }
 
@@ -86,13 +84,7 @@ extension HomeViewController {
 
 
 extension HomeViewController: HomePageViewModelDelegate {
-    func cinemasRetrieved(_ cinemas: [Cinema]) {
-        // nothing here
-    }
-    func cinemaMoviesRetrieved(_ cinemaMovies: [(Cinema, [Movie])]) {
-        tableView.reloadData()
-    }
-    func upcomingMoviesRetrieved(_ upcomingMovies: [Movie]) {
+    func homepageMoviesLoaded() {
         tableView.reloadData()
     }
     func errorProduced(_ error: Error) {
