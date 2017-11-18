@@ -46,4 +46,9 @@ extension Movie {
         )
         
     }
+    
+    init(movieEntity: MovieEntity) throws {
+        let json = SwiftyJSON.JSON(data: movieEntity.tmdb_json as! Data)
+        try self.init(json: json)
+    }
 }

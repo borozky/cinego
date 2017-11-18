@@ -10,35 +10,23 @@ import UIKit
 
 class CheckoutVC: UIViewController {
     
-    
-    // TODO: Put these in a ViewModel
-    var orderTotal: Double!
-    var movieSession: MovieSession!
-    var selectedSeats: [Seat]!
-    var userRepository: IUserRepository!
-    var orderRepository: IOrderRepository!
-    var user: User? {
-        didSet {
-            if self.user == nil {
-                placeOrderButton.setTitle("Login to place your order", for: .normal)
-            } else {
-                placeOrderButton.setTitle("Place order", for: .normal)
-            }
-        }
+    var viewModel: CheckoutViewModel! {
+        didSet { viewModel.delegate = self }
     }
-    
 
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var priceBannerView: PriceBannerView!
     @IBOutlet weak var movieDetailsView: MovieDetailsView!
-    @IBOutlet weak var orderSummaryView: OrderSummaryView!
+    @IBOutlet weak var bookingSummaryView: BookingSummaryView!
     @IBOutlet weak var sessionDetailsView: SessionDetailsView!
     @IBOutlet weak var seatingArrangementView: SeatingArrangementView!
     
     @IBOutlet weak var checkoutTableView: UITableView!
     @IBAction func placeOrderButtonDidTapped(_ sender: Any) {
-        if user != nil {
-            performSegue(withIdentifier: "placeOrderIfLoggedIn", sender: nil)
+        
+        // LOGIN FIRST then BOOK
+        if viewModel.user != nil {
+            viewModel.placeBooking()
         } else {
             performSegue(withIdentifier: "showLoginPageIfNotLoggedIn", sender: nil)
         }
@@ -47,24 +35,27 @@ class CheckoutVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceBannerView.price = orderTotal
-        movieDetailsView.movie = movieSession.movie
-        orderSummaryView.total = orderTotal
-        seatingArrangementView.selectedSeats = selectedSeats
-        seatingArrangementView.cinema = movieSession.cinema
+        priceBannerView.price = viewModel.orderTotal
+        movieDetailsView.movie = viewModel.movieSession.movie
+        bookingSummaryView.total = viewModel.orderTotal
+        seatingArrangementView.selectedSeats = viewModel.selectedSeats
+        seatingArrangementView.cinema = viewModel.movieSession.cinema
         seatingArrangementView.isSeatSelectable = false
-        sessionDetailsView.movieSession = movieSession
+        sessionDetailsView.movieSession = viewModel.movieSession
         
-        user = userRepository.getCurrentUser()
-        if self.user == nil {
-            placeOrderButton.setTitle("Login to place your order", for: .normal)
+        // UPDATE BUTTON TEXT based on whether user is logged in or not
+        if viewModel.user != nil {
+            placeOrderButton.setTitle("Place Order", for: .normal)
         } else {
-            placeOrderButton.setTitle("Place order", for: .normal)
+            placeOrderButton.setTitle("Login to place your order", for: .normal)
         }
+        viewModel.checkAuth()
     }
     
-    
-
+    // CHECK LOGIN everytime
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.checkAuth()
+    }
 }
 
 extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
@@ -73,9 +64,8 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 2    // Account status and payment
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -84,8 +74,8 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
         // ACCOUNT table cell
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "AccountStatusTableViewCell", for: indexPath)
-            if user != nil {
-                cell.detailTextLabel?.text = "Logged in as \(user!.fullname)"
+            if viewModel.user != nil {
+                cell.detailTextLabel?.text = "Logged in as \(viewModel.user!.fullname)"
                 cell.accessoryType = .checkmark
             } else {
                 cell.detailTextLabel?.text = "Checking out as a guest"
@@ -107,37 +97,59 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
 extension CheckoutVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        // BOOK and move the Booking Summary page
         if segue.identifier == "placeOrderIfLoggedIn" {
-            let loggedInUser = userRepository.getCurrentUser()!
-            let destinationVC = segue.destination.childViewControllers.first as! OrderSummaryVC
-            self.user = loggedInUser
+            let loggedInUser = viewModel.user!
+            let destinationVC = segue.destination.childViewControllers.first as! BookingSummaryVC
             
-            // order
-            let newOrder = Order(id: nil, userId: loggedInUser.id! , seats: selectedSeats, movieSession: movieSession)
-            destinationVC.order = orderRepository.create(order: newOrder)!
+            // booking
+            let booking = sender as! Booking
+            destinationVC.booking = booking
             destinationVC.user = loggedInUser
-            destinationVC.newOrder = true
             destinationVC.delegate = self
         }
         
+        // Go to LOGIN PAGE
         else if segue.identifier == "showLoginPageIfNotLoggedIn" {
             let destinationVC = segue.destination.childViewControllers.first as! LoginVC
-            destinationVC.userRepository = userRepository
             destinationVC.delegate = self
             destinationVC.goToAccountPage = false
         }
     }
 }
 
+extension CheckoutVC: CheckoutViewModelDelegate {
+    
+    func userLoggedIn(_ user: User) {
+        checkoutTableView.reloadData()
+        placeOrderButton.setTitle("Place order", for: .normal)
+    }
+    
+    func bookingPlaced(_ booking: Booking) {
+        performSegue(withIdentifier: "placeOrderIfLoggedIn", sender: booking)
+    }
+    
+    func bookingFailed(_ error: Error) {
+        let alertController = UIAlertController(title: "Booking Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func userLoggedOut(){
+        checkoutTableView.reloadData()
+        placeOrderButton.setTitle("Login to place your order", for: .normal)
+    }
+    
+}
+
 extension CheckoutVC: LoginVCDelegate {
     func didLoggedIn(_ user: User) {
-        self.user = user
-        checkoutTableView.reloadData()
+        self.viewModel.user = user
     }
 }
 
-extension CheckoutVC: OrderSummaryVCDelegate {
+extension CheckoutVC: BookingSummaryVCDelegate {
     func barButtonRightDidTapped() {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }

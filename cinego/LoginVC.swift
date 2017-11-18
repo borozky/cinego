@@ -14,100 +14,100 @@ protocol LoginVCDelegate: class {
 
 class LoginVC: UIViewController {
     
-    var userRepository: IUserRepository!
-    var orderRepository: IOrderRepository!
+    var authViewModel: AuthViewModel! {
+        didSet { self.authViewModel.delegate = self }
+    }
     
     weak var delegate: LoginVCDelegate?
+    
     var goToAccountPage = true
-    var user: User?
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var validationErrorsLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var cancelLoginButton: UIBarButtonItem!
+    
+    // Go back to CHECKOUT PAGE on cancel
     @IBAction func cancelLoginDidTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        validationErrorsLabel.text = ""
-        validationErrorsLabel.isEnabled = false
         
         if delegate == nil {
             self.navigationItem.setRightBarButton(nil, animated: false)
         }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let loggedInUser = userRepository.getCurrentUser() {
-            performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
-        }
+        authViewModel.checkAuth()
     }
     
     @IBAction func loginButtonDidTapped(_ sender: Any) {
-        let username = usernameTextField.text!
+        let email = emailTextField.text!
         let password = passwordTextField.text!
-        let userRepo = userRepository as! UserRepository
-        let loggedInUser = userRepo.login(username: username, password: password)
         
-        if loggedInUser != nil {
-            
-            if goToAccountPage {
-                user = loggedInUser
-                performSegue(withIdentifier: "openAccountPageAfterLoggingIn", sender: loggedInUser)
-            } else {
-                delegate?.didLoggedIn(loggedInUser!)
-                dismiss(animated: true, completion: nil)
-            }
-            
-        } else {
-            validationErrorsLabel.text = "Invalid username/password"
-        }
-        
+        authViewModel.login(email, password)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         if segue.identifier == "openRegisterVCFromLoginVC" {
             let registerVC = segue.destination as! RegisterVC
             registerVC.delegate = self
-            registerVC.userRepository = userRepository
         }
-        
         else if segue.identifier == "openAccountPageAfterLoggingIn" {
-            let currentUser = sender as! User
             let accountTableVC = segue.destination as! AccountTableVC
-            let orders = orderRepository.findAll(byUser: currentUser)
-            let pastOrders = orders.filter{ $0.movieSession.startTime <= Date() }
-            let upcomingOrders = orders.filter { $0.movieSession.startTime > Date()  }
-            accountTableVC.user = currentUser
-            accountTableVC.pastOrders = pastOrders
-            accountTableVC.upcomingBookings = upcomingOrders
-            accountTableVC.orderRepository = orderRepository
-            accountTableVC.userRepository = userRepository
+            let user = sender as! User
+            accountTableVC.viewModel.user = user
             accountTableVC.delegate = self
         }
     }
-
 }
 
 extension LoginVC : RegisterVCDelegate {
     func userDidRegister(_ user: User) {
-        if let loggedInUser = (userRepository as! UserRepository).login(username: user.username, password: user.password) {
-            delegate?.didLoggedIn(loggedInUser)
-            dismiss(animated: true, completion: nil)
+        userLoggedIn(user)
+    }
+}
+
+
+extension LoginVC : AccountTableVCDelegate {
+    
+    // Automatically clear login text
+    func didLogout() {
+        if emailTextField != nil {
+            emailTextField.text = ""
+            emailTextField.becomeFirstResponder()
+        }
+        if passwordTextField != nil {
+            passwordTextField.text = ""
         }
     }
 }
 
-extension LoginVC : AccountTableVCDelegate {
-    func didLogout() {
-        usernameTextField.text = ""
-        passwordTextField.text = ""
-        usernameTextField.becomeFirstResponder()
+extension LoginVC: AuthViewModelDelegate {
+    func userLoggedIn(_ user: User) -> Void {
+        if let delegate = delegate {
+            delegate.didLoggedIn(user)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func loginError(_ message: String) -> Void {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func userRegistered(_ user: User) -> Void {
+        // nothing here
+    }
+    func userLoggedOut() -> Void {
+        // nothing here
+    }
+    func registrationError(_ message: String) -> Void {
+        // nothing here
+    }
+    func logoutError(_ message: String) -> Void {
+        // nothing here
     }
 }

@@ -7,43 +7,56 @@
 //
 
 import Foundation
-//
-//class Booking {
-//    
-//    public let number: String
-//    
-//    private var totalPrice: Double = 0.0
-//    private var unitPrice: Double = 20.00
-//    
-//    public var movie: Movie?
-//    public var movieSession: MovieSession?
-//    public var numTickets: Int = 0
-//    public var seatNumbers: [Int] = []
-//    public var seats: [Seat] = []
-//    
-//    
-//    public init(movie: Movie, movieSession: MovieSession, numTickets: Int = 0, seatNumbers: [Int] = [], number: String = ""){
-//        self.movie = movie
-//        self.movieSession = movieSession
-//        self.numTickets = numTickets
-//        self.seatNumbers = seatNumbers
-//        self.number = number
-//    }
-//    
-//    public func calculateTotalPrice() -> Double {
-//        return Double(numTickets) * unitPrice
-//    }
-//    
-//}
+
+enum PaymentMethod: String {
+    case PAYPAL = "Paypal"
+    case CREDIT_CARD = "Credit Card"
+}
 
 struct Booking {
+    
+    static let unitPrice = 20.00
+    static let gstRate = 0.10
+    static let shippingRate = 0.0
+    
+    let id: String?
+    let userId: String
     let unitPrice: Double = 20.00
-    var totalPrice: Double {
-        get { return unitPrice * Double(tickets.count) }
+    let seats: [String]
+    let movieSession: MovieSession
+    
+    var price: Double {
+        return Double(self.seats.count) * Booking.unitPrice
     }
     
-    let number: String
-    let movieSession: MovieSession
-    let tickets: [Ticket]
+    let createdAt: Date = Date()
+    var paymentMethod: PaymentMethod {
+        return PaymentMethod.PAYPAL
+    }
+    var shippingCost: Double {
+        return price * Booking.shippingRate
+    }
+    var gst: Double {
+        return price * Booking.gstRate
+    }
+    var subtotal: Double {
+        return price - (shippingCost + gst)
+    }
+    
+    var selectedSeats: [Seat] {
+        var combinedSeatingArrangement = [Seat]()
+        self.movieSession.cinema.seatingArrangement.forEach {
+            $0.forEach { item in
+                var seat = item
+                seat.status = .SELECTED
+                combinedSeatingArrangement.append(seat)
+            }
+        }
+        let seats = combinedSeatingArrangement.filter {
+            self.seats.contains(String($0.id))
+        }
+        return seats
+    }
 }
+
 

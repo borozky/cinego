@@ -7,7 +7,9 @@ target 'cinego' do
   pod 'SwiftyJSON'
   pod 'PromiseKit', '~> 4.4'
   pod 'Swinject', '~> 2.1.0'
+  pod 'SwinjectStoryboard'
   pod 'HanekeSwift', :git => 'https://github.com/Haneke/HanekeSwift', :branch => 'feature/swift-3'
+  
 
 #pod 'Firebase'
   pod 'Firebase/Core'

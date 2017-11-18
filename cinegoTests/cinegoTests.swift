@@ -32,7 +32,8 @@ class cinegoTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    
-    
+}
+
+enum MockError: Error {
+    case NotFound
 }
